@@ -1,0 +1,484 @@
+/* ---- Studio Galilei: effetti home (stelle + card reattive) ---- */
+.sg-cielo {
+  position: absolute;
+  inset: 0;
+  z-index: -5;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+}
+
+/* ---- Card AI / Marketing / Software dell'hero ----
+   Le variabili --sg-rx/--sg-ry (inclinazione) e --sg-mx/--sg-my (parallasse)
+   arrivano dal mouse su desktop e da un'oscillazione automatica su smartphone. */
+@property --sg-rx { syntax: "<angle>"; initial-value: 0deg; inherits: true; }
+@property --sg-ry { syntax: "<angle>"; initial-value: 0deg; inherits: true; }
+@property --sg-mx { syntax: "<number>"; initial-value: 0; inherits: true; }
+@property --sg-my { syntax: "<number>"; initial-value: 0; inherits: true; }
+
+.tiles {
+  --sg-bx: 10deg; --sg-by: -24deg; --sg-bz: 1.5deg;
+  --sg-zb: -150px; --sg-zm: -30px; --sg-zf: 90px;
+  transform:
+    rotateX(calc(var(--sg-bx) + var(--sg-rx)))
+    rotateY(calc(var(--sg-by) + var(--sg-ry)))
+    rotate(var(--sg-bz));
+  transition: --sg-rx .5s cubic-bezier(.2, .7, .2, 1), --sg-ry .5s cubic-bezier(.2, .7, .2, 1),
+    --sg-mx .5s cubic-bezier(.2, .7, .2, 1), --sg-my .5s cubic-bezier(.2, .7, .2, 1);
+}
+@media (max-width: 767px) {
+  .tiles { --sg-bx: 7deg; --sg-by: -14deg; --sg-bz: 1deg; --sg-zb: -90px; --sg-zf: 60px; }
+}
+/* il piano 3D del contenitore copre le card arretrate: il clic deve arrivare alle card */
+.tiles, .tiles-floor { pointer-events: none; }
+.tile {
+  pointer-events: auto;
+  cursor: pointer;
+  -webkit-tap-highlight-color: transparent;
+  transition: transform .45s cubic-bezier(.2, .7, .2, 1), box-shadow .45s ease, filter .45s ease;
+  will-change: transform;
+}
+/* parallasse: le card più vicine si muovono di più */
+.tile-back {
+  transform: translateZ(calc(var(--sg-zb) + var(--sg-lift, 0px)))
+    translate3d(calc(var(--sg-mx) * -0.4em), calc(var(--sg-my) * -0.4em), 0);
+}
+.tile-mid {
+  transform: translateZ(calc(var(--sg-zm) + var(--sg-lift, 0px)))
+    translate3d(calc(var(--sg-mx) * 0.3em), calc(var(--sg-my) * 0.3em), 0);
+}
+.tile-front {
+  transform: translateZ(calc(var(--sg-zf) + var(--sg-lift, 0px)))
+    translate3d(calc(var(--sg-mx) * 1em), calc(var(--sg-my) * 1em), 0);
+}
+/* card sotto il cursore (o toccata): si solleva e si illumina, per far capire che è cliccabile */
+.tile.sg-attiva {
+  --sg-lift: 40px;
+  filter: brightness(1.12) saturate(1.1);
+  box-shadow:
+    inset 0 1px #ffffff80,
+    0 0 0 2px #ffffffb3,
+    0 0 28px 4px #ffffff59,
+    0 0 70px 10px #a9c7ff40,
+    0 70px 110px -30px #01041ee6;
+  animation: sg-respiro 1.8s ease-in-out infinite;
+}
+@keyframes sg-respiro {
+  0%, 100% { filter: brightness(1.1) saturate(1.1); }
+  50% { filter: brightness(1.22) saturate(1.15); }
+}
+/* riflesso di luce che segue il mouse */
+.tile::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  pointer-events: none;
+  background: radial-gradient(circle at var(--sg-gx, 50%) var(--sg-gy, 0%), #ffffff4d 0%, #ffffff14 30%, #fff0 60%);
+  opacity: 0;
+  transition: opacity .35s ease;
+}
+.tile.sg-attiva::after { opacity: 1; }
+
+/* smartphone e tablet (niente mouse): le card ondeggiano da sole */
+@media (hover: none) {
+  .tiles { animation: sg-ondeggia 9s ease-in-out infinite; }
+}
+@keyframes sg-ondeggia {
+  0%, 100% { --sg-rx: 0deg; --sg-ry: 0deg; --sg-mx: 0; --sg-my: 0; }
+  25% { --sg-rx: 4deg; --sg-ry: 7deg; --sg-mx: .7; --sg-my: -.5; }
+  50% { --sg-rx: -2deg; --sg-ry: 2deg; --sg-mx: .2; --sg-my: .6; }
+  75% { --sg-rx: -4deg; --sg-ry: -6deg; --sg-mx: -.7; --sg-my: -.2; }
+}
+
+/* ---- "Scopri i servizi" sopra le card (centrato sulle card da sg-effetti.js) ---- */
+.sg-scopri {
+  display: block;
+  width: fit-content;
+  margin: 0 auto 4px;
+  font-size: 14px;
+  font-weight: 600;
+  letter-spacing: .18em;
+  text-transform: uppercase;
+  color: #ffffffd9;
+  text-decoration: none;
+  translate: var(--sg-sposta, 0px) 0;
+}
+.sg-scopri:hover { color: #fff; }
+
+/* ---- "Parla con noi": una lucina che percorre tutto il contorno ---- */
+@property --sg-ang {
+  syntax: "<angle>";
+  initial-value: 0deg;
+  inherits: false;
+}
+section.bg-sg-deep a[href="#/contatti"] {
+  position: relative;
+  isolation: isolate;
+}
+section.bg-sg-deep a[href="#/contatti"]::before,
+section.bg-sg-deep a[href="#/contatti"]::after {
+  content: "";
+  position: absolute;
+  inset: -1px;
+  border-radius: inherit;
+  padding: 1px;
+  pointer-events: none;
+  background: conic-gradient(from var(--sg-ang), #fff0 0deg, #fff0 290deg, #a9c7ff 330deg, #fff 352deg, #fff0 360deg);
+  -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+  -webkit-mask-composite: xor;
+  mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+  mask-composite: exclude;
+  animation: sg-giro 3.2s linear infinite;
+}
+/* alone sfocato della lucina */
+section.bg-sg-deep a[href="#/contatti"]::after {
+  inset: -2px;
+  padding: 2px;
+  filter: blur(3px);
+  opacity: .6;
+}
+section.bg-sg-deep a[href="#/contatti"]:hover::before,
+section.bg-sg-deep a[href="#/contatti"]:hover::after {
+  animation-duration: 1.4s;
+}
+@keyframes sg-giro { to { --sg-ang: 360deg; } }
+
+/* ---- "Un partner.": bianco pieno e luminoso, come la stella polare ---- */
+.sg-partner {
+  position: relative;
+  display: inline-block;
+  color: #fff;
+  text-shadow: 0 0 8px #ffffff4d, 0 0 22px #a9c7ff33;
+  animation: sg-bagliore 4s ease-in-out infinite;
+}
+/* piccola stella che brilla sopra la parola */
+.sg-partner::after {
+  content: "";
+  position: absolute;
+  top: -.12em;
+  right: -.42em;
+  width: .34em;
+  height: .34em;
+  background: #fff;
+  clip-path: polygon(50% 0, 60% 40%, 100% 50%, 60% 60%, 50% 100%, 40% 60%, 0 50%, 40% 40%);
+  filter: drop-shadow(0 0 6px #fff) drop-shadow(0 0 12px #a9c7ff);
+  animation: sg-brilla 3s ease-in-out infinite;
+}
+@keyframes sg-bagliore {
+  0%, 100% { text-shadow: 0 0 8px #ffffff4d, 0 0 22px #a9c7ff33; }
+  50% { text-shadow: 0 0 10px #ffffff73, 0 0 28px #a9c7ff4d; }
+}
+@keyframes sg-brilla {
+  0%, 100% { transform: scale(.55) rotate(0deg); opacity: .6; }
+  50% { transform: scale(1) rotate(45deg); opacity: 1; }
+}
+
+/* ---- Card delle pagine: leggera inclinazione verso il mouse ---- */
+.sg-scheda {
+  transform: perspective(900px) rotateX(var(--sg-sx, 0deg)) rotateY(var(--sg-sy, 0deg)) translateY(var(--sg-sz, 0px));
+  transition: transform .5s cubic-bezier(.2, .7, .2, 1), filter .5s ease;
+}
+.sg-scheda.sg-sopra {
+  --sg-sz: -5px;
+  filter: drop-shadow(0 18px 24px #06177324);
+  transition: transform .15s ease-out, filter .3s ease;
+}
+/* entrata morbida quando la card compare scorrendo */
+.sg-scheda.sg-nascosta { opacity: 0; translate: 0 22px; }
+.sg-scheda.sg-entra { transition: opacity .7s ease, translate .7s cubic-bezier(.2, .7, .2, 1), transform .5s cubic-bezier(.2, .7, .2, 1); }
+
+/* ---- "Scopri come possiamo applicarlo alla tua realtà" ---- */
+a[class*="#0A2391"] {
+  animation: sg-faro 2.6s ease-out infinite;
+}
+/* il riflesso esistente passa da solo ogni pochi secondi */
+a[class*="#0A2391"] > span[class*="-skew-x-12"] {
+  animation: sg-lampo 4.5s ease-in-out infinite;
+}
+a[class*="#0A2391"]:hover > span[class*="-skew-x-12"] { animation: none; }
+a[class*="#0A2391"] > svg {
+  animation: sg-spinta 2.6s ease-in-out infinite;
+}
+@keyframes sg-faro {
+  0% { box-shadow: 0 18px 40px -14px #061773a6, inset 0 1px #ffffff38, 0 0 0 0 #0a2391a6; }
+  70% { box-shadow: 0 18px 40px -14px #061773a6, inset 0 1px #ffffff38, 0 0 0 18px #0a239100; }
+  100% { box-shadow: 0 18px 40px -14px #061773a6, inset 0 1px #ffffff38, 0 0 0 0 #0a239100; }
+}
+@keyframes sg-lampo {
+  0%, 55% { left: -33%; }
+  85%, 100% { left: 110%; }
+}
+@keyframes sg-spinta {
+  0%, 100% { transform: translateX(0) rotate(0); }
+  20% { transform: translateX(3px) rotate(-8deg); }
+  40% { transform: translateX(0) rotate(0); }
+}
+
+/* ---- Team: card foto a scorrimento ---- */
+.sg-team { overflow: hidden; }
+.sg-team-pista {
+  display: flex;
+  gap: 20px;
+  width: max-content;
+  padding: 18px 0 28px;
+  animation: sg-scorri 40s linear infinite;
+}
+.sg-team-pista:hover { animation-play-state: paused; }
+@keyframes sg-scorri { to { transform: translateX(calc(-50% - 10px)); } }
+.sg-team-bordo {
+  -webkit-mask: linear-gradient(90deg, #0000, #000 6%, #000 94%, #0000);
+  mask: linear-gradient(90deg, #0000, #000 6%, #000 94%, #0000);
+}
+.sg-persona {
+  flex: none;
+  width: 240px;
+  border-radius: 18px;
+  overflow: hidden;
+  background: #fff;
+  border: 1px solid #0617731a;
+  box-shadow: 0 20px 40px -28px #06177366;
+}
+.sg-persona {
+  transition: transform .4s cubic-bezier(.2, .7, .2, 1), box-shadow .4s ease;
+}
+.sg-persona:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 28px 48px -26px #06177380;
+}
+.sg-persona-foto {
+  position: relative;
+  aspect-ratio: 4 / 5;
+  background: radial-gradient(120% 90% at 50% 0%, var(--sg-da, #0a2391) 0%, var(--sg-a, #040f4d) 100%);
+  display: grid;
+  place-items: center;
+  overflow: hidden;
+}
+.sg-persona-foto img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
+/* senza foto: sagoma in basso e iniziali grandi */
+.sg-persona-foto svg {
+  position: absolute;
+  bottom: -6%;
+  left: 50%;
+  width: 78%;
+  translate: -50% 0;
+  opacity: .16;
+}
+.sg-persona-iniziali {
+  position: relative;
+  font-size: 64px;
+  font-weight: 600;
+  letter-spacing: -0.03em;
+  color: #fff;
+  text-shadow: 0 0 24px #ffffff59;
+  margin-bottom: 18%;
+}
+.sg-persona-area {
+  position: absolute;
+  top: 14px;
+  left: 14px;
+  padding: 5px 10px;
+  border-radius: 999px;
+  background: #ffffff26;
+  border: 1px solid #ffffff40;
+  backdrop-filter: blur(6px);
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: .04em;
+  color: #fff;
+}
+.sg-persona-testo { padding: 16px 18px 18px; }
+
+/* ---- Anteprima portale animata ---- */
+.sg-portale .sg-portale-linea {
+  stroke-dasharray: var(--sg-lun);
+  stroke-dashoffset: var(--sg-lun);
+}
+.sg-portale .sg-portale-area, .sg-portale .sg-portale-punto { opacity: 0; }
+.sg-portale [aria-hidden="true"] > span.rounded-full { transform-origin: left; transform: scaleX(0); }
+.sg-portale .bg-pale { opacity: 0; translate: 0 10px; }
+
+.sg-portale-via .sg-portale-linea { animation: sg-traccia 1.6s .35s cubic-bezier(.45, 0, .2, 1) forwards; }
+.sg-portale-via .sg-portale-area { animation: sg-appari .8s 1.4s ease forwards; }
+.sg-portale-via .sg-portale-punto { animation: sg-appari .3s 1.9s ease forwards, sg-pulsa 2s 2.2s ease-in-out infinite; }
+.sg-portale-via [aria-hidden="true"] > span.rounded-full { animation: sg-cresci .7s cubic-bezier(.2, .7, .2, 1) forwards; }
+.sg-portale-via [aria-hidden="true"] > span.rounded-full:nth-child(2) { animation-delay: .08s; }
+.sg-portale-via [aria-hidden="true"] > span.rounded-full:nth-child(3) { animation-delay: .16s; }
+.sg-portale-via [aria-hidden="true"] > span.rounded-full:nth-child(4) { animation-delay: .24s; }
+.sg-portale-via .bg-pale { animation: sg-sali .6s cubic-bezier(.2, .7, .2, 1) forwards; }
+.sg-portale-via .bg-pale:nth-child(2) { animation-delay: .1s; }
+.sg-portale-via .bg-pale:nth-child(3) { animation-delay: .2s; }
+.sg-portale-punto { fill: #0689ff; stroke: #fff; stroke-width: 2; transform-box: fill-box; transform-origin: center; }
+
+@keyframes sg-traccia { to { stroke-dashoffset: 0; } }
+@keyframes sg-appari { to { opacity: 1; } }
+@keyframes sg-cresci { to { transform: scaleX(1); } }
+@keyframes sg-sali { to { opacity: 1; translate: 0 0; } }
+@keyframes sg-pulsa {
+  0%, 100% { transform: scale(1); filter: drop-shadow(0 0 0 #0689ff00); }
+  50% { transform: scale(1.35); filter: drop-shadow(0 0 5px #0689ffb3); }
+}
+
+/* ---- Timbri Studio Galilei attorno al pulsante "Scopri come…" ---- */
+.sg-timbri-box { position: relative; }
+.sg-timbri-box > a { z-index: 1; }
+.sg-timbri { position: absolute; inset: 0; pointer-events: none; }
+.sg-timbro {
+  position: absolute;
+  display: block;
+  width: 124px;
+  opacity: 0;
+  mix-blend-mode: multiply;
+  transform: rotate(var(--sg-rot)) scale(1.7);
+}
+.sg-timbro svg { display: block; width: 100%; height: auto; opacity: .95; }
+.sg-timbro-3 { width: 160px; }
+/* posizioni attorno al pulsante (desktop), senza toccarlo */
+.sg-timbro-1 { left: calc(50% - 480px); top: 4%; }
+.sg-timbro-2 { right: calc(50% - 480px); top: 34%; }
+.sg-timbro-3 { left: calc(50% - 330px); bottom: -16%; }
+.sg-timbro-4 { right: calc(50% - 300px); top: -18%; width: 96px; }
+.sg-timbrati .sg-timbro {
+  animation: sg-timbra .45s var(--sg-rit) cubic-bezier(.3, 1.6, .5, 1) forwards;
+}
+@keyframes sg-timbra {
+  0% { opacity: 0; transform: rotate(var(--sg-rot)) scale(1.7); }
+  60% { opacity: 1; }
+  100% { opacity: 1; transform: rotate(var(--sg-rot)) scale(1); }
+}
+/* tablet e telefono: solo due timbri, più piccoli, ai lati */
+@media (max-width: 1023px) {
+  .sg-timbro { width: 84px; }
+  .sg-timbro-1 { left: 0; top: -4%; }
+  .sg-timbro-2 { right: 0; top: auto; bottom: -8%; }
+  .sg-timbro-3, .sg-timbro-4 { display: none; }
+}
+@media (max-width: 639px) {
+  .sg-timbro { width: 66px; }
+  .sg-timbro-1 { top: -22%; }
+  .sg-timbro-2 { bottom: -24%; }
+}
+
+/* ---- Home: barra in alto sul cielo blu (niente barra bianca) ---- */
+header.sg-header-cielo {
+  background: transparent;
+  border-bottom-color: transparent;
+  margin-bottom: -72px; /* l'hero scorre sotto la barra, così il cielo arriva fino in cima */
+  transition: background-color .35s ease, border-color .35s ease, backdrop-filter .35s ease;
+}
+/* scorrendo, o con il menu mobile aperto, la barra diventa blu notte semitrasparente */
+header.sg-header-cielo.sg-scrollato,
+header.sg-header-cielo:has(> div + div) {
+  background: #061773e0;
+  border-bottom-color: #ffffff1a;
+  -webkit-backdrop-filter: blur(12px);
+  backdrop-filter: blur(12px);
+}
+header.sg-header-cielo + main > section:first-child { padding-top: calc(104px + 72px); }
+@media (min-width: 768px) {
+  header.sg-header-cielo + main > section:first-child { padding-top: calc(136px + 72px); }
+}
+/* logo bianco */
+header.sg-header-cielo > div:first-child > a:first-child > span { color: #fff; }
+/* voci di menu */
+header.sg-header-cielo > div:first-child nav a { color: #ffffffcc; }
+header.sg-header-cielo > div:first-child nav a:hover { color: #fff; }
+/* selettore lingua */
+header.sg-header-cielo > div:first-child [role="group"] { border-color: #ffffff40; }
+header.sg-header-cielo > div:first-child [role="group"] button { color: #ffffff8c; background: transparent; }
+header.sg-header-cielo > div:first-child [role="group"] button:hover { color: #fff; }
+header.sg-header-cielo > div:first-child [role="group"] button[aria-pressed="true"] { color: #061773; background: #fff; }
+/* "Contattaci": bianco pieno con testo blu, in contrasto col cielo */
+header.sg-header-cielo > div:first-child a[href="#/contatti"] {
+  background: #fff;
+  color: #061773;
+  box-shadow: 0 8px 24px -10px #ffffff80;
+}
+header.sg-header-cielo > div:first-child a[href="#/contatti"]:hover { background: #e4e7ed; }
+/* Area Privata e menu mobile */
+header.sg-header-cielo > div:first-child a[href="#/area-partner"] { color: #fff; }
+header.sg-header-cielo > div:first-child a[href="#/area-partner"] > span:first-child { border-color: #ffffff59; }
+header.sg-header-cielo > div:first-child a[href="#/area-partner"]:hover > span:first-child { background: #fff; color: #061773; border-color: #fff; }
+header.sg-header-cielo > div:first-child a[href="#/area-partner"] > span:last-child { color: #ffffffbf; }
+header.sg-header-cielo > div:first-child button[aria-expanded] { color: #fff; }
+
+/* ---- Spazio in trasparenza nelle sezioni chiare ---- */
+.sg-con-spazio { position: relative; isolation: isolate; }
+.sg-spazio {
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  overflow: hidden;
+  pointer-events: none;
+}
+.sg-spazio svg { width: 100%; height: 100%; display: block; }
+.sg-spazio .sg-ruota { animation: sg-ruota 180s linear infinite; }
+.sg-spazio .sg-orbita { animation: sg-orbita 26s linear infinite; }
+.sg-spazio .sg-brilla { animation: sg-luccica 4s ease-in-out infinite; }
+@keyframes sg-ruota { to { transform: rotate(360deg); } }
+/* il pianetino percorre l'orbita (ellisse rx × 0.32 rx) */
+@keyframes sg-orbita {
+  0% { transform: translate(var(--sg-orx), 0); }
+  25% { transform: translate(0, calc(var(--sg-orx) * .32)); }
+  50% { transform: translate(calc(var(--sg-orx) * -1), 0); }
+  75% { transform: translate(0, calc(var(--sg-orx) * -.32)); }
+  100% { transform: translate(var(--sg-orx), 0); }
+}
+@keyframes sg-luccica {
+  0%, 100% { opacity: 1; }
+  50% { opacity: .2; }
+}
+
+/* ---- Fondo dell'hero: l'acqua sfuma nel blu notte e la sezione chiude con un orizzonte curvo ---- */
+main > section.bg-sg-deep:first-child::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: min(38%, 280px);
+  z-index: -4; /* sopra foto, velo blu e stelle; sotto i contenuti */
+  pointer-events: none;
+  background: linear-gradient(to bottom, #040f4d00 0%, #040f4d73 45%, #040f4dd9 75%, #040f4d 100%);
+}
+/* orizzonte: un grande arco chiaro con un alone azzurro, come il bordo di un pianeta */
+main > section.bg-sg-deep:first-child::before {
+  content: "";
+  position: absolute;
+  left: -30%;
+  right: -30%;
+  bottom: -1px;
+  height: 56px;
+  z-index: -3;
+  pointer-events: none;
+  background: #fff;
+  border-radius: 50% 50% 0 0 / 100% 100% 0 0;
+  box-shadow: 0 -2px 0 #a9c7ff8c, 0 -14px 40px #6fa0ff66, 0 -40px 90px #0689ff33;
+}
+@media (max-width: 767px) {
+  main > section.bg-sg-deep:first-child::after { height: min(28%, 200px); }
+  main > section.bg-sg-deep:first-child::before { height: 28px; left: -60%; right: -60%; }
+}
+
+/* ---- Calendario prenotazioni ---- */
+.sg-prenota-box iframe {
+  display: block;
+  width: 100%;
+  height: 760px;
+  border: 0;
+}
+@media (max-width: 767px) {
+  .sg-prenota-box iframe { height: 880px; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .tiles, .tile, .sg-scheda { transition: none !important; }
+  .tiles, .sg-spazio * { animation: none !important; }
+  .sg-scheda.sg-nascosta { opacity: 1; translate: none; }
+  .tile.sg-attiva, .sg-partner, .sg-partner::after,
+  a[class*="#0A2391"], a[class*="#0A2391"] > span, a[class*="#0A2391"] > svg,
+  section.bg-sg-deep a[href="#/contatti"]::before,
+  section.bg-sg-deep a[href="#/contatti"]::after { animation: none !important; }
+  .sg-team-pista { animation: none; }
+  .sg-team { overflow-x: auto; }
+}
