@@ -1,0 +1,417 @@
+<!doctype html>
+<html lang="it">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#061773">
+<title>Studio Galilei | Platform</title>
+<style>
+:root{--blue:#061773;--ink:#101010;--white:#fff;--line:#dfe3ec;--light:#f4f6fb;--mid:#3b4052;--danger:#aa2121;--green:#176443;--radius:11px;font-family:Arial,"Helvetica Neue",Helvetica,sans-serif;color:var(--ink)}
+*{box-sizing:border-box}body{margin:0;background:#fff;font-size:14px;line-height:1.5}button,input,textarea,select{font:inherit}button{cursor:pointer}button:disabled{opacity:.45;cursor:not-allowed}button:focus-visible,input:focus-visible,textarea:focus-visible,select:focus-visible{outline:3px solid #6c8dfb;outline-offset:2px}input,select,textarea{color:var(--ink)}a{color:var(--blue)}.hidden{display:none!important}
+.brand{display:flex;align-items:center;gap:11px;color:var(--blue);font-size:17px;font-weight:700;letter-spacing:-.4px}.brand svg{width:35px;height:40px;flex:none}.brand.inverse{color:white}
+.entry{min-height:100vh;background:var(--blue);padding:35px clamp(20px,5vw,60px);color:white;display:flex;flex-direction:column}.entry .brand{font-size:20px}.entry-main{width:min(760px,100%);margin:auto;text-align:center;padding:70px 0}.entry-main h1{font-size:clamp(33px,4vw,51px);letter-spacing:-1.3px;line-height:1.14;margin:0 0 13px}.entry-main p{font-size:16px;margin:0 0 33px;color:#e0e6ff}.entry-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:16px;text-align:left}.entry-choice{background:#fff;border:2px solid white;border-radius:12px;padding:24px 24px 22px;min-height:185px;text-align:left;display:flex;flex-direction:column;align-items:flex-start;color:var(--ink)}.entry-choice:hover{border-color:#7fa5ff}.entry-choice svg{height:31px;width:31px;color:var(--blue);margin-bottom:24px}.entry-choice b{font-size:21px;letter-spacing:-.3px}.entry-choice span{font-size:13px;margin-top:4px;color:#3b4052}.entry-choice strong{margin:15px 0 0 auto;color:var(--blue)}.consult-link{display:inline-block;border:0;color:white;background:transparent;text-decoration:underline;text-underline-offset:5px;margin-top:24px;padding:10px;font-size:13px}.entry-footer{font-size:12px;color:#e1e6ff}
+.select-wrap{max-width:480px;margin:auto}.select-wrap .choice-list{display:grid;gap:9px;text-align:left}.role-person{border:1px solid #ffffff55;background:#ffffff12;color:white;border-radius:9px;padding:17px 19px;text-align:left;display:flex;align-items:center;justify-content:space-between;gap:14px}.role-person:hover{background:#ffffff25}.role-person small{display:block;color:#dfe5ff;margin-top:3px}.entry-back{display:inline-flex;align-items:center;gap:6px;margin-top:25px;background:none;color:white;border:0;text-decoration:underline;text-underline-offset:4px}
+.shell{display:grid;grid-template-columns:230px minmax(0,1fr);min-height:100vh}.sidebar{position:sticky;top:0;align-self:start;height:100vh;border-right:1px solid var(--line);display:flex;flex-direction:column;padding:25px 13px 16px;gap:33px;background:#fff}.sidebar .brand{padding-left:10px}.caption-side{font-size:11px;font-weight:700;letter-spacing:.04em;margin:0 0 12px 13px;color:var(--blue)}.sidenav{display:grid;gap:6px}.sidenav button{width:100%;border:0;background:transparent;color:var(--ink);display:flex;align-items:center;gap:11px;padding:11px 12px;font-weight:600;text-align:left;border-radius:8px}.sidenav button svg{width:19px;height:19px}.sidenav button:hover{background:#eef0fc;color:var(--blue)}.sidenav button.active{background:var(--blue);color:white}.sidefoot{margin-top:auto}.profileline{padding:14px 9px;border-top:1px solid var(--line);display:flex;gap:10px;align-items:center}.avatar{height:35px;width:35px;flex:none;border-radius:50%;background:var(--blue);color:white;display:grid;place-items:center;font-weight:700;font-size:13px}.profileline b{display:block;font-size:12px}.profileline small{font-size:11px;color:var(--mid)}.signout{width:100%;background:#fff;border:1px solid var(--line);padding:9px;border-radius:8px;color:var(--ink);font-weight:600}.signout:hover{border-color:var(--blue)}
+.main{min-width:0}.top{height:79px;display:flex;align-items:center;justify-content:space-between;gap:10px;border-bottom:1px solid var(--line);padding:0 clamp(19px,3vw,45px)}.top h2{font-size:15px;margin:0}.top small{color:var(--mid)}.top .topright{font-size:12px;color:var(--blue);font-weight:700}.container{max-width:1180px;margin:0 auto;padding:33px clamp(18px,3.1vw,45px) 100px}.heading{display:flex;align-items:flex-start;justify-content:space-between;gap:20px;margin-bottom:27px}.heading h1{font-size:clamp(25px,3vw,32px);line-height:1.17;letter-spacing:-.8px;margin:0 0 6px}.heading p{color:#373b48;margin:0;max-width:780px}.heading .actions{display:flex;gap:8px;flex-wrap:wrap}.eyebrow{font-size:12px;font-weight:700;color:var(--blue);letter-spacing:.05em;margin-bottom:8px}
+.btn{background:var(--blue);color:white;border:1px solid var(--blue);display:inline-flex;align-items:center;justify-content:center;gap:7px;border-radius:8px;min-height:40px;padding:10px 14px;font-weight:700;text-decoration:none;line-height:1.2}.btn:hover{background:#10258b}.btn.outline{color:var(--blue);background:white}.btn.outline:hover{background:#f5f6fc}.btn.neutral{color:var(--ink);background:white;border-color:var(--line)}.btn.neutral:hover{border-color:var(--blue)}.btn.sm{min-height:33px;padding:7px 10px;font-size:12px}.btn svg{width:16px;height:16px}.linkbtn{background:none;border:0;color:var(--blue);font-weight:700;padding:4px 0}
+.stats{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:13px;margin-bottom:26px}.stat{border:1px solid var(--line);border-radius:var(--radius);padding:19px 22px}.stat span{display:block;color:var(--mid);font-size:12px;margin-bottom:11px}.stat strong{font-size:27px;letter-spacing:-.6px}.two{display:grid;grid-template-columns:minmax(0,1.55fr) minmax(280px,.8fr);gap:20px}.panel{background:white;border:1px solid var(--line);border-radius:var(--radius);overflow:hidden}.panel.pad{padding:21px}.sectionrow{display:flex;justify-content:space-between;align-items:center;gap:12px;margin-bottom:12px}.sectionrow h2{font-size:17px;margin:0;letter-spacing:-.2px}.rows{display:grid}.project-item{width:100%;display:flex;align-items:center;gap:15px;text-align:left;padding:19px 20px;background:white;border:0;border-bottom:1px solid var(--line)}.project-item:last-child{border:0}.project-item:hover{background:#f9faff}.miniicon{width:41px;height:41px;display:grid;place-items:center;border:1px solid var(--line);border-radius:9px;color:var(--blue);flex:none}.miniicon svg{width:21px;height:21px}.itemmain{min-width:0;flex:1}.itemmain b{display:block;font-size:14px}.itemmain small{display:block;color:var(--mid);font-size:12px;margin-top:4px}.itemright{text-align:right;flex:none}.itemright small{display:block;color:var(--mid);font-size:11px;margin-top:6px}.status{display:inline-flex;border-radius:20px;padding:5px 10px;font-size:11px;background:#ecf0ff;color:var(--blue);font-weight:700}.status.finished{color:var(--green);background:#e8f6ef}.status.pending{color:#815400;background:#fff5e2}.empty{padding:24px;color:var(--mid)}
+.back{border:0;background:none;color:var(--blue);font-weight:700;padding:0;margin-bottom:16px}.detailtop{display:flex;justify-content:space-between;gap:18px;margin-bottom:20px;align-items:flex-start}.detailtop h1{margin:4px 0 5px;font-size:clamp(25px,3vw,32px);letter-spacing:-.7px}.detailtop .actions{display:flex;gap:8px;flex-wrap:wrap}.detailmeta{display:flex;flex-wrap:wrap;gap:9px 25px;color:#373b48;font-size:13px}.deadline{font-weight:700;color:var(--blue)}.deadline.late{color:var(--danger)}.detail-layout{display:grid;grid-template-columns:minmax(0,1.5fr) minmax(280px,.78fr);gap:20px}.block{border:1px solid var(--line);border-radius:var(--radius);padding:21px;margin-bottom:18px}.block h2{font-size:17px;margin:0 0 16px}.block .block-sub{font-size:12px;color:var(--mid);margin-top:-10px;margin-bottom:16px}.progress{height:7px;border-radius:6px;background:#e7eafd;margin:13px 0 8px;overflow:hidden}.progress>i{display:block;height:100%;background:var(--blue);transition:width .2s}.small{font-size:12px;color:var(--mid)}.roadmap{margin-top:16px}.step{display:grid;grid-template-columns:32px minmax(0,1fr);gap:13px;padding:0 0 20px;position:relative}.step:not(:last-child):before{content:"";position:absolute;left:15px;top:31px;bottom:0;width:1px;background:#ccd2e6}.step-num{height:31px;width:31px;display:grid;place-items:center;border:1px solid #d0d6e8;background:white;color:var(--blue);border-radius:50%;font-weight:700;font-size:12px;z-index:1}.step.done .step-num{background:var(--blue);color:white;border-color:var(--blue)}.step.active .step-num{background:var(--blue);color:white;border-color:var(--blue);box-shadow:0 0 0 4px #e9edff}.stepbody{padding-top:3px;min-width:0}.stepbody b{display:block;font-size:14px}.stepbody p{margin:5px 0;color:var(--mid);font-size:13px;white-space:pre-line;overflow-wrap:anywhere}.stepinfo{margin-top:7px;display:flex;flex-wrap:wrap;gap:8px 16px;font-size:12px;color:#414757}.phase-action{border-top:1px solid var(--line);padding-top:16px;display:flex;align-items:center;gap:10px;flex-wrap:wrap}
+.report{padding:14px 0;border-bottom:1px solid var(--line)}.report:first-child{padding-top:0}.report:last-child{border:0;padding-bottom:0}.reporthead{display:flex;align-items:baseline;justify-content:space-between;gap:15px}.reporthead b{font-size:13px}.reporthead time{font-size:11px;color:var(--mid)}.report p{margin:5px 0 9px;white-space:pre-line;overflow-wrap:anywhere;font-size:13px;color:#32343c}.doc-list{display:grid}.doc-row{padding:15px 0;border-bottom:1px solid var(--line);display:flex;align-items:center;gap:12px}.doc-row:last-child{border:0}.doc-main{min-width:0;flex:1}.doc-main b{display:block;font-size:13px}.doc-main small{display:block;color:var(--mid);font-size:12px}.info-row{padding:14px 0;border-bottom:1px solid var(--line);display:flex;align-items:center;gap:12px;justify-content:space-between}.info-row:last-child{border:0}.info-row small{color:var(--mid);display:block}.p-tags{display:flex;flex-wrap:wrap;gap:6px;margin-top:12px}.p-tags span{border:1px solid var(--line);color:var(--blue);padding:5px 10px;border-radius:30px;font-size:12px;font-weight:700}
+.overlay{position:fixed;inset:0;background:rgba(3,11,43,.55);display:flex;align-items:center;justify-content:center;padding:16px;z-index:1000}.modal{background:#fff;border-radius:12px;width:min(720px,100%);max-height:calc(100vh - 32px);overflow:auto;padding:23px}.modal-head{display:flex;align-items:center;justify-content:space-between;gap:15px;border-bottom:1px solid var(--line);padding-bottom:15px;margin-bottom:20px}.modal-head h2{margin:0;font-size:20px}.xbtn{background:white;border:0;font-size:25px;color:var(--ink);line-height:1}.field-group{margin-bottom:17px}.field-group label{display:block;font-weight:700;font-size:12px;margin-bottom:7px}.field-group .help{font-size:12px;color:var(--mid);margin:5px 0 0}.field{width:100%;border:1px solid #bfc7da;border-radius:7px;background:#fff;padding:10px 12px;min-height:41px}.field:focus{border-color:var(--blue)}textarea.field{min-height:104px;resize:vertical}.form-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px}.modal-foot{display:flex;gap:8px;justify-content:flex-end;border-top:1px solid var(--line);padding-top:17px;margin-top:10px}.step-edit{border:1px solid var(--line);border-radius:9px;padding:14px;margin-bottom:11px}.step-edit-header{display:flex;align-items:center;justify-content:space-between;margin-bottom:12px}.step-edit-header b{font-size:13px}.step-edit-header button{font-size:12px;color:var(--danger);border:0;background:transparent}.note{border-left:3px solid var(--blue);padding:11px 13px;background:#f5f7ff;font-size:12px;margin-bottom:16px}.toast{position:fixed;bottom:24px;right:24px;background:var(--blue);color:white;border-radius:8px;padding:12px 18px;box-shadow:0 9px 30px #0002;z-index:2000;max-width:min(400px,calc(100vw - 30px))}.mobile-nav{display:none}
+@media(max-width:1050px){.two,.detail-layout{grid-template-columns:1fr}}
+@media(max-width:720px){.entry{padding:23px 17px}.entry-main{padding:45px 0}.entry-grid{grid-template-columns:1fr}.entry-choice{min-height:160px}.shell{display:block}.sidebar{height:auto;max-height:none;position:static;padding:14px 15px;gap:14px;border-right:0;border-bottom:1px solid var(--line)}.sidebar .brand svg{height:32px;width:29px}.sidebar .brand{font-size:16px}.caption-side{display:none}.sidenav{display:flex;overflow-x:auto;gap:5px;padding-bottom:1px}.sidenav button{white-space:nowrap;width:auto;padding:9px 12px;font-size:12px}.sidenav button svg{width:15px;height:15px}.sidefoot{position:absolute;top:10px;right:13px;max-width:120px}.sidefoot .profileline{display:none}.signout{font-size:11px;padding:7px}.sidebar{position:relative}.top{height:52px;padding:0 18px}.container{padding:23px 17px 80px}.heading,.detailtop{flex-direction:column;align-items:stretch}.stats{grid-template-columns:repeat(3,minmax(0,1fr));gap:7px}.stat{padding:13px 10px}.stat span{font-size:10px;min-height:32px}.stat strong{font-size:22px}.project-item{padding:16px 12px;gap:9px}.miniicon{height:36px;width:36px}.itemright{max-width:120px}.form-grid{grid-template-columns:1fr}.modal{padding:17px}.modal-foot{flex-wrap:wrap}.modal-foot button{flex:1}.detailmeta{gap:8px 17px}}
+</style></head>
+<body>
+<svg xmlns="http://www.w3.org/2000/svg" style="position:absolute;width:0;height:0;overflow:hidden" aria-hidden="true"><defs>
+<g id="sg-mark"><g stroke="none" transform="translate(0.000000,1202.000000) scale(0.100000,-0.100000)"><path d="M5155 11530 c-3 -5 -30 -10 -60 -10 -30 0 -57 -4 -60 -10 -3 -5 -21
+-10 -40 -10 -19 0 -37 -4 -40 -10 -3 -5 -14 -10 -23 -10 -27 0 -203 -91 -196
+-101 3 -5 2 -9 -3 -8 -24 6 -86 -39 -76 -54 3 -6 1 -7 -5 -3 -7 4 -12 3 -12
+-2 0 -5 -12 -15 -27 -23 -31 -15 -93 -72 -93 -85 0 -4 -9 -18 -21 -30 -11 -12
+-21 -31 -22 -42 0 -11 -4 -19 -8 -16 -10 6 -30 -22 -32 -45 0 -11 -5 -19 -11
+-18 -12 3 -64 -92 -65 -120 -1 -12 -5 -25 -11 -28 -5 -3 -10 -17 -10 -30 0
+-13 -4 -27 -10 -30 -5 -3 -10 -21 -10 -40 0 -19 -4 -37 -10 -40 -13 -8 -14
+-365 -1 -365 5 0 9 -21 9 -47 0 -26 5 -49 11 -51 6 -2 11 -17 11 -33 0 -16 5
+-29 10 -29 6 0 10 -9 10 -20 0 -11 5 -20 11 -20 7 0 9 -10 7 -24 -3 -17 2 -29
+19 -41 12 -10 23 -26 23 -36 0 -11 5 -19 10 -19 6 0 10 -8 10 -18 0 -10 9 -24
+20 -32 11 -8 20 -20 20 -27 0 -16 200 -217 220 -221 8 -2 21 -12 31 -23 9 -10
+24 -19 33 -19 9 0 16 -5 16 -11 0 -6 5 -9 12 -7 7 3 23 -6 36 -19 12 -13 34
+-23 47 -23 14 0 25 -4 25 -10 0 -5 9 -10 20 -10 11 0 20 -5 20 -11 0 -5 8 -9
+18 -8 9 1 23 1 29 0 13 -1 20 -3981 8 -3981 -13 0 -1014 1010 -1020 1029 -4
+12 -12 18 -21 14 -9 -3 -14 1 -14 11 0 22 -92 114 -108 108 -6 -2 -12 3 -12
+12 0 9 -225 241 -501 517 -275 275 -501 508 -502 518 0 11 -7 17 -13 14 -13
+-5 -84 59 -84 76 0 6 9 26 20 46 11 20 20 44 20 55 0 10 5 22 10 25 6 3 10 17
+10 31 0 13 4 24 9 24 4 0 9 25 10 56 0 32 5 62 10 68 14 17 13 188 -1 197 -7
+5 -11 25 -9 50 1 24 -3 45 -9 49 -7 4 -13 25 -13 46 -1 23 -7 38 -13 37 -7 -1
+-10 6 -7 17 3 12 -1 22 -9 25 -10 4 -13 15 -10 31 2 14 0 24 -7 24 -6 0 -11 9
+-11 20 0 11 -4 20 -10 20 -5 0 -10 8 -10 18 0 10 -9 24 -20 32 -11 8 -20 20
+-20 27 0 17 -206 223 -223 223 -7 0 -19 9 -27 20 -8 11 -22 20 -32 20 -10 0
+-18 5 -18 10 0 6 -9 10 -20 10 -11 0 -20 5 -20 10 0 6 -13 10 -30 10 -16 0
+-30 5 -30 10 0 6 -9 10 -20 10 -11 0 -20 5 -20 10 0 6 -18 10 -40 10 -22 0
+-40 5 -40 10 0 6 -18 10 -40 10 -22 0 -40 5 -40 10 0 6 -46 10 -119 10 -69 0
+-122 -4 -126 -10 -3 -5 -26 -10 -50 -10 -24 0 -47 -4 -50 -10 -3 -5 -17 -10
+-30 -10 -13 0 -27 -4 -30 -10 -3 -5 -14 -10 -24 -10 -26 0 -122 -51 -115 -61
+3 -5 2 -8 -3 -7 -25 7 -126 -59 -116 -76 3 -6 3 -8 -1 -4 -11 9 -46 -23 -39
+-36 3 -6 3 -8 -1 -4 -11 9 -46 -23 -39 -36 3 -6 3 -8 -1 -4 -11 9 -46 -23 -39
+-36 3 -6 3 -8 -1 -4 -12 10 -45 -23 -63 -62 -9 -19 -23 -43 -31 -52 -22 -26
+-62 -109 -62 -129 0 -10 -4 -21 -10 -24 -5 -3 -10 -21 -10 -40 0 -19 -4 -37
+-10 -40 -5 -3 -10 -30 -10 -60 0 -30 -4 -57 -10 -60 -13 -8 -13 -165 -1 -165
+5 0 10 -25 10 -56 0 -34 5 -60 12 -64 6 -5 10 -21 7 -37 -4 -26 13 -59 24 -47
+3 2 3 -10 0 -26 -3 -18 0 -30 7 -30 6 0 11 -9 11 -20 0 -11 5 -20 10 -20 6 0
+10 -9 10 -20 0 -11 5 -20 10 -20 6 0 10 -8 10 -18 0 -10 9 -24 20 -32 11 -8
+20 -21 20 -28 0 -8 18 -31 40 -52 22 -21 40 -43 40 -50 0 -15 29 -44 37 -36 3
+3 24 -13 47 -37 23 -23 48 -43 56 -45 7 -2 22 -13 32 -24 10 -12 21 -18 25
+-15 3 4 17 -5 30 -19 13 -14 30 -23 38 -20 8 3 21 -1 29 -9 8 -8 26 -15 40
+-15 14 0 26 -5 26 -11 0 -6 9 -9 20 -6 11 3 27 -1 34 -9 8 -8 34 -14 60 -14
+25 0 46 -4 46 -9 0 -13 248 -13 255 0 4 5 26 9 50 9 24 0 47 5 50 10 3 6 17
+10 30 10 13 0 27 5 30 10 3 6 15 10 25 10 11 0 35 9 55 20 20 11 40 20 45 20
+17 0 300 -289 300 -306 0 -9 6 -14 12 -12 16 6 148 -127 148 -148 0 -9 6 -14
+12 -12 16 6 108 -86 108 -107 0 -10 7 -15 18 -13 12 2 17 -3 16 -19 0 -12 2
+-22 5 -21 25 2 41 -4 41 -17 0 -8 203 -218 450 -465 247 -247 450 -454 450
+-460 0 -6 162 -172 360 -370 198 -198 360 -367 360 -376 0 -9 6 -14 14 -11 14
+5 46 -25 46 -44 0 -6 14 -24 30 -39 17 -15 30 -34 30 -42 0 -7 9 -20 20 -28
+11 -8 20 -21 20 -30 0 -9 9 -22 20 -30 11 -8 20 -22 20 -32 0 -10 5 -18 10
+-18 6 0 10 -9 10 -20 0 -11 5 -20 10 -20 6 0 10 -9 10 -20 0 -11 5 -20 10 -20
+6 0 10 -9 10 -20 0 -11 5 -20 11 -20 5 0 9 -8 8 -17 -3 -30 1 -44 9 -39 4 2 9
+-10 10 -27 2 -17 7 -34 12 -37 5 -3 8 -20 8 -39 -1 -18 4 -36 10 -40 6 -3 11
+-38 11 -81 0 -42 5 -76 10 -78 11 -4 16 -1602 6 -1602 -3 0 -47 42 -99 94 -52
+52 -96 92 -100 89 -3 -3 -23 13 -45 36 -22 22 -45 41 -51 41 -6 0 -29 18 -50
+40 -21 22 -45 40 -52 40 -7 0 -20 9 -28 20 -8 11 -21 20 -28 20 -7 0 -31 18
+-52 40 -21 22 -44 40 -50 40 -7 0 -25 14 -40 30 -15 17 -33 30 -39 30 -6 0
+-26 15 -45 34 -19 19 -37 32 -40 29 -3 -3 -23 13 -45 36 -22 22 -45 41 -51 41
+-7 0 -25 14 -40 30 -15 17 -34 30 -42 30 -7 0 -20 9 -28 20 -8 11 -21 20 -28
+20 -8 0 -27 14 -42 30 -15 17 -33 30 -40 30 -7 0 -25 14 -40 30 -15 17 -33 30
+-39 30 -6 0 -26 15 -45 34 -19 19 -37 32 -40 29 -3 -3 -23 13 -45 36 -22 22
+-45 41 -51 41 -7 0 -25 13 -40 30 -15 16 -34 30 -42 30 -7 0 -20 9 -28 20 -8
+11 -21 20 -28 20 -8 0 -27 14 -42 30 -15 17 -33 30 -40 30 -7 0 -25 14 -40 30
+-15 17 -33 30 -40 30 -7 0 -25 14 -40 30 -15 17 -33 30 -40 30 -7 0 -25 14
+-40 30 -15 17 -33 30 -40 30 -7 0 -25 14 -40 30 -15 17 -34 30 -42 30 -7 0
+-20 9 -28 20 -8 11 -21 20 -28 20 -8 0 -27 14 -42 30 -15 17 -33 30 -40 30 -7
+0 -25 14 -40 30 -15 17 -33 30 -40 30 -6 0 -29 18 -50 40 -21 22 -45 40 -52
+40 -7 0 -20 9 -28 20 -8 11 -21 20 -28 20 -7 0 -31 18 -52 40 -21 22 -43 40
+-49 40 -5 0 -21 11 -34 24 -14 14 -27 22 -31 19 -3 -3 -18 8 -34 25 -16 17
+-35 32 -43 34 -8 2 -26 15 -40 30 -14 15 -32 28 -40 30 -8 2 -21 11 -30 20 -8
+9 -22 18 -30 20 -7 2 -26 15 -40 30 -14 15 -32 28 -40 30 -8 2 -26 15 -40 30
+-14 15 -32 28 -40 30 -8 2 -26 15 -40 30 -15 16 -34 28 -43 28 -18 0 -21 15
+-6 25 6 3 10 17 10 31 0 13 4 24 9 24 5 0 9 21 9 46 1 25 6 51 11 58 5 6 10
+62 10 123 0 62 3 118 7 125 4 7 4 10 0 6 -15 -13 -32 15 -28 45 3 17 -1 32 -8
+37 -8 5 -13 24 -12 44 1 20 -3 36 -8 36 -6 0 -10 9 -10 20 0 11 -4 20 -10 20
+-5 0 -10 9 -10 20 0 11 -4 20 -10 20 -5 0 -10 9 -10 20 0 11 -4 20 -10 20 -5
+0 -10 8 -10 18 0 10 -9 24 -20 32 -11 8 -20 20 -20 27 0 17 -166 183 -183 183
+-7 0 -19 9 -27 20 -8 11 -21 20 -30 20 -9 0 -22 9 -30 20 -8 11 -22 20 -32 20
+-10 0 -18 5 -18 10 0 6 -13 10 -30 10 -16 0 -30 5 -30 10 0 6 -9 10 -20 10
+-11 0 -20 5 -20 10 0 6 -18 10 -40 10 -22 0 -40 5 -40 10 0 6 -27 10 -60 10
+-33 0 -60 4 -60 10 0 6 -33 10 -79 10 -44 0 -83 -4 -86 -10 -3 -5 -30 -10 -60
+-10 -30 0 -57 -4 -60 -10 -3 -5 -17 -10 -30 -10 -13 0 -27 -4 -30 -10 -3 -5
+-14 -10 -23 -10 -19 0 -178 -77 -204 -99 -9 -8 -14 -19 -11 -24 3 -6 1 -7 -5
+-3 -7 4 -12 3 -12 -2 0 -5 -12 -15 -27 -23 -42 -21 -63 -41 -56 -53 3 -6 3 -8
+-1 -4 -12 10 -57 -35 -59 -60 0 -11 -4 -19 -8 -17 -15 10 -109 -146 -109 -181
+0 -7 -9 -29 -20 -49 -11 -20 -20 -44 -20 -55 0 -10 -4 -22 -10 -25 -5 -3 -10
+-35 -10 -70 0 -35 -4 -67 -10 -70 -13 -8 -13 -105 1 -105 6 0 9 -22 8 -57 -2
+-37 2 -58 9 -61 7 -2 12 -21 12 -43 0 -22 5 -39 11 -39 7 0 9 -10 7 -24 -3
+-15 0 -27 8 -30 8 -3 14 -15 14 -26 0 -11 5 -20 10 -20 6 0 10 -9 10 -20 0
+-11 5 -20 10 -20 6 0 10 -9 10 -20 0 -11 5 -20 10 -20 6 0 10 -8 10 -18 0 -10
+9 -24 20 -32 11 -8 20 -20 20 -27 0 -16 160 -177 181 -181 7 -2 17 -9 21 -15
+4 -6 10 -8 14 -4 4 4 17 -5 30 -18 13 -14 30 -25 39 -25 8 0 15 -5 15 -11 0
+-5 4 -8 9 -4 5 3 17 -2 25 -11 9 -9 23 -13 31 -10 8 3 21 -1 29 -9 8 -8 26
+-15 40 -15 14 0 26 -4 26 -9 0 -5 16 -9 36 -9 20 0 39 -5 43 -10 8 -13 268
+-14 276 -1 4 5 26 9 50 9 24 0 47 5 50 10 3 5 15 10 25 10 11 0 35 9 55 20 20
+11 42 20 50 20 8 0 30 9 49 19 19 11 37 17 42 13 4 -4 4 -2 1 4 -4 6 3 20 15
+30 15 14 22 16 25 7 3 -7 11 -13 20 -13 8 0 28 -14 44 -31 16 -18 32 -29 35
+-26 4 3 26 -14 50 -39 24 -24 49 -44 55 -44 6 0 24 -14 40 -31 16 -18 32 -29
+35 -26 3 3 21 -10 40 -29 19 -19 40 -34 47 -34 7 0 19 -9 27 -20 8 -11 21 -20
+28 -20 8 0 27 -14 43 -31 16 -18 32 -29 35 -26 3 3 21 -10 40 -29 19 -19 39
+-34 45 -34 6 0 24 -14 40 -31 16 -18 32 -29 35 -26 3 3 21 -10 40 -29 19 -19
+39 -34 45 -34 6 0 28 -19 50 -41 22 -23 42 -39 45 -36 4 3 17 -5 31 -19 13
+-13 29 -24 34 -24 6 0 24 -14 40 -31 16 -18 32 -29 35 -26 3 3 21 -10 40 -29
+19 -19 39 -34 45 -34 6 0 24 -14 40 -31 16 -18 32 -29 35 -26 3 3 21 -10 40
+-29 19 -19 39 -34 45 -34 6 0 24 -14 40 -31 16 -18 32 -29 35 -26 3 3 21 -10
+40 -29 19 -19 39 -34 45 -34 6 0 28 -19 50 -41 22 -23 42 -39 45 -36 4 3 17
+-5 31 -19 13 -13 29 -24 34 -24 6 0 24 -14 40 -31 16 -18 32 -29 35 -26 3 3
+26 -14 50 -39 25 -24 50 -44 56 -44 6 0 19 -10 29 -22 11 -11 22 -19 25 -15 3
+3 21 -10 40 -29 19 -19 39 -34 45 -34 6 0 28 -19 50 -41 22 -23 42 -39 45 -36
+3 3 21 -10 40 -29 19 -19 39 -34 45 -34 6 0 24 -14 40 -31 16 -18 32 -29 35
+-26 4 3 17 -5 31 -19 13 -13 29 -24 34 -24 6 0 24 -14 40 -31 16 -18 32 -29
+35 -26 3 3 21 -10 40 -29 19 -19 39 -34 45 -34 6 0 24 -14 40 -31 16 -18 32
+-29 35 -26 3 3 21 -10 40 -29 19 -19 39 -34 45 -34 6 0 28 -19 50 -41 22 -23
+42 -39 45 -36 8 7 224 -209 224 -224 0 -6 14 -24 30 -39 16 -15 30 -34 30 -42
+0 -7 9 -20 20 -28 11 -8 20 -22 20 -32 0 -10 5 -18 10 -18 6 0 10 -8 10 -18 0
+-10 9 -24 20 -32 11 -8 20 -22 20 -32 0 -10 5 -18 10 -18 6 0 10 -9 10 -20 0
+-11 5 -20 11 -20 7 0 9 -10 7 -24 -3 -16 0 -27 10 -31 8 -3 12 -13 9 -25 -3
+-11 0 -18 7 -17 6 1 11 -11 12 -26 1 -16 7 -33 14 -37 8 -5 11 -20 8 -39 -3
+-18 0 -32 8 -35 7 -2 12 -21 12 -42 0 -20 5 -39 10 -43 6 -3 11 -40 11 -80 0
+-41 4 -77 10 -80 12 -8 14 -181 1 -196 -5 -6 -10 -50 -11 -98 -1 -48 -5 -87
+-10 -87 -5 0 -9 -24 -9 -54 0 -30 -4 -58 -10 -61 -6 -3 -10 -21 -10 -40 0 -19
+-4 -37 -10 -40 -6 -3 -10 -17 -10 -30 0 -13 -4 -27 -10 -30 -6 -3 -10 -17 -10
+-30 0 -13 -4 -27 -10 -30 -5 -3 -10 -14 -10 -24 0 -21 -61 -145 -84 -170 -10
+-11 -18 -28 -19 -39 0 -11 -4 -19 -8 -17 -9 6 -54 -48 -51 -60 2 -5 1 -7 -3
+-3 -10 9 -45 -24 -38 -35 3 -6 1 -7 -5 -3 -7 4 -12 3 -12 -2 0 -12 -118 -72
+-141 -72 -10 0 -21 -4 -24 -10 -3 -5 -16 -10 -28 -11 -38 -1 -82 -33 -85 -62
+-4 -36 17 -55 56 -52 18 1 35 -1 38 -6 3 -5 10 -6 17 -2 14 8 1612 8 1626 -1
+6 -4 19 2 30 13 11 11 22 17 25 14 3 -4 6 6 6 22 0 32 -34 67 -57 58 -8 -3
+-18 0 -23 6 -4 7 -20 14 -36 16 -15 1 -30 8 -32 14 -2 6 -8 9 -13 5 -5 -3 -16
+2 -25 10 -9 9 -20 14 -25 11 -5 -4 -9 -1 -9 4 0 6 -7 11 -15 11 -18 0 -165
+144 -165 162 0 8 -9 20 -20 28 -11 8 -20 22 -20 32 0 10 -4 18 -10 18 -5 0
+-10 9 -10 20 0 11 -4 20 -10 20 -5 0 -10 9 -10 20 0 11 -4 20 -10 20 -5 0 -10
+9 -10 20 0 11 -4 20 -10 20 -5 0 -10 14 -10 30 0 17 -4 30 -10 30 -5 0 -10 11
+-10 25 0 13 -6 30 -13 37 -10 9 -12 22 -6 46 4 18 5 31 2 28 -13 -13 -28 21
+-24 57 2 25 -1 42 -10 47 -8 6 -12 29 -10 71 1 38 -2 65 -9 69 -14 8 -14 331
+-1 340 4 3 9 30 10 60 1 30 6 59 11 64 6 6 10 25 10 42 0 18 5 36 10 39 6 3
+10 19 10 35 0 16 9 45 20 65 11 20 20 41 20 48 0 16 63 142 82 165 8 9 22 33
+31 53 9 20 23 42 32 49 8 7 15 18 15 24 0 18 55 68 65 59 4 -5 4 0 -2 10 -14
+26 144 182 167 164 8 -6 11 -7 7 -2 -4 5 20 37 55 72 51 52 64 60 77 50 9 -6
+13 -7 8 -2 -14 17 54 76 72 63 9 -7 13 -8 8 -3 -14 16 34 56 52 43 9 -7 13 -8
+8 -3 -4 5 11 28 35 52 34 35 44 40 57 31 9 -7 13 -8 8 -3 -14 16 34 56 52 43
+9 -7 13 -8 8 -3 -14 17 54 76 72 63 9 -7 13 -8 8 -3 -14 17 54 76 72 63 9 -7
+13 -8 8 -3 -4 5 11 28 35 52 34 35 44 40 57 31 9 -7 13 -8 8 -3 -14 16 34 56
+52 43 9 -7 13 -8 8 -3 -4 5 11 28 35 52 34 35 44 40 57 31 9 -7 13 -8 8 -3
+-14 16 34 56 52 43 9 -7 13 -8 8 -3 -14 17 54 76 72 63 9 -7 13 -8 8 -3 -4 5
+11 28 35 52 34 35 44 40 57 31 9 -7 13 -8 8 -3 -14 16 34 56 52 43 9 -7 13 -8
+8 -3 -14 17 54 76 72 63 9 -7 13 -8 8 -3 -4 5 11 28 35 52 34 35 44 40 57 31
+9 -7 13 -8 8 -3 -14 17 54 76 72 63 9 -7 13 -8 8 -3 -14 17 54 76 72 63 9 -7
+13 -8 8 -3 -14 17 54 76 72 63 9 -7 13 -8 8 -3 -14 17 54 76 72 63 9 -7 13 -8
+8 -3 -14 17 54 76 72 63 9 -7 13 -8 8 -3 -14 17 54 76 72 63 9 -7 13 -8 8 -3
+-14 17 54 76 72 63 9 -7 13 -8 8 -3 -4 5 11 28 35 52 34 35 44 40 57 31 9 -7
+13 -8 8 -3 -14 17 54 76 72 63 9 -7 13 -8 8 -3 -14 17 54 76 72 63 9 -7 13 -8
+8 -3 -14 17 54 76 72 63 9 -7 13 -8 8 -3 -14 17 54 76 72 63 9 -7 13 -8 8 -3
+-14 17 54 76 72 63 9 -7 13 -8 8 -3 -14 16 34 56 52 43 9 -7 13 -8 8 -3 -4 5
+11 28 35 52 34 35 44 40 57 30 10 -8 13 -8 8 -1 -4 7 8 25 27 42 38 34 78 33
+108 0 9 -11 22 -17 27 -13 6 3 11 2 11 -4 0 -6 11 -13 25 -17 14 -3 25 -11 25
+-16 0 -6 9 -8 20 -5 11 3 27 -1 34 -9 8 -8 26 -14 40 -14 14 0 26 -4 26 -9 0
+-5 16 -9 36 -9 20 0 39 -5 43 -10 8 -14 288 -15 296 -1 4 5 21 9 40 9 19 0 37
+5 40 10 3 5 17 10 30 10 13 0 27 5 30 10 3 6 14 10 24 10 22 0 116 47 131 65
+7 8 18 15 25 15 7 0 19 7 26 16 14 17 58 39 72 35 5 -1 6 3 3 7 -5 9 26 45 35
+40 2 -2 3 -1 1 1 -1 3 7 15 19 27 12 13 27 34 34 46 6 13 18 21 26 20 8 -2 11
+0 6 4 -4 4 2 18 14 30 26 28 89 152 89 175 0 10 5 21 10 24 5 3 10 17 10 30 0
+13 5 27 10 30 6 3 10 21 10 40 0 19 4 36 9 40 12 7 13 275 1 275 -13 0 -17 40
+-8 74 4 16 5 26 2 23 -12 -11 -30 17 -26 40 2 13 -1 23 -7 23 -6 0 -11 13 -11
+28 0 16 -8 34 -20 42 -11 8 -20 22 -20 32 0 10 -4 18 -10 18 -5 0 -10 9 -10
+20 0 11 -4 20 -10 20 -5 0 -10 7 -10 16 0 8 -18 33 -40 54 -22 21 -40 44 -40
+50 0 15 -25 40 -40 40 -6 0 -29 18 -50 40 -21 22 -45 40 -52 40 -7 0 -20 9
+-28 20 -8 11 -22 20 -32 20 -10 0 -18 5 -18 10 0 6 -9 10 -20 10 -11 0 -20 5
+-20 10 0 6 -9 10 -20 10 -11 0 -20 5 -20 10 0 6 -13 10 -30 10 -16 0 -30 5
+-30 10 0 6 -18 10 -40 10 -22 0 -40 5 -40 10 0 6 -22 10 -50 10 -27 0 -50 5
+-50 10 0 6 -30 10 -69 10 -39 0 -73 -4 -76 -10 -3 -6 -35 -10 -70 -10 -35 0
+-67 -4 -70 -10 -3 -6 -19 -10 -35 -10 -16 0 -45 -9 -65 -20 -20 -11 -42 -20
+-49 -20 -19 0 -72 -28 -86 -45 -7 -8 -18 -15 -25 -15 -6 0 -20 -9 -30 -20 -10
+-11 -23 -20 -30 -20 -17 0 -46 -35 -38 -45 5 -4 3 -5 -3 -2 -14 8 -47 -26 -37
+-38 5 -4 3 -5 -3 -2 -14 8 -47 -26 -37 -38 5 -4 3 -5 -3 -2 -14 8 -47 -26 -37
+-37 5 -4 2 -6 -6 -4 -8 2 -19 -7 -26 -18 -6 -12 -17 -29 -24 -38 -22 -27 -61
+-108 -61 -127 0 -10 -4 -21 -10 -24 -5 -3 -10 -17 -10 -30 0 -13 -4 -27 -10
+-30 -5 -3 -10 -16 -10 -29 0 -12 -4 -26 -10 -32 -13 -13 -15 -337 -1 -342 6
+-2 11 -21 11 -43 0 -21 5 -39 10 -39 6 0 10 -10 10 -23 0 -23 -66 -97 -86 -97
+-6 0 -19 -9 -29 -20 -10 -11 -23 -20 -30 -20 -17 0 -47 -35 -38 -44 5 -4 3 -7
+-2 -5 -15 4 -59 -17 -74 -35 -7 -9 -19 -16 -26 -16 -17 0 -47 -35 -38 -45 5
+-4 3 -5 -3 -2 -6 4 -19 -2 -29 -13 -10 -11 -23 -20 -30 -20 -7 0 -20 -9 -30
+-20 -10 -11 -23 -20 -30 -20 -17 0 -46 -35 -38 -45 5 -4 3 -5 -3 -2 -6 4 -19
+-2 -29 -13 -10 -11 -23 -20 -30 -20 -17 0 -47 -35 -38 -44 5 -4 3 -7 -2 -5
+-15 4 -59 -17 -74 -35 -7 -9 -19 -16 -26 -16 -17 0 -47 -35 -38 -44 5 -4 3 -7
+-2 -5 -25 6 -89 -37 -79 -53 3 -4 2 -8 -3 -7 -25 6 -86 -38 -76 -54 3 -5 1 -7
+-4 -4 -6 4 -18 -2 -28 -13 -10 -11 -23 -20 -30 -20 -7 0 -20 -9 -30 -20 -10
+-11 -23 -20 -30 -20 -17 0 -46 -35 -38 -45 5 -4 3 -5 -3 -2 -6 4 -19 -2 -29
+-13 -10 -11 -23 -20 -30 -20 -17 0 -47 -35 -38 -44 5 -4 3 -7 -2 -5 -26 6 -89
+-37 -78 -54 3 -5 1 -7 -4 -4 -6 4 -18 -2 -28 -13 -10 -11 -23 -20 -30 -20 -7
+0 -20 -9 -30 -20 -10 -11 -23 -20 -30 -20 -17 0 -47 -35 -38 -44 5 -4 3 -7 -2
+-5 -26 6 -89 -37 -78 -54 3 -5 1 -7 -4 -4 -6 4 -18 -2 -28 -13 -10 -11 -23
+-20 -30 -20 -17 0 -47 -35 -38 -44 5 -4 3 -7 -2 -5 -25 6 -89 -37 -79 -53 3
+-4 2 -8 -3 -7 -14 4 -58 -18 -72 -35 -7 -9 -19 -16 -26 -16 -17 0 -47 -35 -38
+-45 5 -4 3 -5 -3 -2 -6 4 -19 -2 -29 -13 -10 -11 -23 -20 -30 -20 -17 0 -47
+-35 -38 -44 5 -4 3 -7 -2 -5 -25 6 -89 -37 -79 -53 3 -4 2 -8 -3 -7 -24 6 -86
+-37 -77 -53 3 -4 2 -8 -3 -7 -24 6 -86 -37 -77 -53 3 -4 2 -8 -3 -7 -24 6 -86
+-37 -77 -53 3 -4 2 -8 -3 -7 -24 6 -86 -37 -77 -53 3 -4 2 -8 -3 -7 -24 6 -86
+-37 -77 -53 3 -4 2 -8 -3 -7 -24 6 -86 -37 -77 -53 3 -4 2 -8 -3 -7 -24 6 -86
+-37 -77 -53 3 -4 2 -8 -3 -7 -25 6 -86 -38 -76 -54 3 -5 2 -7 -4 -4 -5 4 -23
+-7 -38 -23 -16 -17 -34 -30 -40 -30 -17 0 -126 -115 -118 -125 5 -4 3 -5 -4
+-2 -6 4 -13 1 -16 -5 -2 -7 -7 -10 -11 -7 -10 9 -7 1632 3 1638 4 4 9 31 10
+61 1 30 6 59 11 64 6 6 10 27 10 48 0 20 9 53 20 73 11 20 20 41 20 48 0 15
+102 220 121 243 7 9 18 26 24 38 7 11 17 20 24 18 7 -1 10 1 7 6 -3 5 6 20 19
+32 14 13 25 29 25 36 0 16 40 45 52 38 4 -3 8 3 8 13 0 10 151 169 360 378
+198 198 360 364 360 370 0 6 158 168 350 360 192 192 350 356 350 362 0 12 13
+17 33 14 4 0 7 8 7 19 0 18 10 25 33 21 4 0 7 7 7 17 0 22 83 105 95 95 4 -5
+5 -3 2 4 -8 13 41 56 54 47 5 -3 9 3 9 14 0 22 43 65 55 55 4 -5 5 -3 2 3 -8
+14 26 47 38 37 4 -5 5 -3 2 3 -8 14 26 47 38 37 4 -5 5 -3 2 3 -8 14 26 47 38
+37 4 -5 5 -3 2 3 -8 14 26 47 38 37 4 -5 5 -3 2 3 -8 14 26 47 38 37 4 -5 5
+-3 2 3 -8 14 26 47 38 37 4 -5 5 -3 2 3 -8 14 26 47 38 37 4 -5 5 -3 2 3 -8
+14 26 47 38 37 4 -5 5 -3 2 3 -8 14 26 47 38 37 4 -5 5 -3 2 3 -8 14 26 47 38
+37 4 -5 5 -3 2 3 -8 14 26 47 38 37 4 -5 5 -3 2 3 -8 14 26 47 38 37 4 -5 5
+-3 2 3 -7 12 25 47 36 39 4 -3 5 -2 2 2 -3 3 2 15 12 25 17 19 53 25 53 8 0
+-5 9 -10 20 -10 11 0 20 -5 20 -11 0 -6 9 -9 20 -6 11 3 27 -1 34 -9 8 -8 26
+-14 40 -14 14 0 26 -4 26 -9 0 -5 21 -9 47 -9 25 -1 49 -6 52 -11 8 -12 249
+-13 256 0 4 5 26 9 50 9 24 0 47 5 50 10 3 6 19 10 35 10 16 0 45 9 65 20 20
+11 44 20 54 20 10 0 26 9 36 20 10 11 24 20 30 20 7 0 19 7 26 16 14 17 58 39
+72 35 5 -1 6 3 3 7 -7 12 28 44 39 35 4 -5 5 -3 2 3 -8 14 26 47 38 37 4 -5 5
+-3 2 3 -8 14 26 47 38 37 4 -5 5 -3 2 3 -4 6 5 22 18 34 14 13 25 29 25 35 0
+7 9 20 20 30 11 10 20 23 20 30 0 7 9 20 20 30 11 10 20 26 20 36 0 10 9 34
+20 54 11 20 20 44 20 55 0 10 5 22 10 25 6 3 10 22 10 41 0 19 4 34 9 34 16 0
+12 350 -4 366 -10 10 -11 22 -5 45 5 18 7 29 4 26 -12 -11 -30 17 -26 40 2 13
+-1 23 -7 23 -6 0 -11 9 -11 20 0 11 -4 20 -10 20 -5 0 -10 9 -10 20 0 11 -4
+20 -10 20 -5 0 -10 9 -10 20 0 11 -4 20 -10 20 -5 0 -10 8 -10 18 0 10 -9 24
+-20 32 -11 8 -20 20 -20 27 0 19 -186 203 -205 203 -8 0 -15 5 -15 10 0 6 -8
+10 -18 10 -10 0 -24 9 -32 20 -8 11 -22 20 -32 20 -10 0 -18 5 -18 10 0 6 -13
+10 -30 10 -16 0 -30 5 -30 10 0 6 -9 10 -20 10 -11 0 -20 5 -20 10 0 6 -18 10
+-40 10 -22 0 -40 5 -40 10 0 6 -22 10 -50 10 -27 0 -50 5 -50 10 0 6 -43 10
+-109 10 -63 0 -112 -4 -116 -10 -3 -5 -26 -10 -50 -10 -24 0 -47 -4 -50 -10
+-3 -5 -17 -10 -30 -10 -13 0 -27 -4 -30 -10 -3 -5 -14 -10 -23 -10 -27 0 -163
+-71 -156 -81 3 -5 2 -9 -3 -8 -24 6 -85 -39 -76 -55 3 -6 3 -8 -1 -4 -10 8
+-47 -23 -40 -34 3 -5 2 -8 -3 -7 -28 7 -93 -47 -96 -79 0 -11 -4 -19 -8 -16
+-10 6 -30 -22 -32 -45 0 -11 -5 -19 -11 -18 -11 2 -86 -139 -86 -164 0 -10 -4
+-21 -10 -24 -5 -3 -10 -17 -10 -30 0 -13 -4 -27 -10 -30 -6 -3 -10 -21 -10
+-40 0 -19 -4 -37 -10 -40 -14 -8 -13 -285 0 -285 6 0 10 -17 8 -37 -1 -22 3
+-38 10 -41 7 -2 12 -21 12 -43 0 -21 5 -39 10 -39 6 0 10 -9 10 -20 0 -11 5
+-20 10 -20 6 0 9 -13 8 -28 -1 -15 2 -34 7 -41 5 -9 4 -12 -2 -8 -11 7 -56
+-36 -48 -46 3 -4 2 -5 -1 -3 -10 7 -43 -27 -37 -38 3 -6 3 -8 -1 -4 -11 9 -46
+-23 -39 -36 3 -6 3 -8 -1 -4 -11 9 -46 -23 -39 -36 3 -6 3 -8 -1 -4 -11 9 -46
+-23 -39 -36 3 -6 3 -8 -1 -4 -11 9 -46 -23 -39 -36 3 -6 3 -8 -1 -4 -11 9 -46
+-23 -39 -36 3 -6 3 -8 -1 -4 -11 9 -46 -23 -39 -36 3 -6 3 -8 -1 -4 -11 9 -46
+-23 -39 -36 3 -6 3 -8 -1 -4 -11 9 -46 -23 -39 -36 3 -6 3 -8 -1 -4 -11 9 -46
+-23 -39 -36 3 -6 3 -8 -1 -4 -11 9 -46 -23 -39 -36 3 -6 3 -8 -1 -4 -11 9 -46
+-23 -39 -36 3 -6 3 -8 -1 -4 -11 9 -46 -23 -39 -36 3 -6 3 -8 -1 -4 -11 9 -46
+-23 -39 -36 3 -6 3 -8 -1 -4 -10 8 -45 -23 -60 -54 -6 -13 -21 -27 -34 -33
+-12 -5 -22 -16 -22 -23 0 -7 -11 -17 -25 -22 -26 -10 -47 -47 -37 -64 3 -5 1
+-6 -5 -3 -12 7 -59 -43 -55 -58 2 -5 1 -7 -3 -3 -10 10 -45 -24 -38 -36 3 -6
+3 -8 -1 -4 -11 9 -46 -23 -39 -36 3 -6 3 -8 -1 -4 -11 9 -46 -23 -39 -36 3 -6
+3 -8 -1 -4 -11 9 -46 -23 -39 -36 3 -6 3 -8 -1 -4 -11 9 -46 -23 -39 -36 3 -6
+3 -8 -1 -4 -11 9 -46 -23 -39 -36 3 -6 3 -8 -1 -4 -11 9 -46 -23 -39 -36 3 -6
+3 -8 -1 -4 -11 9 -46 -23 -39 -36 3 -6 3 -8 -2 -4 -9 8 -68 -48 -78 -74 -3
+-10 -12 -18 -20 -18 -17 0 -63 -51 -59 -65 2 -5 0 -7 -4 -3 -7 8 -74 -54 -74
+-70 0 -5 -7 -15 -15 -22 -8 -7 -12 -17 -8 -24 3 -6 3 -8 -1 -4 -11 9 -46 -23
+-39 -36 3 -6 3 -8 -1 -4 -11 9 -46 -23 -39 -36 3 -6 3 -8 -1 -4 -11 9 -46 -23
+-39 -36 3 -6 3 -8 -1 -4 -11 9 -46 -23 -39 -36 3 -6 3 -8 -1 -4 -11 9 -46 -23
+-39 -36 3 -6 3 -8 -1 -4 -11 9 -46 -23 -39 -36 3 -6 3 -8 -1 -4 -11 9 -46 -23
+-39 -36 3 -6 3 -8 -1 -4 -11 9 -46 -23 -39 -36 3 -6 3 -8 -1 -4 -11 9 -46 -23
+-39 -36 3 -6 3 -8 -1 -4 -11 9 -46 -23 -39 -36 3 -6 3 -8 -1 -4 -11 9 -46 -23
+-39 -36 3 -6 3 -8 -1 -4 -11 9 -46 -23 -39 -36 3 -6 3 -8 -1 -4 -11 9 -67 -43
+-59 -55 3 -6 1 -7 -4 -4 -12 7 -46 -26 -38 -36 3 -4 2 -5 -2 -2 -11 9 -133
+-118 -133 -138 0 -10 -4 -16 -8 -13 -10 6 -24 -4 -38 -28 -6 -11 -19 -24 -30
+-30 -10 -6 -22 -15 -26 -21 -5 -7 -11 -6 -15 2 -5 6 -7 901 -5 1990 2 1978 2
+1978 29 1991 15 6 32 12 38 12 16 0 73 29 80 40 3 5 34 23 69 40 35 16 69 37
+76 45 7 8 17 12 23 8 5 -3 7 -1 4 4 -10 16 51 60 76 54 5 -1 6 3 3 7 -7 12 28
+44 39 35 4 -5 5 -3 2 3 -4 6 5 22 18 34 14 13 25 29 25 35 0 6 14 24 30 40 17
+16 30 34 30 41 0 6 7 17 15 24 22 19 85 152 85 182 0 15 5 30 10 33 6 3 10 17
+10 30 0 13 5 27 10 30 6 3 10 26 10 50 0 24 4 46 9 49 14 9 13 269 -1 277 -6
+4 -11 27 -10 50 1 24 -3 46 -10 50 -6 4 -11 23 -10 43 1 20 -3 36 -8 36 -6 0
+-10 9 -10 20 0 11 -4 20 -10 20 -5 0 -10 13 -10 28 0 16 -8 34 -20 42 -11 8
+-20 22 -20 32 0 10 -4 18 -10 18 -5 0 -10 8 -10 18 0 10 -9 24 -20 32 -11 8
+-20 21 -20 30 0 9 -9 22 -20 30 -11 8 -20 20 -20 28 0 15 -65 82 -80 82 -7 0
+-29 18 -50 40 -21 22 -45 40 -52 40 -7 0 -20 9 -28 20 -8 11 -22 20 -32 20
+-10 0 -18 5 -18 10 0 6 -9 10 -20 10 -11 0 -20 5 -20 10 0 6 -9 10 -20 10 -11
+0 -20 5 -20 10 0 6 -9 10 -20 10 -11 0 -20 5 -20 10 0 6 -13 10 -30 10 -16 0
+-30 5 -30 10 0 6 -18 10 -40 10 -22 0 -40 5 -40 10 0 6 -22 10 -50 10 -27 0
+-50 5 -50 10 0 6 -43 10 -109 10 -63 0 -112 -4 -116 -10z"></path></g></g>
+</defs></svg>
+<div id="app"></div><div id="portal"></div><div id="toast" aria-live="polite"></div>
+<script>
+'use strict';
+const iconPaths={
+ building:'<path d="M4 21V5a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v16M2 21h20M8 7h1m3 0h1M8 11h1m3 0h1M8 15h1m3 0h1M17 11h3a2 2 0 0 1 2 2v8"/>',
+ users:'<path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2M9 11a4 4 0 1 0 0-8 4 4 0 0 0 0 8m8-1a4 4 0 0 0-1-7.9M22 21v-2a4 4 0 0 0-3-3.87"/>',
+ home:'<path d="m3 10 9-7 9 7v11H3zM9 21v-7h6v7"/>',
+ folder:'<path d="M3 5h6l2 2h10v12H3z"/>',
+ document:'<path d="M7 2h7l5 5v15H7zM14 2v5h5M10 12h6m-6 4h6"/>',
+ check:'<path d="m4 12 5 5L20 6"/>',
+ arrow:'<path d="M5 12h14m-6-6 6 6-6 6"/>',
+ calendar:'<rect x="3" y="5" width="18" height="16" rx="2"/><path d="M7 3v4m10-4v4M3 10h18"/>',
+ upload:'<path d="M12 16V3m-5 5 5-5 5 5M4 16v4h16v-4"/>',
+ edit:'<path d="m16 4 4 4-11 11H5v-4zM14 6l4 4"/>',
+ plus:'<path d="M12 5v14M5 12h14"/>',
+ clock:'<circle cx="12" cy="12" r="9"/><path d="M12 7v6l4 2"/>',
+ download:'<path d="M12 3v12m-5-5 5 5 5-5M4 17v4h16v-4"/>',
+ briefcase:'<rect x="3" y="7" width="18" height="14" rx="2"/><path d="M8 7V4h8v3M3 13h18"/>',
+ search:'<circle cx="10.5" cy="10.5" r="6.5"/><path d="m16 16 5 5"/>'
+};
+const ico=n=>`<svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">${iconPaths[n]||iconPaths.folder}</svg>`;
+const brand=(inverse=false)=>`<div class="brand${inverse?' inverse':''}"><svg aria-hidden="true" viewBox="0 0 1048 1202" fill="currentColor"><use href="#sg-mark"/></svg><span>Studio Galilei</span></div>`;
+const $=s=>document.querySelector(s);
+const esc=s=>String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+const makeId=p=>p+'_'+(crypto.randomUUID?crypto.randomUUID():Math.random().toString(36).slice(2));
+const today=()=>new Date().toISOString().slice(0,10);
+const timestamp=()=>new Date().toISOString();
+const niceDate=date=>date?new Intl.DateTimeFormat('it-IT',{day:'numeric',month:'short',year:'numeric'}).format(new Date(date+'T12:00:00')):'Da definire';
+const isLate=date=>!!date&&date<today();
+const seed=()=>({partners:[{id:'p1',name:'Azienda Alfa S.r.l.',website:'https://example.com'},{id:'p2',name:'Impresa Beta S.r.l.',website:''}],members:[{id:'m1',name:'Paolo Rossi',city:'Treviso',skills:['Google Ads','Meta Ads','Tracking'],bio:'Mi occupo di acquisizione clienti attraverso campagne Google Ads e Meta Ads, con particolare attenzione alla misurazione dei risultati.'},{id:'m2',name:'Elena Bianchi',city:'Padova',skills:['Siti web','Grafica'],bio:'Progetto e realizzo siti aziendali, curando usabilità e identità visiva.'},{id:'m3',name:'Marco Verdi',city:'Treviso',skills:['Foto','Video'],bio:'Realizzo contenuti fotografici e video per aziende.'}],projects:[{id:'pr1',title:'Acquisizione clienti',partnerId:'p1',memberId:'m1',deadline:'2026-12-15',service:'Google Ads',roadmap:{service:'Google Ads',deadline:'2026-12-15',steps:[{id:'a1',title:'Analisi mercato e piano',due:'2026-11-02',note:'Condivisione della strategia pubblicitaria.'},{id:'a2',title:'Attivazione campagne',due:'2026-11-12',note:'Campagne e tracciamento operativo.'},{id:'a3',title:'Ottimizzazione e report',due:'2026-12-15',note:'Monitoraggio e analisi dei risultati.'}],current:1,sentAt:'2026-10-25T12:00:00Z'},draft:null,createdAt:'2026-10-24T10:00:00Z'},{id:'pr2',title:'Nuovo sito aziendale',partnerId:'p1',memberId:'m2',deadline:'2026-12-10',service:'',roadmap:null,draft:null,createdAt:'2026-10-24T11:00:00Z'},{id:'pr3',title:'Video aziendale',partnerId:'p2',memberId:'m3',deadline:'2026-11-28',service:'Video',roadmap:{service:'Video',deadline:'2026-11-28',steps:[{id:'b1',title:'Brief e storyboard',due:'2026-11-03',note:''},{id:'b2',title:'Riprese',due:'2026-11-12',note:''},{id:'b3',title:'Montaggio e consegna',due:'2026-11-28',note:''}],current:0,sentAt:'2026-10-25T13:00:00Z'},draft:null,createdAt:'2026-10-24T13:00:00Z'}],reports:[{id:'r1',projectId:'pr1',title:'Aggiornamento campagne',body:'Campagne attive, prima verifica dei dati completata.',at:'2026-10-25T15:00:00Z',fileId:null,fileName:null,author:'Paolo Rossi'}]});
+const KEY='sg_simple_roadmap_v1';
+function getStore(){try{const x=JSON.parse(localStorage.getItem(KEY));if(x&&Array.isArray(x.projects)&&Array.isArray(x.members)&&Array.isArray(x.partners)&&Array.isArray(x.reports))return x}catch(e){}return seed()}
+let store=getStore();const save=()=>{try{localStorage.setItem(KEY,JSON.stringify(store))}catch(e){flash('Impossibile salvare. Lo spazio del browser potrebbe essere pieno.')}};
+let ui={role:null,id:null,step:'landing',page:'home',projectId:null,modal:null,filter:''};
+const actor=()=>ui.role==='member'?store.members.find(x=>x.id===ui.id):ui.role==='partner'?store.partners.find(x=>x.id===ui.id):{name:'Studio Galilei'};
+const member=p=>store.members.find(x=>x.id===p.memberId);
+const partner=p=>store.partners.find(x=>x.id===p.partnerId);
+const mayEdit=p=>ui.role==='member'&&p.memberId===ui.id;
+const projects=()=>store.projects.filter(p=>ui.role==='consultant'||(ui.role==='member'?p.memberId===ui.id:p.partnerId===ui.id));
+const reports=()=>store.reports.filter(r=>projects().some(p=>p.id===r.projectId));
+const getProject=()=>projects().find(p=>p.id===ui.projectId);
+const phase=p=>p.roadmap?(p.roadmap.current>=p.roadmap.steps.length?'Completato':p.roadmap.steps[p.roadmap.current]?.title||'In programma'):'Roadmap da preparare';
+const percent=p=>p.roadmap?Math.round(100*p.roadmap.current/p.roadmap.steps.length):0;
+const status=p=>!p.roadmap?'Da preparare':p.roadmap.current>=p.roadmap.steps.length?'Completato':'In corso';
+const pill=p=>`<span class="status${status(p)==='Completato'?' finished':status(p)==='Da preparare'?' pending':''}">${status(p)}</span>`;
+const dateMark=d=>`<span class="deadline${isLate(d)?' late':''}">${niceDate(d)}</span>`;
+let toastTimer;
+function flash(message){$('#toast').innerHTML=`<div class="toast">${esc(message)}</div>`;clearTimeout(toastTimer);toastTimer=setTimeout(()=>{const t=$('#toast');if(t)t.innerHTML=''},3500)}
+function landing(){return `<div class="entry"><div>${brand(true)}</div><div class="entry-main">${ui.step==='landing'?`<h1>Un unico spazio per lavorare insieme.</h1><p>Accedi alla tua area Studio Galilei.</p><div class="entry-grid"><button class="entry-choice" data-a="role" data-role="partner">${ico('building')}<b>Area Partner</b><span>La tua azienda, i tuoi progetti.</span><strong>Accedi →</strong></button><button class="entry-choice" data-a="role" data-role="member">${ico('users')}<b>Area Member</b><span>I tuoi incarichi, il tuo lavoro.</span><strong>Accedi →</strong></button></div><button class="consult-link" data-a="role" data-role="consultant">Accedi come consulente</button>`:`<div class="select-wrap"><h1>${ui.step==='partner'?'Area Partner':ui.step==='member'?'Area Member':'Area Consulente'}</h1><p>Seleziona il profilo per entrare.</p><div class="choice-list">${(ui.step==='partner'?store.partners:ui.step==='member'?store.members:[{id:'sg',name:'Studio Galilei'}]).map(x=>`<button class="role-person" data-a="enter" data-id="${esc(x.id)}"><span><b>${esc(x.name)}</b>${x.city?`<small>${esc(x.city)}</small>`:''}</span><span>→</span></button>`).join('')}</div><button class="entry-back" data-a="back-entry">Torna agli accessi</button></div>`}</div><div class="entry-footer">Studio Galilei</div></div>`}
+const menus={partner:[['home','Panoramica','home'],['projects','Progetti','folder'],['documents','Documenti','document']],member:[['projects','I miei progetti','folder'],['documents','Materiali','document'],['profile','Profilo','users']],consultant:[['projects','Progetti','folder'],['partners','Partner','building'],['members','Member Club','users']]};
+const roleName=()=>ui.role==='partner'?'Area Partner':ui.role==='member'?'Area Member':'Area Consulente';
+function layout(content){let nav=menus[ui.role];let label=actor()?.name||'Studio Galilei';return `<div class="shell"><aside class="sidebar">${brand()}<div><div class="caption-side">${roleName()}</div><nav class="sidenav">${nav.map(([page,name,ic])=>`<button data-a="page" data-page="${page}" class="${ui.page===page||(ui.page==='detail'&&page==='projects')?'active':''}">${ico(ic)}${name}</button>`).join('')}</nav></div><div class="sidefoot"><div class="profileline"><span class="avatar">${esc((label||'S').charAt(0))}</span><span><b>${esc(label)}</b><small>${roleName()}</small></span></div><button class="signout" data-a="exit">Esci</button></div></aside><main class="main"><header class="top"><div><h2>${roleName()}</h2><small>Studio Galilei Platform</small></div><div class="topright">${esc(label)}</div></header><div class="container">${content}</div></main></div>`}
+const heading=(name,subtitle='',actions='')=>`<div class="heading"><div><h1>${name}</h1>${subtitle?`<p>${subtitle}</p>`:''}</div>${actions?`<div class="actions">${actions}</div>`:''}</div>`;
+const button=(label,action,cls='')=>`<button class="btn ${cls}" data-a="${action}">${label}</button>`;
+const projectRow=p=>`<button class="project-item" data-a="project" data-id="${esc(p.id)}"><span class="miniicon">${ico('folder')}</span><span class="itemmain"><b>${esc(p.title)}</b><small>${ui.role==='partner'?`Member: ${esc(member(p)?.name||'Non assegnato')}`:`${esc(partner(p)?.name||'')} · ${esc(p.service||'Servizio da definire')}`}</small><small>Fase: ${esc(phase(p))}</small></span><span class="itemright">${pill(p)}<small>Scadenza ${niceDate(p.roadmap?.deadline||p.deadline)}</small></span></button>`;
+function home(){const ps=projects();let next=ps.filter(p=>status(p)!=='Completato').sort((a,b)=>(a.roadmap?.deadline||a.deadline).localeCompare(b.roadmap?.deadline||b.deadline))[0];return heading('I tuoi progetti','Segui le attività e le prossime consegne.')+`<div class="stats"><div class="stat"><span>Progetti in corso</span><strong>${ps.filter(p=>status(p)==='In corso').length}</strong></div><div class="stat"><span>Da pianificare</span><strong>${ps.filter(p=>!p.roadmap).length}</strong></div><div class="stat"><span>Prossima deadline</span><strong style="font-size:17px">${next?niceDate(next.roadmap?.deadline||next.deadline):'Nessuna'}</strong></div></div><div class="sectionrow"><h2>Progetti</h2><button class="linkbtn" data-a="page" data-page="projects">Vedi tutti</button></div><div class="panel rows">${ps.length?ps.map(projectRow).join(''):'<div class="empty">Nessun progetto assegnato.</div>'}</div>`}
+function projectList(){let actions=ui.role==='consultant'?button(`${ico('plus')} Nuovo progetto`,'new-project'):'';return heading(ui.role==='member'?'I miei progetti':'Progetti',ui.role==='partner'?'Vedi fase attuale, avanzamento e scadenze dei lavori.':ui.role==='member'?'Prepara la roadmap, aggiorna le fasi e pubblica i report.':'Progetti e Member assegnati.',actions)+`<div class="panel rows">${projects().length?projects().map(projectRow).join(''):'<div class="empty">Non ci sono ancora progetti.</div>'}</div>`}
+function roadmapView(p){const r=p.roadmap;if(!r)return `<div class="empty" style="padding:0">La roadmap non è ancora stata pubblicata.${mayEdit(p)?`<div style="margin-top:13px">${button('Prepara la roadmap','edit-roadmap')}</div>`:''}</div>`;return `<div class="sectionrow"><h2>Roadmap</h2><span class="small">${r.current>=r.steps.length?'Tutte le fasi completate':`Fase ${r.current+1} di ${r.steps.length}`}</span></div><div class="progress" aria-label="Avanzamento ${percent(p)}%"><i style="width:${percent(p)}%"></i></div><div class="small" style="margin-bottom:22px">${percent(p)}% completato</div><div class="roadmap">${r.steps.map((s,i)=>`<div class="step ${i<r.current?'done':i===r.current?'active':''}"><span class="step-num">${i<r.current?ico('check'):i+1}</span><div class="stepbody"><b>${esc(s.title)}</b>${s.note?`<p>${esc(s.note)}</p>`:''}<div class="stepinfo"><span>${i<r.current?'Completata':i===r.current?'In lavorazione':'Da iniziare'}</span><span>Entro ${niceDate(s.due)}</span></div></div></div>`).join('')}</div>${mayEdit(p)?`<div class="phase-action">${r.current<r.steps.length?button(r.current===r.steps.length-1?'Completa il progetto':`${ico('check')} Completa fase`,'complete-phase'):''}${r.current>0?button('Torna alla fase precedente','previous-phase','outline sm'):''}</div>`:''}`}
+function reportList(p){const rs=store.reports.filter(r=>r.projectId===p.id).sort((a,b)=>b.at.localeCompare(a.at));return rs.length?rs.map(r=>`<div class="report"><div class="reporthead"><b>${esc(r.title)}</b><time>${niceDate(r.at.slice(0,10))}</time></div>${r.body?`<p>${esc(r.body)}</p>`:''}<div class="small">${esc(r.author)}</div>${r.fileId?`<button class="linkbtn" data-a="download" data-id="${esc(r.fileId)}" data-name="${esc(r.fileName||'documento')}">${ico('download')} Scarica ${esc(r.fileName||'allegato')}</button>`:''}</div>`).join(''):'<div class="empty" style="padding:0">Nessun report pubblicato.</div>'}
+function projectDetail(){const p=getProject();if(!p)return projectList();const r=p.roadmap;const can=mayEdit(p);return `<button class="back" data-a="page" data-page="projects">← Torna ai progetti</button><div class="detailtop"><div><div class="eyebrow">${esc(partner(p)?.name||'Partner')}</div><h1>${esc(p.title)}</h1><div class="detailmeta"><span>Member: <b>${esc(member(p)?.name||'Non assegnato')}</b></span><span>Servizio: <b>${esc(r?.service||p.service||'Da definire')}</b></span><span>Deadline: ${dateMark(r?.deadline||p.deadline)}</span></div></div><div class="actions">${can?button(`${ico('edit')} ${r?'Modifica roadmap':'Crea roadmap'}`,'edit-roadmap','outline')+button(`${ico('plus')} Pubblica report`,'new-report'):''}</div></div><div class="detail-layout"><div><section class="block">${roadmapView(p)}</section><section class="block"><div class="sectionrow"><h2>Report e aggiornamenti</h2>${can?`<button class="linkbtn" data-a="new-report">Aggiungi</button>`:''}</div>${reportList(p)}</section></div><aside><section class="block"><h2>Riepilogo</h2><div class="info-row"><span>Stato</span>${pill(p)}</div><div class="info-row"><span>Fase attuale</span><b style="text-align:right;max-width:160px">${esc(phase(p))}</b></div><div class="info-row"><span>Scadenza finale</span>${dateMark(r?.deadline||p.deadline)}</div><div class="info-row"><span>Avanzamento</span><b>${percent(p)}%</b></div></section>${can&&p.draft?`<section class="block"><h2>Bozza salvata</h2><p class="small">Hai modifiche alla roadmap non ancora inviate al Partner.</p>${button('Riprendi la bozza','edit-roadmap','outline')}</section>`:''}<section class="block"><h2>Referenti</h2><div style="font-weight:700">${esc(member(p)?.name||'Da assegnare')}</div><div class="small">Member incaricato</div><div style="font-weight:700;margin-top:17px">Studio Galilei</div><div class="small">Consulente responsabile</div></section></aside></div>`}
+function documents(){const rows=reports().filter(r=>r.fileId||r.body).sort((a,b)=>b.at.localeCompare(a.at));return heading(ui.role==='member'?'Materiali':'Documenti',ui.role==='partner'?'Report e documenti condivisi sui tuoi progetti.':'Materiali pubblicati nei progetti assegnati.')+`<div class="panel pad doc-list">${rows.length?rows.map(r=>{let p=store.projects.find(x=>x.id===r.projectId);return `<div class="doc-row"><span class="miniicon">${ico('document')}</span><span class="doc-main"><b>${esc(r.title)}</b><small>${esc(p?.title||'')} · ${niceDate(r.at.slice(0,10))}</small></span>${r.fileId?`<button class="btn outline sm" data-a="download" data-id="${esc(r.fileId)}" data-name="${esc(r.fileName)}">Scarica</button>`:`<button class="btn outline sm" data-a="project" data-id="${esc(r.projectId)}">Apri</button>`}</div>`}).join(''):'<div class="empty">Nessun materiale condiviso.</div>'}</div>`}
+function memberProfile(){const m=actor();return heading('Il tuo profilo','Le informazioni professionali visibili ai Partner assegnati.',button(`${ico('edit')} Modifica`,'edit-profile','outline'))+`<div class="panel pad" style="max-width:650px"><div style="display:flex;gap:14px;align-items:center"><div class="avatar" style="height:50px;width:50px;font-size:18px">${esc(m.name.charAt(0))}</div><div><h2 style="margin:0">${esc(m.name)}</h2><div class="small">Member Studio Galilei · ${esc(m.city)}</div></div></div><div class="p-tags">${m.skills.map(s=>`<span>${esc(s)}</span>`).join('')}</div><p style="margin:24px 0 0;max-width:65ch">${esc(m.bio||'')}</p></div>`}
+function partnersView(){return heading('Partner','Le aziende che collaborano con Studio Galilei.',button(`${ico('plus')} Nuovo Partner`,'new-partner'))+`<div class="panel pad">${store.partners.map(p=>`<div class="info-row"><div><b>${esc(p.name)}</b><small>${store.projects.filter(x=>x.partnerId===p.id).length} progetti</small></div></div>`).join('')}</div>`}
+function membersView(){return heading('Member Club','Professionisti e competenze approvate.',button(`${ico('plus')} Nuovo Member`,'new-member'))+`<div class="panel pad">${store.members.map(m=>`<div class="info-row"><div><b>${esc(m.name)}</b><small>${esc(m.skills.join(' · '))} · ${esc(m.city)}</small></div><span class="small">${store.projects.filter(x=>x.memberId===m.id).length} incarichi</span></div>`).join('')}</div>`}
+function render(){if(!ui.role){$('#app').innerHTML=landing();$('#portal').innerHTML='';return}let content=ui.page==='detail'?projectDetail():ui.page==='home'?home():ui.page==='projects'?projectList():ui.page==='documents'?documents():ui.page==='profile'?memberProfile():ui.page==='partners'?partnersView():ui.page==='members'?membersView():projectList();$('#app').innerHTML=layout(content);$('#portal').innerHTML=ui.modal?modalView():''}
+function showModal(type){ui.modal={type};render()}
+function closeModal(){ui.modal=null;$('#portal').innerHTML=''}
+function field(label,name,value='',type='text',required=false){return `<div class="field-group"><label for="${name}">${label}</label><input class="field" type="${type}" id="${name}" name="${name}" value="${esc(value)}" ${required?'required':''}></div>`}
+function selectField(label,name,opts,selected=''){return `<div class="field-group"><label for="${name}">${label}</label><select class="field" name="${name}" id="${name}">${opts.map(o=>`<option value="${esc(o.id)}" ${o.id===selected?'selected':''}>${esc(o.name)}</option>`).join('')}</select></div>`}
+function modalView(){let {type}=ui.modal;let title='',html='';const p=getProject();if(type==='roadmap'&&p){title='Roadmap del progetto';const m=member(p),draft=p.draft||p.roadmap||{service:m?.skills?.[0]||'',deadline:p.deadline,steps:[{id:makeId('step'),title:'',due:p.deadline,note:''},{id:makeId('step'),title:'',due:p.deadline,note:''}]};html=`<form id="roadmap-form"><div class="note">Seleziona il servizio che eroghi, definisci le fasi e invia la roadmap. Il Partner vedrà sempre la fase attuale e la deadline.</div>${selectField('Servizio da erogare','service',(m?.skills||[]).map(s=>({id:s,name:s})),draft.service)}${field('Scadenza finale','deadline',draft.deadline,'date',true)}<div class="sectionrow"><h2>Touchpoint</h2><button type="button" class="btn outline sm" data-a="add-step">${ico('plus')} Aggiungi fase</button></div><div id="step-editor">${draft.steps.map((s,i)=>stepEditor(s,i)).join('')}</div><div class="modal-foot"><button type="button" class="btn neutral" data-a="close">Annulla</button><button class="btn outline" type="submit" name="intent" value="draft">Salva bozza</button><button class="btn" type="submit" name="intent" value="send">Invia al Partner</button></div></form>`}
+else if(type==='report'&&p){title='Pubblica report';html=`<form id="report-form">${field('Titolo','title','','text',true)}<div class="field-group"><label for="body">Aggiornamento</label><textarea id="body" name="body" class="field" placeholder="Descrivi ciò che è stato fatto o i risultati da condividere..."></textarea></div><div class="field-group"><label for="file">Allegato (facoltativo)</label><input class="field" type="file" id="file" name="file" accept=".pdf,.png,.jpg,.jpeg,.webp,.doc,.docx,.xlsx,.csv,.txt"><p class="help">Massimo 15 MB. Il file sarà visibile al Partner.</p></div><div class="modal-foot"><button type="button" class="btn neutral" data-a="close">Annulla</button><button type="submit" class="btn">Pubblica</button></div></form>`}
+else if(type==='project'){title='Nuovo progetto';html=`<form id="new-project-form">${field('Nome del progetto','title','','text',true)}${selectField('Partner','partner',store.partners.map(p=>({id:p.id,name:p.name})))}${selectField('Member incaricato','member',store.members.map(m=>({id:m.id,name:m.name})))}${field('Deadline del progetto','deadline','','date',true)}<p class="note">Il Member selezionerà il servizio tra le proprie competenze e preparerà la roadmap da inviare al Partner.</p><div class="modal-foot"><button class="btn neutral" type="button" data-a="close">Annulla</button><button class="btn" type="submit">Crea progetto</button></div></form>`}
+else if(type==='partner'){title='Nuovo Partner';html=`<form id="new-partner-form">${field('Ragione sociale','name','','text',true)}${field('Sito web','website','','url')}<div class="modal-foot"><button class="btn neutral" type="button" data-a="close">Annulla</button><button class="btn" type="submit">Aggiungi Partner</button></div></form>`}
+else if(type==='member'){title='Nuovo Member';html=`<form id="new-member-form">${field('Nome e cognome','name','','text',true)}${field('Città','city','','text',true)}${field('Competenze approvate (separate da virgola)','skills','','text',true)}<p class="small">Le competenze determinano quali servizi il Member potrà selezionare nelle roadmap.</p><div class="modal-foot"><button class="btn neutral" type="button" data-a="close">Annulla</button><button class="btn" type="submit">Aggiungi Member</button></div></form>`}
+else if(type==='profile'){title='Modifica profilo';html=`<form id="profile-form"><div class="field-group"><label for="bio">Presentazione professionale</label><textarea class="field" id="bio" name="bio" required>${esc(actor().bio)}</textarea></div><div class="modal-foot"><button class="btn neutral" type="button" data-a="close">Annulla</button><button class="btn" type="submit">Salva</button></div></form>`}
+return `<div class="overlay" data-a="overlay"><div role="dialog" aria-modal="true" aria-label="${esc(title)}" class="modal"><div class="modal-head"><h2>${esc(title)}</h2><button class="xbtn" type="button" data-a="close" aria-label="Chiudi">×</button></div>${html}</div></div>`}
+function stepEditor(s,i){return `<div class="step-edit" data-step-id="${esc(s.id||makeId('step'))}"><div class="step-edit-header"><b>Fase ${i+1}</b><button data-a="remove-step" type="button">Rimuovi</button></div><div class="form-grid"><div class="field-group"><label>Nome fase</label><input class="field" name="step-title" value="${esc(s.title)}" required placeholder="Es. Attivazione campagne"></div><div class="field-group"><label>Scadenza fase</label><input class="field" type="date" name="step-due" value="${esc(s.due||'')}" required></div></div><div class="field-group" style="margin-bottom:0"><label>Nota (facoltativa)</label><textarea name="step-note" class="field" style="min-height:65px" placeholder="Cosa succede in questa fase">${esc(s.note||'')}</textarea></div></div>`}
+function collectRoadmap(form,p){let service=form.elements.service.value,deadline=form.elements.deadline.value,m=member(p);if(!m||!m.skills.includes(service))throw Error('Seleziona un servizio tra le competenze del Member.');if(!deadline)throw Error('Indica la scadenza finale.');let els=[...$('#step-editor').querySelectorAll('.step-edit')];if(!els.length)throw Error('Inserisci almeno una fase.');let steps=els.map(el=>({id:el.dataset.stepId,title:el.querySelector('[name="step-title"]').value.trim(),due:el.querySelector('[name="step-due"]').value,note:el.querySelector('[name="step-note"]').value.trim()}));if(steps.some(s=>!s.title||!s.due))throw Error('Completa nome e scadenza di ogni fase.');if(steps.some(s=>s.due>deadline))throw Error('La scadenza di una fase non può superare la deadline finale.');if(steps.some((s,i)=>i>0&&s.due<steps[i-1].due))throw Error('Le scadenze delle fasi devono essere in ordine cronologico.');return {service,deadline,steps,current:Math.min(p.roadmap?.current||0,steps.length),sentAt:p.roadmap?.sentAt||null}}
+let idb=null;async function fileDB(){if(idb)return idb;idb=new Promise((resolve,reject)=>{if(!window.indexedDB){reject(Error('Archivio file non disponibile.'));return}const request=indexedDB.open('sg_platform_files_v1',1);request.onupgradeneeded=()=>request.result.createObjectStore('files');request.onsuccess=()=>resolve(request.result);request.onerror=()=>reject(request.error)});return idb}
+async function putFile(key,file){const db=await fileDB();return new Promise((resolve,reject)=>{const tx=db.transaction('files','readwrite');tx.objectStore('files').put(file,key);tx.oncomplete=resolve;tx.onerror=()=>reject(tx.error)})}
+async function fetchFile(key){const db=await fileDB();return new Promise((resolve,reject)=>{const tx=db.transaction('files','readonly');const req=tx.objectStore('files').get(key);req.onsuccess=()=>resolve(req.result);req.onerror=()=>reject(req.error)})}
+async function downloadFile(key,name){try{let f=await fetchFile(key);if(!f)throw Error();const u=URL.createObjectURL(f),a=document.createElement('a');a.href=u;a.download=name||'documento';a.click();setTimeout(()=>URL.revokeObjectURL(u),8000)}catch(e){flash('File non disponibile su questo browser.')}}
+function enter(role,id){ui={role,id,page:role==='partner'?'home':'projects',step:'landing',projectId:null,modal:null,filter:''};render()}
+function goto(page){ui.page=page;ui.projectId=null;ui.modal=null;render();window.scrollTo(0,0)}
+function openProject(id){if(!projects().find(x=>x.id===id))return;ui.projectId=id;ui.page='detail';render();window.scrollTo(0,0)}
+document.addEventListener('click',async e=>{const btn=e.target.closest('[data-a]');if(!btn)return;const a=btn.dataset.a;
+if(a==='overlay'){if(e.target===btn)closeModal();return}
+if(a==='role'){ui.step=btn.dataset.role;render();return}
+if(a==='back-entry'){ui.step='landing';render();return}
+if(a==='enter'){enter(ui.step,btn.dataset.id);return}
+if(a==='exit'){ui={role:null,id:null,step:'landing',page:'home',projectId:null,modal:null,filter:''};render();return}
+if(a==='page'){goto(btn.dataset.page);return}
+if(a==='project'){openProject(btn.dataset.id);return}
+if(a==='close'){closeModal();return}
+if(a==='edit-roadmap'&&mayEdit(getProject())){showModal('roadmap');return}
+if(a==='new-report'&&mayEdit(getProject())){showModal('report');return}
+if(a==='new-project'&&ui.role==='consultant'){showModal('project');return}
+if(a==='new-partner'&&ui.role==='consultant'){showModal('partner');return}
+if(a==='new-member'&&ui.role==='consultant'){showModal('member');return}
+if(a==='edit-profile'&&ui.role==='member'){showModal('profile');return}
+if(a==='add-step'){const holder=$('#step-editor');if(holder.children.length>=15)return flash('Massimo 15 fasi per roadmap.');holder.insertAdjacentHTML('beforeend',stepEditor({id:makeId('step'),title:'',due:getProject()?.deadline||'',note:''},holder.children.length));return}
+if(a==='remove-step'){const holder=$('#step-editor');if(holder.children.length<=1)return flash('La roadmap deve contenere almeno una fase.');btn.closest('.step-edit').remove();[...holder.children].forEach((el,i)=>el.querySelector('.step-edit-header b').textContent='Fase '+(i+1));return}
+if(a==='complete-phase'&&mayEdit(getProject())){let p=getProject();if(!p.roadmap||p.roadmap.current>=p.roadmap.steps.length)return;p.roadmap.current++;save();render();flash(p.roadmap.current>=p.roadmap.steps.length?'Progetto completato.':'Fase completata. Il Partner vede ora la fase successiva.');return}
+if(a==='previous-phase'&&mayEdit(getProject())){let p=getProject();if(!p.roadmap||p.roadmap.current===0)return;p.roadmap.current--;save();render();flash('Fase precedente ripristinata.');return}
+if(a==='download'){await downloadFile(btn.dataset.id,btn.dataset.name);return}
+});
+document.addEventListener('submit',async e=>{const form=e.target;if(!form.id.endsWith('-form'))return;e.preventDefault();const fd=new FormData(form);
+try{
+if(form.id==='roadmap-form'){let p=getProject();if(!mayEdit(p))return;const road=collectRoadmap(form,p);const submitter=e.submitter;const intent=submitter?.value||'draft';if(intent==='send'){road.sentAt=timestamp();p.roadmap=road;p.draft=null;p.service=road.service;p.deadline=road.deadline}else p.draft=road;save();closeModal();render();flash(intent==='send'?'Roadmap inviata al Partner.':'Bozza della roadmap salvata.');return}
+if(form.id==='report-form'){let p=getProject();if(!mayEdit(p))return;let title=String(fd.get('title')||'').trim(),body=String(fd.get('body')||'').trim(),file=fd.get('file');if(!title||(!body&&(!file||!file.size)))throw Error('Inserisci un aggiornamento oppure allega un documento.');let fileId=null,fileName=null;if(file&&file.size){if(file.size>15*1024*1024)throw Error('File troppo grande. Massimo 15 MB.');fileId=makeId('file');fileName=file.name;await putFile(fileId,file)}store.reports.unshift({id:makeId('report'),projectId:p.id,title,body,at:timestamp(),fileId,fileName,author:actor()?.name||'Member'});save();closeModal();render();flash('Report pubblicato e visibile al Partner.');return}
+if(form.id==='new-project-form'){if(ui.role!=='consultant')return;let title=String(fd.get('title')||'').trim(),deadline=String(fd.get('deadline')||''),partnerId=String(fd.get('partner')||''),memberId=String(fd.get('member')||'');if(!title||!deadline||!store.partners.some(p=>p.id===partnerId)||!store.members.some(m=>m.id===memberId))throw Error('Compila tutti i campi.');const p={id:makeId('project'),title,partnerId,memberId,deadline,service:'',roadmap:null,draft:null,createdAt:timestamp()};store.projects.unshift(p);save();closeModal();openProject(p.id);flash('Progetto creato. Il Member può preparare la roadmap.');return}
+if(form.id==='new-partner-form'){if(ui.role!=='consultant')return;let name=String(fd.get('name')||'').trim();if(!name)throw Error('Inserisci la ragione sociale.');store.partners.push({id:makeId('partner'),name,website:String(fd.get('website')||'')});save();closeModal();render();flash('Partner aggiunto.');return}
+if(form.id==='new-member-form'){if(ui.role!=='consultant')return;let name=String(fd.get('name')||'').trim(),city=String(fd.get('city')||'').trim(),skills=String(fd.get('skills')||'').split(',').map(x=>x.trim()).filter(Boolean);skills=[...new Set(skills)];if(!name||!city||!skills.length)throw Error('Inserisci nome, città e almeno una competenza.');store.members.push({id:makeId('member'),name,city,skills,bio:''});save();closeModal();render();flash('Member aggiunto.');return}
+if(form.id==='profile-form'){if(ui.role!=='member')return;actor().bio=String(fd.get('bio')||'').trim();save();closeModal();render();flash('Profilo salvato.');return}
+}catch(err){flash(err.message||'Operazione non riuscita.')}});
+window.addEventListener('keydown',e=>{if(e.key==='Escape')closeModal()});
+render();
+</script></body></html>

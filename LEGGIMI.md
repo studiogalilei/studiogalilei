@@ -79,11 +79,19 @@ Applicato a `index.html` e `tour-operator-v2.html` da `modifiche/ritocchi-mobile
 - Le **candidature dei giorni scorsi non sono perse**: sono nella tabella `candidature_member_club` di Supabase (file del portfolio nel bucket `portfolio`).
 - I **messaggi di contatto** falliti non sono stati salvati da nessuna parte: chi li ha inviati ha visto il messaggio di errore.
 
+## Platform
+
+`platform/index.html` è la Platform (Area Partner, Area Member, Area Consulente), servita su `/platform/`.
+La rotta `#/area-partner` (Area Privata in testata, nel menu mobile e nella pagina tour operator) ora reindirizza lì al posto della pagina "Coming soon".
+
+Stato attuale: è un prototipo solo front-end. I dati (progetti, roadmap, report, allegati) restano nel browser di chi li inserisce (localStorage/IndexedDB) e non c'è login: chiunque può entrare come consulente, partner o member. Per l'uso reale servono un backend condiviso e l'autenticazione (es. Supabase, già usato per le candidature).
+
 ## Contenuto del pacchetto
 
 ```
 index.html                  ← da pubblicare
 tour-operator-v2.html       ← da pubblicare
+platform/index.html         ← da pubblicare (Platform)
 api/invia-email.js          ← da pubblicare (Vercel Function per le email)
 index-originale.html        ← sito attuale, base per la rigenerazione
 modifiche/sg-effetti.css

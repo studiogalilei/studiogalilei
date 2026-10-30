@@ -103,19 +103,11 @@ if i != -1:
     s = s[:i] + nuovo + s[j:]
 
 # ---------------------------------------------------------------------------
-# Area Privata -> pagina "coming soon" della Platform (al posto della presentazione dei vantaggi)
+# Area Privata -> la Platform (/platform/), al posto della presentazione dei vantaggi
 i = s.find('function s5(){const t=He(),{PARTNER_BENEFITS:r}=Qt();')
 if i != -1:
     j = s.find('function u5(', i)
-    s = s[:i] + (
-        'function s5(){const t=He();return pi("Studio Galilei Platform",t("L\'area riservata ai partner Studio Galilei è in arrivo.","The Studio Galilei partner area is coming soon.")),'
-        'A.jsx("section",{className:"sg-platform",children:A.jsxs("div",{className:"sg-platform-in",children:['
-        'A.jsx(F4,{className:"sg-logo-tile-xl"}),'
-        'A.jsx("p",{className:"sg-platform-kicker",children:"Studio Galilei Platform"}),'
-        'A.jsx("h1",{className:"sg-platform-title",children:"Coming soon"}),'
-        'A.jsx("p",{className:"sg-platform-text",children:t("Stiamo preparando l\'area riservata ai partner: progetti, report e documenti in un unico posto. Sarà disponibile a breve.","We are building the partner area: projects, reports and documents in one place. It will be available soon.")}),'
-        'A.jsxs("div",{className:"sg-platform-azioni",children:[A.jsx(Bt,{to:"/contatti",variant:"light",children:t("Contattaci","Contact us")}),A.jsx(Bt,{to:"/",variant:"ghost-light",children:t("Torna alla home","Back to home")})]})'
-        ']})})}') + s[j:]
+    s = s[:i] + 'function s5(){return window.location.replace("/platform/"),null}' + s[j:]
 
 # ---------------------------------------------------------------------------
 # Presentazione: il PDF è un data: URL, che Safari iOS e molti browser in-app non scaricano.
