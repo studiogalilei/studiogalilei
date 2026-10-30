@@ -103,3 +103,9 @@ modifiche/sg-mobile.css
 modifiche/sg-mobile.js
 LEGGIMI.md
 ```
+
+## Aggiornamento: hero essenziale e "Lavora con noi"
+
+- **Hero**: tolti cielo stellato, stella polare, arco/orizzonte e sfumatura sul fondo (lo sfondo torna quello della foto di Venezia con il velo blu), luce che percorre il bordo del pulsante, alone e stellina su "Un partner.", sollevamento/bagliore/riflesso delle card. Restano inclinazione 3D e parallasse delle card (mouse su desktop, oscillazione automatica su smartphone) e il clic che apre i servizi.
+- **Pagina "Lavorare in Studio Galilei"**: niente più galassie, orbite e costellazioni in trasparenza.
+- **"Lavora con noi"** (menu, footer, ecc.): si apre direttamente il modulo del Member Club, senza la pagina di presentazione. Sotto il modulo il link "Scopri come si lavora in Studio Galilei" mostra la pagina completa. Logica in `modifiche/sg-mobile.js` e `modifiche/sg-mobile.css`.

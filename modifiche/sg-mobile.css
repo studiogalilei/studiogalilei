@@ -185,6 +185,15 @@ header.sg-header-cielo .sg-priv:hover { color: #fff; }
 .sg-platform-text { margin: 18px 0 0; font-size: 17px; line-height: 1.7; color: rgba(255, 255, 255, .75); }
 .sg-platform-azioni { display: flex; flex-wrap: wrap; justify-content: center; gap: 12px; margin-top: 36px; }
 
+/* ---- "Lavora con noi": si vede subito il modulo, senza la pagina di presentazione ---- */
+body.sg-lcn-solo-modulo main > :not(section:has(#candidatura)) { display: none; }
+body.sg-lcn-solo-modulo main section:has(#candidatura) { padding-top: 40px; padding-bottom: 56px; }
+body.sg-lcn-solo-modulo main :has(> #candidatura) > :not(#candidatura):not(.sg-lcn-pagina) { display: none; }
+body.sg-lcn-solo-modulo #candidatura { margin-top: 0; }
+.sg-lcn-pagina { margin: 22px 0 0; text-align: center; font-size: 15px; font-weight: 600; }
+.sg-lcn-pagina[hidden] { display: none; }
+.sg-lcn-pagina a { color: #061773; text-decoration: underline; text-underline-offset: 4px; }
+
 @media (prefers-reduced-motion: reduce) {
   .sg-mmenu { animation: none; }
   .sg-servizio, .sg-caso, .sg-caso-img > img, .sg-logo-tile { transition: none; }

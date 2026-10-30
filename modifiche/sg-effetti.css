@@ -1,13 +1,4 @@
-/* ---- Studio Galilei: effetti home (stelle + card reattive) ---- */
-.sg-cielo {
-  position: absolute;
-  inset: 0;
-  z-index: -5;
-  width: 100%;
-  height: 100%;
-  pointer-events: none;
-}
-
+/* ---- Studio Galilei: effetti home (card reattive) ---- */
 /* ---- Card AI / Marketing / Software dell'hero ----
    Le variabili --sg-rx/--sg-ry (inclinazione) e --sg-mx/--sg-my (parallasse)
    arrivano dal mouse su desktop e da un'oscillazione automatica su smartphone. */
@@ -35,51 +26,22 @@
   pointer-events: auto;
   cursor: pointer;
   -webkit-tap-highlight-color: transparent;
-  transition: transform .45s cubic-bezier(.2, .7, .2, 1), box-shadow .45s ease, filter .45s ease;
+  transition: transform .45s cubic-bezier(.2, .7, .2, 1);
   will-change: transform;
 }
 /* parallasse: le card più vicine si muovono di più */
 .tile-back {
-  transform: translateZ(calc(var(--sg-zb) + var(--sg-lift, 0px)))
+  transform: translateZ(var(--sg-zb))
     translate3d(calc(var(--sg-mx) * -0.4em), calc(var(--sg-my) * -0.4em), 0);
 }
 .tile-mid {
-  transform: translateZ(calc(var(--sg-zm) + var(--sg-lift, 0px)))
+  transform: translateZ(var(--sg-zm))
     translate3d(calc(var(--sg-mx) * 0.3em), calc(var(--sg-my) * 0.3em), 0);
 }
 .tile-front {
-  transform: translateZ(calc(var(--sg-zf) + var(--sg-lift, 0px)))
+  transform: translateZ(var(--sg-zf))
     translate3d(calc(var(--sg-mx) * 1em), calc(var(--sg-my) * 1em), 0);
 }
-/* card sotto il cursore (o toccata): si solleva e si illumina, per far capire che è cliccabile */
-.tile.sg-attiva {
-  --sg-lift: 40px;
-  filter: brightness(1.12) saturate(1.1);
-  box-shadow:
-    inset 0 1px #ffffff80,
-    0 0 0 2px #ffffffb3,
-    0 0 28px 4px #ffffff59,
-    0 0 70px 10px #a9c7ff40,
-    0 70px 110px -30px #01041ee6;
-  animation: sg-respiro 1.8s ease-in-out infinite;
-}
-@keyframes sg-respiro {
-  0%, 100% { filter: brightness(1.1) saturate(1.1); }
-  50% { filter: brightness(1.22) saturate(1.15); }
-}
-/* riflesso di luce che segue il mouse */
-.tile::after {
-  content: "";
-  position: absolute;
-  inset: 0;
-  border-radius: inherit;
-  pointer-events: none;
-  background: radial-gradient(circle at var(--sg-gx, 50%) var(--sg-gy, 0%), #ffffff4d 0%, #ffffff14 30%, #fff0 60%);
-  opacity: 0;
-  transition: opacity .35s ease;
-}
-.tile.sg-attiva::after { opacity: 1; }
-
 /* smartphone e tablet (niente mouse): le card ondeggiano da sole */
 @media (hover: none) {
   .tiles { animation: sg-ondeggia 9s ease-in-out infinite; }
@@ -105,74 +67,6 @@
   translate: var(--sg-sposta, 0px) 0;
 }
 .sg-scopri:hover { color: #fff; }
-
-/* ---- "Parla con noi": una lucina che percorre tutto il contorno ---- */
-@property --sg-ang {
-  syntax: "<angle>";
-  initial-value: 0deg;
-  inherits: false;
-}
-section.bg-sg-deep a[href="#/contatti"] {
-  position: relative;
-  isolation: isolate;
-}
-section.bg-sg-deep a[href="#/contatti"]::before,
-section.bg-sg-deep a[href="#/contatti"]::after {
-  content: "";
-  position: absolute;
-  inset: -1px;
-  border-radius: inherit;
-  padding: 1px;
-  pointer-events: none;
-  background: conic-gradient(from var(--sg-ang), #fff0 0deg, #fff0 290deg, #a9c7ff 330deg, #fff 352deg, #fff0 360deg);
-  -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
-  -webkit-mask-composite: xor;
-  mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
-  mask-composite: exclude;
-  animation: sg-giro 3.2s linear infinite;
-}
-/* alone sfocato della lucina */
-section.bg-sg-deep a[href="#/contatti"]::after {
-  inset: -2px;
-  padding: 2px;
-  filter: blur(3px);
-  opacity: .6;
-}
-section.bg-sg-deep a[href="#/contatti"]:hover::before,
-section.bg-sg-deep a[href="#/contatti"]:hover::after {
-  animation-duration: 1.4s;
-}
-@keyframes sg-giro { to { --sg-ang: 360deg; } }
-
-/* ---- "Un partner.": bianco pieno e luminoso, come la stella polare ---- */
-.sg-partner {
-  position: relative;
-  display: inline-block;
-  color: #fff;
-  text-shadow: 0 0 8px #ffffff4d, 0 0 22px #a9c7ff33;
-  animation: sg-bagliore 4s ease-in-out infinite;
-}
-/* piccola stella che brilla sopra la parola */
-.sg-partner::after {
-  content: "";
-  position: absolute;
-  top: -.12em;
-  right: -.42em;
-  width: .34em;
-  height: .34em;
-  background: #fff;
-  clip-path: polygon(50% 0, 60% 40%, 100% 50%, 60% 60%, 50% 100%, 40% 60%, 0 50%, 40% 40%);
-  filter: drop-shadow(0 0 6px #fff) drop-shadow(0 0 12px #a9c7ff);
-  animation: sg-brilla 3s ease-in-out infinite;
-}
-@keyframes sg-bagliore {
-  0%, 100% { text-shadow: 0 0 8px #ffffff4d, 0 0 22px #a9c7ff33; }
-  50% { text-shadow: 0 0 10px #ffffff73, 0 0 28px #a9c7ff4d; }
-}
-@keyframes sg-brilla {
-  0%, 100% { transform: scale(.55) rotate(0deg); opacity: .6; }
-  50% { transform: scale(1) rotate(45deg); opacity: 1; }
-}
 
 /* ---- Card delle pagine: leggera inclinazione verso il mouse ---- */
 .sg-scheda {
@@ -429,37 +323,6 @@ header.sg-header-cielo > div:first-child button[aria-expanded] { color: #fff; }
   50% { opacity: .2; }
 }
 
-/* ---- Fondo dell'hero: l'acqua sfuma nel blu notte e la sezione chiude con un orizzonte curvo ---- */
-main > section.bg-sg-deep:first-child::after {
-  content: "";
-  position: absolute;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  height: min(38%, 280px);
-  z-index: -4; /* sopra foto, velo blu e stelle; sotto i contenuti */
-  pointer-events: none;
-  background: linear-gradient(to bottom, #040f4d00 0%, #040f4d73 45%, #040f4dd9 75%, #040f4d 100%);
-}
-/* orizzonte: un grande arco chiaro con un alone azzurro, come il bordo di un pianeta */
-main > section.bg-sg-deep:first-child::before {
-  content: "";
-  position: absolute;
-  left: -30%;
-  right: -30%;
-  bottom: -1px;
-  height: 56px;
-  z-index: -3;
-  pointer-events: none;
-  background: #fff;
-  border-radius: 50% 50% 0 0 / 100% 100% 0 0;
-  box-shadow: 0 -2px 0 #a9c7ff8c, 0 -14px 40px #6fa0ff66, 0 -40px 90px #0689ff33;
-}
-@media (max-width: 767px) {
-  main > section.bg-sg-deep:first-child::after { height: min(28%, 200px); }
-  main > section.bg-sg-deep:first-child::before { height: 28px; left: -60%; right: -60%; }
-}
-
 /* ---- Calendario prenotazioni ---- */
 .sg-prenota-box iframe {
   display: block;
@@ -475,10 +338,7 @@ main > section.bg-sg-deep:first-child::before {
   .tiles, .tile, .sg-scheda { transition: none !important; }
   .tiles, .sg-spazio * { animation: none !important; }
   .sg-scheda.sg-nascosta { opacity: 1; translate: none; }
-  .tile.sg-attiva, .sg-partner, .sg-partner::after,
-  a[class*="#0A2391"], a[class*="#0A2391"] > span, a[class*="#0A2391"] > svg,
-  section.bg-sg-deep a[href="#/contatti"]::before,
-  section.bg-sg-deep a[href="#/contatti"]::after { animation: none !important; }
+  a[class*="#0A2391"], a[class*="#0A2391"] > span, a[class*="#0A2391"] > svg { animation: none !important; }
   .sg-team-pista { animation: none; }
   .sg-team { overflow-x: auto; }
 }

@@ -1,183 +1,10 @@
-/* ---- Studio Galilei: effetti home (stelle + card reattive) ---- */
+/* ---- Studio Galilei: effetti home (card reattive) ---- */
 (function () {
   var riduciMovimento = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
   var conMouse = window.matchMedia("(hover: hover)").matches;
 
-  /* ===== Cielo stellato nell'hero ===== */
-  function Cielo(sezione) {
-    var canvas = document.createElement("canvas");
-    canvas.className = "sg-cielo";
-    canvas.setAttribute("aria-hidden", "true");
-    // dopo il gradiente scuro, prima del contenuto
-    var contenuto = sezione.querySelector(":scope > .mx-auto");
-    sezione.insertBefore(canvas, contenuto || null);
-
-    var ctx = canvas.getContext("2d");
-    var w = 0, h = 0, dpr = 1;
-    var stelle = [];
-    var polare = null;
-    // mouse normalizzato (-1..1) e posizione in pixel, con inseguimento morbido
-    var mouse = { x: 0, y: 0, px: -9999, py: -9999, dentro: false };
-    var liscio = { x: 0, y: 0 };
-    var visibile = true, raf = 0, t0 = performance.now();
-
-    function crea() {
-      var r = sezione.getBoundingClientRect();
-      dpr = Math.min(window.devicePixelRatio || 1, 2);
-      w = r.width; h = r.height;
-      canvas.width = Math.round(w * dpr);
-      canvas.height = Math.round(h * dpr);
-      ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
-
-      var n = Math.round(Math.min(260, (w * h) / 5200));
-      stelle = [];
-      for (var i = 0; i < n; i++) {
-        var z = Math.random(); // profondità: 0 lontana, 1 vicina
-        stelle.push({
-          x: Math.random() * w,
-          y: Math.random() * h,
-          z: z,
-          r: 0.35 + z * 1.15,
-          a: 0.35 + Math.random() * 0.55,
-          fase: Math.random() * Math.PI * 2,
-          vel: 0.6 + Math.random() * 1.8,
-          ox: 0, oy: 0 // spostamento dovuto al mouse
-        });
-      }
-      // la stella polare: in alto, tra titolo e card
-      polare = { x: w * (w < 768 ? 0.82 : 0.47), y: h * (w < 768 ? 0.08 : 0.15), ox: 0, oy: 0 };
-    }
-
-    function disegnaPolare(t) {
-      var par = 14;
-      var x = polare.x + liscio.x * par + polare.ox;
-      var y = polare.y + liscio.y * par + polare.oy;
-      var pulsa = 1 + Math.sin(t * 1.3) * 0.08;
-      // vicinanza del mouse: la stella si accende
-      var d = Math.hypot(mouse.px - x, mouse.py - y);
-      var acceso = mouse.dentro ? Math.max(0, 1 - d / 260) : 0;
-      var s = (1 + acceso * 0.5) * pulsa;
-
-      // alone
-      var g = ctx.createRadialGradient(x, y, 0, x, y, 34 * s);
-      g.addColorStop(0, "rgba(255,255,255,0.95)");
-      g.addColorStop(0.12, "rgba(220,232,255,0.55)");
-      g.addColorStop(0.4, "rgba(150,185,255,0.14)");
-      g.addColorStop(1, "rgba(150,185,255,0)");
-      ctx.fillStyle = g;
-      ctx.beginPath(); ctx.arc(x, y, 34 * s, 0, Math.PI * 2); ctx.fill();
-
-      // raggi a croce (lunghi in verticale/orizzontale, corti in diagonale)
-      ctx.save();
-      ctx.translate(x, y);
-      ctx.rotate(Math.sin(t * 0.2) * 0.04);
-      raggio(0, 46 * s, 1.4);
-      raggio(Math.PI / 2, 40 * s, 1.4);
-      raggio(Math.PI / 4, 16 * s, 0.9);
-      raggio(-Math.PI / 4, 16 * s, 0.9);
-      ctx.restore();
-
-      // nucleo
-      ctx.fillStyle = "#fff";
-      ctx.beginPath(); ctx.arc(x, y, 2.6 * s, 0, Math.PI * 2); ctx.fill();
-    }
-
-    function raggio(ang, lun, spess) {
-      ctx.save();
-      ctx.rotate(ang);
-      var g = ctx.createLinearGradient(-lun, 0, lun, 0);
-      g.addColorStop(0, "rgba(210,225,255,0)");
-      g.addColorStop(0.5, "rgba(255,255,255,0.85)");
-      g.addColorStop(1, "rgba(210,225,255,0)");
-      ctx.fillStyle = g;
-      ctx.beginPath();
-      ctx.moveTo(-lun, 0);
-      ctx.quadraticCurveTo(0, -spess, lun, 0);
-      ctx.quadraticCurveTo(0, spess, -lun, 0);
-      ctx.fill();
-      ctx.restore();
-    }
-
-    function frame(now) {
-      raf = 0;
-      var t = (now - t0) / 1000;
-      liscio.x += (mouse.x - liscio.x) * 0.06;
-      liscio.y += (mouse.y - liscio.y) * 0.06;
-
-      ctx.clearRect(0, 0, w, h);
-      for (var i = 0; i < stelle.length; i++) {
-        var s = stelle[i];
-        var par = 6 + s.z * 28; // parallasse per profondità
-        var bx = s.x + liscio.x * par;
-        var by = s.y + liscio.y * par;
-
-        // le stelle vicine al cursore si scostano leggermente e brillano
-        var tx = 0, ty = 0, luce = 0;
-        if (mouse.dentro) {
-          var dx = bx - mouse.px, dy = by - mouse.py;
-          var d = Math.hypot(dx, dy), raggioInfl = 140;
-          if (d < raggioInfl && d > 0.01) {
-            var f = 1 - d / raggioInfl;
-            tx = (dx / d) * f * 22 * (0.4 + s.z);
-            ty = (dy / d) * f * 22 * (0.4 + s.z);
-            luce = f;
-          }
-        }
-        s.ox += (tx - s.ox) * 0.08;
-        s.oy += (ty - s.oy) * 0.08;
-
-        var tw = riduciMovimento ? 1 : 0.65 + 0.35 * Math.sin(t * s.vel + s.fase);
-        var alpha = Math.min(1, s.a * tw + luce * 0.6);
-        ctx.fillStyle = "rgba(255,255,255," + alpha.toFixed(3) + ")";
-        ctx.beginPath();
-        ctx.arc(bx + s.ox, by + s.oy, s.r * (1 + luce * 0.6), 0, Math.PI * 2);
-        ctx.fill();
-      }
-      disegnaPolare(riduciMovimento ? 0 : t);
-
-      if (visibile && !riduciMovimento) raf = requestAnimationFrame(frame);
-    }
-
-    function avvia() { if (!raf) raf = requestAnimationFrame(frame); }
-
-    function muovi(e) {
-      var r = sezione.getBoundingClientRect();
-      mouse.px = e.clientX - r.left;
-      mouse.py = e.clientY - r.top;
-      mouse.x = (mouse.px / r.width) * 2 - 1;
-      mouse.y = (mouse.py / r.height) * 2 - 1;
-      mouse.dentro = true;
-      if (riduciMovimento) avvia();
-    }
-    function esci() { mouse.dentro = false; mouse.x = 0; mouse.y = 0; }
-
-    sezione.addEventListener("pointermove", muovi);
-    sezione.addEventListener("pointerleave", esci);
-
-    var ro = new ResizeObserver(function () { crea(); avvia(); });
-    ro.observe(sezione);
-    var io = new IntersectionObserver(function (voci) {
-      visibile = voci[0].isIntersecting && !document.hidden;
-      if (visibile) avvia();
-    });
-    io.observe(sezione);
-
-    crea();
-    avvia();
-
-    this.canvas = canvas;
-    this.distruggi = function () {
-      cancelAnimationFrame(raf);
-      ro.disconnect(); io.disconnect();
-      sezione.removeEventListener("pointermove", muovi);
-      sezione.removeEventListener("pointerleave", esci);
-    };
-  }
-
   /* ===== Card servizi (AI, Marketing, Software) reattive al mouse ===== */
   function Card(sezione, tilesEl) {
-    var tiles = Array.prototype.slice.call(tilesEl.querySelectorAll(".tile"));
-
     function muovi(e) {
       var r = sezione.getBoundingClientRect();
       var mx = ((e.clientX - r.left) / r.width) * 2 - 1;
@@ -186,23 +13,9 @@
       tilesEl.style.setProperty("--sg-rx", (-my * 7).toFixed(2) + "deg");
       tilesEl.style.setProperty("--sg-mx", mx.toFixed(3));
       tilesEl.style.setProperty("--sg-my", my.toFixed(3));
-
-      // card sotto il cursore: si solleva e prende il riflesso di luce
-      var sopra = document.elementFromPoint(e.clientX, e.clientY);
-      var attiva = sopra && sopra.closest ? sopra.closest(".tile") : null;
-      tiles.forEach(function (t) {
-        var on = t === attiva;
-        t.classList.toggle("sg-attiva", on);
-        if (on) {
-          var tr = t.getBoundingClientRect();
-          t.style.setProperty("--sg-gx", (((e.clientX - tr.left) / tr.width) * 100).toFixed(1) + "%");
-          t.style.setProperty("--sg-gy", (((e.clientY - tr.top) / tr.height) * 100).toFixed(1) + "%");
-        }
-      });
     }
     function esci() {
       ["--sg-rx", "--sg-ry", "--sg-mx", "--sg-my"].forEach(function (p) { tilesEl.style.removeProperty(p); });
-      tiles.forEach(function (t) { t.classList.remove("sg-attiva"); });
     }
     // ogni card porta alla pagina del suo servizio
     var link = { AI: "#/servizi/intelligenza-artificiale", Marketing: "#/servizi/marketing", Software: "#/servizi/sviluppo-software" };
@@ -211,10 +24,7 @@
       var etichetta = t && t.querySelector("p");
       var dest = etichetta && link[etichetta.textContent.trim()];
       if (!dest) return;
-      if (conMouse) { location.hash = dest.slice(1); return; }
-      // da smartphone: la card toccata si illumina un istante, poi si apre la pagina
-      t.classList.add("sg-attiva");
-      setTimeout(function () { t.classList.remove("sg-attiva"); location.hash = dest.slice(1); }, 280);
+      location.hash = dest.slice(1);
     }
 
     if (conMouse) {
@@ -677,6 +487,11 @@
   });
 
   function preparaSpazio() {
+    // pagina "Lavora con noi": niente galassie né costellazioni
+    if (/^#\/lavora-con-noi/.test(location.hash)) {
+      Array.prototype.forEach.call(document.querySelectorAll(".sg-spazio"), function (d) { d.remove(); });
+      return;
+    }
     var n = 0;
     Array.prototype.forEach.call(document.querySelectorAll("main > section"), function (sez) {
       n++;
@@ -690,7 +505,7 @@
   }
 
   /* ===== Aggancio (l'app è React: le sezioni vengono ricreate a ogni cambio pagina) ===== */
-  var cielo = null, card = null, sezioneAttiva = null;
+  var card = null, sezioneAttiva = null;
 
   function controlla() {
     preparaHeader();
@@ -703,14 +518,12 @@
     preparaSchede();
     var tilesEl = document.querySelector("main .tiles");
     var sezione = tilesEl ? tilesEl.closest("section") : null;
-    if (sezione === sezioneAttiva && (!cielo || cielo.canvas.isConnected)) return;
+    if (sezione === sezioneAttiva) return;
 
-    if (cielo) { cielo.distruggi(); if (cielo.canvas.parentNode) cielo.canvas.remove(); cielo = null; }
     if (card) { card.distruggi(); card = null; }
     sezioneAttiva = sezione;
     if (!sezione) return;
 
-    cielo = new Cielo(sezione);
     card = new Card(sezione, tilesEl);
   }
 
