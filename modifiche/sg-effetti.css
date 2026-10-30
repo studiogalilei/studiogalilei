@@ -283,17 +283,17 @@ header.sg-header-cielo > div:first-child [role="group"] button { color: #ffffff8
 header.sg-header-cielo > div:first-child [role="group"] button:hover { color: #fff; }
 header.sg-header-cielo > div:first-child [role="group"] button[aria-pressed="true"] { color: #061773; background: #fff; }
 /* "Contattaci": bianco pieno con testo blu, in contrasto col cielo */
-header.sg-header-cielo > div:first-child a[href="#/contatti"] {
+header.sg-header-cielo > div:first-child a[href="/contatti"] {
   background: #fff;
   color: #061773;
   box-shadow: 0 8px 24px -10px #ffffff80;
 }
-header.sg-header-cielo > div:first-child a[href="#/contatti"]:hover { background: #e4e7ed; }
+header.sg-header-cielo > div:first-child a[href="/contatti"]:hover { background: #e4e7ed; }
 /* Area Privata e menu mobile */
-header.sg-header-cielo > div:first-child a[href="#/area-partner"] { color: #fff; }
-header.sg-header-cielo > div:first-child a[href="#/area-partner"] > span:first-child { border-color: #ffffff59; }
-header.sg-header-cielo > div:first-child a[href="#/area-partner"]:hover > span:first-child { background: #fff; color: #061773; border-color: #fff; }
-header.sg-header-cielo > div:first-child a[href="#/area-partner"] > span:last-child { color: #ffffffbf; }
+header.sg-header-cielo > div:first-child a[href="/area-partner"] { color: #fff; }
+header.sg-header-cielo > div:first-child a[href="/area-partner"] > span:first-child { border-color: #ffffff59; }
+header.sg-header-cielo > div:first-child a[href="/area-partner"]:hover > span:first-child { background: #fff; color: #061773; border-color: #fff; }
+header.sg-header-cielo > div:first-child a[href="/area-partner"] > span:last-child { color: #ffffffbf; }
 header.sg-header-cielo > div:first-child button[aria-expanded] { color: #fff; }
 
 /* ---- Spazio in trasparenza nelle sezioni chiare ---- */

@@ -3,6 +3,13 @@
   var riduciMovimento = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
   var conMouse = window.matchMedia("(hover: hover)").matches;
 
+  // il sito usa indirizzi normali (/servizi), non più con l'hash: si cambia pagina dal router senza ricaricare
+  function vai(percorso) {
+    if (location.pathname + location.search === percorso) return;
+    history.pushState(null, "", percorso);
+    window.dispatchEvent(new PopStateEvent("popstate"));
+  }
+
   /* ===== Card servizi (AI, Marketing, Software) reattive al mouse ===== */
   function Card(sezione, tilesEl) {
     function muovi(e) {
@@ -18,13 +25,13 @@
       ["--sg-rx", "--sg-ry", "--sg-mx", "--sg-my"].forEach(function (p) { tilesEl.style.removeProperty(p); });
     }
     // ogni card porta alla pagina del suo servizio
-    var link = { AI: "#/servizi/intelligenza-artificiale", Marketing: "#/servizi/marketing", Software: "#/servizi/sviluppo-software" };
+    var link = { AI: "/servizi/intelligenza-artificiale", Marketing: "/servizi/marketing", Software: "/servizi/sviluppo-software" };
     function clic(e) {
       var t = e.target.closest ? e.target.closest(".tile") : null;
       var etichetta = t && t.querySelector("p");
       var dest = etichetta && link[etichetta.textContent.trim()];
       if (!dest) return;
-      location.hash = dest.slice(1);
+      vai(dest);
     }
 
     if (conMouse) {
@@ -266,7 +273,7 @@
 
   // il pulsante dell'hero porta al calendario invece che alla pagina contatti
   document.addEventListener("click", function (e) {
-    var a = e.target.closest && e.target.closest('section.bg-sg-deep a[href="#/contatti"]');
+    var a = e.target.closest && e.target.closest('section.bg-sg-deep a[href="/contatti"]');
     var dest = document.getElementById("sg-prenota");
     if (!a || !dest) return;
     e.preventDefault();
@@ -366,7 +373,12 @@
     if (esistente) esistente.remove();
     var a = document.createElement("a");
     a.className = "sg-scopri";
-    a.href = "#/servizi";
+    a.href = "/servizi";
+    a.addEventListener("click", function (e) {
+      if (e.defaultPrevented || e.metaKey || e.ctrlKey || e.shiftKey || e.button) return;
+      e.preventDefault();
+      vai("/servizi");
+    });
     a.dataset.lingua = lng;
     a.textContent = lng === "en" ? "Explore our services" : "Scopri i servizi";
     stage.parentNode.insertBefore(a, stage);
@@ -488,7 +500,7 @@
 
   function preparaSpazio() {
     // pagina "Lavora con noi": niente galassie né costellazioni
-    if (/^#\/lavora-con-noi/.test(location.hash)) {
+    if (/^\/lavora-con-noi/.test(location.pathname)) {
       Array.prototype.forEach.call(document.querySelectorAll(".sg-spazio"), function (d) { d.remove(); });
       return;
     }
@@ -538,7 +550,7 @@
     var root = document.getElementById("root");
     if (!root) return;
     new MutationObserver(pianifica).observe(root, { childList: true, subtree: true });
-    window.addEventListener("hashchange", pianifica);
+    window.addEventListener("popstate", pianifica);
     controlla();
   }
   if (document.readyState === "loading") document.addEventListener("DOMContentLoaded", inizia);

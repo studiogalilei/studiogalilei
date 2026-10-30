@@ -109,3 +109,12 @@ LEGGIMI.md
 - **Hero**: tolti cielo stellato, stella polare, arco/orizzonte e sfumatura sul fondo (lo sfondo torna quello della foto di Venezia con il velo blu), luce che percorre il bordo del pulsante, alone e stellina su "Un partner.", sollevamento/bagliore/riflesso delle card. Restano inclinazione 3D e parallasse delle card (mouse su desktop, oscillazione automatica su smartphone) e il clic che apre i servizi.
 - **Pagina "Lavorare in Studio Galilei"**: niente più galassie, orbite e costellazioni in trasparenza.
 - **"Lavora con noi"** (menu, footer, ecc.): si apre direttamente il modulo del Member Club, senza la pagina di presentazione. Sotto il modulo il link "Scopri come si lavora in Studio Galilei" mostra la pagina completa. Logica in `modifiche/sg-mobile.js` e `modifiche/sg-mobile.css`.
+
+## Aggiornamento: indirizzi senza `#/`
+
+Il sito usa ora indirizzi normali: `studiogalilei.com/servizi`, `/casi-studio`, `/lavora-con-noi`, ecc. (prima `index.html#/servizi`).
+
+- **Router**: nel bundle la history a hash è sostituita da quella del browser (funzione `Dd`).
+- **`vercel.json`** (nuovo, va pubblicato): `/index.html` → `/` (redirect permanente) e ogni percorso senza estensione, tranne `/api` e `/platform`, è servito da `index.html`. `tour-operator-v2.html` e `platform/` restano file a sé.
+- **Vecchi link**: uno script in testa a `index.html` converte al volo `/#/servizi` e `/index.html#/servizi` in `/servizi` (mantenendo `?lang=`), quindi i link già condivisi continuano a funzionare.
+- **Link interni**: `tour-operator-v2.html` punta a `/servizi`, `/chi-siamo` ecc.; nel bundle il link "Tour operator" è `/tour-operator-v2.html`; gli script `sg-effetti.js` e `sg-mobile.js` navigano con `history.pushState` invece di `location.hash`.
