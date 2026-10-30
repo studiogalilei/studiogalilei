@@ -52,14 +52,46 @@ Conviene portare le modifiche nel sorgente invece di pubblicare il file compilat
 - applicare i due ritocchi testuali sopra nei componenti corrispondenti (hero della home);
 - importare `sg-effetti.css` nello stylesheet globale e caricare `sg-effetti.js` dopo il mount dell'app (oppure riscriverlo come componenti). Nello script il segnaposto `__MARCHIO_PATH__` va sostituito con il contenuto di `modifiche/marchio-path.txt` (il tracciato del logo, preso dalla favicon).
 
+## Aggiornamento: mobile, logo, navigazione, form
+
+Applicato a `index.html` e `tour-operator-v2.html` da `modifiche/ritocchi-mobile.py` (rilanciabile: le modifiche già fatte vengono saltate, i blocchi `sg-mobile-css`/`sg-mobile-js` rigenerati da `modifiche/sg-mobile.css` e `modifiche/sg-mobile.js`).
+
+1. **Logo in testata**: al posto di albero + scritta, il logo ufficiale (albero + "StudioGalilei") in un quadratino blu Studio Galilei con bordi tondi, anche nella pagina tour operator.
+2. **Loghi tagliati in basso**: albero e scritta del bundle erano ricalcati da un'immagine tagliata in basso (la "o", la "d", la "G" erano piatte). Ora usano i tracciati del logo vettoriale ufficiale, ovunque: testata, footer, card dell'hero. Su smartphone anche il timbro rosso sotto "Scopri come…" non viene più tagliato dal bordo della sezione.
+3. **Area Privata**: niente più cerchio con etichetta, un lucchetto con testo piccolo (desktop) o solo l'icona (smartphone). Porta alla pagina **"Coming soon" della Platform** (`#/area-partner`), blu, al posto della presentazione dei vantaggi partner. Quando la Platform sarà online basta far puntare lì il link (funzione `wl` nel bundle).
+4. **Menu mobile**: ogni voce ha la sua icona; aggiunte "Lavora con noi" e "Area Privata", contatti rapidi (Chiama, WhatsApp, Email), lingua e "Contattaci" in fondo.
+5. **Presentazione scaricabile**: il PDF è incorporato come `data:` URL, che Safari su iPhone e i browser in-app non scaricano. Al clic ora viene convertito in un file vero (`Studio-Galilei-presentazione.pdf`).
+6. **Home con più immagini e icone**: nuova sezione "Cosa facciamo" (tre servizi con colore e icona) dopo i loghi; un'icona per ogni voce di "Nel portale", "Lavorando insieme", "In più"; nuova sezione "Casi studio" con foto, immagini dei casi e loghi (su smartphone scorrono di lato). Pulsanti dell'hero a tutta larghezza su smartphone.
+7. **Lavora con noi**: aprendo la pagina si scorre direttamente al modulo del Member Club.
+8. **Email dei moduli**: contatti e candidature Member Club vengono inviati con **Resend** a dramane@studiogalilei.com, mittente `sito@members.studiogalilei.com`. Le invia la Vercel Function `api/invia-email.js`. Il destinatario è fisso nella funzione: chi chiama la funzione non può sceglierne un altro. Le candidature restano salvate anche su Supabase. Se l'invio non riesce, il modulo contatti mostra il pulsante "Invia via email", che apre l'app di posta del visitatore con il messaggio già compilato.
+
+### Configurazione su Vercel
+
+- Variabile d'ambiente **`RESEND_API_KEY`**, la chiave di Resend, in Production (e Preview se serve). Dopo averla aggiunta bisogna rifare il deploy.
+- Facoltativa: `RESEND_FROM` per cambiare il mittente (predefinito `Sito Studio Galilei <sito@members.studiogalilei.com>`).
+- Su Resend il dominio `members.studiogalilei.com` deve risultare **Verified** (record DNS SPF/DKIM), altrimenti Resend rifiuta l'invio.
+- La cartella `api/` va pubblicata insieme a `index.html`: senza di essa i moduli non inviano email. I log degli errori di invio si vedono nei log della funzione su Vercel.
+
+### Perché le email non arrivavano
+
+- Il modulo **Member Club** salvava solo su Supabase: nessuna email partiva.
+- Il modulo **contatti** usava FormSubmit, che richiede un'attivazione via email e a fine ottobre 2026 non rispondeva (errore 521). Ora usa Resend.
+- Le **candidature dei giorni scorsi non sono perse**: sono nella tabella `candidature_member_club` di Supabase (file del portfolio nel bucket `portfolio`).
+- I **messaggi di contatto** falliti non sono stati salvati da nessuna parte: chi li ha inviati ha visto il messaggio di errore.
+
 ## Contenuto del pacchetto
 
 ```
 index.html                  ← da pubblicare
+tour-operator-v2.html       ← da pubblicare
+api/invia-email.js          ← da pubblicare (Vercel Function per le email)
 index-originale.html        ← sito attuale, base per la rigenerazione
 modifiche/sg-effetti.css
 modifiche/sg-effetti.js
 modifiche/costruisci.py
 modifiche/marchio-path.txt
+modifiche/ritocchi-mobile.py   ← secondo giro (mobile, logo, navigazione, form)
+modifiche/sg-mobile.css
+modifiche/sg-mobile.js
 LEGGIMI.md
 ```
