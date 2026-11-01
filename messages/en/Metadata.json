@@ -1,0 +1,58 @@
+{
+  "home": {
+    "title": "Studio Galilei | Marketing, AI and Software",
+    "description": "We bring Marketing, AI and Software under one roof to cut lead times, simplify management and build systems that stay yours."
+  },
+  "about": {
+    "title": "About us",
+    "description": "“Measure what is measurable, and make measurable what is not.” The Studio Galilei way of working."
+  },
+  "services": {
+    "title": "Services",
+    "description": "Digital advertising, social media, content production, web, software and automation, security and subsidised finance: the services of Studio Galilei."
+  },
+  "marketing": {
+    "title": "Marketing",
+    "description": "We build and manage Google and Meta campaigns tailored to your goals. Structure, tracking and continuous optimisation, from day one."
+  },
+  "intelligenza-artificiale": {
+    "title": "Artificial Intelligence",
+    "description": "We find where time, information or value is being lost and build automations that work for you. Without starting from the tool."
+  },
+  "sviluppo-software": {
+    "title": "Software Development",
+    "description": "Management systems, portals and integrations built around your real processes. Modular development, role-based permissions and progressive release."
+  },
+  "googleAds": {
+    "title": "Google Ads",
+    "description": "Studio Galilei uses the official Google Ads API to manage partners' campaigns. Directly on their accounts, with full transparency."
+  },
+  "caseStudies": {
+    "title": "Case studies",
+    "description": "Behind the scenes: Studio Galilei case studies."
+  },
+  "caseTourOperator": {
+    "title": "Case study: tour operator",
+    "description": "A tour operator's whole day in a single app: bookings, passenger lists, guides and customer messages in a private dashboard, for two tour operators in Italy and Texas."
+  },
+  "caseDanInk": {
+    "title": "Case study: Dän Ink",
+    "description": "More leads at a lower cost for a tattoo franchise: the customer acquisition strategy built for a network of 8 studios in Italy."
+  },
+  "caseOnlySolutions": {
+    "title": "Only Solutions, case study",
+    "description": "€687,545.50 in revenue in 45 days on €26,194.16 of ad spend: the Google Ads and Meta Ads ecosystem built for a technology e-commerce business."
+  },
+  "careers": {
+    "title": "Work with us",
+    "description": "Why work at Studio Galilei: method, autonomy and results measured and credited to whoever produces them."
+  },
+  "contact": {
+    "title": "Contact us",
+    "description": "We are here to listen. A coffee or a call to compare notes is always a pleasure!"
+  },
+  "privacy": {
+    "title": "Privacy Policy",
+    "description": "How Studio Galilei collects, uses, stores and protects personal data, including Google Ads API data, in compliance with the Google API Services User Data Policy."
+  }
+}

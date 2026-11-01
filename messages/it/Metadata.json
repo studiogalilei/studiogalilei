@@ -1,0 +1,58 @@
+{
+  "home": {
+    "title": "Studio Galilei | Marketing, AI e Software",
+    "description": "Integriamo Marketing, AI e Software sotto lo stesso tetto per ridurre tempi, semplificare la gestione e costruire sistemi che restano tuoi."
+  },
+  "about": {
+    "title": "Chi siamo",
+    "description": "«Misura ciò che è misurabile, e rendi misurabile ciò che non lo è.» Il metodo di lavoro di Studio Galilei."
+  },
+  "services": {
+    "title": "Servizi",
+    "description": "Advertising digitale, social media, produzione contenuti, web, software e automazioni, sicurezza e finanza agevolata: i servizi di Studio Galilei."
+  },
+  "marketing": {
+    "title": "Marketing",
+    "description": "Costruiamo e gestiamo campagne Google e Meta calibrate sui tuoi obiettivi. Struttura, tracciamento e ottimizzazione continua — dal primo giorno."
+  },
+  "intelligenza-artificiale": {
+    "title": "Intelligenza Artificiale",
+    "description": "Identifichiamo dove si perde tempo, informazione o valore e costruiamo automazioni che lavorano per te. Senza partire dallo strumento."
+  },
+  "sviluppo-software": {
+    "title": "Sviluppo Software",
+    "description": "Gestionali, portali e integrazioni costruiti sui tuoi processi reali. Sviluppo modulare, permessi per ruolo e rilascio progressivo."
+  },
+  "googleAds": {
+    "title": "Google Ads",
+    "description": "Studio Galilei usa le API ufficiali di Google Ads per gestire le campagne dei partner. Direttamente sui loro account, in piena trasparenza."
+  },
+  "caseStudies": {
+    "title": "Casi studio",
+    "description": "Dietro le quinte: i casi studio di Studio Galilei."
+  },
+  "caseTourOperator": {
+    "title": "Caso studio: tour operator",
+    "description": "Tutta la giornata di un tour operator in un'unica app: prenotazioni, liste passeggeri, guide e messaggi ai clienti in una dashboard privata, per due tour operator in Italia e in Texas."
+  },
+  "caseDanInk": {
+    "title": "Caso studio: Dän Ink",
+    "description": "Più contatti a un costo più basso per un franchising di tatuaggi: la strategia di acquisizione clienti costruita per un network di 8 studi in Italia."
+  },
+  "caseOnlySolutions": {
+    "title": "Only Solutions, caso studio",
+    "description": "687.545,50 € di fatturato in 45 giorni con 26.194,16 € di spesa pubblicitaria: l'ecosistema di Google Ads e Meta Ads costruito per un e-commerce di tecnologia."
+  },
+  "careers": {
+    "title": "Lavora con noi",
+    "description": "Perché lavorare in Studio Galilei: metodo, autonomia e risultati misurati e attribuiti a chi li produce."
+  },
+  "contact": {
+    "title": "Contattaci",
+    "description": "Siamo qui per ascoltarti. Un caffè o una chiamata di confronto ci fa sempre piacere!"
+  },
+  "privacy": {
+    "title": "Privacy Policy",
+    "description": "Come Studio Galilei raccoglie, utilizza, conserva e protegge i dati personali, inclusi i dati delle API di Google Ads, nel rispetto della Google API Services User Data Policy."
+  }
+}

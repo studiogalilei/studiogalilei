@@ -1,0 +1,268 @@
+@import "tailwindcss";
+
+/*
+ * Design tokens, recovered from the original site's compiled Tailwind theme.
+ * Numeric names are the literal CSS value: text-15 = 15px, text-2.6rem = 2.6rem,
+ * leading-1.7 = line-height 1.7 (unitless), tracking-8 = 0.08em (-tracking-3 = -0.03em),
+ * rounded-18 = 18px.
+ */
+@theme {
+  --font-sans: var(--font-poppins), ui-sans-serif, system-ui, -apple-system, "Segoe UI", sans-serif;
+  --font-marker: var(--font-permanent-marker), cursive;
+
+  --color-sg: #061773;
+  --color-sg-deep: #040f4d;
+  --color-sg-bright: #0a2391;
+  --color-ink: #0a0a1a;
+  --color-pale: #eef1fa;
+  --color-mist: #f7f8fc;
+  --color-cream: #ebdcbe;
+  --color-line: #e3e8f4;
+  --color-mk: #d21205;
+  --color-ai: #0689ff;
+  --color-sw: #2f6b33;
+
+  --text-9\.5: 9.5px;
+  --text-10: 10px;
+  --text-10\.5: 10.5px;
+  --text-11: 11px;
+  --text-11\.5: 11.5px;
+  --text-12: 12px;
+  --text-12\.5: 12.5px;
+  --text-13: 13px;
+  --text-13\.5: 13.5px;
+  --text-14: 14px;
+  --text-14\.5: 14.5px;
+  --text-15: 15px;
+  --text-15\.5: 15.5px;
+  --text-16: 16px;
+  --text-17: 17px;
+  --text-18: 18px;
+  --text-19: 19px;
+  --text-22: 22px;
+  --text-1\.5rem: 1.5rem;
+  --text-1\.6rem: 1.6rem;
+  --text-1\.75rem: 1.75rem;
+  --text-2rem: 2rem;
+  --text-2\.2rem: 2.2rem;
+  --text-2\.4rem: 2.4rem;
+  --text-2\.6rem: 2.6rem;
+  --text-2\.8rem: 2.8rem;
+
+  --leading-1\.1: 1.1;
+  --leading-1\.15: 1.15;
+  --leading-1\.65: 1.65;
+  --leading-1\.7: 1.7;
+  --leading-1\.75: 1.75;
+
+  --tracking-1: 0.01em;
+  --tracking-1\.5: 0.015em;
+  --tracking-2: 0.02em;
+  --tracking-3: 0.03em;
+  --tracking-8: 0.08em;
+  --tracking-12: 0.12em;
+  --tracking-14: 0.14em;
+
+  --radius-10: 10px;
+  --radius-14: 14px;
+  --radius-18: 18px;
+  --radius-20: 20px;
+  --radius-22: 22px;
+
+  --shadow-surface-1:
+    inset 0 1px #ffffffe6, 0 0 0 1px #06177312, 0 1px 2px #0617730d, 0 6px 16px -4px #06177312;
+  --shadow-surface-2:
+    inset 0 1px #ffffffe6, 0 0 0 1px #06177312, 0 2px 4px #0617730a, 0 12px 24px -6px #06177314,
+    0 36px 72px -24px #06177329;
+  --shadow-surface-3:
+    inset 0 1px #ffffffe6, 0 0 0 1px #0617730f, 0 4px 8px #0617730d, 0 24px 48px -12px #06177324,
+    0 64px 120px -32px #040f4d4d;
+  --shadow-surface-dark: inset 0 1px #ffffff1a, 0 0 0 1px #ffffff0f, 0 24px 48px -16px #01041e8c;
+
+  --animate-marquee: marquee 38s linear infinite;
+  --animate-menu-in: menu-in 0.22s ease both;
+  --animate-beacon: beacon 2.6s ease-out infinite;
+  --animate-sweep: sweep 4.5s ease-in-out infinite;
+  --animate-nudge: nudge 2.6s ease-in-out infinite;
+  --animate-stamp: stamp 0.45s cubic-bezier(0.3, 1.6, 0.5, 1) forwards;
+  --animate-galaxy: spin 180s linear infinite;
+  --animate-orbit: orbit 26s linear infinite;
+  --animate-twinkle: twinkle 4s ease-in-out infinite;
+
+  @keyframes marquee {
+    to {
+      transform: translate(-50%);
+    }
+  }
+  /* "Scopri se possiamo applicarlo…" button: pulsing halo, passing glint, nudging icon */
+  @keyframes beacon {
+    0% {
+      box-shadow:
+        0 18px 40px -14px #061773a6,
+        inset 0 1px #ffffff38,
+        0 0 0 0 #0a2391a6;
+    }
+    70% {
+      box-shadow:
+        0 18px 40px -14px #061773a6,
+        inset 0 1px #ffffff38,
+        0 0 0 18px #0a239100;
+    }
+    100% {
+      box-shadow:
+        0 18px 40px -14px #061773a6,
+        inset 0 1px #ffffff38,
+        0 0 0 0 #0a239100;
+    }
+  }
+  @keyframes sweep {
+    0%,
+    55% {
+      left: -33%;
+    }
+    85%,
+    100% {
+      left: 110%;
+    }
+  }
+  @keyframes nudge {
+    0%,
+    100% {
+      transform: translateX(0) rotate(0);
+    }
+    20% {
+      transform: translateX(3px) rotate(-8deg);
+    }
+    40% {
+      transform: translateX(0) rotate(0);
+    }
+  }
+  @keyframes stamp {
+    0% {
+      opacity: 0;
+      transform: rotate(var(--rot)) scale(1.7);
+    }
+    60% {
+      opacity: 1;
+    }
+    100% {
+      opacity: 1;
+      transform: rotate(var(--rot)) scale(1);
+    }
+  }
+  /* Decorative space in light sections: the planet runs along an ellipse rx × 0.32 rx */
+  @keyframes orbit {
+    0% {
+      transform: translate(var(--orbit-rx), 0);
+    }
+    25% {
+      transform: translate(0, calc(var(--orbit-rx) * 0.32));
+    }
+    50% {
+      transform: translate(calc(var(--orbit-rx) * -1), 0);
+    }
+    75% {
+      transform: translate(0, calc(var(--orbit-rx) * -0.32));
+    }
+    100% {
+      transform: translate(var(--orbit-rx), 0);
+    }
+  }
+  @keyframes twinkle {
+    0%,
+    100% {
+      opacity: 1;
+    }
+    50% {
+      opacity: 0.2;
+    }
+  }
+  @keyframes menu-in {
+    from {
+      opacity: 0;
+      transform: translateY(-6px);
+    }
+  }
+}
+
+/* Navy veil over the Venice night photo, used by heroes and dark bands. */
+@utility bg-field-navy {
+  background-color: var(--color-sg-deep);
+  background-image: linear-gradient(#040f4daf, #040f4daf), url("/images/venezia-notte.jpg");
+  background-position: 50%;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+@layer base {
+  /* Base typography of the original (Figma Make template), under Tailwind's utilities. */
+  * {
+    border-color: #06177324;
+    outline-color: color-mix(in oklab, var(--color-ai) 50%, transparent);
+  }
+  html {
+    font-size: 16px;
+  }
+  h1 {
+    font-size: var(--text-2xl);
+    font-weight: 500;
+    line-height: 1.5;
+  }
+  h2 {
+    font-size: var(--text-xl);
+    font-weight: 500;
+    line-height: 1.5;
+  }
+  h3 {
+    font-size: var(--text-lg);
+    font-weight: 500;
+    line-height: 1.5;
+  }
+  h4,
+  label,
+  button {
+    font-size: var(--text-base);
+    font-weight: 500;
+    line-height: 1.5;
+  }
+  input {
+    font-size: var(--text-base);
+    font-weight: 400;
+    line-height: 1.5;
+  }
+}
+
+/*
+ * Unlayered on purpose: the original declares these outside any layer, so they win over
+ * utilities (e.g. a focused element always gets this ring and a 4px radius).
+ */
+html {
+  scroll-behavior: auto;
+  overflow-x: clip;
+}
+body {
+  overflow-x: clip;
+  color: var(--color-ink);
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+  background: #fff;
+  font-family: var(--font-poppins), ui-sans-serif, system-ui, sans-serif;
+}
+:focus-visible {
+  outline: 2px solid var(--color-ai);
+  outline-offset: 3px;
+  border-radius: 4px;
+}
+h1,
+h2,
+h3 {
+  overflow-wrap: break-word;
+}
+@media (prefers-reduced-motion: reduce) {
+  *,
+  ::before,
+  ::after {
+    transition: none !important;
+    animation: none !important;
+  }
+}

@@ -8,7 +8,13 @@ import { mkdir, writeFile } from "node:fs/promises";
 import { createHash } from "node:crypto";
 import path from "node:path";
 import { parseArgs } from "node:util";
-import { chromium, type Browser, type Page, type FrameLocator, type Locator } from "@playwright/test";
+import {
+  chromium,
+  type Browser,
+  type Page,
+  type FrameLocator,
+  type Locator,
+} from "@playwright/test";
 
 const { values: args } = parseArgs({
   options: {
@@ -24,14 +30,22 @@ const base = args.base!;
 const out = path.resolve(args.out!);
 
 type Lang = "it" | "en";
-type PageDef = { id: string; path: string; legacyPath?: string; langs?: Lang[] };
+type PageDef = {
+  id: string;
+  path: string;
+  legacyPath?: string;
+  langs?: Lang[];
+};
 
 const PAGES: PageDef[] = [
   { id: "home", path: "/" },
   { id: "chi-siamo", path: "/chi-siamo" },
   { id: "servizi", path: "/servizi" },
   { id: "servizi-marketing", path: "/servizi/marketing" },
-  { id: "servizi-intelligenza-artificiale", path: "/servizi/intelligenza-artificiale" },
+  {
+    id: "servizi-intelligenza-artificiale",
+    path: "/servizi/intelligenza-artificiale",
+  },
   { id: "servizi-sviluppo-software", path: "/servizi/sviluppo-software" },
   { id: "servizi-google-ads", path: "/servizi/google-ads" },
   { id: "casi-studio", path: "/casi-studio" },
@@ -41,13 +55,23 @@ const PAGES: PageDef[] = [
   { id: "lavora-con-noi", path: "/lavora-con-noi" },
   { id: "contatti", path: "/contatti" },
   { id: "privacy", path: "/privacy" },
-  { id: "tour-operator", path: "/tour-operator", legacyPath: "/tour-operator-v2.html" },
-  { id: "platform", path: "/platform", legacyPath: "/platform/", langs: ["it"] },
+  {
+    id: "tour-operator",
+    path: "/tour-operator",
+    legacyPath: "/tour-operator-v2.html",
+  },
+  {
+    id: "platform",
+    path: "/platform",
+    legacyPath: "/platform/",
+    langs: ["it"],
+  },
 ];
 const WIDTHS = [375, 768, 1280, 1920];
 const START = new Date("2026-06-15T10:00:00Z");
 
-const urlFor = (p: PageDef, lang: Lang) => `${base}${legacy ? (p.legacyPath ?? p.path) : p.path}?lang=${lang}`;
+const urlFor = (p: PageDef, lang: Lang) =>
+  `${base}${legacy ? (p.legacyPath ?? p.path) : p.path}?lang=${lang}`;
 
 async function preparePage(browser: Browser, width: number, lang: Lang, height = 900) {
   const context = await browser.newContext({
@@ -59,11 +83,21 @@ async function preparePage(browser: Browser, width: number, lang: Lang, height =
   await page.clock.install({ time: START });
   await page.clock.pauseAt(new Date(START.getTime() + 1000));
   // external, time-dependent or side-effecting requests are stubbed identically for both sites
-  await page.route(/calendar\.google\.com/, (r) => r.fulfill({ contentType: "text/html", body: "<!doctype html><title>calendar</title>" }));
+  await page.route(/calendar\.google\.com/, (r) =>
+    r.fulfill({
+      contentType: "text/html",
+      body: "<!doctype html><title>calendar</title>",
+    }),
+  );
   await page.route(/supabase\.co/, (r) => r.fulfill({ status: 201, json: {} }));
   await page.route("**/api/invia-email", (r) => r.fulfill({ json: { ok: true } }));
   page.on("pageerror", (e) => console.warn(`  [pageerror] ${page.url()}: ${e.message}`));
-  page.on("console", (m) => m.type() === "error" && console.warn(`  [console.error] ${page.url()}: ${m.text().slice(0, 200)}`));
+  page.on(
+    "console",
+    (m) =>
+      m.type() === "error" &&
+      console.warn(`  [console.error] ${page.url()}: ${m.text().slice(0, 200)}`),
+  );
   return page;
 }
 
@@ -106,11 +140,18 @@ async function load(page: Page, url: string) {
 
 async function shoot(page: Page, file: string, fullPage = true) {
   await mkdir(path.dirname(file), { recursive: true });
-  await page.screenshot({ path: file, fullPage, animations: "disabled", caret: "hide" });
+  await page.screenshot({
+    path: file,
+    fullPage,
+    animations: "disabled",
+    caret: "hide",
+  });
 }
 
 const hashData = (href: string) =>
-  href.startsWith("data:") ? `${href.slice(0, href.indexOf(","))},sha1=${createHash("sha1").update(href).digest("hex").slice(0, 12)}` : href;
+  href.startsWith("data:")
+    ? `${href.slice(0, href.indexOf(","))},sha1=${createHash("sha1").update(href).digest("hex").slice(0, 12)}`
+    : href;
 
 async function headSnapshot(page: Page) {
   const head = await page.evaluate(() => ({
@@ -120,9 +161,14 @@ async function headSnapshot(page: Page) {
       Object.fromEntries(Array.from(m.attributes, (a) => [a.name, a.value])),
     ),
     links: Array.from(document.head.querySelectorAll("link"), (l) => ({
-      rel: l.rel, href: l.getAttribute("href") ?? "", type: l.type, sizes: l.getAttribute("sizes") ?? "",
+      rel: l.rel,
+      href: l.getAttribute("href") ?? "",
+      type: l.type,
+      sizes: l.getAttribute("sizes") ?? "",
     })),
-    jsonLd: Array.from(document.querySelectorAll('script[type="application/ld+json"]'), (s) => JSON.parse(s.textContent || "null")),
+    jsonLd: Array.from(document.querySelectorAll('script[type="application/ld+json"]'), (s) =>
+      JSON.parse(s.textContent || "null"),
+    ),
   }));
   head.links = head.links.map((l) => ({ ...l, href: hashData(l.href) }));
   return head;
@@ -144,7 +190,10 @@ for (const p of PAGES) {
           if (width === 1280) {
             await mkdir(path.join(out, "html"), { recursive: true });
             await writeFile(path.join(out, `html/${p.id}.${lang}.html`), await page.content());
-            await writeFile(path.join(out, `html/${p.id}.${lang}.head.json`), JSON.stringify(await headSnapshot(page), null, 2));
+            await writeFile(
+              path.join(out, `html/${p.id}.${lang}.head.json`),
+              JSON.stringify(await headSnapshot(page), null, 2),
+            );
           }
           await page.context().close();
         },
@@ -157,12 +206,26 @@ for (const p of PAGES) {
 const memberForm = (page: Page): FrameLocator | Page =>
   legacy ? page.frameLocator("#candidatura iframe") : page;
 
-function state(name: string, width: number, lang: Lang, pageId: string, act: (page: Page) => Promise<void>, fullPage = true, height?: number) {
+function state(
+  name: string,
+  width: number,
+  lang: Lang,
+  pageId: string,
+  act: (page: Page) => Promise<void>,
+  fullPage = true,
+  height?: number,
+) {
   jobs.push({
     name: `states/${name}`,
     run: async (browser) => {
       const page = await preparePage(browser, width, lang, height);
-      await load(page, urlFor(PAGES.find((p) => p.id === pageId)!, lang));
+      await load(
+        page,
+        urlFor(
+          PAGES.find((p) => p.id === pageId)!,
+          lang,
+        ),
+      );
       await act(page);
       await page.clock.runFor(800);
       await settle(page);
@@ -172,30 +235,87 @@ function state(name: string, width: number, lang: Lang, pageId: string, act: (pa
   });
 }
 
-const click = async (page: Page, target: Locator) => { await target.click(); await page.clock.runFor(500); };
+const click = async (page: Page, target: Locator) => {
+  await target.click();
+  await page.clock.runFor(500);
+};
 
 for (const lang of ["it", "en"] as Lang[]) {
   const menu = lang === "it" ? "Apri menu" : "Open menu";
   for (const pageId of ["home", "servizi", "contatti"]) {
-    state(`mobile-menu-open.${pageId}.${lang}`, 375, lang, pageId, (page) => click(page, page.getByRole("button", { name: menu })), false, 812);
+    state(
+      `mobile-menu-open.${pageId}.${lang}`,
+      375,
+      lang,
+      pageId,
+      (page) => click(page, page.getByRole("button", { name: menu })),
+      false,
+      812,
+    );
   }
-  state(`header-scrolled.home.${lang}`, 1280, lang, "home", async (page) => {
-    await page.evaluate(() => window.scrollTo(0, 900));
-    await page.clock.runFor(500);
-  }, false);
-  state(`skip-link-focus.home.${lang}`, 1280, lang, "home", async (page) => {
-    await page.keyboard.press("Tab");
-  }, false);
-  state(`logo-focus.home.${lang}`, 1280, lang, "home", async (page) => {
-    await page.keyboard.press("Tab");
-    await page.keyboard.press("Tab");
-  }, false);
-  state(`header-cta-hover.servizi.${lang}`, 1280, lang, "servizi", async (page) => {
-    await page.locator("header").getByRole("link", { name: lang === "it" ? "Contattaci" : "Contact us" }).first().hover();
-  }, false);
-  state(`nav-link-hover.servizi.${lang}`, 1280, lang, "servizi", async (page) => {
-    await page.locator("header nav").getByRole("link", { name: lang === "it" ? "Casi studio" : "Case studies" }).hover();
-  }, false);
+  state(
+    `header-scrolled.home.${lang}`,
+    1280,
+    lang,
+    "home",
+    async (page) => {
+      await page.evaluate(() => window.scrollTo(0, 900));
+      await page.clock.runFor(500);
+    },
+    false,
+  );
+  state(
+    `skip-link-focus.home.${lang}`,
+    1280,
+    lang,
+    "home",
+    async (page) => {
+      await page.keyboard.press("Tab");
+    },
+    false,
+  );
+  state(
+    `logo-focus.home.${lang}`,
+    1280,
+    lang,
+    "home",
+    async (page) => {
+      await page.keyboard.press("Tab");
+      await page.keyboard.press("Tab");
+    },
+    false,
+  );
+  state(
+    `header-cta-hover.servizi.${lang}`,
+    1280,
+    lang,
+    "servizi",
+    async (page) => {
+      await page
+        .locator("header")
+        .getByRole("link", {
+          name: lang === "it" ? "Contattaci" : "Contact us",
+        })
+        .first()
+        .hover();
+    },
+    false,
+  );
+  state(
+    `nav-link-hover.servizi.${lang}`,
+    1280,
+    lang,
+    "servizi",
+    async (page) => {
+      await page
+        .locator("header nav")
+        .getByRole("link", {
+          name: lang === "it" ? "Casi studio" : "Case studies",
+        })
+        .hover();
+    },
+    false,
+  );
 
   for (const width of [375, 1280]) {
     const fill = async (page: Page) => {
@@ -212,10 +332,17 @@ for (const lang of ["it", "en"] as Lang[]) {
     });
     state(`contact-error.${lang}.${width}`, width, lang, "contatti", async (page) => {
       await page.unroute("**/api/invia-email");
-      await page.route("**/api/invia-email", (r) => r.fulfill({ status: 502, json: { ok: false, errore: "Invio non riuscito" } }));
+      await page.route("**/api/invia-email", (r) =>
+        r.fulfill({
+          status: 502,
+          json: { ok: false, errore: "Invio non riuscito" },
+        }),
+      );
       const form = await fill(page);
       await form.locator('[type="submit"]').click();
-      await page.waitForFunction(() => document.querySelector('main a[href^="mailto:"][href*="body="]'));
+      await page.waitForFunction(() =>
+        document.querySelector('main a[href^="mailto:"][href*="body="]'),
+      );
     });
     state(`contact-input-focus.${lang}.${width}`, width, lang, "contatti", async (page) => {
       await page.locator('main form [name="email"]').first().focus();
@@ -223,7 +350,15 @@ for (const lang of ["it", "en"] as Lang[]) {
   }
 
   state(`lavora-con-noi-full-page.${lang}`, 1280, lang, "lavora-con-noi", async (page) => {
-    await click(page, page.getByRole("link", { name: lang === "it" ? "Scopri come si lavora in Studio Galilei" : "Discover how we work at Studio Galilei" }));
+    await click(
+      page,
+      page.getByRole("link", {
+        name:
+          lang === "it"
+            ? "Scopri come si lavora in Studio Galilei"
+            : "Discover how we work at Studio Galilei",
+      }),
+    );
   });
 }
 
@@ -245,7 +380,8 @@ for (const width of [375, 1280]) {
 const selected = jobs.filter((j) => !args.only || j.name.includes(args.only));
 console.log(`${legacy ? "legacy" : "next"} @ ${base} → ${out}: ${selected.length} shots`);
 const browser = await chromium.launch();
-let next = 0, failed = 0;
+let next = 0,
+  failed = 0;
 await Promise.all(
   Array.from({ length: Number(args.jobs) }, async () => {
     while (next < selected.length) {
