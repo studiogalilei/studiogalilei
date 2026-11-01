@@ -1,6 +1,7 @@
 .scratch/
 legacy/
 .visual-baseline/
+.visual-current/
 .visual-diff/
 node_modules/
 .next/
