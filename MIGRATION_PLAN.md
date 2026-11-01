@@ -1,6 +1,6 @@
 # Migration plan: Studio Galilei → Next.js (full stack)
 
-Branch: `nextjs-migration`. Status: **Phase 0 done, waiting for approval before Phase 1.**
+Branch: `nextjs-migration`. Status: **Phase 0 approved; Phase 1 (baseline) in progress.**
 
 Target versions (checked with `npm view` on 2026-11-01): **Next.js 16.4.3**, **Tailwind CSS 4.3.3**, **shadcn CLI 4.23.0**, React 19 (whatever Next 16.4 pins). Node 25 is installed locally; Vercel will use its default Node LTS.
 
@@ -161,10 +161,10 @@ app/
     servizi/[slug]/page.tsx  (generateStaticParams: marketing | intelligenza-artificiale | sviluppo-software)
     servizi/google-ads/page.tsx
     casi-studio/{tour-operator,dan-ink,onlysolutions}/page.tsx
-  tour-operator-v2/page.tsx    (own layout, no site header; /tour-operator-v2.html → 308 here)
+  tour-operator/page.tsx       (own layout, no site header; old URLs → 308 here)
   platform/page.tsx            (client app, own layout; Arial)
-  candidatura-member-club/page.tsx  (the form the /lavora-con-noi iframe loads, noindex)
   api/invia-email/route.ts     POST handler, same contract
+  (i18n via next-intl: app/[locale]/… internally, proxy.ts, messages/it.json + en.json)
 components/  (Header, MobileMenu, LanguageToggle, Footer, Section, Container, Heading, ButtonLink, ContactForm, WorldMap, Globe, Tiles, Marquee, BookingSection, SpaceDecor, …)
 lib/         email.ts (server-only), i18n.ts, content/* (page data), cn.ts
 public/      images, fonts, presentation PDF (extracted from data URIs)
@@ -218,23 +218,26 @@ If neither Button nor Input reaches parity, I'll use no shadcn at all and say so
 
 ---
 
-## 7. Decisions I need from you
+## 7. Decisions (confirmed by you on 2026-11-01)
 
-**A. How to render the IT/EN switch.** The original keeps language in client state (`?lang` → localStorage → `it`), so the server sends one empty HTML shell and the browser renders the right language. Static Next pages need one of these:
+**A. Language: next-intl, no locale in the URL.**
+- Same IT/EN switcher UI.
+- When the visitor has not chosen a language, the default follows their browser language (Accept-Language), with Italian as the fallback. This is a deliberate change: the original always defaulted to Italian.
+- The choice persists in next-intl's locale cookie. The `?lang=it|en` override is kept. `tour-operator` joins the same i18n setup instead of its CSS `.it`/`.en` blocks.
+- Pages stay statically prerendered per locale through next-intl's proxy rewrite (details per the current next-intl docs).
 
-1. **(Recommended) Cookie + `proxy.ts` rewrite to prerendered `it`/`en` variants.** Pages live under `app/[lang]/…` with both languages prerendered. The proxy reads `?lang=` or the `sg-lang` cookie and rewrites internally, so **URLs don't change** and `/it/…`, `/en/…` are not exposed. The toggle sets the cookie (and localStorage, for the tour page) and refreshes. Everything stays a Server Component, nothing flashes, and no text is duplicated. Cost: a small proxy runs on each page request, and returning EN visitors whose preference is only in localStorage get switched once on their first visit (a one-line client migration).
-2. **Client-side context, like today.** Italian is prerendered; EN users see the page hidden until hydration, which mimics the SPA's blank-until-JS. This is the most literal port, but nearly every component becomes `"use client"`.
-3. **Both languages in the HTML, toggled with CSS on `<html lang>`** (the approach `tour-operator-v2.html` already uses). Fully static Server Components and an instant toggle, but every page ships twice the text, and crawlers see hidden EN text.
+**B. Tour operator page → `/tour-operator`.** Permanent redirects from `/tour-operator-v2.html`, `/tour-operator-v2`, `/tour-operator.html` and trailing-slash variants. Internal links are updated. (`/casi-studio/tour-operator` is a different page and stays.)
 
-**B. `/tour-operator-v2.html`**: move it to `/tour-operator-v2` with a 308 from the `.html` URL (as your brief says), and update the internal link in the main nav and footer? (Today `/tour-operator-v2` without `.html` redirects to `/` through the SPA.)
+**C. Old builds and scripts** (`index-old.html`, `index-originale.html`, `modifiche/`, `LEGGIMI.md`): not ported, deleted in Phase 5.
 
-**C. Old builds and build scripts**: `index-old.html`, `index-originale.html`, `modifiche/`, and the publicly served `LEGGIMI.md` are not pages. I plan to **not** port them and to delete them in Phase 5. Their URLs will stop working (they are unlinked). OK?
+**D. Member Club form: a real Next component rendered inline on `/lavora-con-noi`, no iframe.**
+- The iframe's box stays: `surface-3`, `max-w-[56rem]`, rounded, and the 700/760px viewport with internal scroll, so the page looks the same.
+- The form's own styles are rebuilt in Tailwind. Supabase and email behavior are unchanged.
+- The iframe's `<head>` tags (noindex, OG) disappear, because they only applied inside the iframe.
 
-**D. Member Club form**: today it is an `<iframe srcDoc>` of a self-contained document. I plan to rebuild it as a React + Tailwind client page at an internal route (`/candidatura-member-club`, `noindex`) that the iframe loads by `src`. Same box, same internal scrolling, same Supabase and email calls. The alternative is keeping a static HTML file for it, but that breaks the "all Tailwind" rule. OK with the new internal URL?
+**E. Platform: 1:1 port to `/platform`** as a client route. It keeps the same localStorage/IndexedDB keys, and `/platform/` redirects to it.
 
-**E. Platform**: it is a large vanilla-JS prototype with local-only data. I plan to port it 1:1 to React + Tailwind as one client route at `/platform` (`/platform/` 308s to it), keeping localStorage/IndexedDB storage and the same keys so existing local data still loads. It is the least "site-like" part; confirm it's in scope.
-
-**F. Scope and effort warning**: this is a full rebuild of roughly 11k lines of compiled UI, plus a 1.3k-line landing page, a 900-line form wizard and a 1k-line prototype, with pixel-diff verification at 4 widths × 2 languages. It will take many iterations and commits. I'll work route by route (layout and home first) and report progress per phase.
+**F. Scope**: worked route by route, with progress reported per phase.
 
 ## 8. Improvement ideas (not doing them; parity first)
 
