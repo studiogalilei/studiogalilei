@@ -1,1 +1,133 @@
-{}
+{
+  "hero": {
+    "title": "<partner>One partner.</partner><br></br>All you need<br></br>to grow",
+    "intro": "We bring Marketing, AI and Software under one roof to cut lead times, simplify management and build systems that stay yours.",
+    "download": "Download the presentation",
+    "bookCall": "Book an intro call",
+    "exploreServices": "Explore our services"
+  },
+  "clients": {
+    "label": "Companies that have worked with Studio Galilei",
+    "title": "Some of the companies we have worked with"
+  },
+  "services": {
+    "kicker": "What we do",
+    "title": "Three skills, one partner",
+    "marketing": {
+      "name": "Marketing",
+      "short": "Google and Meta campaigns that bring customers, not clicks. Measurable from day one."
+    },
+    "intelligenza-artificiale": {
+      "name": "Artificial Intelligence",
+      "short": "AI applied to the processes that matter: analysis, automations and tools that work for you."
+    },
+    "sviluppo-software": {
+      "name": "Software Development",
+      "short": "Custom tools that stay yours: management systems, portals and integrations that simplify work."
+    }
+  },
+  "partners": {
+    "title": "What you get when you work with us",
+    "text": "Every partner has a private portal, a reachable team and a shared plan.",
+    "groups": [
+      {
+        "kicker": "In the portal",
+        "items": [
+          {
+            "title": "Projects and tasks",
+            "desc": "What is in progress, what is done, what comes next."
+          },
+          {
+            "title": "Reports and KPIs",
+            "desc": "The numbers that matter, updated without having to ask."
+          },
+          { "title": "Central archive", "desc": "Contracts, documents and materials in one place." }
+        ]
+      },
+      {
+        "kicker": "Working together",
+        "items": [
+          {
+            "title": "Dedicated group",
+            "desc": "A direct channel with the people working on your project."
+          },
+          {
+            "title": "Regular check-ins",
+            "desc": "Calls at a fixed cadence, with decisions put in writing."
+          },
+          {
+            "title": "Growth roadmap",
+            "desc": "The priorities for the coming months, shared and kept up to date."
+          }
+        ]
+      },
+      {
+        "kicker": "And more",
+        "items": [
+          {
+            "title": "Ownership of data and tools",
+            "desc": "Ad accounts, data, code and automations are registered to your company."
+          },
+          {
+            "title": "Subsidised finance",
+            "desc": "We check whether grants and incentives can cover part of your investment with Studio Galilei."
+          }
+        ]
+      }
+    ],
+    "apply": "Find out how we can apply it to your business"
+  },
+  "portal": {
+    "label": "Preview of the partner portal with sample data",
+    "tasks": "Tasks",
+    "caption": "Portal preview, sample data"
+  },
+  "cases": {
+    "kicker": "Case studies",
+    "title": "Behind the scenes of our results",
+    "danInk": "Lead generation for the No. 1 tattoo franchise in Italy <flag></flag>",
+    "flag": "Italy",
+    "onlySolutions": "€687,000.00 in 45 days<br></br>a Google Ads and Meta Ads ecosystem",
+    "tourOperator": "A tour operator's whole day<br></br>in a single app",
+    "readCase": "Read the case",
+    "all": "All case studies"
+  },
+  "googleAds": {
+    "kicker": "Technology & transparency",
+    "title": "Our Google Ads integration.",
+    "intro": "Studio Galilei uses the official Google Ads API to manage partners' campaigns. Directly on their accounts, securely and with explicit consent.",
+    "steps": [
+      {
+        "title": "We build",
+        "desc": "We create, edit and structure campaigns, ad groups and keywords."
+      },
+      {
+        "title": "We measure",
+        "desc": "We monitor impressions, clicks, costs and conversions in real time."
+      },
+      {
+        "title": "We optimise",
+        "desc": "We adjust bids and budgets based on observed results, not promises."
+      },
+      {
+        "title": "We report",
+        "desc": "We produce clear, regular reports that anyone can read, even outside the industry."
+      }
+    ],
+    "trust": [
+      {
+        "title": "Explicit consent",
+        "desc": "Access to the partner's Google Ads account happens only through Google OAuth, after explicit authorisation by the account owner. No shortcuts, no shared passwords."
+      },
+      {
+        "title": "Partner control",
+        "desc": "The partner keeps full control and can revoke the authorisation at any time from their Google Account settings."
+      },
+      {
+        "title": "Google API · Limited Use",
+        "desc": "We use the data we access only to provide and improve the campaign management services requested by the partner, in compliance with the <policy>Google API Services User Data Policy</policy>, including the Limited Use requirements."
+      }
+    ],
+    "note": "To learn in detail how we process, store and protect data, read our <privacy>Privacy Policy</privacy>."
+  }
+}

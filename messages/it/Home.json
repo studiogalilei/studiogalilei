@@ -1,1 +1,136 @@
-{}
+{
+  "hero": {
+    "title": "<partner>Un partner.</partner><br></br>Tutto il necessario<br></br>per crescere",
+    "intro": "Integriamo Marketing, AI e Software sotto lo stesso tetto per ridurre tempi, semplificare la gestione e costruire sistemi che restano tuoi.",
+    "download": "Scarica la presentazione",
+    "bookCall": "Prenota una chiamata conoscitiva",
+    "exploreServices": "Scopri i servizi"
+  },
+  "clients": {
+    "label": "Aziende che hanno lavorato con Studio Galilei",
+    "title": "Alcune aziende con cui abbiamo lavorato"
+  },
+  "services": {
+    "kicker": "Cosa facciamo",
+    "title": "Tre competenze, un solo partner",
+    "marketing": {
+      "name": "Marketing",
+      "short": "Campagne Google e Meta che portano clienti, non click. Misurabili dal primo giorno."
+    },
+    "intelligenza-artificiale": {
+      "name": "Intelligenza Artificiale",
+      "short": "AI applicata ai processi che contano: analisi, automazioni e strumenti che lavorano per te."
+    },
+    "sviluppo-software": {
+      "name": "Sviluppo Software",
+      "short": "Strumenti su misura che restano tuoi: gestionali, portali e integrazioni che semplificano il lavoro."
+    }
+  },
+  "partners": {
+    "title": "Cosa ricevi quando lavori con noi",
+    "text": "Ogni partner ha un portale riservato, un team raggiungibile e un piano condiviso.",
+    "groups": [
+      {
+        "kicker": "Nel portale",
+        "items": [
+          {
+            "title": "Progetti e attività",
+            "desc": "Cosa è in corso, cosa è chiuso, cosa viene dopo."
+          },
+          {
+            "title": "Report e KPI",
+            "desc": "I numeri che contano, aggiornati senza doverli chiedere."
+          },
+          {
+            "title": "Archivio centrale",
+            "desc": "Contratti, documenti e materiali in un unico posto."
+          }
+        ]
+      },
+      {
+        "kicker": "Lavorando insieme",
+        "items": [
+          {
+            "title": "Gruppo dedicato",
+            "desc": "Un canale diretto con chi lavora al tuo progetto."
+          },
+          {
+            "title": "Check periodici",
+            "desc": "Call a cadenza fissa, con decisioni messe per iscritto."
+          },
+          {
+            "title": "Roadmap di crescita",
+            "desc": "Le priorità dei prossimi mesi, condivise e aggiornate."
+          }
+        ]
+      },
+      {
+        "kicker": "In più",
+        "items": [
+          {
+            "title": "Titolarità di dati e strumenti",
+            "desc": "Account pubblicitari, dati, codice e automazioni sono intestati alla tua azienda."
+          },
+          {
+            "title": "Finanza agevolata",
+            "desc": "Verifichiamo se bandi e contributi possono coprire parte degli investimenti con Studio Galilei."
+          }
+        ]
+      }
+    ],
+    "apply": "Scopri come possiamo applicarlo alla tua realtà"
+  },
+  "portal": {
+    "label": "Anteprima del portale partner con dati di esempio",
+    "tasks": "Attività",
+    "caption": "Anteprima portale, dati di esempio"
+  },
+  "cases": {
+    "kicker": "Casi studio",
+    "title": "Dietro le quinte dei nostri risultati",
+    "danInk": "Lead Generation per il Franchising di Tatuaggi N1 in Italia <flag></flag>",
+    "flag": "Italia",
+    "onlySolutions": "687.000,00 € in 45 giorni<br></br>ecosistema di Google Ads e Meta Ads",
+    "tourOperator": "Tutta la giornata di un tour operator<br></br>in un'unica app",
+    "readCase": "Leggi il caso",
+    "all": "Tutti i casi studio"
+  },
+  "googleAds": {
+    "kicker": "Tecnologia & trasparenza",
+    "title": "La nostra integrazione con Google Ads.",
+    "intro": "Studio Galilei usa le API ufficiali di Google Ads per gestire le campagne dei partner. Direttamente sui loro account, in modo sicuro e con consenso esplicito.",
+    "steps": [
+      {
+        "title": "Costruiamo",
+        "desc": "Creiamo, modifichiamo e strutturiamo campagne, gruppi di annunci e parole chiave."
+      },
+      {
+        "title": "Misuriamo",
+        "desc": "Monitoriamo in tempo reale impressioni, clic, costi e conversioni."
+      },
+      {
+        "title": "Ottimizziamo",
+        "desc": "Aggiustiamo offerte e budget sulla base dei risultati osservati, non delle promesse."
+      },
+      {
+        "title": "Rendicontiamo",
+        "desc": "Generiamo report chiari e periodici, leggibili anche da chi non è del settore."
+      }
+    ],
+    "trust": [
+      {
+        "title": "Consenso esplicito",
+        "desc": "L'accesso all'account Google Ads del partner avviene solo tramite OAuth di Google, dopo autorizzazione esplicita del titolare. Nessuna scorciatoia, nessuna password condivisa."
+      },
+      {
+        "title": "Controllo del partner",
+        "desc": "Il partner mantiene il pieno controllo e può revocare l'autorizzazione in qualsiasi momento dalle impostazioni del proprio Account Google."
+      },
+      {
+        "title": "Google API · Limited Use",
+        "desc": "Usiamo i dati ai quali accediamo solo per erogare e migliorare i servizi di gestione delle campagne richiesti dal partner, nel rispetto della <policy>Google API Services User Data Policy</policy>, inclusi i requisiti di Uso Limitato."
+      }
+    ],
+    "note": "Per sapere nel dettaglio come trattiamo, conserviamo e proteggiamo i dati, consulta la nostra <privacy>Privacy Policy</privacy>."
+  }
+}

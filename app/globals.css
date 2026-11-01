@@ -99,7 +99,73 @@
   --animate-galaxy: spin 180s linear infinite;
   --animate-orbit: orbit 26s linear infinite;
   --animate-twinkle: twinkle 4s ease-in-out infinite;
+  /* home: hero tiles sway on touch screens; portal preview draws itself */
+  --animate-tile-sway: tile-sway 9s ease-in-out infinite;
+  --animate-chart-draw: chart-draw 1.6s 0.35s cubic-bezier(0.45, 0, 0.2, 1) forwards;
+  --animate-chart-area: appear 0.8s 1.4s ease forwards;
+  --animate-chart-dot: appear 0.3s 1.9s ease forwards, dot-pulse 2s 2.2s ease-in-out infinite;
+  --animate-bar-grow: bar-grow 0.7s cubic-bezier(0.2, 0.7, 0.2, 1) forwards;
+  --animate-kpi-rise: kpi-rise 0.6s cubic-bezier(0.2, 0.7, 0.2, 1) forwards;
 
+  @keyframes tile-sway {
+    0%,
+    100% {
+      --tile-rx: 0deg;
+      --tile-ry: 0deg;
+      --tile-mx: 0;
+      --tile-my: 0;
+    }
+    25% {
+      --tile-rx: 4deg;
+      --tile-ry: 7deg;
+      --tile-mx: 0.7;
+      --tile-my: -0.5;
+    }
+    50% {
+      --tile-rx: -2deg;
+      --tile-ry: 2deg;
+      --tile-mx: 0.2;
+      --tile-my: 0.6;
+    }
+    75% {
+      --tile-rx: -4deg;
+      --tile-ry: -6deg;
+      --tile-mx: -0.7;
+      --tile-my: -0.2;
+    }
+  }
+  @keyframes chart-draw {
+    to {
+      stroke-dashoffset: 0;
+    }
+  }
+  @keyframes appear {
+    to {
+      opacity: 1;
+    }
+  }
+  @keyframes dot-pulse {
+    0%,
+    100% {
+      transform: scale(1);
+      filter: drop-shadow(0 0 0 #0689ff00);
+    }
+    50% {
+      transform: scale(1.35);
+      filter: drop-shadow(0 0 5px #0689ffb3);
+    }
+  }
+  @keyframes bar-grow {
+    to {
+      transform: scaleX(1);
+    }
+  }
+  @keyframes kpi-rise {
+    to {
+      opacity: 1;
+      translate: 0 0;
+    }
+  }
   @keyframes marquee {
     to {
       transform: translate(-50%);
@@ -227,6 +293,28 @@
   background-position: 50%;
   background-repeat: no-repeat;
   background-size: cover;
+}
+
+/* Hero tiles tilt/parallax, set from the pointer: registered so they can transition and animate. */
+@property --tile-rx {
+  syntax: "<angle>";
+  initial-value: 0deg;
+  inherits: true;
+}
+@property --tile-ry {
+  syntax: "<angle>";
+  initial-value: 0deg;
+  inherits: true;
+}
+@property --tile-mx {
+  syntax: "<number>";
+  initial-value: 0;
+  inherits: true;
+}
+@property --tile-my {
+  syntax: "<number>";
+  initial-value: 0;
+  inherits: true;
 }
 
 @layer base {
