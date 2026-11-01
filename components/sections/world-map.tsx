@@ -16,7 +16,7 @@ const projection = geoNaturalEarth1().fitExtent(
   ],
   { type: "FeatureCollection", features: land },
 );
-const path = geoPath(projection);
+const path = geoPath(projection).digits(2);
 const highlighted = new Set<string>(workedIn.flatMap((p) => ("country" in p ? [p.country] : [])));
 
 /** "We Work WorldWide": world map with the countries and places we have worked in. */

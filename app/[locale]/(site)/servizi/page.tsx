@@ -1,5 +1,6 @@
 import { useTranslations } from "next-intl";
 import { CoffeeCta } from "@/components/sections/cta-band";
+import { ClientMessages } from "@/components/client-messages";
 import { Globe } from "@/components/services/globe";
 import { Container } from "@/components/ui/container";
 import { pageMetadata } from "@/lib/metadata";
@@ -38,7 +39,9 @@ export default function ServicesPage() {
             </ol>
             <div>
               <div className="lg:sticky lg:top-28">
-                <Globe />
+                <ClientMessages namespaces={["Services", "WorldMap"]}>
+                  <Globe />
+                </ClientMessages>
               </div>
             </div>
           </div>

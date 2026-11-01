@@ -19,7 +19,7 @@ const d =
       ],
       world,
     ),
-  )(world) ?? "";
+  ).digits(2)(world) ?? "";
 
 export function WorldBackdrop() {
   return (
