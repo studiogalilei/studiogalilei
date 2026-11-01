@@ -1,1 +1,74 @@
-{}
+{
+  "intro": "Abbiamo sviluppato progetti per partner con diverse esigenze, in diversi settori e in diversi continenti.",
+  "below": "<highlight>Qui sotto</highlight> vediamo come un gestionale su misura porta efficienza e un risparmio di tempo concreto, area per area. Alcune di queste soluzioni sono già operative presso nostri partner.",
+  "title": "Tutta la giornata di un tour operator<br></br>in un'unica app",
+  "app": {
+    "title": "Le cinque aree dell'app",
+    "text": "Le schermate qui sotto sono viste operative con i dati oscurati.",
+    "screens": [
+      {
+        "screen": "overview",
+        "tag": "Dashboard",
+        "title": "Lo stato dell'operatività in una pagina",
+        "desc": "Stato dei messaggi, delle liste passeggeri e della sincronizzazione prenotazioni in un riepilogo unico: il team vede cosa richiede attenzione senza aprire più sistemi."
+      },
+      {
+        "screen": "calendar",
+        "tag": "Calendario",
+        "title": "Prenotazioni e capienza per data",
+        "desc": "Prenotazioni, capienza, note, totali e stati di allerta in un formato denso, per rivedere in fretta i prossimi giorni e intercettare i problemi prima che arrivino."
+      },
+      {
+        "screen": "lists",
+        "tag": "Liste passeggeri",
+        "title": "Stato dei report e accesso sicuro ai PDF",
+        "desc": "Stato dei report per data e prodotto: inviato, programmato, fallito, fermato e ripreso. I PDF generati si aprono o si condividono con link brevi e sicuri."
+      },
+      {
+        "screen": "resources",
+        "tag": "Risorse",
+        "title": "Assegnazioni di guide e autisti",
+        "desc": "Assegnazioni per data e prodotto, con viste separate per esigenze di mezzi, idoneità e contatti scelti. Niente più appunti sparsi."
+      },
+      {
+        "screen": "messages",
+        "tag": "Messaggi",
+        "title": "WhatsApp, SMS di riserva e avvisi manuali",
+        "desc": "Comunicazione ai clienti per data di servizio: inviati, falliti, di riserva e in attesa. Gli admin possono mandare avvisi SMS manuali quando serve un aggiornamento urgente."
+      }
+    ]
+  },
+  "digitalise": "Digitalizza l'azienda.<br></br>Recupera parte dell'investimento.",
+  "taxCredits": "Software e automazioni su misura, con il supporto per accedere ai crediti d'imposta.",
+  "recoverCta": "Scopri quanto puoi recuperare",
+  "results": {
+    "title": "Cosa è cambiato, in pratica",
+    "beforeAfter": [
+      [
+        "Per osservare una giornata serviva aprire prenotazioni, chat e fogli di calcolo, uno per uno.",
+        "Una sola schermata mostra tutto: prenotazioni, liste passeggeri, messaggi e guide."
+      ],
+      [
+        "Se un messaggio a un cliente non arrivava, ce ne si accorgeva tardi, spesso quando chiamava il cliente.",
+        "I messaggi non consegnati su WhatsApp vengono consegnati automaticamente via SMS, e se non succede compare una notifica."
+      ],
+      [
+        "Le liste passeggeri si preparavano a mano e si mandavano alle guide via email o chat.",
+        "Le liste diventano un PDF autocompilato e vengono condivise automaticamente con un link che si autoelimina dopo 24h, in modo ordinato."
+      ],
+      [
+        "Per avvisare i clienti di un cambio dell'ultimo minuto bisognava scrivere o chiamare uno per uno.",
+        "Dalla dashboard si manda un SMS ai clienti interessati in pochi clic."
+      ],
+      [
+        "Quale guida e quale autista seguivano ogni tour era scritto su fogli e appunti sparsi. Dopo l'assegnazione, la parte più costosa in termini di tempo era la comunicazione.",
+        "Guide e autisti si assegnano nel calendario, accanto alle prenotazioni del giorno, aggiornando automaticamente anche la schermata dell'autista con le informazioni necessarie."
+      ]
+    ]
+  },
+  "before": "Prima",
+  "after": "Dopo",
+  "automate": "Automatizziamo i processi della tua azienda",
+  "taxIncentives": "Ti seguiamo nell'accesso alle agevolazioni fiscali disponibili",
+  "analysisCta": "Prenota un'analisi gratuita"
+}
