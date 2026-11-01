@@ -2,7 +2,7 @@ import { useTranslations } from "next-intl";
 import { ItalianFlag } from "@/components/case-studies/backdrops";
 import { CaseScreen } from "@/components/case-studies/case-screen";
 import { ChevronRight } from "@/components/icons";
-import { ButtonLink } from "@/components/ui/button-link";
+import { ButtonLink } from "@/components/ui/button";
 import { Container } from "@/components/ui/container";
 import { Link } from "@/i18n/navigation";
 

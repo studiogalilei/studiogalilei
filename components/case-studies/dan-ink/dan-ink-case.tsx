@@ -1,9 +1,10 @@
 import { useTranslations } from "next-intl";
 import { ArrowUpRight, Check, Funnel, Network, Scale, Target } from "@/components/icons";
 import { ApplyCta } from "@/components/sections/apply-cta";
-import { ButtonLink } from "@/components/ui/button-link";
+import { ButtonLink } from "@/components/ui/button";
 import { Container } from "@/components/ui/container";
 import { Section, SectionHeading } from "@/components/ui/section";
+import { StepNumber } from "@/components/ui/step-number";
 import { cn } from "@/lib/cn";
 
 const ARTICLE_URL =
@@ -155,9 +156,7 @@ function ClientSection() {
               <ol className="mt-5 space-y-4">
                 {intro.goals.map((goal, i) => (
                   <li key={goal} className="flex items-center gap-4">
-                    <span className="grid size-9 flex-none place-items-center rounded-10 bg-sg text-16 font-semibold text-white">
-                      {i + 1}
-                    </span>
+                    <StepNumber n={i + 1} className="flex-none text-16" />
                     <span className="min-w-0 text-[1.15rem] leading-snug font-semibold -tracking-1 [overflow-wrap:anywhere] text-sg min-[380px]:text-[1.3rem] md:text-1.5rem">
                       {goal}
                     </span>

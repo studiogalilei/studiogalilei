@@ -3,6 +3,7 @@ import { ApplyCta } from "@/components/sections/apply-cta";
 import { CtaBand } from "@/components/sections/cta-band";
 import { Container } from "@/components/ui/container";
 import { Section } from "@/components/ui/section";
+import { StepNumber } from "@/components/ui/step-number";
 import { cn } from "@/lib/cn";
 
 type Translate = ReturnType<typeof useTranslations>;
@@ -176,9 +177,7 @@ export function OnlySolutionsCase() {
           <ol className="mt-12 grid gap-5 md:grid-cols-3">
             {data.method.map((step, i) => (
               <li key={step.title} className="rounded-18 bg-white p-7 shadow-surface-2">
-                <span className="grid size-9 place-items-center rounded-10 bg-sg text-15 font-semibold text-white">
-                  {i + 1}
-                </span>
+                <StepNumber n={i + 1} />
                 <h3 className="mt-5 text-17 font-semibold text-sg">{step.title}</h3>
                 <p className="mt-2 text-15 leading-1.7 text-ink/65">{step.text}</p>
               </li>

@@ -1,9 +1,10 @@
 import { useTranslations } from "next-intl";
 import { cn } from "@/lib/cn";
 import { EmailLink, WhatsAppLink } from "./context";
-import { MailIcon, TapIcon, WhatsAppIcon } from "./icons";
+import { ContactButton } from "./contact-button";
+import { TapIcon } from "./icons";
 import { PainChecklist } from "./pain-checklist";
-import { button, ctaDot, ctaNote, fieldNavy, h2, kicker, lead, reveal, section, wrap } from "./ui";
+import { ctaDot, ctaNote, fieldNavy, h2, kicker, lead, reveal, section, wrap } from "./ui";
 
 const stripIcon = (path: React.ReactNode) => (
   <span className="grid size-10 flex-none place-items-center rounded-xl bg-pale text-sg max-tour-sm:size-[34px] max-tour-sm:rounded-10">
@@ -171,14 +172,8 @@ export function Band() {
             </p>
           </div>
           <div className="flex flex-wrap gap-3.5">
-            <WhatsAppLink className={button({ kind: "whatsapp" })}>
-              <WhatsAppIcon />
-              <span>WhatsApp</span>
-            </WhatsAppLink>
-            <EmailLink className={button({ kind: "email", dark: true, delayGlow: true })}>
-              <MailIcon />
-              <span>Email</span>
-            </EmailLink>
+            <ContactButton kind="whatsapp" label="WhatsApp" />
+            <ContactButton kind="email" label="Email" dark delayGlow />
           </div>
         </div>
       </div>
@@ -328,14 +323,8 @@ export function Steps() {
           ))}
         </ol>
         <div className="mt-11 flex flex-wrap gap-3.5">
-          <WhatsAppLink className={button({ kind: "whatsapp", lightGlow: true })}>
-            <WhatsAppIcon />
-            <span>{t("parliamoneSuWhatsapp")}</span>
-          </WhatsAppLink>
-          <EmailLink className={button({ kind: "email", delayGlow: true, lightGlow: true })}>
-            <MailIcon />
-            <span>{t("scriviciUnaEmail")}</span>
-          </EmailLink>
+          <ContactButton kind="whatsapp" label={t("parliamoneSuWhatsapp")} lightGlow />
+          <ContactButton kind="email" label={t("scriviciUnaEmail")} delayGlow lightGlow />
         </div>
       </div>
     </section>
@@ -419,16 +408,8 @@ export function Final() {
             {t("unaPrimaConversazionePerMappare")}
           </p>
           <div className="flex flex-wrap justify-center gap-3.5">
-            <WhatsAppLink className={button({ kind: "whatsapp", size: "final" })}>
-              <WhatsAppIcon />
-              <span>{t("scriviciSuWhatsapp")}</span>
-            </WhatsAppLink>
-            <EmailLink
-              className={button({ kind: "email", size: "final", dark: true, delayGlow: true })}
-            >
-              <MailIcon />
-              <span>{t("scriviciUnaEmail")}</span>
-            </EmailLink>
+            <ContactButton kind="whatsapp" label={t("scriviciSuWhatsapp")} size="final" />
+            <ContactButton kind="email" label={t("scriviciUnaEmail")} size="final" dark delayGlow />
           </div>
           <p className={cn(ctaNote, "justify-center text-white/70")}>
             <i aria-hidden="true" className={ctaDot} />

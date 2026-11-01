@@ -7,7 +7,7 @@ import {
 } from "@/components/case-studies/backdrops";
 import { CaseScreen } from "@/components/case-studies/case-screen";
 import { CoffeeCta } from "@/components/sections/cta-band";
-import { ButtonLink } from "@/components/ui/button-link";
+import { ButtonLink } from "@/components/ui/button";
 import { Container } from "@/components/ui/container";
 import { Link } from "@/i18n/navigation";
 import { cn } from "@/lib/cn";

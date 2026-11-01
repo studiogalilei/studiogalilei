@@ -79,7 +79,7 @@ export function Header() {
       className={cn(
         "sticky top-0 z-50 border-b",
         sky
-          ? "-mb-[72px] border-b-transparent bg-transparent transition-[background-color,border-color,backdrop-filter] duration-[350ms] ease-[ease]"
+          ? "-mb-[73px] border-b-transparent bg-transparent transition-[background-color,border-color,backdrop-filter] duration-[350ms] ease-[ease]"
           : "border-sg/10 bg-white",
         solidSky && "border-b-white/10 bg-[#061773e0] backdrop-blur-md",
       )}

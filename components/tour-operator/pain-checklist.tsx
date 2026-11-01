@@ -1,9 +1,9 @@
 "use client";
 
 import { cn } from "@/lib/cn";
-import { useTour, WhatsAppLink } from "./context";
-import { CheckIcon, WhatsAppIcon } from "./icons";
-import { button } from "./ui";
+import { useTour } from "./context";
+import { ContactButton } from "./contact-button";
+import { CheckIcon } from "./icons";
 
 /**
  * "Tap the ones that sound familiar": picking at least two pain points reveals a WhatsApp
@@ -68,10 +68,7 @@ export function PainChecklist({
             <p className="max-w-[300px] text-15.5 leading-[1.5] [&_b]:block [&_b]:text-17 [&_b]:text-white">
               {cta}
             </p>
-            <WhatsAppLink pain className={button({ kind: "whatsapp", size: "pain" })}>
-              <WhatsAppIcon />
-              <span>{ctaButton}</span>
-            </WhatsAppLink>
+            <ContactButton kind="whatsapp" label={ctaButton} size="pain" pain />
           </div>
         </div>
       </div>

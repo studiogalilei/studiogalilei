@@ -1,10 +1,9 @@
 import { useTranslations } from "next-intl";
 import { cn } from "@/lib/cn";
 import { CaseLink } from "./case-controls";
-import { EmailLink, WhatsAppLink } from "./context";
-import { MailIcon, WhatsAppIcon } from "./icons";
+import { ContactButton } from "./contact-button";
 import { Showcase } from "./showcase";
-import { button, ctaDot, ctaNote } from "./ui";
+import { ctaDot, ctaNote } from "./ui";
 
 const richTags = {
   b: (chunks: React.ReactNode) => <b>{chunks}</b>,
@@ -59,16 +58,8 @@ export function Hero() {
         <Showcase />
         <div className="self-start [grid-area:cta] max-tour-md:mx-auto max-tour-md:w-full max-tour-md:max-w-[760px]">
           <div id="hero-cta" className="flex flex-wrap gap-3">
-            <WhatsAppLink className={button({ kind: "whatsapp", size: "hero" })}>
-              <WhatsAppIcon />
-              <span>{t("scriviciSuWhatsapp")}</span>
-            </WhatsAppLink>
-            <EmailLink
-              className={button({ kind: "email", size: "hero", dark: true, delayGlow: true })}
-            >
-              <MailIcon />
-              <span>{t("scriviciUnaEmail")}</span>
-            </EmailLink>
+            <ContactButton kind="whatsapp" label={t("scriviciSuWhatsapp")} size="hero" />
+            <ContactButton kind="email" label={t("scriviciUnaEmail")} size="hero" dark delayGlow />
           </div>
           <p className={cn(ctaNote, "text-white/70")}>
             <i aria-hidden="true" className={ctaDot} />

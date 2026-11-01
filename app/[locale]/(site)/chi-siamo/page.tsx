@@ -1,7 +1,7 @@
 import { useTranslations } from "next-intl";
 import { PrincipleIcon } from "@/components/about/principle-icon";
 import { ContactForm } from "@/components/contact/contact-form";
-import { ButtonLink } from "@/components/ui/button-link";
+import { ButtonLink } from "@/components/ui/button";
 import { Container } from "@/components/ui/container";
 import { Section, SectionHeading } from "@/components/ui/section";
 import { company } from "@/lib/company";

@@ -3,9 +3,8 @@
 import { useTranslations } from "next-intl";
 import { useEffect, useState } from "react";
 import { cn } from "@/lib/cn";
-import { EmailLink, useTour, WhatsAppLink } from "./context";
-import { MailIcon, WhatsAppIcon } from "./icons";
-import { button } from "./ui";
+import { useTour } from "./context";
+import { ContactButton } from "./contact-button";
 
 /** Reveal-on-scroll for [data-reveal] blocks and click-to-zoom for [data-zoom] screenshots. */
 export function TourEffects() {
@@ -158,14 +157,8 @@ export function StickyBar() {
         show && !lightbox && "translate-y-0",
       )}
     >
-      <WhatsAppLink className={button({ kind: "whatsapp", size: "sticky" })}>
-        <WhatsAppIcon />
-        <span>WhatsApp</span>
-      </WhatsAppLink>
-      <EmailLink className={button({ kind: "email", size: "sticky", delayGlow: true })}>
-        <MailIcon />
-        <span>Email</span>
-      </EmailLink>
+      <ContactButton kind="whatsapp" label="WhatsApp" size="sticky" />
+      <ContactButton kind="email" label="Email" size="sticky" delayGlow />
     </div>
   );
 }

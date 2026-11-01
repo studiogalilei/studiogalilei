@@ -5,7 +5,7 @@ import { LogoTree } from "@/components/logo";
 import { CtaBand } from "@/components/sections/cta-band";
 import { PageHero } from "@/components/sections/page-hero";
 import { isServiceSlug, services } from "@/components/services/services";
-import { ButtonLink } from "@/components/ui/button-link";
+import { ButtonLink } from "@/components/ui/button";
 import { Container } from "@/components/ui/container";
 import { Section } from "@/components/ui/section";
 import { Link } from "@/i18n/navigation";

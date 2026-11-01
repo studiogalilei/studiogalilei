@@ -39,33 +39,27 @@ const sizes: Record<ButtonSize, string> = {
   pain: "min-h-[54px] gap-3 px-[22px] py-3.5 text-15.5 [&>svg]:size-6",
   final:
     "min-h-[72px] gap-3 px-10 py-[22px] text-19 max-tour-sm:min-h-[62px] max-tour-sm:px-5 max-tour-sm:py-[18px] max-tour-sm:text-17 [&>svg]:size-6",
-  sticky:
-    "min-h-[52px] flex-1 gap-2 rounded-xl px-2.5 py-3 text-15.5 after:rounded-2xl [&>svg]:size-5",
+  sticky: "min-h-[52px] flex-1 gap-2 rounded-xl px-2.5 py-3 text-15.5 [&>svg]:size-5",
 };
 
 /**
- * Conversion buttons with a thin light travelling around the border.
+ * Conversion buttons (the light travelling around the border is in contact-button.tsx).
  * `dark` is the translucent email button used on navy backgrounds.
  */
 export function button({
   kind,
   size = "default",
   dark = false,
-  delayGlow = false,
   lightGlow = false,
 }: {
   kind: ButtonKind;
   size?: ButtonSize;
   dark?: boolean;
-  delayGlow?: boolean;
   lightGlow?: boolean;
 }) {
   return cn(
     "relative inline-flex cursor-pointer items-center justify-center rounded-14 border-0 font-semibold whitespace-nowrap no-underline [transition:translate_.25s_cubic-bezier(.2,.7,.2,1),scale_.25s_cubic-bezier(.2,.7,.2,1),box-shadow_.25s_ease,background_.15s_ease] hover:-translate-y-0.5 focus-visible:rounded-14! focus-visible:outline-offset-4! focus-visible:outline-[#7cc4ff]! active:translate-y-0 active:scale-[.985] max-tour-sm:w-full [&>svg]:flex-none",
-    // travelling light: a masked conic gradient on ::before, a blurred copy on ::after
-    "[--glow-2:#8fd0ff] before:pointer-events-none before:absolute before:inset-0 before:z-2 before:animate-glow before:rounded-[inherit] before:bg-[conic-gradient(from_var(--glow-angle),transparent_0deg,transparent_200deg,var(--glow-2)_250deg,#fff_318deg,var(--glow-2)_338deg,transparent_360deg)] before:p-[1.2px] before:[mask:linear-gradient(#000_0_0)_content-box_exclude,linear-gradient(#000_0_0)] hover:before:[animation-duration:1.8s] motion-reduce:before:bg-[linear-gradient(135deg,rgba(255,255,255,0.7),transparent_50%,rgba(143,208,255,0.6))]",
-    "after:pointer-events-none after:absolute after:-inset-1 after:z-0 after:animate-glow after:rounded-[18px] after:bg-[conic-gradient(from_var(--glow-angle),transparent_0deg,transparent_200deg,var(--glow-2)_250deg,#fff_318deg,var(--glow-2)_338deg,transparent_360deg)] after:p-1 after:opacity-60 after:blur-[3px] after:[mask:linear-gradient(#000_0_0)_content-box_exclude,linear-gradient(#000_0_0)] hover:after:[animation-duration:1.8s] motion-reduce:after:hidden",
-    delayGlow && "before:[animation-delay:-1.9s] after:[animation-delay:-1.9s]",
+    "group/cta [--glow-2:#8fd0ff]",
     lightGlow && "[--glow-2:#3aa0ff]",
     kind === "whatsapp" &&
       "bg-[linear-gradient(180deg,#22b86a,#1daa61_60%,#189a57)] text-white shadow-[0_18px_40px_-14px_rgba(29,170,97,0.7),inset_0_1px_0_rgba(255,255,255,0.28)] hover:bg-[#178f51] hover:bg-none",
@@ -83,5 +77,8 @@ export function button({
 
 /** Green "live" dot followed by a short reassurance line. */
 export const ctaNote = "mt-4 flex items-center gap-2 text-14";
-export const ctaDot =
-  "size-2 flex-none animate-live-ping rounded-full bg-[#3bd47e] shadow-[0_0_0_0_rgba(59,212,126,0.6)]";
+/** Green "live" dot: a ring pulses out of it. */
+export const livePing =
+  "relative after:absolute after:inset-0 after:animate-live-ping after:rounded-full after:bg-[#3bd47e]";
+
+export const ctaDot = cn("size-2 flex-none rounded-full bg-[#3bd47e]", livePing);

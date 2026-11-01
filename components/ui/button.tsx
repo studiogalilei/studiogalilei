@@ -31,6 +31,27 @@ export function ButtonLink({
   );
 }
 
+/** A `<button>` with the same look as the links, e.g. a form's submit button. */
+export function Button({
+  variant = "primary",
+  className,
+  type = "button",
+  ...props
+}: React.ComponentProps<"button"> & { variant?: ButtonVariant }) {
+  return (
+    <button
+      type={type}
+      className={cn(
+        base,
+        "disabled:cursor-not-allowed disabled:opacity-60",
+        variants[variant],
+        className,
+      )}
+      {...props}
+    />
+  );
+}
+
 export function DownloadLink({
   href,
   filename,

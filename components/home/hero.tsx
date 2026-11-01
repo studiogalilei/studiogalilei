@@ -1,6 +1,6 @@
 import { useTranslations } from "next-intl";
 import { Download } from "@/components/icons";
-import { ButtonLink, DownloadLink } from "@/components/ui/button-link";
+import { ButtonLink, DownloadLink } from "@/components/ui/button";
 import { Container } from "@/components/ui/container";
 import { presentationPdf } from "@/lib/company";
 import { HeroTiles } from "./hero-tiles";

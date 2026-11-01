@@ -1,6 +1,5 @@
 import type { Metadata, Viewport } from "next";
 import { CardTilt } from "@/components/effects/card-tilt";
-import { SpaceDecor } from "@/components/effects/space-decor";
 import { Footer } from "@/components/layout/footer";
 import { Header } from "@/components/layout/header";
 import { SkipLink } from "@/components/layout/skip-link";
@@ -54,7 +53,6 @@ export default function SiteLayout({ children }: LayoutProps<"/[locale]">) {
         {children}
       </main>
       <Footer />
-      <SpaceDecor />
       <CardTilt />
     </div>
   );

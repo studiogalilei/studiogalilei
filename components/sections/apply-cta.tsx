@@ -23,7 +23,7 @@ export function ApplyCta({ label, stamps = false }: { label?: React.ReactNode; s
         />
         <span
           aria-hidden="true"
-          className="pointer-events-none absolute top-0 -left-1/3 h-full w-1/3 -skew-x-12 animate-sweep bg-white/15 blur-md transition-[left] duration-700 group-hover:left-[110%] group-hover:animate-none"
+          className="pointer-events-none absolute inset-y-0 left-0 w-1/3 -skew-x-12 animate-sweep bg-linear-to-r from-transparent via-white/25 to-transparent"
         />
         <Search
           size={24}

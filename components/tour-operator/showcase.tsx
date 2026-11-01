@@ -4,6 +4,7 @@ import { useLocale, useTranslations } from "next-intl";
 import { useEffect, useRef, useState } from "react";
 import { cn } from "@/lib/cn";
 import { SmallLockIcon } from "./icons";
+import { livePing } from "./ui";
 
 const DURATION = 5200;
 const TOAST_SHOWN = 3400;
@@ -187,7 +188,7 @@ export function Showcase() {
               <span>{SCREENS[current].url}</span>
             </span>
             <span className="inline-flex items-center gap-1.5 text-10.5 font-semibold tracking-[0.06em] text-[#1c8c52] uppercase max-tour-sm:text-[9px]">
-              <i className="size-[7px] animate-live-ping rounded-full bg-[#2bc172]" />
+              <i className={cn("size-[7px] rounded-full bg-[#2bc172]", livePing)} />
               Live
             </span>
           </div>

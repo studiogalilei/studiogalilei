@@ -90,27 +90,31 @@
   /* Tour operator landing page (/tour-operator) */
   --breakpoint-tour-sm: 45.0625rem; /* max-tour-sm: ≤ 720px */
   --breakpoint-tour-md: 66.3125rem; /* max-tour-md: ≤ 1060px */
-  --animate-glow: glow-orbit 3.8s linear infinite;
+  --animate-glow: glow-spin 3.8s linear infinite;
   --animate-live-ping: live-ping 2s infinite;
   --animate-bob: bob 6s ease-in-out infinite;
   --animate-fade-up: fade-up 0.45s cubic-bezier(0.2, 0.7, 0.2, 1);
   --animate-fade-up-fast: fade-up 0.35s cubic-bezier(0.2, 0.7, 0.2, 1);
   --animate-progress: progress var(--progress-duration, 5s) linear forwards;
 
-  @keyframes glow-orbit {
+  @keyframes glow-spin {
     to {
-      --glow-angle: 360deg;
+      rotate: 360deg;
     }
   }
+  /* a ring spreading ~9px around the dot; scale and opacity only, so the GPU animates it */
   @keyframes live-ping {
     0% {
-      box-shadow: 0 0 0 0 rgba(59, 212, 126, 0.55);
+      scale: 1;
+      opacity: 0.55;
     }
     70% {
-      box-shadow: 0 0 0 9px rgba(59, 212, 126, 0);
+      scale: 3.25;
+      opacity: 0;
     }
     100% {
-      box-shadow: 0 0 0 0 rgba(59, 212, 126, 0);
+      scale: 1;
+      opacity: 0;
     }
   }
   @keyframes bob {
@@ -148,9 +152,6 @@
   --animate-sweep: sweep 4.5s ease-in-out infinite;
   --animate-nudge: nudge 2.6s ease-in-out infinite;
   --animate-stamp: stamp 0.45s cubic-bezier(0.3, 1.6, 0.5, 1) forwards;
-  --animate-galaxy: spin 180s linear infinite;
-  --animate-orbit: orbit 26s linear infinite;
-  --animate-twinkle: twinkle 4s ease-in-out infinite;
   /* home: hero tiles sway on touch screens; portal preview draws itself */
   --animate-tile-sway: tile-sway 9s ease-in-out infinite;
   --animate-chart-draw: chart-draw 1.6s 0.35s cubic-bezier(0.45, 0, 0.2, 1) forwards;
@@ -223,7 +224,7 @@
       transform: translate(-50%);
     }
   }
-  /* "Scopri se possiamo applicarlo…" button: pulsing halo, passing glint, nudging icon */
+  /* "Scopri … applicarlo" button: pulsing halo, passing glint, nudging icon */
   @keyframes beacon {
     0% {
       box-shadow:
@@ -244,14 +245,15 @@
         0 0 0 0 #0a239100;
     }
   }
+  /* the glint is a third of the button wide: from just off the left edge to past the right */
   @keyframes sweep {
     0%,
     55% {
-      left: -33%;
+      translate: -130% 0;
     }
     85%,
     100% {
-      left: 110%;
+      translate: 330% 0;
     }
   }
   @keyframes nudge {
@@ -277,33 +279,6 @@
     100% {
       opacity: 1;
       transform: rotate(var(--rot)) scale(1);
-    }
-  }
-  /* Decorative space in light sections: the planet runs along an ellipse rx × 0.32 rx */
-  @keyframes orbit {
-    0% {
-      transform: translate(var(--orbit-rx), 0);
-    }
-    25% {
-      transform: translate(0, calc(var(--orbit-rx) * 0.32));
-    }
-    50% {
-      transform: translate(calc(var(--orbit-rx) * -1), 0);
-    }
-    75% {
-      transform: translate(0, calc(var(--orbit-rx) * -0.32));
-    }
-    100% {
-      transform: translate(var(--orbit-rx), 0);
-    }
-  }
-  @keyframes twinkle {
-    0%,
-    100% {
-      opacity: 1;
-    }
-    50% {
-      opacity: 0.2;
     }
   }
   /* Member Club form: each screen rises in; the closing mark blooms */
@@ -367,13 +342,6 @@
   syntax: "<number>";
   initial-value: 0;
   inherits: true;
-}
-
-/* Angle of the light travelling around the tour operator page's buttons. */
-@property --glow-angle {
-  syntax: "<angle>";
-  inherits: false;
-  initial-value: 0deg;
 }
 
 @layer base {

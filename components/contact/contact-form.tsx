@@ -3,6 +3,7 @@
 import { useTranslations } from "next-intl";
 import { useState } from "react";
 import { CircleCheck, Mail } from "@/components/icons";
+import { Button } from "@/components/ui/button";
 import { company } from "@/lib/company";
 
 const label = "mb-2 block text-14 font-medium text-sg";
@@ -147,13 +148,9 @@ export function ContactForm() {
         className="hidden"
       />
       <div className="flex flex-col items-start gap-3 pt-1">
-        <button
-          type="submit"
-          disabled={sending}
-          className="w-full rounded-10 bg-sg px-6 py-3.5 text-15 font-medium text-white hover:bg-sg-deep disabled:cursor-not-allowed disabled:opacity-60 sm:w-auto"
-        >
+        <Button type="submit" disabled={sending} className="w-full sm:w-auto">
           {sending ? t("sending") : t("send")}
-        </button>
+        </Button>
         {error && (
           <p role="alert" className="text-14 leading-relaxed">
             {error}
