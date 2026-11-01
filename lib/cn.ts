@@ -17,6 +17,11 @@ const twMerge = extendTailwindMerge({
         "mk",
         "ai",
         "sw",
+        "platform-ink",
+        "platform-line",
+        "platform-mid",
+        "platform-danger",
+        "platform-green",
       ],
       text: [
         ...[
