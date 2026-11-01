@@ -86,6 +86,10 @@
     0 64px 120px -32px #040f4d4d;
   --shadow-surface-dark: inset 0 1px #ffffff1a, 0 0 0 1px #ffffff0f, 0 24px 48px -16px #01041e8c;
 
+  --animate-mc-enter: mc-enter 0.34s cubic-bezier(0.22, 0.61, 0.36, 1) both;
+  --animate-mc-title: mc-enter 0.5s 0.42s cubic-bezier(0.22, 0.61, 0.36, 1) both;
+  --animate-mc-rise: mc-enter 0.5s cubic-bezier(0.22, 0.61, 0.36, 1) both;
+  --animate-mc-bloom: mc-bloom 1.05s cubic-bezier(0.22, 0.9, 0.3, 1) both;
   --animate-marquee: marquee 38s linear infinite;
   --animate-menu-in: menu-in 0.22s ease both;
   --animate-beacon: beacon 2.6s ease-out infinite;
@@ -182,6 +186,30 @@
     }
     50% {
       opacity: 0.2;
+    }
+  }
+  /* Member Club form: each screen rises in; the closing mark blooms */
+  @keyframes mc-enter {
+    from {
+      opacity: 0;
+      transform: translateY(14px);
+    }
+    to {
+      opacity: 1;
+      transform: none;
+    }
+  }
+  @keyframes mc-bloom {
+    0% {
+      opacity: 0;
+      transform: scale(0.82) translateY(10px);
+    }
+    60% {
+      opacity: 1;
+    }
+    100% {
+      opacity: 1;
+      transform: none;
     }
   }
   @keyframes menu-in {

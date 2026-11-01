@@ -1,1 +1,27 @@
-{}
+{
+  "title": "Working at Studio Galilei",
+  "mission": {
+    "title": "Our mission",
+    "text": "Making what drives business growth visible and governable, by building Italy's most talented team in marketing, software and AI."
+  },
+  "startingPoint": {
+    "title": "The starting point",
+    "text": "At Studio Galilei, method, direction, systems and investment share one goal: putting you in a position to perform at your best. Pay is tied to results."
+  },
+  "workIsSeen": {
+    "title": "Here your work is seen",
+    "text": "Every result is measured and credited to whoever produced it. Whoever moves the numbers wins. Your decisions, your merit."
+  },
+  "growth": {
+    "title": "Growth and autonomy",
+    "text": "You work across different markets (Italy, the United States, Switzerland, Turkey, the Netherlands) with a clear method and full autonomy. You know what is expected of you and you choose how to get there, with a team always ready to help."
+  },
+  "howWeWork": {
+    "title": "How we work",
+    "text": "Studio Galilei invests in acquiring partners and building tools that multiply the value of your work. You are the protagonist, and you are never alone."
+  },
+  "vision": "If your <brush>vision</brush> matches ours",
+  "goToForm": "Go to the application form",
+  "formLabel": "Application to the Studio Galilei Member Club",
+  "showPage": "Discover how we work at Studio Galilei"
+}
