@@ -1,1 +1,88 @@
-{}
+{
+  "hero": {
+    "kicker": "Informativa",
+    "title": "Privacy Policy.",
+    "meta": "Ultimo aggiornamento 25 giugno 2026 · Versione 1.0",
+    "intro": "La presente informativa descrive come i liberi professionisti che operano con il marchio «Studio Galilei» raccolgono, utilizzano, conservano e proteggono i dati personali, inclusi i dati a cui accediamo tramite le API di Google quando gestiamo gli account pubblicitari dei nostri partner.",
+    "footer": "Privacy Policy · v1.0 · studiogalilei.com"
+  },
+  "sections": {
+    "titolari": "Titolari del trattamento",
+    "dati": "Dati trattati",
+    "finalita": "Finalità e basi giuridiche",
+    "uso-limitato": "Google API · Uso Limitato",
+    "conservazione": "Modalità e conservazione",
+    "destinatari": "Destinatari",
+    "extra-ue": "Trasferimenti extra-UE",
+    "diritti": "Diritti dell'interessato",
+    "cookie": "Cookie",
+    "modifiche": "Modifiche",
+    "contatti": "Contatti"
+  },
+  "controllers": [
+    {
+      "name": "Carlo Durigon",
+      "vat": "P.IVA IT05504640268",
+      "address": "Via Creta 47, 31057 Silea (TV)",
+      "services": "Gestione e ottimizzazione delle campagne pubblicitarie e analisi del traffico. Responsabile dell'accesso ai dati tramite le API di Google: il progetto Google Cloud, il developer token e l'account Google Ads (MCC) sono a lui intestati."
+    },
+    {
+      "name": "Studio Galilei Srl",
+      "vat": "P.IVA e C.F. IT05642810260",
+      "address": "Via Francesco Baracca 81, 31035 Crocetta del Montello (TV)",
+      "services": "Project management, coordinamento partner e consulenza strategica sui progetti affidati a Studio Galilei."
+    }
+  ],
+  "googleData": [
+    "struttura e impostazioni dell'account e delle campagne;",
+    "parole chiave, annunci, gruppi di annunci e relativi asset;",
+    "metriche di performance (impressioni, clic, costi, conversioni);",
+    "report e statistiche di rendimento."
+  ],
+  "purposes": [
+    "Erogazione dei servizi di creazione, gestione, monitoraggio e ottimizzazione delle campagne pubblicitarie sugli account dei partner (esecuzione di un contratto).",
+    "Reportistica e analisi dei risultati a beneficio del partner (esecuzione di un contratto).",
+    "Riscontro a richieste di contatto e attività precontrattuali (consenso, misure precontrattuali).",
+    "Adempimenti di legge e tutela dei diritti (obbligo legale, legittimo interesse)."
+  ],
+  "limitedUse": [
+    "utilizziamo i dati ottenuti dalle API di Google esclusivamente per fornire e migliorare le funzionalità di gestione e ottimizzazione delle campagne richieste dal partner;",
+    "non vendiamo tali dati e non li trasferiamo a terzi, se non nella misura necessaria a erogare il servizio, per adempiere a obblighi di legge o nell'ambito di un'operazione di fusione o acquisizione, previa adeguata informativa;",
+    "non utilizziamo i dati delle API di Google per finalità di pubblicità personalizzata;",
+    "non consentiamo a persone fisiche di leggere tali dati, salvo: previo consenso del partner, per finalità di sicurezza, per adempiere a obblighi di legge, o quando i dati sono aggregati e anonimizzati e utilizzati per operazioni interne."
+  ],
+  "indice": "Indice",
+  "chiTrattaITuoiDati": "Chi tratta i tuoi dati.",
+  "ilMarchioStudioGalileiE": "Il marchio «Studio Galilei» è utilizzato da due liberi professionisti autonomi, ciascuno titolare del trattamento per i servizi di propria competenza.",
+  "servizi": "Servizi",
+  "perQualsiasiRichiestaRelativaAl": "Per qualsiasi richiesta relativa al trattamento dei dati è possibile scrivere a ",
+  "qualiDatiRaccogliamo": "Quali dati raccogliamo.",
+  "datiFornitiVolontariamente": "Dati forniti volontariamente",
+  "datiDiContattoNomeEmailTelefono": "Dati di contatto (nome, email, telefono, nome dell'azienda) inviati tramite i moduli del sito, l'email o altri canali, al fine di richiedere informazioni o servizi.",
+  "datiDegliAccountGoogleDeiPartner": "Dati degli account Google dei partner",
+  "nellAmbitoDeiServiziDiGestione": "Nell'ambito dei servizi di gestione delle campagne pubblicitarie, i partner possono autorizzarci, tramite il consenso OAuth di Google, ad accedere ai propri account Google Ads. Attraverso le API di Google Ads possiamo accedere a:",
+  "taliDatiAppartengonoAllAccount": "Tali dati appartengono all'account Google del partner che concede l'autorizzazione. L'accesso avviene esclusivamente previo consenso esplicito del titolare dell'account tramite il flusso OAuth di Google e può essere revocato in qualsiasi momento dalla pagina ",
+  "permessiDelProprioAccountGoogle": "Permessi del proprio Account Google",
+  "datiDiNavigazioneECookie": "Dati di navigazione e cookie",
+  "duranteLaNavigazioneDelSito": "Durante la navigazione del sito possono essere raccolti dati tecnici (indirizzo IP, tipo di browser, pagine visitate) e dati tramite cookie, come descritto al ",
+  "paragrafo09": "paragrafo 09",
+  "percheTrattiamoIDati": "Perché trattiamo i dati.",
+  "comeUsiamoIDatiDelleApiDiGoogle": "Come usiamo i dati delle API di Google.",
+  "lUsoEIlTrasferimentoDaParteDi": "L'uso e il trasferimento da parte di Studio Galilei delle informazioni ricevute dalle API di Google saranno conformi alla",
+  "inclusiIRequisitiDiUsoLimitato": " inclusi i requisiti di Uso Limitato (Limited Use).",
+  "inParticolare": "In particolare:",
+  "comeTrattiamoEPerQuanto": "Come trattiamo e per quanto.",
+  "iDatiSonoTrattatiConStrumenti": "I dati sono trattati con strumenti elettronici, adottando misure tecniche e organizzative adeguate a garantirne sicurezza e riservatezza. L'accesso ai dati degli account Google avviene di norma in tempo reale tramite le API; eventuali dati conservati (ad esempio report) sono mantenuti per il tempo necessario alle finalità indicate e agli obblighi di legge, e successivamente cancellati o anonimizzati.",
+  "chiPuoAccedereAiDati": "Chi può accedere ai dati.",
+  "iDatiPossonoEssereTrattatiDa": "I dati possono essere trattati da Studio Galilei e dai collaboratori professionali che operano sotto il medesimo marchio, autorizzati al trattamento e vincolati a obblighi di riservatezza, nonché da fornitori che agiscono come responsabili del trattamento (servizi di hosting, strumenti di analisi e reportistica). L'elenco aggiornato dei responsabili è disponibile su richiesta all'indirizzo ",
+  "datiFuoriDalloSpazioEconomico": "Dati fuori dallo Spazio Economico Europeo.",
+  "alcuniFornitoriTraCuiGoogle": "Alcuni fornitori (tra cui Google) possono trattare dati al di fuori dello Spazio Economico Europeo. In tali casi il trasferimento avviene nel rispetto del GDPR, sulla base di garanzie adeguate quali le Clausole Contrattuali Standard approvate dalla Commissione Europea.",
+  "iTuoiDiritti": "I tuoi diritti.",
+  "aiSensiDegliArtt1522DelGdprL": "Ai sensi degli artt. 15–22 del GDPR, l'interessato ha diritto di accedere ai propri dati, chiederne la rettifica o la cancellazione, limitarne od opporsi al trattamento, e richiederne la portabilità. È inoltre possibile revocare in qualsiasi momento il consenso e proporre reclamo al Garante per la protezione dei dati personali. Le richieste vanno inviate a ",
+  "cookieETracciamenti": "Cookie e tracciamenti.",
+  "ilSitoUtilizzaCookieTecniciE": "Il sito utilizza cookie tecnici e, previo consenso, cookie analitici o di terze parti. La gestione delle preferenze è disponibile tramite l'apposito banner. Per maggiori dettagli è possibile consultare la Cookie Policy del sito.",
+  "aggiornamentiDellInformativa": "Aggiornamenti dell'informativa.",
+  "studioGalileiSiRiservaDi": "Studio Galilei si riserva di aggiornare la presente Privacy Policy. Le modifiche saranno pubblicate su questa pagina con indicazione della data di ultimo aggiornamento.",
+  "haiUnaDomandaSuiTuoiDati": "Hai una domanda sui tuoi dati?",
+  "perQualsiasiRichiestaRelativa": "Per qualsiasi richiesta relativa alla presente informativa o al trattamento dei dati personali scrivici a "
+}

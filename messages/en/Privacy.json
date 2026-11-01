@@ -1,1 +1,88 @@
-{}
+{
+  "hero": {
+    "kicker": "Notice",
+    "title": "Privacy Policy.",
+    "meta": "Last updated 25 June 2026 · Version 1.0",
+    "intro": "This notice describes how the independent professionals operating under the «Studio Galilei» brand collect, use, store and protect personal data, including the data we access through Google APIs when we manage our partners' advertising accounts.",
+    "footer": "Privacy Policy · v1.0 · studiogalilei.com"
+  },
+  "sections": {
+    "titolari": "Data controllers",
+    "dati": "Data processed",
+    "finalita": "Purposes and legal bases",
+    "uso-limitato": "Google API · Limited Use",
+    "conservazione": "Methods and retention",
+    "destinatari": "Recipients",
+    "extra-ue": "Transfers outside the EU",
+    "diritti": "Data subject rights",
+    "cookie": "Cookies",
+    "modifiche": "Changes",
+    "contatti": "Contact"
+  },
+  "controllers": [
+    {
+      "name": "Carlo Durigon",
+      "vat": "VAT no. IT05504640268",
+      "address": "Via Creta 47, 31057 Silea (TV), Italy",
+      "services": "Management and optimisation of advertising campaigns and traffic analysis. Responsible for data access through Google APIs: the Google Cloud project, the developer token and the Google Ads (MCC) account are registered in his name."
+    },
+    {
+      "name": "Studio Galilei Srl",
+      "vat": "VAT no. and tax code IT05642810260",
+      "address": "Via Francesco Baracca 81, 31035 Crocetta del Montello (TV), Italy",
+      "services": "Project management, partner coordination and strategic consulting on the projects entrusted to Studio Galilei."
+    }
+  ],
+  "googleData": [
+    "account and campaign structure and settings;",
+    "keywords, ads, ad groups and related assets;",
+    "performance metrics (impressions, clicks, costs, conversions);",
+    "performance reports and statistics."
+  ],
+  "purposes": [
+    "Providing services for the creation, management, monitoring and optimisation of advertising campaigns on partners' accounts (performance of a contract).",
+    "Reporting and analysis of results for the partner's benefit (performance of a contract).",
+    "Responding to contact requests and pre-contractual activities (consent, pre-contractual measures).",
+    "Legal obligations and protection of rights (legal obligation, legitimate interest)."
+  ],
+  "limitedUse": [
+    "we use data obtained from Google APIs solely to provide and improve the campaign management and optimisation features requested by the partner;",
+    "we do not sell this data and do not transfer it to third parties, except to the extent necessary to provide the service, to comply with legal obligations or as part of a merger or acquisition, with appropriate notice;",
+    "we do not use Google API data for personalised advertising purposes;",
+    "we do not allow humans to read this data, except: with the partner's prior consent, for security purposes, to comply with legal obligations, or when the data is aggregated and anonymised and used for internal operations."
+  ],
+  "indice": "Contents",
+  "chiTrattaITuoiDati": "Who processes your data.",
+  "ilMarchioStudioGalileiE": "The «Studio Galilei» brand is used by two independent professionals, each acting as data controller for the services within their remit.",
+  "servizi": "Services",
+  "perQualsiasiRichiestaRelativaAl": "For any request concerning the processing of data, you can write to ",
+  "qualiDatiRaccogliamo": "What data we collect.",
+  "datiFornitiVolontariamente": "Data provided voluntarily",
+  "datiDiContattoNomeEmailTelefono": "Contact data (name, email, phone, company name) sent through the website forms, by email or through other channels, in order to request information or services.",
+  "datiDegliAccountGoogleDeiPartner": "Data from partners' Google accounts",
+  "nellAmbitoDeiServiziDiGestione": "As part of our advertising campaign management services, partners can authorise us, through Google OAuth consent, to access their Google Ads accounts. Through the Google Ads API we can access:",
+  "taliDatiAppartengonoAllAccount": "This data belongs to the Google account of the partner granting authorisation. Access takes place only with the explicit prior consent of the account owner through the Google OAuth flow and can be revoked at any time from the ",
+  "permessiDelProprioAccountGoogle": "Permissions page of their Google Account",
+  "datiDiNavigazioneECookie": "Browsing data and cookies",
+  "duranteLaNavigazioneDelSito": "While browsing the site, technical data (IP address, browser type, pages visited) and data through cookies may be collected, as described in ",
+  "paragrafo09": "section 09",
+  "percheTrattiamoIDati": "Why we process data.",
+  "comeUsiamoIDatiDelleApiDiGoogle": "How we use Google API data.",
+  "lUsoEIlTrasferimentoDaParteDi": "Studio Galilei's use and transfer of information received from Google APIs will adhere to the",
+  "inclusiIRequisitiDiUsoLimitato": " including the Limited Use requirements.",
+  "inParticolare": "In particular:",
+  "comeTrattiamoEPerQuanto": "How we process data and for how long.",
+  "iDatiSonoTrattatiConStrumenti": "Data is processed with electronic tools, adopting technical and organisational measures appropriate to guarantee its security and confidentiality. Access to Google account data normally takes place in real time through the APIs; any stored data (for example reports) is kept for the time needed for the stated purposes and legal obligations, and then deleted or anonymised.",
+  "chiPuoAccedereAiDati": "Who can access the data.",
+  "iDatiPossonoEssereTrattatiDa": "Data may be processed by Studio Galilei and by the professional collaborators operating under the same brand, who are authorised to process it and bound by confidentiality obligations, as well as by suppliers acting as data processors (hosting services, analytics and reporting tools). The up-to-date list of processors is available on request at ",
+  "datiFuoriDalloSpazioEconomico": "Data outside the European Economic Area.",
+  "alcuniFornitoriTraCuiGoogle": "Some suppliers (including Google) may process data outside the European Economic Area. In such cases the transfer complies with the GDPR, on the basis of appropriate safeguards such as the Standard Contractual Clauses approved by the European Commission.",
+  "iTuoiDiritti": "Your rights.",
+  "aiSensiDegliArtt1522DelGdprL": "Under Articles 15–22 of the GDPR, data subjects have the right to access their data, request its rectification or erasure, restrict or object to its processing, and request its portability. They may also withdraw their consent at any time and lodge a complaint with the Italian Data Protection Authority (Garante per la protezione dei dati personali). Requests should be sent to ",
+  "cookieETracciamenti": "Cookies and tracking.",
+  "ilSitoUtilizzaCookieTecniciE": "The site uses technical cookies and, with prior consent, analytics or third-party cookies. Preferences can be managed through the dedicated banner. For more details, see the site's Cookie Policy.",
+  "aggiornamentiDellInformativa": "Updates to this notice.",
+  "studioGalileiSiRiservaDi": "Studio Galilei reserves the right to update this Privacy Policy. Changes will be published on this page with the date of the last update.",
+  "haiUnaDomandaSuiTuoiDati": "Have a question about your data?",
+  "perQualsiasiRichiestaRelativa": "For any request concerning this notice or the processing of personal data, write to us at "
+}
