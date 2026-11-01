@@ -1,1 +1,151 @@
-{}
+{
+  "clientName": "Dän Ink",
+  "title": "Più contatti a un costo più basso per un franchising di tatuaggi",
+  "stats": [
+    {
+      "value": "+56%",
+      "label": "contatti generati"
+    },
+    {
+      "value": "−20%",
+      "label": "costi di acquisizione"
+    },
+    {
+      "value": "−36%",
+      "label": "costo medio per contatto nel primo mese",
+      "short": "costo medio per contatto"
+    },
+    {
+      "value": "70%",
+      "label": "progetti di media o grande entità"
+    }
+  ],
+  "intro": {
+    "lead": "Dän Ink è un franchising di tatuaggi con 8 studi attivi in Italia. Il Tempo lo ha descritto come il franchising che in poco più di un anno si è imposto come leader nazionale del settore.",
+    "caption": "Il Tempo, articolo su Dän Ink e Christopher Dän",
+    "articleDate": "1 dicembre 2025",
+    "articleCta": "Leggi l'articolo",
+    "articleCtaFull": "Leggi l'articolo completo",
+    "startedOn": "Il nostro lavoro è iniziato a maggio 2025.",
+    "goalsTitle": "Obiettivi:",
+    "goals": [
+      "Aumentare il numero lead",
+      "Aumentare il valore di ogni lead",
+      "Diminuire i costi, contemporaneamente"
+    ]
+  },
+  "method": {
+    "problemsTitle": "La nostra analisi di partenza e i nostri interventi",
+    "problems": [
+      {
+        "label": "Pubblico.",
+        "text": "Parametri di targeting troppo generici, che disperdevano il budget su persone senza intenzione reale di tatuarsi."
+      },
+      {
+        "label": "Impostazione delle campagne.",
+        "text": "Impostazioni tecniche e distribuzione del budget da rivedere."
+      },
+      {
+        "label": "Analisi.",
+        "text": "Mancava una lettura completa di chi è il cliente e perché sceglie uno studio invece di un altro."
+      }
+    ],
+    "analysesTitle": "Le analisi che abbiamo fatto",
+    "analyses": [
+      {
+        "icon": "target",
+        "title": "Bisogni e intenzioni",
+        "desc": "Mappati bisogni, problemi, motivazioni emotive e razionali e intenzioni di ricerca dei potenziali clienti."
+      },
+      {
+        "icon": "scale",
+        "title": "Ostacoli e leve di scelta",
+        "desc": "Identificati i freni e le leve che decidono la prenotazione, per correggere comunicazione e posizionamento."
+      },
+      {
+        "icon": "network",
+        "title": "Dati del franchising",
+        "desc": "Incrociati dati demografici e informazioni interne, qualitative e quantitative, degli studi."
+      },
+      {
+        "icon": "funnel",
+        "title": "Contenuti e funnel",
+        "desc": "Dalle analisi sono usciti i temi dei contenuti, la struttura del funnel e le proposte su misura per ogni tipo di cliente."
+      }
+    ]
+  },
+  "results": {
+    "title": "I numeri prima e dopo",
+    "text": "Fatto 100 il punto di partenza, ecco dove sono arrivati contatti e costi di acquisizione.",
+    "beforeLabel": "prima",
+    "afterLabel": "dopo",
+    "bars": [
+      {
+        "group": "Contatti",
+        "before": 100,
+        "after": 156
+      },
+      {
+        "group": "Costi",
+        "before": 100,
+        "after": 80
+      }
+    ],
+    "notesTitle": "Due dati da leggere con attenzione",
+    "notes": [
+      "Il -36% rappresenta la diminuzione del costo per contatto, mentre il -20% rappresenta la diminuzione dell'investimento totale del budget: leggerli insieme dimostra non solo un risparmio significativo, ma anche, contemporaneamente, un aumento dei risultati significativo.",
+      "Il 70% dei contatti classificabili riguarda progetti di media o grande entità."
+    ],
+    "calculation": {
+      "title": "Quanto rende ogni euro investito rispetto a prima",
+      "intro": "Mettendo insieme i due dati sullo stesso periodo, fatto 100 il punto di partenza:",
+      "rows": [
+        {
+          "label": "Prima",
+          "formula": "100 contatti ÷ 100 di budget",
+          "value": "1,00"
+        },
+        {
+          "label": "Dopo",
+          "formula": "156 contatti ÷ 80 di budget",
+          "value": "1,95"
+        }
+      ],
+      "unit": "contatti per ogni unità di budget",
+      "comparison": "1,95 ÷ 1,00 = 1,95 volte la resa di prima",
+      "takeaway": "Ogni 1 € investito dopo il nostro arrivo valeva 1,95 € in confronto a prima."
+    },
+    "statusesTitle": "Dove finiscono i contatti",
+    "statusesText": "Ogni contatto viene tracciato in uno di quattro stati, così si vede dove il funnel perde e dove serve un follow up.",
+    "statuses": [
+      {
+        "title": "Prenotato",
+        "desc": "ha fissato una consulenza in studio"
+      },
+      {
+        "title": "Da risentire",
+        "desc": "in attesa di follow up"
+      },
+      {
+        "title": "Perso",
+        "desc": "ha scelto di non procedere"
+      },
+      {
+        "title": "Nessuna risposta",
+        "desc": "non ha mai risposto"
+      }
+    ]
+  },
+  "cta": {
+    "title": "e se anche il tuo budget pubblicitario potesse valere X2, da oggi?",
+    "button": "Prenota una videochiamata o un caffè con noi."
+  },
+  "ui": {
+    "srTitle": "Caso studio",
+    "logoAlt": "Logo Dän Ink",
+    "articleOn": "su Il Tempo",
+    "statsLabel": "I numeri del caso studio",
+    "comparison": "Confronto",
+    "multiplier": "×1,95"
+  }
+}

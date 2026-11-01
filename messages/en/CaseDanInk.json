@@ -1,1 +1,151 @@
-{}
+{
+  "clientName": "Dän Ink",
+  "title": "More leads at a lower cost for a tattoo franchise",
+  "stats": [
+    {
+      "value": "+56%",
+      "label": "leads generated"
+    },
+    {
+      "value": "−20%",
+      "label": "acquisition costs"
+    },
+    {
+      "value": "−36%",
+      "label": "average cost per lead in the first month",
+      "short": "average cost per lead"
+    },
+    {
+      "value": "70%",
+      "label": "medium or large projects"
+    }
+  ],
+  "intro": {
+    "lead": "Dän Ink is a tattoo franchise with 8 active studios in Italy. Il Tempo described it as the franchise that, in little more than a year, has become the national leader in its sector.",
+    "caption": "Il Tempo, article on Dän Ink and Christopher Dän",
+    "articleDate": "1 December 2025",
+    "articleCta": "Read the article",
+    "articleCtaFull": "Read the full article",
+    "startedOn": "Our work began in May 2025.",
+    "goalsTitle": "Goals:",
+    "goals": [
+      "Increase the number of leads",
+      "Increase the value of each lead",
+      "Lower costs, at the same time"
+    ]
+  },
+  "method": {
+    "problemsTitle": "Our starting analysis and what we changed",
+    "problems": [
+      {
+        "label": "Audience.",
+        "text": "Targeting parameters that were too generic, spreading the budget over people with no real intention of getting a tattoo."
+      },
+      {
+        "label": "Campaign setup.",
+        "text": "Technical settings and budget allocation that needed reworking."
+      },
+      {
+        "label": "Analysis.",
+        "text": "There was no complete picture of who the customer is and why they choose one studio over another."
+      }
+    ],
+    "analysesTitle": "The analyses we carried out",
+    "analyses": [
+      {
+        "icon": "target",
+        "title": "Needs and intentions",
+        "desc": "We mapped the needs, problems, emotional and rational motivations and search intentions of potential customers."
+      },
+      {
+        "icon": "scale",
+        "title": "Obstacles and decision levers",
+        "desc": "We identified the barriers and levers that drive a booking, to correct communication and positioning."
+      },
+      {
+        "icon": "network",
+        "title": "Franchise data",
+        "desc": "We cross-referenced demographic data with the studios' internal qualitative and quantitative information."
+      },
+      {
+        "icon": "funnel",
+        "title": "Content and funnel",
+        "desc": "The analyses produced the content themes, the funnel structure and tailored offers for each type of customer."
+      }
+    ]
+  },
+  "results": {
+    "title": "The numbers before and after",
+    "text": "With the starting point set at 100, here is where leads and acquisition costs ended up.",
+    "beforeLabel": "before",
+    "afterLabel": "after",
+    "bars": [
+      {
+        "group": "Leads",
+        "before": 100,
+        "after": 156
+      },
+      {
+        "group": "Costs",
+        "before": 100,
+        "after": 80
+      }
+    ],
+    "notesTitle": "Two figures to read carefully",
+    "notes": [
+      "The −36% is the reduction in cost per lead, while the −20% is the reduction in total budget invested: read together, they show not only a significant saving but, at the same time, a significant increase in results.",
+      "70% of classifiable leads concern medium or large projects."
+    ],
+    "calculation": {
+      "title": "What every euro invested returns compared with before",
+      "intro": "Putting the two figures together over the same period, with the starting point set at 100:",
+      "rows": [
+        {
+          "label": "Before",
+          "formula": "100 leads ÷ 100 of budget",
+          "value": "1.00"
+        },
+        {
+          "label": "After",
+          "formula": "156 leads ÷ 80 of budget",
+          "value": "1.95"
+        }
+      ],
+      "unit": "leads per unit of budget",
+      "comparison": "1.95 ÷ 1.00 = 1.95 times the previous return",
+      "takeaway": "Every €1 invested after we arrived was worth €1.95 compared with before."
+    },
+    "statusesTitle": "Where leads end up",
+    "statusesText": "Every lead is tracked in one of four statuses, so you can see where the funnel leaks and where a follow-up is needed.",
+    "statuses": [
+      {
+        "title": "Booked",
+        "desc": "has scheduled a consultation at the studio"
+      },
+      {
+        "title": "Follow up",
+        "desc": "waiting for a follow-up"
+      },
+      {
+        "title": "Lost",
+        "desc": "decided not to proceed"
+      },
+      {
+        "title": "No reply",
+        "desc": "never replied"
+      }
+    ]
+  },
+  "cta": {
+    "title": "what if your advertising budget could be worth 2X too, starting today?",
+    "button": "Book a video call or a coffee with us."
+  },
+  "ui": {
+    "srTitle": "Case study",
+    "logoAlt": "Dän Ink logo",
+    "articleOn": "on Il Tempo",
+    "statsLabel": "The numbers of the case study",
+    "comparison": "Comparison",
+    "multiplier": "×1.95"
+  }
+}
