@@ -1,1 +1,8 @@
-{}
+{
+  "title": "Coffee or video call?",
+  "intro": "We are here to listen. A coffee or a call to compare notes is always a pleasure!",
+  "chooseChannel": "Choose how you'd like to reach us",
+  "phone": "Phone",
+  "orWriteHere": "or write to us here",
+  "vatAndTaxCode": "VAT and tax code"
+}
