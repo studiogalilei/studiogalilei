@@ -1,6 +1,6 @@
 # Migration plan: Studio Galilei → Next.js (full stack)
 
-Branch: `nextjs-migration`. Status: **Phase 0 approved; Phase 1 (baseline) in progress.**
+Branch: `nextjs-migration`. Status: **migration complete, Preview deployed, waiting for review before production.** The plan below is kept as the record of the investigation; where the final implementation differs, the README and the PR description are authoritative (e.g. messages live in `messages/{it,en}.json`, shadcn/ui is not used, the Member Club form is an inline component).
 
 Target versions (checked with `npm view` on 2026-11-01): **Next.js 16.4.3**, **Tailwind CSS 4.3.3**, **shadcn CLI 4.23.0**, React 19 (whatever Next 16.4 pins). Node 25 is installed locally; Vercel will use its default Node LTS.
 

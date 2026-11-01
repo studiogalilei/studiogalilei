@@ -79,6 +79,10 @@ async function preparePage(browser: Browser, width: number, lang: Lang, height =
     viewport: { width, height },
     deviceScaleFactor: 1,
     locale: lang === "it" ? "it-IT" : "en-US",
+    // protected Vercel previews: VERCEL_AUTOMATION_BYPASS_SECRET=<secret> node scripts/visual-baseline.ts …
+    extraHTTPHeaders: process.env.VERCEL_AUTOMATION_BYPASS_SECRET
+      ? { "x-vercel-protection-bypass": process.env.VERCEL_AUTOMATION_BYPASS_SECRET }
+      : undefined,
   });
   const page = await context.newPage();
   await page.clock.install({ time: START });
