@@ -2,6 +2,9 @@ import type { NextConfig } from "next";
 import createNextIntlPlugin from "next-intl/plugin";
 
 const nextConfig: NextConfig = {
+  // TEMP (migration): parallel dev servers in one checkout, no dev badge in screenshots
+  distDir: process.env.NEXT_DIST_DIR || ".next",
+  devIndicators: false,
   cacheComponents: true,
   partialPrefetching: true,
   async redirects() {
