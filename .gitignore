@@ -2,3 +2,12 @@
 legacy/
 .visual-baseline/
 .visual-diff/
+node_modules/
+.next/
+out/
+next-env.d.ts
+*.tsbuildinfo
+.env*
+!.env.example
+.vercel/
+test-results/
