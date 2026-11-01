@@ -4,11 +4,13 @@ import { isEmail, LIMITS, sendFormEmail, SUBJECTS, type FormType } from "@/lib/e
 // POST /api/invia-email — { tipo?: "contatto" | "candidatura", replyto?: string, campi: {...}, _honey? }
 // Responses: { ok: true } or { ok: false, errore } with the same statuses as the original Vercel Function.
 
+// Lenient on purpose, like the original: any JSON object is accepted, an unknown `tipo` is a
+// contact message and anything that isn't an object of fields counts as no fields.
 const body = z.looseObject({
-  tipo: z.unknown(),
-  replyto: z.unknown(),
-  campi: z.unknown(),
-  _honey: z.unknown(),
+  tipo: z.enum(Object.keys(SUBJECTS) as [FormType, ...FormType[]]).catch("contatto"),
+  replyto: z.unknown().optional(),
+  campi: z.record(z.string(), z.unknown()).catch({}),
+  _honey: z.unknown().optional(),
 });
 
 const fail = (status: number, errore: string, headers?: HeadersInit) =>
@@ -35,14 +37,11 @@ export async function POST(request: Request) {
 
   const parsed = body.safeParse(await readBody(request));
   if (!parsed.success) return fail(400, "Richiesta non valida");
-  const { tipo, replyto, campi, _honey } = parsed.data;
+  const { tipo: type, replyto, campi: fields, _honey } = parsed.data;
 
   // hidden field filled in: it's a bot, answer ok without sending anything
   if (_honey) return Response.json({ ok: true });
 
-  const type: FormType =
-    typeof tipo === "string" && tipo in SUBJECTS ? (tipo as FormType) : "contatto";
-  const fields = campi && typeof campi === "object" ? (campi as Record<string, unknown>) : {};
   const rows = Object.entries(fields)
     .slice(0, LIMITS.fields)
     .map(
