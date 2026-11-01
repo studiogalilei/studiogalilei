@@ -1,8 +1,4 @@
 {
-  "redirects": [
-    { "source": "/index.html", "destination": "/", "permanent": true }
-  ],
-  "rewrites": [
-    { "source": "/((?!api(?:/|$)|platform(?:/|$)|.*\\..*).*)", "destination": "/index.html" }
-  ]
+  "$schema": "https://openapi.vercel.sh/vercel.json",
+  "framework": "nextjs"
 }

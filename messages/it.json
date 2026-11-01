@@ -1,0 +1,1139 @@
+{
+  "Common": {
+    "percorso": "Percorso",
+    "caffeOVideochiamata": "Caffè o videochiamata?",
+    "siamoQuiPerAscoltartiUnCaffeOUna": "Siamo qui per ascoltarti. Un caffè o una chiamata di confronto ci fa sempre piacere!",
+    "scriviciAdesso": "Scrivici adesso",
+    "scopriSePossiamoApplicarloAnche": "Scopri se possiamo applicarlo anche alla tua realtà"
+  },
+  "Metadata": {
+    "home": {
+      "title": "Studio Galilei | Marketing, AI e Software",
+      "description": "Integriamo Marketing, AI e Software sotto lo stesso tetto per ridurre tempi, semplificare la gestione e costruire sistemi che restano tuoi."
+    },
+    "about": {
+      "title": "Chi siamo",
+      "description": "«Misura ciò che è misurabile, e rendi misurabile ciò che non lo è.» Il metodo di lavoro di Studio Galilei."
+    },
+    "services": {
+      "title": "Servizi",
+      "description": "Advertising digitale, social media, produzione contenuti, web, software e automazioni, sicurezza e finanza agevolata: i servizi di Studio Galilei."
+    },
+    "marketing": {
+      "title": "Marketing",
+      "description": "Costruiamo e gestiamo campagne Google e Meta calibrate sui tuoi obiettivi. Struttura, tracciamento e ottimizzazione continua — dal primo giorno."
+    },
+    "intelligenza-artificiale": {
+      "title": "Intelligenza Artificiale",
+      "description": "Identifichiamo dove si perde tempo, informazione o valore e costruiamo automazioni che lavorano per te. Senza partire dallo strumento."
+    },
+    "sviluppo-software": {
+      "title": "Sviluppo Software",
+      "description": "Gestionali, portali e integrazioni costruiti sui tuoi processi reali. Sviluppo modulare, permessi per ruolo e rilascio progressivo."
+    },
+    "googleAds": {
+      "title": "Google Ads",
+      "description": "Studio Galilei usa le API ufficiali di Google Ads per gestire le campagne dei partner. Direttamente sui loro account, in piena trasparenza."
+    },
+    "caseStudies": {
+      "title": "Casi studio",
+      "description": "Dietro le quinte: i casi studio di Studio Galilei."
+    },
+    "caseTourOperator": {
+      "title": "Caso studio: tour operator",
+      "description": "Tutta la giornata di un tour operator in un'unica app: prenotazioni, liste passeggeri, guide e messaggi ai clienti in una dashboard privata, per due tour operator in Italia e in Texas."
+    },
+    "caseDanInk": {
+      "title": "Caso studio: Dän Ink",
+      "description": "Più contatti a un costo più basso per un franchising di tatuaggi: la strategia di acquisizione clienti costruita per un network di 8 studi in Italia."
+    },
+    "caseOnlySolutions": {
+      "title": "Only Solutions, caso studio",
+      "description": "687.545,50 € di fatturato in 45 giorni con 26.194,16 € di spesa pubblicitaria: l'ecosistema di Google Ads e Meta Ads costruito per un e-commerce di tecnologia."
+    },
+    "careers": {
+      "title": "Lavora con noi",
+      "description": "Perché lavorare in Studio Galilei: metodo, autonomia e risultati misurati e attribuiti a chi li produce."
+    },
+    "contact": {
+      "title": "Contattaci",
+      "description": "Siamo qui per ascoltarti. Un caffè o una chiamata di confronto ci fa sempre piacere!"
+    },
+    "privacy": {
+      "title": "Privacy Policy",
+      "description": "Come Studio Galilei raccoglie, utilizza, conserva e protegge i dati personali, inclusi i dati delle API di Google Ads, nel rispetto della Google API Services User Data Policy."
+    }
+  },
+  "Header": {
+    "backToHome": "Studio Galilei, torna alla home",
+    "mainNavigation": "Navigazione principale",
+    "mainMenu": "Menu principale",
+    "home": "Home",
+    "about": "Chi siamo",
+    "services": "Servizi",
+    "caseStudies": "Casi studio",
+    "tourOperator": "Tour operator",
+    "careers": "Lavora con noi",
+    "privateArea": "Area Privata",
+    "contactUs": "Contattaci",
+    "openMenu": "Apri menu",
+    "closeMenu": "Chiudi menu",
+    "call": "Chiama",
+    "language": "Lingua",
+    "skipToContent": "Vai al contenuto"
+  },
+  "Footer": {
+    "backToHome": "StudioGalilei, torna alla home",
+    "writeToUs": "Scrivici adesso",
+    "allRightsReserved": "Tutti i diritti riservati.",
+    "vatAndTaxCode": "P.IVA e C.F."
+  },
+  "Home": {
+    "hero": {
+      "title": "<partner>Un partner.</partner><br></br>Tutto il necessario<br></br>per crescere",
+      "intro": "Integriamo Marketing, AI e Software sotto lo stesso tetto per ridurre tempi, semplificare la gestione e costruire sistemi che restano tuoi.",
+      "download": "Scarica la presentazione",
+      "bookCall": "Prenota una chiamata conoscitiva",
+      "exploreServices": "Scopri i servizi"
+    },
+    "clients": {
+      "label": "Aziende che hanno lavorato con Studio Galilei",
+      "title": "Alcune aziende con cui abbiamo lavorato"
+    },
+    "services": {
+      "kicker": "Cosa facciamo",
+      "title": "Tre competenze, un solo partner",
+      "marketing": {
+        "name": "Marketing",
+        "short": "Campagne Google e Meta che portano clienti, non click. Misurabili dal primo giorno."
+      },
+      "intelligenza-artificiale": {
+        "name": "Intelligenza Artificiale",
+        "short": "AI applicata ai processi che contano: analisi, automazioni e strumenti che lavorano per te."
+      },
+      "sviluppo-software": {
+        "name": "Sviluppo Software",
+        "short": "Strumenti su misura che restano tuoi: gestionali, portali e integrazioni che semplificano il lavoro."
+      }
+    },
+    "partners": {
+      "title": "Cosa ricevi quando lavori con noi",
+      "text": "Ogni partner ha un portale riservato, un team raggiungibile e un piano condiviso.",
+      "groups": [
+        {
+          "kicker": "Nel portale",
+          "items": [
+            {
+              "title": "Progetti e attività",
+              "desc": "Cosa è in corso, cosa è chiuso, cosa viene dopo."
+            },
+            {
+              "title": "Report e KPI",
+              "desc": "I numeri che contano, aggiornati senza doverli chiedere."
+            },
+            {
+              "title": "Archivio centrale",
+              "desc": "Contratti, documenti e materiali in un unico posto."
+            }
+          ]
+        },
+        {
+          "kicker": "Lavorando insieme",
+          "items": [
+            {
+              "title": "Gruppo dedicato",
+              "desc": "Un canale diretto con chi lavora al tuo progetto."
+            },
+            {
+              "title": "Check periodici",
+              "desc": "Call a cadenza fissa, con decisioni messe per iscritto."
+            },
+            {
+              "title": "Roadmap di crescita",
+              "desc": "Le priorità dei prossimi mesi, condivise e aggiornate."
+            }
+          ]
+        },
+        {
+          "kicker": "In più",
+          "items": [
+            {
+              "title": "Titolarità di dati e strumenti",
+              "desc": "Account pubblicitari, dati, codice e automazioni sono intestati alla tua azienda."
+            },
+            {
+              "title": "Finanza agevolata",
+              "desc": "Verifichiamo se bandi e contributi possono coprire parte degli investimenti con Studio Galilei."
+            }
+          ]
+        }
+      ],
+      "apply": "Scopri come possiamo applicarlo alla tua realtà"
+    },
+    "portal": {
+      "label": "Anteprima del portale partner con dati di esempio",
+      "tasks": "Attività",
+      "caption": "Anteprima portale, dati di esempio"
+    },
+    "cases": {
+      "kicker": "Casi studio",
+      "title": "Dietro le quinte dei nostri risultati",
+      "danInk": "Lead Generation per il Franchising di Tatuaggi N1 in Italia <flag></flag>",
+      "flag": "Italia",
+      "onlySolutions": "687.000,00 € in 45 giorni<br></br>ecosistema di Google Ads e Meta Ads",
+      "tourOperator": "Tutta la giornata di un tour operator<br></br>in un'unica app",
+      "readCase": "Leggi il caso",
+      "all": "Tutti i casi studio"
+    },
+    "googleAds": {
+      "kicker": "Tecnologia & trasparenza",
+      "title": "La nostra integrazione con Google Ads.",
+      "intro": "Studio Galilei usa le API ufficiali di Google Ads per gestire le campagne dei partner. Direttamente sui loro account, in modo sicuro e con consenso esplicito.",
+      "steps": [
+        {
+          "title": "Costruiamo",
+          "desc": "Creiamo, modifichiamo e strutturiamo campagne, gruppi di annunci e parole chiave."
+        },
+        {
+          "title": "Misuriamo",
+          "desc": "Monitoriamo in tempo reale impressioni, clic, costi e conversioni."
+        },
+        {
+          "title": "Ottimizziamo",
+          "desc": "Aggiustiamo offerte e budget sulla base dei risultati osservati, non delle promesse."
+        },
+        {
+          "title": "Rendicontiamo",
+          "desc": "Generiamo report chiari e periodici, leggibili anche da chi non è del settore."
+        }
+      ],
+      "trust": [
+        {
+          "title": "Consenso esplicito",
+          "desc": "L'accesso all'account Google Ads del partner avviene solo tramite OAuth di Google, dopo autorizzazione esplicita del titolare. Nessuna scorciatoia, nessuna password condivisa."
+        },
+        {
+          "title": "Controllo del partner",
+          "desc": "Il partner mantiene il pieno controllo e può revocare l'autorizzazione in qualsiasi momento dalle impostazioni del proprio Account Google."
+        },
+        {
+          "title": "Google API · Limited Use",
+          "desc": "Usiamo i dati ai quali accediamo solo per erogare e migliorare i servizi di gestione delle campagne richiesti dal partner, nel rispetto della <policy>Google API Services User Data Policy</policy>, inclusi i requisiti di Uso Limitato."
+        }
+      ],
+      "note": "Per sapere nel dettaglio come trattiamo, conserviamo e proteggiamo i dati, consulta la nostra <privacy>Privacy Policy</privacy>."
+    }
+  },
+  "ContactForm": {
+    "sentTitle": "Messaggio inviato!",
+    "sentText": "Ti risponderemo il prima possibile.",
+    "mailSubject": "Nuovo contatto dal sito Studio Galilei",
+    "sendFailed": "Invio non riuscito. Puoi mandarci lo stesso messaggio via email con il pulsante qui sotto.",
+    "name": "Nome",
+    "namePlaceholder": "Il tuo nome",
+    "emailPlaceholder": "la-tua@email.com",
+    "website": "Sito",
+    "websitePlaceholder": "www.tuosito.it",
+    "phone": "Telefono",
+    "phonePlaceholder": "+39 333 123 4567",
+    "optional": "(facoltativo)",
+    "send": "Invia",
+    "sending": "Invio…",
+    "sendByEmail": "Invia via email"
+  },
+  "WorldMap": {
+    "mapLabel": "Planisfero con i paesi in cui ha lavorato Studio Galilei",
+    "turkey": "Turchia",
+    "switzerland": "Svizzera",
+    "netherlands": "Paesi Bassi",
+    "belarus": "Bielorussia",
+    "texas": "Texas, USA",
+    "italy": "Tutta Italia"
+  },
+  "Booking": {
+    "kicker": "Chiamata conoscitiva",
+    "title": "Prenota una chiamata conoscitiva",
+    "intro": "Scegli giorno e orario tra le disponibilità aggiornate in tempo reale. Ricevi subito la conferma con il link per la videochiamata.",
+    "openCalendar": "Apri il calendario in una nuova scheda"
+  },
+  "About": {
+    "quote": "«Misura ciò che è misurabile, e rendi misurabile ciò che non lo è.»",
+    "responsibilityTitle": "Ci assumiamo la responsabilità",
+    "responsibilityText": "In molte aziende la crescita dipende da poche persone, da strumenti che non si parlano e da numeri che nessuno legge. Il nostro lavoro è renderla osservabile: capire quali leve producono risultati, decidere dove intervenire e trasformare ciò che funziona in un sistema che l'azienda governa anche senza di noi.",
+    "talkToUs": "Parla con noi",
+    "method": "Metodo Galilei",
+    "principles": [
+      {
+        "title": "Osservabile",
+        "desc": "Ogni azione è legata a un numero che conta per l'azienda, come vendite, contatti od ore risparmiate, non a click e impressioni. Vedi cosa funziona, non solo cosa abbiamo fatto."
+      },
+      {
+        "title": "Governabile",
+        "desc": "A ogni ciclo ricevi una sintesi scritta: cosa abbiamo visto, cosa proponiamo e quanto ne siamo sicuri. La decisione resta tua."
+      },
+      {
+        "title": "Replicabile",
+        "desc": "Ciò che funziona diventa processo, automazione o software. Documentato e intestato a te, non legato a una persona o a un fornitore."
+      }
+    ],
+    "vatAndTaxCode": "P.IVA e C.F."
+  },
+  "Services": {
+    "title": "Servizi",
+    "globeLabel": "Mappamondo con i luoghi in cui lavora Studio Galilei",
+    "catalog": [
+      {
+        "title": "Advertising digitale e media",
+        "items": [
+          "Google Ads",
+          "Meta Ads",
+          "LinkedIn Ads",
+          "TikTok Ads",
+          "Gestione pubblicitaria televisiva",
+          "Sistemi di email marketing e outbound"
+        ]
+      },
+      {
+        "title": "Social media",
+        "items": [
+          "Gestione social: Meta (Facebook e Instagram), LinkedIn, TikTok, YouTube",
+          "Gestione community"
+        ]
+      },
+      {
+        "title": "Produzione contenuti",
+        "items": [
+          "Shooting fotografico",
+          "Foto e video AI, motion graphics",
+          "Video corporate / cinema d’azienda",
+          "Spot pubblicitari",
+          "Spot televisivi",
+          "Editing video",
+          "Post produzione foto e video",
+          "Grafiche per social, web e stampa"
+        ]
+      },
+      {
+        "title": "Web",
+        "items": ["Siti web", "E-commerce", "Landing page"]
+      },
+      {
+        "title": "Software e automazioni",
+        "items": [
+          "Automazioni di processo",
+          "Software su misura",
+          "CRM e gestionali",
+          "Applicazioni"
+        ]
+      },
+      {
+        "title": "Sicurezza",
+        "items": ["Cybersecurity"]
+      },
+      {
+        "title": "Finanza",
+        "items": ["Finanza agevolata"]
+      }
+    ]
+  },
+  "Service": {
+    "services": "Servizi",
+    "talkToUs": "Parla con noi",
+    "offer": "OFFERTA",
+    "googleAdsLink": "La nostra integrazione con Google Ads",
+    "ctaTitle": "Hai un obiettivo, ma non sai ancora quale leva serve?",
+    "ctaText": "Entriamo nel problema prima di proporre la soluzione. Guardiamo il problema insieme e scegliamo la leva giusta.",
+    "contactUs": "Contattaci",
+    "marketing": {
+      "name": "Marketing",
+      "tagline": "Campagne che portano clienti, non click.",
+      "description": "Costruiamo e gestiamo campagne Google e Meta calibrate sui tuoi obiettivi. Struttura, tracciamento e ottimizzazione continua — dal primo giorno.",
+      "features": [
+        {
+          "title": "Campagne Google Ads",
+          "desc": "Struttura, parole chiave, annunci e offerte ottimizzati per il tuo obiettivo di business."
+        },
+        {
+          "title": "Campagne Meta Ads",
+          "desc": "Creatività e targeting su Facebook e Instagram orientati al risultato."
+        },
+        {
+          "title": "Tracciamento degli esiti",
+          "desc": "Non contiamo i clic, tracciamo i risultati che contano: lead, acquisti, chiamate."
+        },
+        {
+          "title": "Report chiari e periodici",
+          "desc": "Dati leggibili anche da chi non è del settore. Sempre disponibili nella tua area partner."
+        },
+        {
+          "title": "Riallocazione continua del budget",
+          "desc": "Spostiamo il budget dove funziona, campagna per campagna, settimana per settimana."
+        },
+        {
+          "title": "Integrazione con AI e Software",
+          "desc": "Le campagne parlano con il CRM, l'automazione e i tuoi strumenti operativi."
+        }
+      ]
+    },
+    "intelligenza-artificiale": {
+      "name": "Intelligenza Artificiale",
+      "tagline": "AI applicata ai processi che contano.",
+      "description": "Identifichiamo dove si perde tempo, informazione o valore e costruiamo automazioni che lavorano per te. Senza partire dallo strumento.",
+      "features": [
+        {
+          "title": "Mappatura dei processi",
+          "desc": "Partiamo da ciò che già esiste. Cerchiamo i colli di bottiglia prima di costruire qualsiasi soluzione."
+        },
+        {
+          "title": "Automazioni operative",
+          "desc": "Flussi automatizzati che sostituiscono lavoro manuale ripetitivo, con controllo umano sui passaggi sensibili."
+        },
+        {
+          "title": "Analisi e reportistica AI",
+          "desc": "Strumenti che leggono i tuoi dati e segnalano le opportunità prioritarie."
+        },
+        {
+          "title": "Odin Intelligence by SG",
+          "desc": "L'AI che conosce la tua azienda e ti aiuta a decidere dove intervenire."
+        },
+        {
+          "title": "Integrazione con i tuoi strumenti",
+          "desc": "Colleghiamo l'AI agli strumenti che usi già, senza sostituirli."
+        },
+        {
+          "title": "Prototipo prima del lancio",
+          "desc": "Ogni soluzione parte da un prototipo controllato. Misuriamo prima di scalare."
+        }
+      ]
+    },
+    "sviluppo-software": {
+      "name": "Sviluppo Software",
+      "tagline": "Strumenti su misura che restano tuoi.",
+      "description": "Gestionali, portali e integrazioni costruiti sui tuoi processi reali. Sviluppo modulare, permessi per ruolo e rilascio progressivo.",
+      "features": [
+        {
+          "title": "Dashboard operative",
+          "desc": "Interfacce che raccolgono in un unico posto ciò che oggi è frammentato tra fogli, email e tool separati."
+        },
+        {
+          "title": "Portali per i tuoi clienti",
+          "desc": "Aree riservate, documenti, accessi e comunicazioni centralizzati."
+        },
+        {
+          "title": "Integrazioni con l'esistente",
+          "desc": "Colleghiamo i tuoi software attuali senza obbligarti a cambiarli."
+        },
+        {
+          "title": "Permessi per ruolo",
+          "desc": "Ogni utente vede solo ciò che gli serve. Sicurezza e chiarezza operativa."
+        },
+        {
+          "title": "Rilascio progressivo",
+          "desc": "Prima le funzionalità prioritarie, poi l'espansione. Niente big bang."
+        },
+        {
+          "title": "Proprietà del codice",
+          "desc": "Il software che costruiamo resta tuo. Documentazione, account e dati sempre a tua disposizione."
+        }
+      ]
+    }
+  },
+  "GoogleAds": {
+    "kicker": "Tecnologia & trasparenza",
+    "title": "La nostra integrazione<br></br>con Google Ads",
+    "intro": "Studio Galilei usa le API ufficiali di Google Ads per gestire le campagne dei partner. Direttamente sui loro account, in piena trasparenza.",
+    "steps": [
+      {
+        "title": "Costruiamo",
+        "desc": "Creiamo, modifichiamo e strutturiamo campagne, gruppi di annunci e parole chiave."
+      },
+      {
+        "title": "Misuriamo",
+        "desc": "Monitoriamo in tempo reale impressioni, clic, costi e conversioni."
+      },
+      {
+        "title": "Ottimizziamo",
+        "desc": "Aggiustiamo offerte e budget sulla base dei risultati osservati, non delle promesse."
+      },
+      {
+        "title": "Rendicontiamo",
+        "desc": "Generiamo report chiari e periodici, leggibili anche da chi non è del settore."
+      }
+    ],
+    "trust": [
+      {
+        "title": "Consenso esplicito",
+        "desc": "L'accesso all'account Google Ads del partner avviene solo tramite OAuth di Google, dopo autorizzazione esplicita."
+      },
+      {
+        "title": "Controllo del partner",
+        "desc": "Il partner mantiene il pieno controllo e può revocare l'autorizzazione in qualsiasi momento dal proprio account Google."
+      }
+    ]
+  },
+  "CaseStudies": {
+    "heroTitle": "<muted>Dietro le quinte</muted><br></br>i nostri casi studio",
+    "danInkLine": "Lead Generation per il Franchising di Tatuaggi N1 in Italia <flag></flag>",
+    "italy": "Italia",
+    "onlySolutionsLine": "687.000,00 € in 45 giorni<br></br>ecosistema di Google Ads e Meta Ads",
+    "tourOperatorLine": "Tutta la giornata di un tour operator<br></br>in un'unica app",
+    "seeFullCaseStudy": "Vedi caso studio completo",
+    "screens": {
+      "dashboard": "Dashboard",
+      "calendario": "Calendario",
+      "listePasseggeri": "Liste passeggeri",
+      "risorse": "Risorse",
+      "messaggi": "Messaggi",
+      "utenti": "Utenti",
+      "messaggiInviati": "Messaggi inviati",
+      "servizioDel03Lug2026": "Servizio del 03 lug 2026",
+      "messaggiFalliti": "Messaggi falliti",
+      "messaggiDaControllare": "Messaggi da controllare",
+      "luglio2026": "Luglio 2026",
+      "syncPrenotazioni": "Sync prenotazioni",
+      "riuscita": "riuscita",
+      "n02Lug20261942": "02 lug 2026, 19:42",
+      "panoramica": "Panoramica",
+      "admin": "Admin",
+      "daControllare": "Da controllare",
+      "n1Elemento": "1 elemento",
+      "messaggiNonConsegnati": "Messaggi non consegnati",
+      "n1MessaggioClienteFallito": "1 messaggio cliente fallito",
+      "apriListe": "Apri liste",
+      "inviate": "Inviate",
+      "inLavorazione": "In lavorazione",
+      "fallite": "Fallite",
+      "inviata": "Inviata",
+      "n02Lug2026": "02 lug 2026, ",
+      "aggiornato02Lug20261942": "Aggiornato 02 lug 2026, 19:42",
+      "mese": "Mese",
+      "prodotto": "Prodotto",
+      "tutti": "Tutti",
+      "totale": "Totale",
+      "minivan": "Minivan",
+      "bus": "Bus",
+      "data": "Data",
+      "note": "Note",
+      "lug": " lug",
+      "fuoriOrario": "Fuori orario",
+      "liste": "Liste",
+      "n19Inviate": "19 inviate",
+      "n0Fallite": "0 fallite",
+      "assegnazioni": "Assegnazioni",
+      "aggiornato02Lug20261943": "Aggiornato 02 lug 2026, 19:43",
+      "mezzo": "Mezzo",
+      "van": "Van",
+      "messaggiAiClienti": "Messaggi ai clienti",
+      "n29Inviati": "29 inviati",
+      "n1Fallito": "1 fallito",
+      "smsManuale": "SMS manuale",
+      "inviato": "Inviato",
+      "parziale": "Parziale",
+      "mancante": "Mancante",
+      "fermato": "Fermato",
+      "nonDovuto": "Non dovuto",
+      "mer": "mer",
+      "gio": "gio",
+      "ven": "ven",
+      "sab": "sab",
+      "dom": "dom",
+      "lun": "lun",
+      "mar": "mar",
+      "label": {
+        "overview": "Schermata Dashboard dell'app per tour operator, con i dati oscurati",
+        "calendar": "Schermata Calendario: prenotazioni e capienza per data, con i dati oscurati",
+        "lists": "Schermata Liste passeggeri: stato dei report per data, con i dati oscurati",
+        "resources": "Schermata Risorse: assegnazioni di guide e autisti, con i dati oscurati",
+        "messages": "Schermata Messaggi: comunicazioni ai clienti per data di servizio, con i dati oscurati"
+      }
+    }
+  },
+  "CaseTourOperator": {
+    "intro": "Abbiamo sviluppato progetti per partner con diverse esigenze, in diversi settori e in diversi continenti.",
+    "below": "<highlight>Qui sotto</highlight> vediamo come un gestionale su misura porta efficienza e un risparmio di tempo concreto, area per area. Alcune di queste soluzioni sono già operative presso nostri partner.",
+    "title": "Tutta la giornata di un tour operator<br></br>in un'unica app",
+    "app": {
+      "title": "Le cinque aree dell'app",
+      "text": "Le schermate qui sotto sono viste operative con i dati oscurati.",
+      "screens": [
+        {
+          "screen": "overview",
+          "tag": "Dashboard",
+          "title": "Lo stato dell'operatività in una pagina",
+          "desc": "Stato dei messaggi, delle liste passeggeri e della sincronizzazione prenotazioni in un riepilogo unico: il team vede cosa richiede attenzione senza aprire più sistemi."
+        },
+        {
+          "screen": "calendar",
+          "tag": "Calendario",
+          "title": "Prenotazioni e capienza per data",
+          "desc": "Prenotazioni, capienza, note, totali e stati di allerta in un formato denso, per rivedere in fretta i prossimi giorni e intercettare i problemi prima che arrivino."
+        },
+        {
+          "screen": "lists",
+          "tag": "Liste passeggeri",
+          "title": "Stato dei report e accesso sicuro ai PDF",
+          "desc": "Stato dei report per data e prodotto: inviato, programmato, fallito, fermato e ripreso. I PDF generati si aprono o si condividono con link brevi e sicuri."
+        },
+        {
+          "screen": "resources",
+          "tag": "Risorse",
+          "title": "Assegnazioni di guide e autisti",
+          "desc": "Assegnazioni per data e prodotto, con viste separate per esigenze di mezzi, idoneità e contatti scelti. Niente più appunti sparsi."
+        },
+        {
+          "screen": "messages",
+          "tag": "Messaggi",
+          "title": "WhatsApp, SMS di riserva e avvisi manuali",
+          "desc": "Comunicazione ai clienti per data di servizio: inviati, falliti, di riserva e in attesa. Gli admin possono mandare avvisi SMS manuali quando serve un aggiornamento urgente."
+        }
+      ]
+    },
+    "digitalise": "Digitalizza l'azienda.<br></br>Recupera parte dell'investimento.",
+    "taxCredits": "Software e automazioni su misura, con il supporto per accedere ai crediti d'imposta.",
+    "recoverCta": "Scopri quanto puoi recuperare",
+    "results": {
+      "title": "Cosa è cambiato, in pratica",
+      "beforeAfter": [
+        [
+          "Per osservare una giornata serviva aprire prenotazioni, chat e fogli di calcolo, uno per uno.",
+          "Una sola schermata mostra tutto: prenotazioni, liste passeggeri, messaggi e guide."
+        ],
+        [
+          "Se un messaggio a un cliente non arrivava, ce ne si accorgeva tardi, spesso quando chiamava il cliente.",
+          "I messaggi non consegnati su WhatsApp vengono consegnati automaticamente via SMS, e se non succede compare una notifica."
+        ],
+        [
+          "Le liste passeggeri si preparavano a mano e si mandavano alle guide via email o chat.",
+          "Le liste diventano un PDF autocompilato e vengono condivise automaticamente con un link che si autoelimina dopo 24h, in modo ordinato."
+        ],
+        [
+          "Per avvisare i clienti di un cambio dell'ultimo minuto bisognava scrivere o chiamare uno per uno.",
+          "Dalla dashboard si manda un SMS ai clienti interessati in pochi clic."
+        ],
+        [
+          "Quale guida e quale autista seguivano ogni tour era scritto su fogli e appunti sparsi. Dopo l'assegnazione, la parte più costosa in termini di tempo era la comunicazione.",
+          "Guide e autisti si assegnano nel calendario, accanto alle prenotazioni del giorno, aggiornando automaticamente anche la schermata dell'autista con le informazioni necessarie."
+        ]
+      ]
+    },
+    "before": "Prima",
+    "after": "Dopo",
+    "automate": "Automatizziamo i processi della tua azienda",
+    "taxIncentives": "Ti seguiamo nell'accesso alle agevolazioni fiscali disponibili",
+    "analysisCta": "Prenota un'analisi gratuita"
+  },
+  "CaseDanInk": {
+    "clientName": "Dän Ink",
+    "title": "Più contatti a un costo più basso per un franchising di tatuaggi",
+    "stats": [
+      {
+        "value": "+56%",
+        "label": "contatti generati"
+      },
+      {
+        "value": "−20%",
+        "label": "costi di acquisizione"
+      },
+      {
+        "value": "−36%",
+        "label": "costo medio per contatto nel primo mese",
+        "short": "costo medio per contatto"
+      },
+      {
+        "value": "70%",
+        "label": "progetti di media o grande entità"
+      }
+    ],
+    "intro": {
+      "lead": "Dän Ink è un franchising di tatuaggi con 8 studi attivi in Italia. Il Tempo lo ha descritto come il franchising che in poco più di un anno si è imposto come leader nazionale del settore.",
+      "caption": "Il Tempo, articolo su Dän Ink e Christopher Dän",
+      "articleDate": "1 dicembre 2025",
+      "articleCta": "Leggi l'articolo",
+      "articleCtaFull": "Leggi l'articolo completo",
+      "startedOn": "Il nostro lavoro è iniziato a maggio 2025.",
+      "goalsTitle": "Obiettivi:",
+      "goals": [
+        "Aumentare il numero lead",
+        "Aumentare il valore di ogni lead",
+        "Diminuire i costi, contemporaneamente"
+      ]
+    },
+    "method": {
+      "problemsTitle": "La nostra analisi di partenza e i nostri interventi",
+      "problems": [
+        {
+          "label": "Pubblico.",
+          "text": "Parametri di targeting troppo generici, che disperdevano il budget su persone senza intenzione reale di tatuarsi."
+        },
+        {
+          "label": "Impostazione delle campagne.",
+          "text": "Impostazioni tecniche e distribuzione del budget da rivedere."
+        },
+        {
+          "label": "Analisi.",
+          "text": "Mancava una lettura completa di chi è il cliente e perché sceglie uno studio invece di un altro."
+        }
+      ],
+      "analysesTitle": "Le analisi che abbiamo fatto",
+      "analyses": [
+        {
+          "icon": "target",
+          "title": "Bisogni e intenzioni",
+          "desc": "Mappati bisogni, problemi, motivazioni emotive e razionali e intenzioni di ricerca dei potenziali clienti."
+        },
+        {
+          "icon": "scale",
+          "title": "Ostacoli e leve di scelta",
+          "desc": "Identificati i freni e le leve che decidono la prenotazione, per correggere comunicazione e posizionamento."
+        },
+        {
+          "icon": "network",
+          "title": "Dati del franchising",
+          "desc": "Incrociati dati demografici e informazioni interne, qualitative e quantitative, degli studi."
+        },
+        {
+          "icon": "funnel",
+          "title": "Contenuti e funnel",
+          "desc": "Dalle analisi sono usciti i temi dei contenuti, la struttura del funnel e le proposte su misura per ogni tipo di cliente."
+        }
+      ]
+    },
+    "results": {
+      "title": "I numeri prima e dopo",
+      "text": "Fatto 100 il punto di partenza, ecco dove sono arrivati contatti e costi di acquisizione.",
+      "beforeLabel": "prima",
+      "afterLabel": "dopo",
+      "bars": [
+        {
+          "group": "Contatti",
+          "before": 100,
+          "after": 156
+        },
+        {
+          "group": "Costi",
+          "before": 100,
+          "after": 80
+        }
+      ],
+      "notesTitle": "Due dati da leggere con attenzione",
+      "notes": [
+        "Il -36% rappresenta la diminuzione del costo per contatto, mentre il -20% rappresenta la diminuzione dell'investimento totale del budget: leggerli insieme dimostra non solo un risparmio significativo, ma anche, contemporaneamente, un aumento dei risultati significativo.",
+        "Il 70% dei contatti classificabili riguarda progetti di media o grande entità."
+      ],
+      "calculation": {
+        "title": "Quanto rende ogni euro investito rispetto a prima",
+        "intro": "Mettendo insieme i due dati sullo stesso periodo, fatto 100 il punto di partenza:",
+        "rows": [
+          {
+            "label": "Prima",
+            "formula": "100 contatti ÷ 100 di budget",
+            "value": "1,00"
+          },
+          {
+            "label": "Dopo",
+            "formula": "156 contatti ÷ 80 di budget",
+            "value": "1,95"
+          }
+        ],
+        "unit": "contatti per ogni unità di budget",
+        "comparison": "1,95 ÷ 1,00 = 1,95 volte la resa di prima",
+        "takeaway": "Ogni 1 € investito dopo il nostro arrivo valeva 1,95 € in confronto a prima."
+      },
+      "statusesTitle": "Dove finiscono i contatti",
+      "statusesText": "Ogni contatto viene tracciato in uno di quattro stati, così si vede dove il funnel perde e dove serve un follow up.",
+      "statuses": [
+        {
+          "title": "Prenotato",
+          "desc": "ha fissato una consulenza in studio"
+        },
+        {
+          "title": "Da risentire",
+          "desc": "in attesa di follow up"
+        },
+        {
+          "title": "Perso",
+          "desc": "ha scelto di non procedere"
+        },
+        {
+          "title": "Nessuna risposta",
+          "desc": "non ha mai risposto"
+        }
+      ]
+    },
+    "cta": {
+      "title": "e se anche il tuo budget pubblicitario potesse valere X2, da oggi?",
+      "button": "Prenota una videochiamata o un caffè con noi."
+    },
+    "ui": {
+      "srTitle": "Caso studio",
+      "logoAlt": "Logo Dän Ink",
+      "articleOn": "su Il Tempo",
+      "statsLabel": "I numeri del caso studio",
+      "comparison": "Confronto",
+      "multiplier": "×1,95"
+    }
+  },
+  "CaseOnlySolutions": {
+    "title": "687.000,00 € in 45 giorni<br></br>ecosistema di Google Ads e Meta Ads",
+    "revenueValue": "687.545,50 €",
+    "revenueLabel": "Fatturato del sito",
+    "adSpendValue": "26.194,16 €",
+    "adSpendLabel": "Spesa pubblicitaria",
+    "ordersValue": "2.145",
+    "ordersLabel": "Ordini",
+    "roasValue": "26,2x",
+    "roasLabel": "Ritorno medio sulla spesa pubblicitaria",
+    "averageOrderValue": "320,53 €",
+    "averageOrderLabel": "Valore medio per ordine",
+    "costPerOrderValue": "12,21 €",
+    "costPerOrderLabel": "Costo pubblicitario per ordine",
+    "googleAdsRoasValue": "81,5x",
+    "googleAdsRoasLabel": "Ritorno su Google Ads",
+    "googleAdsShareLabel": "Del budget investito su Google Ads",
+    "contextTitle": "Il contesto",
+    "contextText": "E-commerce nato nel 2021 per vendere tecnologia in tutta Italia, con un catalogo poi esteso e una distribuzione allargata a Europa e Stati Uniti.",
+    "situationTitle": "La situazione",
+    "situationText": "Al nostro ingresso, nel 2024: fatturato in calo, spesa pubblicitaria elevata e problemi tecnici aperti su sito e sistemi collegati.",
+    "goalTitle": "L'obiettivo",
+    "goalText": "Rilanciare il negozio in vista di novembre e dicembre, i mesi di massima domanda, e massimizzare il profitto.",
+    "analysisTitle": "Analisi preliminare",
+    "analysisText": "Analisi della strategia esistente e dei suoi risultati; nuova impostazione con investimento minore e profitto maggiore fin dal primo mese.",
+    "interventionTitle": "Il nostro intervento",
+    "interventionText": "Individuazione e risoluzione dei problemi su sito, applicazioni e sistemi collegati, con una serie di migliorie tecniche.",
+    "optimisationTitle": "Ottimizzazione",
+    "optimisationText": "Analisi periodiche tra gli ecosistemi in relazione rivelano punti di miglioramento su cui intervenire e investire, potenziando il rendimento in modo costante.",
+    "shopifyAlt": "Dashboard Shopify: 687.545,50 € di vendite totali e 2.145 ordini dal 1 novembre al 16 dicembre 2024",
+    "shopifyCaption": "Vendite totali, ordini, sessioni e tasso di conversione del periodo, confrontati con le sei settimane precedenti.",
+    "googleAdsAlt": "Panoramica Google Ads dal 1 novembre al 15 dicembre 2024: 66.453 clic, costo per conversione 3,93 €, CPC medio 0,28 €, costo 18.300,59 €",
+    "googleAdsCaption": "La piattaforma chiave del risultato: qui è stato investito circa 2/3 del budget, con un ritorno medio di 81,5 volte la spesa.",
+    "resultsLabel": "Risultati",
+    "observation": "Osservazione",
+    "roi": "ROI 81,5",
+    "roiText": "ad ogni euro investito in pubblicità corrispondono 81,5 euro di fatturato.",
+    "principleTitle": "Il principio",
+    "principleText": "Un ritorno di questo tipo è ottenibile solo quando più ecosistemi vengono gestiti sotto lo stesso tetto e in modo preciso.",
+    "methodTitle": "Il metodo",
+    "platformsTitle": "I dati delle piattaforme",
+    "ctaTitle": "Il tuo budget pubblicitario può rendere di più.",
+    "ctaText": "Analizziamo i tuoi ecosistemi pubblicitari e ti mostriamo dove il ritorno può crescere.",
+    "ctaLabel": "Richiedi un'analisi"
+  },
+  "Careers": {
+    "title": "Lavorare in Studio Galilei",
+    "mission": {
+      "title": "La nostra missione",
+      "text": "Rendere visibile e governabile ciò che muove la crescita delle imprese, costruendo il team più talentuoso d'Italia nel marketing, nel software e nell'AI."
+    },
+    "startingPoint": {
+      "title": "Il punto di partenza",
+      "text": "In Studio Galilei metodo, direzione, sistemi e investimenti hanno un solo obiettivo: metterti nelle condizioni di performare meglio. Il compenso è commisurato ai risultati."
+    },
+    "workIsSeen": {
+      "title": "Qui il tuo lavoro si vede",
+      "text": "Ogni risultato è misurato e attribuito a chi l'ha prodotto. Vince chi fa muovere i numeri. Le tue decisioni, il tuo merito."
+    },
+    "growth": {
+      "title": "Crescita e autonomia",
+      "text": "Lavori su mercati diversi (Italia, Stati Uniti, Svizzera, Turchia, Paesi Bassi) con un metodo chiaro e in piena autonomia. Sai cosa ci si aspetta da te e scegli tu come arrivarci, con un team sempre pronto ad aiutarti."
+    },
+    "howWeWork": {
+      "title": "Come lavoriamo",
+      "text": "Studio Galilei investe per acquisire partner e costruire strumenti che moltiplicano il valore del tuo lavoro. Il protagonista sei tu, e non sei mai solo."
+    },
+    "vision": "Se la tua <brush>visione</brush> rispecchia la nostra",
+    "goToForm": "Vai al modulo di candidatura",
+    "formLabel": "Candidatura al Member Club di Studio Galilei",
+    "showPage": "Scopri come si lavora in Studio Galilei"
+  },
+  "Contact": {
+    "title": "Caffè o videochiamata?",
+    "intro": "Siamo qui per ascoltarti. Un caffè o una chiamata di confronto ci fa sempre piacere!",
+    "chooseChannel": "Scegli come preferisci contattarci",
+    "phone": "Telefono",
+    "orWriteHere": "oppure scrivici qui",
+    "vatAndTaxCode": "P.IVA e C.F."
+  },
+  "Privacy": {
+    "hero": {
+      "kicker": "Informativa",
+      "title": "Privacy Policy.",
+      "meta": "Ultimo aggiornamento 25 giugno 2026 · Versione 1.0",
+      "intro": "La presente informativa descrive come i liberi professionisti che operano con il marchio «Studio Galilei» raccolgono, utilizzano, conservano e proteggono i dati personali, inclusi i dati a cui accediamo tramite le API di Google quando gestiamo gli account pubblicitari dei nostri partner.",
+      "footer": "Privacy Policy · v1.0 · studiogalilei.com"
+    },
+    "sections": {
+      "titolari": "Titolari del trattamento",
+      "dati": "Dati trattati",
+      "finalita": "Finalità e basi giuridiche",
+      "uso-limitato": "Google API · Uso Limitato",
+      "conservazione": "Modalità e conservazione",
+      "destinatari": "Destinatari",
+      "extra-ue": "Trasferimenti extra-UE",
+      "diritti": "Diritti dell'interessato",
+      "cookie": "Cookie",
+      "modifiche": "Modifiche",
+      "contatti": "Contatti"
+    },
+    "controllers": [
+      {
+        "name": "Carlo Durigon",
+        "vat": "P.IVA IT05504640268",
+        "address": "Via Creta 47, 31057 Silea (TV)",
+        "services": "Gestione e ottimizzazione delle campagne pubblicitarie e analisi del traffico. Responsabile dell'accesso ai dati tramite le API di Google: il progetto Google Cloud, il developer token e l'account Google Ads (MCC) sono a lui intestati."
+      },
+      {
+        "name": "Studio Galilei Srl",
+        "vat": "P.IVA e C.F. IT05642810260",
+        "address": "Via Francesco Baracca 81, 31035 Crocetta del Montello (TV)",
+        "services": "Project management, coordinamento partner e consulenza strategica sui progetti affidati a Studio Galilei."
+      }
+    ],
+    "googleData": [
+      "struttura e impostazioni dell'account e delle campagne;",
+      "parole chiave, annunci, gruppi di annunci e relativi asset;",
+      "metriche di performance (impressioni, clic, costi, conversioni);",
+      "report e statistiche di rendimento."
+    ],
+    "purposes": [
+      "Erogazione dei servizi di creazione, gestione, monitoraggio e ottimizzazione delle campagne pubblicitarie sugli account dei partner (esecuzione di un contratto).",
+      "Reportistica e analisi dei risultati a beneficio del partner (esecuzione di un contratto).",
+      "Riscontro a richieste di contatto e attività precontrattuali (consenso, misure precontrattuali).",
+      "Adempimenti di legge e tutela dei diritti (obbligo legale, legittimo interesse)."
+    ],
+    "limitedUse": [
+      "utilizziamo i dati ottenuti dalle API di Google esclusivamente per fornire e migliorare le funzionalità di gestione e ottimizzazione delle campagne richieste dal partner;",
+      "non vendiamo tali dati e non li trasferiamo a terzi, se non nella misura necessaria a erogare il servizio, per adempiere a obblighi di legge o nell'ambito di un'operazione di fusione o acquisizione, previa adeguata informativa;",
+      "non utilizziamo i dati delle API di Google per finalità di pubblicità personalizzata;",
+      "non consentiamo a persone fisiche di leggere tali dati, salvo: previo consenso del partner, per finalità di sicurezza, per adempiere a obblighi di legge, o quando i dati sono aggregati e anonimizzati e utilizzati per operazioni interne."
+    ],
+    "indice": "Indice",
+    "chiTrattaITuoiDati": "Chi tratta i tuoi dati.",
+    "ilMarchioStudioGalileiE": "Il marchio «Studio Galilei» è utilizzato da due liberi professionisti autonomi, ciascuno titolare del trattamento per i servizi di propria competenza.",
+    "servizi": "Servizi",
+    "perQualsiasiRichiestaRelativaAl": "Per qualsiasi richiesta relativa al trattamento dei dati è possibile scrivere a ",
+    "qualiDatiRaccogliamo": "Quali dati raccogliamo.",
+    "datiFornitiVolontariamente": "Dati forniti volontariamente",
+    "datiDiContattoNomeEmailTelefono": "Dati di contatto (nome, email, telefono, nome dell'azienda) inviati tramite i moduli del sito, l'email o altri canali, al fine di richiedere informazioni o servizi.",
+    "datiDegliAccountGoogleDeiPartner": "Dati degli account Google dei partner",
+    "nellAmbitoDeiServiziDiGestione": "Nell'ambito dei servizi di gestione delle campagne pubblicitarie, i partner possono autorizzarci, tramite il consenso OAuth di Google, ad accedere ai propri account Google Ads. Attraverso le API di Google Ads possiamo accedere a:",
+    "taliDatiAppartengonoAllAccount": "Tali dati appartengono all'account Google del partner che concede l'autorizzazione. L'accesso avviene esclusivamente previo consenso esplicito del titolare dell'account tramite il flusso OAuth di Google e può essere revocato in qualsiasi momento dalla pagina ",
+    "permessiDelProprioAccountGoogle": "Permessi del proprio Account Google",
+    "datiDiNavigazioneECookie": "Dati di navigazione e cookie",
+    "duranteLaNavigazioneDelSito": "Durante la navigazione del sito possono essere raccolti dati tecnici (indirizzo IP, tipo di browser, pagine visitate) e dati tramite cookie, come descritto al ",
+    "paragrafo09": "paragrafo 09",
+    "percheTrattiamoIDati": "Perché trattiamo i dati.",
+    "comeUsiamoIDatiDelleApiDiGoogle": "Come usiamo i dati delle API di Google.",
+    "lUsoEIlTrasferimentoDaParteDi": "L'uso e il trasferimento da parte di Studio Galilei delle informazioni ricevute dalle API di Google saranno conformi alla",
+    "inclusiIRequisitiDiUsoLimitato": " inclusi i requisiti di Uso Limitato (Limited Use).",
+    "inParticolare": "In particolare:",
+    "comeTrattiamoEPerQuanto": "Come trattiamo e per quanto.",
+    "iDatiSonoTrattatiConStrumenti": "I dati sono trattati con strumenti elettronici, adottando misure tecniche e organizzative adeguate a garantirne sicurezza e riservatezza. L'accesso ai dati degli account Google avviene di norma in tempo reale tramite le API; eventuali dati conservati (ad esempio report) sono mantenuti per il tempo necessario alle finalità indicate e agli obblighi di legge, e successivamente cancellati o anonimizzati.",
+    "chiPuoAccedereAiDati": "Chi può accedere ai dati.",
+    "iDatiPossonoEssereTrattatiDa": "I dati possono essere trattati da Studio Galilei e dai collaboratori professionali che operano sotto il medesimo marchio, autorizzati al trattamento e vincolati a obblighi di riservatezza, nonché da fornitori che agiscono come responsabili del trattamento (servizi di hosting, strumenti di analisi e reportistica). L'elenco aggiornato dei responsabili è disponibile su richiesta all'indirizzo ",
+    "datiFuoriDalloSpazioEconomico": "Dati fuori dallo Spazio Economico Europeo.",
+    "alcuniFornitoriTraCuiGoogle": "Alcuni fornitori (tra cui Google) possono trattare dati al di fuori dello Spazio Economico Europeo. In tali casi il trasferimento avviene nel rispetto del GDPR, sulla base di garanzie adeguate quali le Clausole Contrattuali Standard approvate dalla Commissione Europea.",
+    "iTuoiDiritti": "I tuoi diritti.",
+    "aiSensiDegliArtt1522DelGdprL": "Ai sensi degli artt. 15–22 del GDPR, l'interessato ha diritto di accedere ai propri dati, chiederne la rettifica o la cancellazione, limitarne od opporsi al trattamento, e richiederne la portabilità. È inoltre possibile revocare in qualsiasi momento il consenso e proporre reclamo al Garante per la protezione dei dati personali. Le richieste vanno inviate a ",
+    "cookieETracciamenti": "Cookie e tracciamenti.",
+    "ilSitoUtilizzaCookieTecniciE": "Il sito utilizza cookie tecnici e, previo consenso, cookie analitici o di terze parti. La gestione delle preferenze è disponibile tramite l'apposito banner. Per maggiori dettagli è possibile consultare la Cookie Policy del sito.",
+    "aggiornamentiDellInformativa": "Aggiornamenti dell'informativa.",
+    "studioGalileiSiRiservaDi": "Studio Galilei si riserva di aggiornare la presente Privacy Policy. Le modifiche saranno pubblicate su questa pagina con indicazione della data di ultimo aggiornamento.",
+    "haiUnaDomandaSuiTuoiDati": "Hai una domanda sui tuoi dati?",
+    "perQualsiasiRichiestaRelativa": "Per qualsiasi richiesta relativa alla presente informativa o al trattamento dei dati personali scrivici a "
+  },
+  "TourOperator": {
+    "navAbout": "Chi siamo",
+    "navServices": "Servizi",
+    "navCases": "Casi studio",
+    "navTourOperator": "Tour operator",
+    "contactUs": "Contattaci",
+    "privateArea": "Area Privata",
+    "language": "Lingua",
+    "tabDispatch": "Dispatch",
+    "tabDashboard": "Dashboard",
+    "tabPlanning": "Calendario",
+    "tabMessages": "Messaggi",
+    "caption1": "<b>Partenze del giorno</b> · autisti, mezzi e capienza a colpo d'occhio",
+    "caption2": "<b>Stato dell'operatività</b> · messaggi, liste e sync prenotazioni",
+    "caption3": "<b>Pianificazione mensile</b> · ogni città nel suo spazio",
+    "caption4": "<b>WhatsApp + SMS di riserva</b> · nessun cliente resta senza avviso",
+    "toast0Title": "Nuova prenotazione",
+    "toast0Text": "FareHarbor · 2 ospiti · 9:30",
+    "toast1Title": "Autista ha confermato",
+    "toast1Text": "Morgan · tour del mattino",
+    "toast2Title": "Promemoria consegnati",
+    "toast2Text": "WhatsApp · 18 clienti su 18",
+    "toast3Title": "Lista passeggeri inviata",
+    "toast3Text": "PDF v3 · link sicuro 24h",
+    "painTitle1": "Prenotazioni e capienza",
+    "painTitle2": "Liste passeggeri",
+    "painTitle3": "Autisti, guide e mezzi",
+    "painTitle4": "Messaggi ai clienti",
+    "painTitle5": "Cambi dell'ultimo minuto",
+    "waDefault": "Ciao, gestisco un tour operator e vorrei capire se il vostro gestionale può funzionare anche per noi.",
+    "waPain": "Ciao, gestisco un tour operator. Oggi ci riconosciamo in questi punti:",
+    "waPainEnd": "Possiamo parlarne?",
+    "mailSubject": "Gestionale per tour operator",
+    "mailBody": "Ciao,\n\ngestisco un tour operator e vorrei capire se un sistema come quello di FunDallas Tours e BeaVita Tours può funzionare anche per noi.\n\nNome dell'azienda:\nSito web:\nPiattaforma di booking che usiamo:\nTour al giorno (circa):\n\nGrazie",
+    "refLabel": "Rif. richiesta: ",
+    "lightboxHint": "Scorri per vedere tutta la schermata",
+    "toccaPerIngrandire": "Tocca per ingrandire",
+    "schermataDellApp": "Schermata dell'app",
+    "casoStudioFundallasTours": "Caso studio FunDallas Tours",
+    "pianificazioneDeiTourEDispatch": "Pianificazione dei tour e dispatch degli autisti",
+    "unaWebAppPerGestirePrenotazioni": "Una web app per gestire prenotazioni, assegnazioni di autisti e mezzi e invio delle liste a Dallas e San Antonio. Il piano del giorno cambia mentre arrivano nuove prenotazioni: il team deve tenere sotto controllo partenze condivise, passeggeri e capienza dei mezzi in due città.",
+    "dove": "Dove",
+    "cosa": "Cosa",
+    "webAppDesktopEMobile": "Web app desktop e mobile",
+    "collegataAFareharbor": "Collegata a FareHarbor",
+    "lavoro": "Lavoro",
+    "designESviluppo": "Design e sviluppo",
+    "ilCalendarioDiPianificazione": "Il calendario di pianificazione",
+    "pianificare": "Pianificare",
+    "unCalendarioPerPianificareOgni": "Un calendario per pianificare ogni giornata",
+    "laVistaMensileMostraLAttivita": "La vista mensile mostra l'attività giorno per giorno. Aprendo una data si vedono partenze e assegnazioni.",
+    "assegnazioneDiAutistaEMezzo": "Assegnazione di autista e mezzo",
+    "assegnareEAutomatizzare": "Assegnare e automatizzare",
+    "assegnazioniCondivise": "Assegnazioni condivise, aggiornamenti programmati",
+    "leNuovePrenotazioniCompatibili": "Le nuove prenotazioni compatibili entrano nella lista dell'autista già assegnato quando c'è posto. Gli invii automatici seguono il calendario configurato e le eccezioni restano in vista per il manager.",
+    "laSeraPrima": "La sera prima",
+    "dispatchSerale": "Dispatch serale",
+    "preparaEInviaLeListePerITourDel": "Prepara e invia le liste per i tour del giorno dopo.",
+    "primaDellaPartenza": "Prima della partenza",
+    "aggiornamentoDelMattino": "Aggiornamento del mattino",
+    "portaNelPianoLePrenotazioni": "Porta nel piano le prenotazioni arrivate di notte.",
+    "duranteIlGiorno": "Durante il giorno",
+    "aggiornamentiInGiornata": "Aggiornamenti in giornata",
+    "inviaLeModificheDentroLaFinestra": "Invia le modifiche dentro la finestra configurata.",
+    "listaTourEPasseggeri": "Lista tour e passeggeri",
+    "lEsperienzaDellAutista": "L'esperienza dell'autista",
+    "leInformazioniDelTourSulTelefono": "Le informazioni del tour sul telefono dell'autista",
+    "gliAutistiVedonoIProssimiTourI": "Gli autisti vedono i prossimi tour, i dettagli dei passeggeri e i PDF inviati. Confermano l'assegnazione, così l'ufficio sa che l'ha ricevuta.",
+    "schermateEDocumentiUsanoDati": "Schermate e documenti usano dati dimostrativi inventati, compresi i dati di clienti e autisti.",
+    "prima": "Prima",
+    "dopo": "Dopo",
+    "loStatoDellOperativitaInUna": "Lo stato dell'operatività in una pagina",
+    "statoDeiMessaggiDelleListe": "Stato dei messaggi, delle liste passeggeri e della sincronizzazione prenotazioni in un riepilogo unico: il team vede cosa richiede attenzione senza aprire più sistemi.",
+    "calendario": "Calendario",
+    "prenotazioniECapienzaPerData": "Prenotazioni e capienza per data",
+    "prenotazioniCapienzaNoteTotaliE": "Prenotazioni, capienza, note, totali e stati di allerta in un formato denso, per rivedere in fretta i prossimi giorni e intercettare i problemi prima che arrivino.",
+    "statoDeiReportEAccessoSicuroAi": "Stato dei report e accesso sicuro ai PDF",
+    "statoDeiReportPerDataEProdotto": "Stato dei report per data e prodotto: inviato, programmato, fallito, fermato e ripreso. I PDF generati si aprono o si condividono con link brevi e sicuri.",
+    "risorse": "Risorse",
+    "assegnazioniDiGuideEAutisti": "Assegnazioni di guide e autisti",
+    "assegnazioniPerDataEProdottoCon": "Assegnazioni per data e prodotto, con viste separate per esigenze di mezzi, idoneità e contatti scelti. Niente più appunti sparsi.",
+    "whatsappSmsDiRiservaEAvvisi": "WhatsApp, SMS di riserva e avvisi manuali",
+    "comunicazioneAiClientiPerDataDi": "Comunicazione ai clienti per data di servizio: inviati, falliti, di riserva e in attesa. Gli admin possono mandare avvisi SMS manuali quando serve un aggiornamento urgente.",
+    "perOsservareUnaGiornataServiva": "Per osservare una giornata serviva aprire prenotazioni, chat e fogli di calcolo, uno per uno.",
+    "unaSolaSchermataMostraTutto": "Una sola schermata mostra tutto: prenotazioni, liste passeggeri, messaggi e guide.",
+    "seUnMessaggioAUnClienteNon": "Se un messaggio a un cliente non arrivava, ce ne si accorgeva tardi, spesso quando chiamava il cliente.",
+    "iMessaggiNonConsegnatiSuWhatsapp": "I messaggi non consegnati su WhatsApp vengono consegnati automaticamente via SMS, e se non succede compare una notifica.",
+    "leListePasseggeriSiPreparavanoA": "Le liste passeggeri si preparavano a mano e si mandavano alle guide via email o chat.",
+    "leListeDiventanoUnPdf": "Le liste diventano un PDF autocompilato e vengono condivise automaticamente con un link che si autoelimina dopo 24h, in modo ordinato.",
+    "perAvvisareIClientiDiUnCambio": "Per avvisare i clienti di un cambio dell'ultimo minuto bisognava scrivere o chiamare uno per uno.",
+    "dallaDashboardSiMandaUnSmsAi": "Dalla dashboard si manda un SMS ai clienti interessati in pochi clic.",
+    "qualeGuidaEQualeAutistaSeguivano": "Quale guida e quale autista seguivano ogni tour era scritto su fogli e appunti sparsi. Dopo l'assegnazione, la parte più costosa in termini di tempo era la comunicazione.",
+    "guideEAutistiSiAssegnanoNel": "Guide e autisti si assegnano nel calendario, accanto alle prenotazioni del giorno, aggiornando automaticamente anche la schermata dell'autista con le informazioni necessarie.",
+    "areeOperativeCollegate": "aree operative collegate",
+    "dashboardPrivataPerTuttoIlTeam": "dashboard privata per tutto il team",
+    "finestreDiInvioMonitorateSeraE": "finestre di invio monitorate, sera e mattina",
+    "durataDeiLinkSicuriAlleListe": "durata dei link sicuri alle liste passeggeri",
+    "casoStudioBeavitaTours": "Caso studio BeaVita Tours",
+    "tuttaLaGiornataDiUnTourOperator": "Tutta la giornata di un tour operator in un'unica app",
+    "prenotazioniCapienzaListe": "Prenotazioni, capienza, liste passeggeri, guide e autisti, messaggi WhatsApp e SMS ai clienti: prima si controllavano a mano in posti diversi. Ora il team vede lo stato di tutto e agisce dallo stesso posto.",
+    "veneziaEVenetoItalia": "Venezia e Veneto, Italia",
+    "dashboardWebPrivata": "Dashboard web privata",
+    "canali": "Canali",
+    "leCinqueAreeDellApp": "Le cinque aree dell'app",
+    "leSchermateQuiSottoSonoViste": "Le schermate qui sotto sono viste operative con i dati oscurati.",
+    "cosaECambiatoInPratica": "Cosa è cambiato, in pratica",
+    "dueProgettiUnMetodo": "Due progetti, un metodo",
+    "dueTourOperatorDueMercatiLa": "Due tour operator, due mercati, la stessa base",
+    "texasDispatchAutisti": "Texas · dispatch autisti",
+    "italiaDashboardOperativa": "Italia · dashboard operativa",
+    "softwareSuMisuraPerTourOperator": "Software su misura per tour operator",
+    "prenotazioniPartenzeAutistiGuide": "Prenotazioni, partenze, autisti, guide, liste passeggeri e messaggi ai clienti. Un gestionale privato costruito sui flussi che usi già e collegato alla tua piattaforma di booking.",
+    "scriviciSuWhatsapp": "Scrivici su WhatsApp",
+    "scriviciUnaEmail": "Scrivici una email",
+    "primaConversazioneSenzaImpegno": "Prima conversazione senza impegno: guardiamo insieme come lavori oggi.",
+    "giaInUsoOgniGiornoDa": "Già in uso ogni giorno da",
+    "texasEItalia": "Texas e Italia",
+    "dallasSanAntonioVenezia": "Dallas, San Antonio, Venezia",
+    "collegatoAlBooking": "Collegato al booking",
+    "esFareharborNessunCambio": "es. FareHarbor, nessun cambio",
+    "conInvioDiRiservaAutomatico": "con invio di riserva automatico",
+    "desktopEMobile": "Desktop e mobile",
+    "ufficioAutistiEGuide": "ufficio, autisti e guide",
+    "ilPuntoDiPartenza": "Il punto di partenza",
+    "laGiornataReggeMaSoloPerche": "La giornata regge, ma solo perché qualcuno controlla tutto a mano",
+    "iProcessiDiUnTourOperatorDi": "I processi di un tour operator di solito funzionano già. Quello che manca è la visibilità: le informazioni stanno in posti diversi e il lavoro si chiude grazie a chi le rimette insieme ogni giorno.",
+    "toccaIPuntiInCuiTiRiconosci": "Tocca i punti in cui ti riconosci",
+    "tiRiconosciIn": "Ti riconosci in",
+    "daRiconciliareAManoMentreNe": "da riconciliare a mano, mentre ne arrivano di nuove.",
+    "daPreparareEsportareEMandareAlle": "da preparare, esportare e mandare alle persone giuste, ogni sera e ogni mattina.",
+    "assegnatiSuFogliDiCalcoloAppunti": "assegnati su fogli di calcolo, appunti e chat.",
+    "suWhatsappESmsCheDipendonoDaChi": "su WhatsApp e SMS che dipendono da chi se ne ricorda.",
+    "cheNessunoVedeFincheNonDiventano": "che nessuno vede finché non diventano un problema.",
+    "alloraQuestaPaginaEPerTe": "Allora questa pagina è per te.",
+    "sonoEsattamenteIPuntiCheAbbiamo": "Sono esattamente i punti che abbiamo risolto. Mandaceli così come sono.",
+    "invialiSuWhatsapp": "Inviali su WhatsApp",
+    "vuoiLaStessaVisibilitaSullaTua": "Vuoi la stessa visibilità sulla tua giornata?",
+    "raccontaciComeLavoriOggiTi": "Raccontaci come lavori oggi. Ti diciamo con franchezza cosa si può mettere a sistema e cosa no.",
+    "attivoPer": "Attivo per",
+    "dashboardOperativa": "Dashboard operativa",
+    "statoDiPrenotazioniListeE": "Stato di prenotazioni, liste e messaggi, avvisi urgenti e attività recenti.",
+    "calendarioECapienza": "Calendario e capienza",
+    "vistaPerGiornoEProdottoCapienza": "Vista per giorno e prodotto, capienza, note e allerte.",
+    "dispatchDiAutistiEMezzi": "Dispatch di autisti e mezzi",
+    "assegnazioniCondiviseControllo": "Assegnazioni condivise, controllo dei posti, invii programmati.",
+    "listePasseggeriInPdf": "Liste passeggeri in PDF",
+    "generazioneVersioniStatoDell": "Generazione, versioni, stato dell'invio e link sicuri.",
+    "appPerAutistiEGuide": "App per autisti e guide",
+    "tourAssegnatiPasseggeriPdfE": "Tour assegnati, passeggeri, PDF e conferma dal telefono.",
+    "messaggiAiClienti": "Messaggi ai clienti",
+    "flussiWhatsappSmsDiRiservaAvvisi": "Flussi WhatsApp, SMS di riserva, avvisi manuali e tracciamento.",
+    "analisiOperative": "Analisi operative",
+    "andamentoPrenotazioniPressione": "Andamento prenotazioni, pressione sulla capienza, cancellazioni, resa dei prodotti.",
+    "recensioniEQr": "Recensioni e QR",
+    "linkAlleRecensioniQrPer": "Link alle recensioni, QR per instradare i clienti, fonti e andamento.",
+    "cosaSiPortaDaUnTourOperatorAll": "Cosa si porta da un tour operator all'altro",
+    "nonCopiamoLAppRiusiamoLoSchema": "Non copiamo l'app, riusiamo lo schema",
+    "ogniTourOperatorHaLaSua": "Ogni tour operator ha la sua piattaforma di booking, il suo modo di gestire guide e autisti, i suoi canali verso i clienti. Quello che si porta dietro è il metodo: collegare i segnali di ogni giorno, mostrare lo stato in modo chiaro e dare al team azioni controllate da un unico sistema privato.",
+    "suRichiesta": "Su richiesta",
+    "mappiamo": "Mappiamo",
+    "comeGestisciOggiPrenotazioni": "Come gestisci oggi prenotazioni, liste passeggeri, guide, autisti e messaggi ai clienti.",
+    "troviamoIPuntiCritici": "Troviamo i punti critici",
+    "iPassaggiManualiCheCreanoPiu": "I passaggi manuali che creano più rischio operativo o fanno perdere più tempo.",
+    "costruiamoIlPrimoModulo": "Costruiamo il primo modulo",
+    "ilPrimoSistemaUtileAttornoAi": "Il primo sistema utile, attorno ai flussi che girano già ogni giorno.",
+    "aggiungiamoSoloCioCheServe": "Aggiungiamo solo ciò che serve",
+    "automazioniEReportSoloDoveFanno": "Automazioni e report solo dove fanno risparmiare tempo vero o evitano errori veri.",
+    "comePartiamo": "Come partiamo",
+    "quattroPassiPrimaIlTuoFlusso": "Quattro passi, prima il tuo flusso reale",
+    "parliamoneSuWhatsapp": "Parliamone su WhatsApp",
+    "devoCambiarePiattaformaDi": "Devo cambiare piattaforma di prenotazione?",
+    "noIlSistemaSiCollegaAQuellaChe": "No. Il sistema si collega a quella che usi già: per FunDallas Tours, per esempio, legge le prenotazioni da FareHarbor. Durante la mappatura verifichiamo cosa permette la tua.",
+    "eUnSoftwareProntoOCostruitoSu": "È un software pronto o costruito su misura?",
+    "suMisuraSuUnaBaseGiaCollaudataIn": "Su misura, su una base già collaudata in due tour operator. Non ti adatti tu al software: adattiamo i moduli ai tuoi prodotti, mezzi e canali.",
+    "autistiEGuidePossonoUsarloDal": "Autisti e guide possono usarlo dal telefono?",
+    "siNelCasoFundallasGliAutisti": "Sì. Nel caso FunDallas gli autisti vedono i tour assegnati, i passeggeri e i PDF, e confermano l'assegnazione dal telefono.",
+    "quantoCosta": "Quanto costa?",
+    "dipendeDaiModuliCheServono": "Dipende dai moduli che servono davvero. Dopo la prima conversazione e la mappatura ricevi un preventivo scritto con i moduli e le fasi, prima di qualsiasi impegno.",
+    "lavorateAncheFuoriDallItalia": "Lavorate anche fuori dall'Italia?",
+    "siLavoriamoInItaliaENegliStati": "Sì. Lavoriamo in Italia e negli Stati Uniti, in italiano e in inglese: FunDallas Tours opera tra Dallas e San Antonio, in Texas.",
+    "domandeFrequenti": "Domande frequenti",
+    "primaDiScriverci": "Prima di scriverci",
+    "ilPassoSuccessivo": "Il passo successivo",
+    "laTuaGiornataOperativaInUnUnica": "La tua giornata operativa in un'unica app",
+    "unaPrimaConversazionePerMappare": "Una prima conversazione per mappare il tuo flusso di lavoro e capire dove un sistema su misura rende di più. Se non ha senso per te, te lo diciamo subito.",
+    "rispondiamoInItalianoEInInglese": "Rispondiamo in italiano e in inglese.",
+    "bSpaziSeparatiPerCittaBDallasE": "<b>Spazi separati per città</b>Dallas e San Antonio hanno ciascuna il suo spazio, con gli stessi comandi.",
+    "bStatoDelDispatchBQualiTourVanno": "<b>Stato del dispatch</b>Quali tour vanno assegnati, quali liste sono già partite, quali autisti hanno confermato.",
+    "bDettaglioDellaPartenzaB": "<b>Dettaglio della partenza</b>Prenotazioni, scelta di autista e mezzo, controllo della capienza.",
+    "bAutistaEMezzoCondivisiBTour": "<b>Autista e mezzo condivisi</b>Tour compatibili usano la stessa assegnazione; un PDF può contenere più partenze.",
+    "bControlloManualeSemprePossibile": "<b>Controllo manuale sempre possibile</b>Modifica, verifica della capienza, anteprima del PDF e invio a mano.",
+    "bPrenotazioniCombinateBOgni": "<b>Prenotazioni combinate</b>Ogni prenotazione combinata compare una volta, con le tratte incluse elencate insieme.",
+    "bInvioEConfermaTracciatiBOgniPdf": "<b>Invio e conferma tracciati</b>Ogni PDF ha un numero di versione; invio e conferma dell'autista sono registrati separatamente.",
+    "tuttaLaGiornataDelTuoTour": "Tutta la giornata del tuo tour operator in <em>un'unica app</em>"
+  }
+}

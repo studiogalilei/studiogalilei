@@ -1,0 +1,13 @@
+.scratch/
+.visual-baseline/
+.visual-current/
+.visual-diff/
+node_modules/
+.next/
+out/
+next-env.d.ts
+*.tsbuildinfo
+.env*
+!.env.example
+.vercel/
+test-results/

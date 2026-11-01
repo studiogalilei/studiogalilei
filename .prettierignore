@@ -1,0 +1,9 @@
+.next
+node_modules
+legacy
+.scratch
+.visual-baseline
+.visual-current
+.visual-diff
+package-lock.json
+lib/geo/*.json
