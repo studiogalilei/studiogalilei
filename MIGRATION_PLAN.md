@@ -5,6 +5,7 @@ Branch: `nextjs-migration`. Status: **Phase 0 approved; Phase 1 (baseline) in pr
 Target versions (checked with `npm view` on 2026-11-01): **Next.js 16.4.3**, **Tailwind CSS 4.3.3**, **shadcn CLI 4.23.0**, React 19 (whatever Next 16.4 pins). Node 25 is installed locally; Vercel will use its default Node LTS.
 
 Doc-checked v16 conventions this plan relies on:
+
 - `middleware.ts` is now `proxy.ts` (Node runtime).
 - `next lint` is gone: ESLint runs from its own CLI with a flat `eslint.config.mjs` (`eslint-config-next`).
 - Turbopack is the default bundler.
@@ -19,16 +20,16 @@ Doc-checked v16 conventions this plan relies on:
 
 ### Files in the repo (and what Vercel serves today)
 
-| File | Size | What it is | Served at |
-|---|---|---|---|
-| `index.html` | 4.5 MB | The live site: a single-file Vite + React 18 + react-router 7.13 + **Tailwind 4.1.12** SPA, with every image, font and the PDF inlined as `data:` URIs, plus 2 injected patch layers (see §3) | `/` and **every extension-less path** except `/api*` and `/platform*` (rewrite) |
-| `tour-operator-v2.html` | 1.4 MB | Separate hand-written landing page (plain CSS + vanilla JS, images and Poppins inlined) | `/tour-operator-v2.html` |
-| `platform/index.html` | 64 KB | "Platform" prototype (Area Partner/Member/Consulente): vanilla JS, data stored in the browser's localStorage/IndexedDB, Arial font | `/platform/` (and `/platform`) |
-| `api/invia-email.js` | 4 KB | Vercel Node function: forms → email via the Resend REST API | `/api/invia-email` |
-| `vercel.json` | 1 KB | 1 redirect + 1 rewrite (below) | n/a |
-| `index-originale.html`, `index-old.html` | 4.4 MB each | Older builds; `index-originale.html` is the input of `modifiche/costruisci.py` | **Publicly reachable** at `/index-originale.html`, `/index-old.html` (not linked anywhere) |
-| `modifiche/*` (`costruisci.py`, `ritocchi-mobile.py`, `sg-effetti.{css,js}`, `sg-mobile.{css,js}`, `marchio-path.txt`) | 108 KB | Build scripts that patch the compiled bundle into `index.html` | Also publicly reachable (e.g. `/modifiche/sg-effetti.js`) |
-| `README.md`, `LEGGIMI.md` | | Docs (LEGGIMI = Italian handoff notes) | Also publicly reachable |
+| File                                                                                                                   | Size        | What it is                                                                                                                                                                                    | Served at                                                                                  |
+| ---------------------------------------------------------------------------------------------------------------------- | ----------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------ |
+| `index.html`                                                                                                           | 4.5 MB      | The live site: a single-file Vite + React 18 + react-router 7.13 + **Tailwind 4.1.12** SPA, with every image, font and the PDF inlined as `data:` URIs, plus 2 injected patch layers (see §3) | `/` and **every extension-less path** except `/api*` and `/platform*` (rewrite)            |
+| `tour-operator-v2.html`                                                                                                | 1.4 MB      | Separate hand-written landing page (plain CSS + vanilla JS, images and Poppins inlined)                                                                                                       | `/tour-operator-v2.html`                                                                   |
+| `platform/index.html`                                                                                                  | 64 KB       | "Platform" prototype (Area Partner/Member/Consulente): vanilla JS, data stored in the browser's localStorage/IndexedDB, Arial font                                                            | `/platform/` (and `/platform`)                                                             |
+| `api/invia-email.js`                                                                                                   | 4 KB        | Vercel Node function: forms → email via the Resend REST API                                                                                                                                   | `/api/invia-email`                                                                         |
+| `vercel.json`                                                                                                          | 1 KB        | 1 redirect + 1 rewrite (below)                                                                                                                                                                | n/a                                                                                        |
+| `index-originale.html`, `index-old.html`                                                                               | 4.4 MB each | Older builds; `index-originale.html` is the input of `modifiche/costruisci.py`                                                                                                                | **Publicly reachable** at `/index-originale.html`, `/index-old.html` (not linked anywhere) |
+| `modifiche/*` (`costruisci.py`, `ritocchi-mobile.py`, `sg-effetti.{css,js}`, `sg-mobile.{css,js}`, `marchio-path.txt`) | 108 KB      | Build scripts that patch the compiled bundle into `index.html`                                                                                                                                | Also publicly reachable (e.g. `/modifiche/sg-effetti.js`)                                  |
+| `README.md`, `LEGGIMI.md`                                                                                              |             | Docs (LEGGIMI = Italian handoff notes)                                                                                                                                                        | Also publicly reachable                                                                    |
 
 There is **no `package.json`**, no `robots.txt`, `sitemap.xml`, manifest, OG image, or separate asset files. Everything is inlined.
 
@@ -47,22 +48,22 @@ No `cleanUrls` and no `trailingSlash`. In addition, an inline `<head>` script in
 
 SPA routes (react-router, `BrowserRouter`), all served by `index.html`:
 
-| Path | Component (bundle name) | Title (IT / EN, set client-side) |
-|---|---|---|
-| `/` | `vU` home | `Studio Galilei \| Marketing, AI e Software` / `… AI and Software` |
-| `/chi-siamo` | `PU` | `Chi siamo` / `About us` + ` \| Studio Galilei` |
-| `/servizi` | `xU` (includes the rotating d3 globe) | `Servizi` / `Services` |
-| `/servizi/marketing`, `/servizi/intelligenza-artificiale`, `/servizi/sviluppo-software` | `Ml` (one template, 3 data entries) | service name |
-| `/servizi/google-ads` | `DU` | `Google Ads` |
-| `/casi-studio` | `OU` | `Casi studio` / `Case studies` |
-| `/casi-studio/tour-operator` | `i5` (includes the flat world map) | `Caso studio: tour operator` |
-| `/casi-studio/dan-ink` | `A5` | `Caso studio: Dän Ink` |
-| `/casi-studio/onlysolutions` | `l5` | `Only Solutions, caso studio` |
-| `/lavora-con-noi` | `f5` (Member Club form in an `<iframe srcDoc>`) | `Lavora con noi` / `Work with us` |
-| `/contatti` | `c5` (contact form) | `Contattaci` / `Contact us` |
-| `/privacy` | `K5` | `Privacy Policy` |
-| `/area-partner` | `s5`: `location.replace("/platform/")` | n/a |
-| `*` (anything else extension-less) | `<Navigate to="/" replace>` | n/a |
+| Path                                                                                    | Component (bundle name)                         | Title (IT / EN, set client-side)                                   |
+| --------------------------------------------------------------------------------------- | ----------------------------------------------- | ------------------------------------------------------------------ |
+| `/`                                                                                     | `vU` home                                       | `Studio Galilei \| Marketing, AI e Software` / `… AI and Software` |
+| `/chi-siamo`                                                                            | `PU`                                            | `Chi siamo` / `About us` + ` \| Studio Galilei`                    |
+| `/servizi`                                                                              | `xU` (includes the rotating d3 globe)           | `Servizi` / `Services`                                             |
+| `/servizi/marketing`, `/servizi/intelligenza-artificiale`, `/servizi/sviluppo-software` | `Ml` (one template, 3 data entries)             | service name                                                       |
+| `/servizi/google-ads`                                                                   | `DU`                                            | `Google Ads`                                                       |
+| `/casi-studio`                                                                          | `OU`                                            | `Casi studio` / `Case studies`                                     |
+| `/casi-studio/tour-operator`                                                            | `i5` (includes the flat world map)              | `Caso studio: tour operator`                                       |
+| `/casi-studio/dan-ink`                                                                  | `A5`                                            | `Caso studio: Dän Ink`                                             |
+| `/casi-studio/onlysolutions`                                                            | `l5`                                            | `Only Solutions, caso studio`                                      |
+| `/lavora-con-noi`                                                                       | `f5` (Member Club form in an `<iframe srcDoc>`) | `Lavora con noi` / `Work with us`                                  |
+| `/contatti`                                                                             | `c5` (contact form)                             | `Contattaci` / `Contact us`                                        |
+| `/privacy`                                                                              | `K5`                                            | `Privacy Policy`                                                   |
+| `/area-partner`                                                                         | `s5`: `location.replace("/platform/")`          | n/a                                                                |
+| `*` (anything else extension-less)                                                      | `<Navigate to="/" replace>`                     | n/a                                                                |
 
 Standalone pages: `/tour-operator-v2.html` and `/platform/`.
 
@@ -110,7 +111,7 @@ In Phase 2 these become `@theme` tokens in `app/globals.css`: colors, fonts, the
 - **Services**: rotating orthographic globe (d3-geo, rAF, paused off-screen by IntersectionObserver).
 - **Contact form** (`gc`, used on `/contatti` and the home page): fields `nome`, `email`, `sito`, …, a client-side honeypot (`_honey` filled → silently do nothing), POST to `/api/invia-email`. On success it shows "Messaggio inviato!". On failure it shows an error plus an "Invia via email" `mailto:` fallback with the message pre-filled.
 - **PDF download button**: converts the `data:` URL to a Blob so Safari on iOS downloads it.
-- **Member Club form** (on `/lavora-con-noi`): a complete standalone HTML document (11 KB CSS + 90 KB vanilla JS) inside `<iframe srcDoc>`, height 700/760px. It is a one-question-per-screen wizard with branching questions and a sector search. It writes **directly to Supabase** (REST insert into `candidature_member_club`, portfolio file upload to the `portfolio` storage bucket, using the hard-coded *publishable* key), queues failed submissions in `localStorage` and retries them, and also sends a copy via `/api/invia-email` with `tipo: "candidatura"`.
+- **Member Club form** (on `/lavora-con-noi`): a complete standalone HTML document (11 KB CSS + 90 KB vanilla JS) inside `<iframe srcDoc>`, height 700/760px. It is a one-question-per-screen wizard with branching questions and a sector search. It writes **directly to Supabase** (REST insert into `candidature_member_club`, portfolio file upload to the `portfolio` storage bucket, using the hard-coded _publishable_ key), queues failed submissions in `localStorage` and retries them, and also sends a copy via `/api/invia-email` with `tipo: "candidatura"`.
 - **Titles**: the `pi(title, description)` hook updates `document.title` and the meta description per route and language.
 
 ### Layer 2: `sg-effetti.js/css` (injected; drives the DOM through a MutationObserver)
@@ -194,15 +195,15 @@ next.config.ts  redirects
 
 The original was generated from a Figma Make template that ships shadcn's theme variables, but **no shadcn/Radix component survived tree-shaking**: the bundle has no Radix code, and every control is hand-written Tailwind. Candidates:
 
-| Element | shadcn candidate | Expected verdict |
-|---|---|---|
-| CTA buttons / button-links (`Bt`: 4 variants, `rounded-[10px] px-6 py-3.5 text-[15px]`) | `Button` (+ `asChild`) | **Plausible.** Pure Tailwind, can be restyled to identical output. Adds `cva` + `@radix-ui/react-slot`. Will test. |
-| Contact form inputs (`rounded-[10px] border-sg/15 focus:ring-2 ring-ai/20`) | `Input`, `Textarea`, `Label` | **Plausible.** Restyle fully and diff default, focus and invalid states. Will test. |
-| Desktop nav dropdowns (click-to-open, close on outside click or Esc, no portal) | `DropdownMenu` / `NavigationMenu` | **Unlikely.** Radix portals the content, adds roving focus, typeahead and `data-state` animations, and positions with floating-ui. DOM, focus and animation behavior differ. Expect a plain component. |
-| Mobile menu (inline panel under the header, `sg-menu-in` animation) | `Sheet` | **No.** Sheet is a modal side drawer with overlay; the original is an inline panel. |
-| Language toggle (2 `aria-pressed` buttons) | `ToggleGroup` | **Unlikely.** Radix uses roving tabindex and `data-state`; different keyboard behavior. |
-| Cards / surfaces | `Card` | **No value.** `Card` is just a div with classes and would need every class overridden. |
-| Member Club wizard, tour page, Platform | n/a | Custom controls; no shadcn equivalents with the same DOM. |
+| Element                                                                                 | shadcn candidate                  | Expected verdict                                                                                                                                                                                       |
+| --------------------------------------------------------------------------------------- | --------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| CTA buttons / button-links (`Bt`: 4 variants, `rounded-[10px] px-6 py-3.5 text-[15px]`) | `Button` (+ `asChild`)            | **Plausible.** Pure Tailwind, can be restyled to identical output. Adds `cva` + `@radix-ui/react-slot`. Will test.                                                                                     |
+| Contact form inputs (`rounded-[10px] border-sg/15 focus:ring-2 ring-ai/20`)             | `Input`, `Textarea`, `Label`      | **Plausible.** Restyle fully and diff default, focus and invalid states. Will test.                                                                                                                    |
+| Desktop nav dropdowns (click-to-open, close on outside click or Esc, no portal)         | `DropdownMenu` / `NavigationMenu` | **Unlikely.** Radix portals the content, adds roving focus, typeahead and `data-state` animations, and positions with floating-ui. DOM, focus and animation behavior differ. Expect a plain component. |
+| Mobile menu (inline panel under the header, `sg-menu-in` animation)                     | `Sheet`                           | **No.** Sheet is a modal side drawer with overlay; the original is an inline panel.                                                                                                                    |
+| Language toggle (2 `aria-pressed` buttons)                                              | `ToggleGroup`                     | **Unlikely.** Radix uses roving tabindex and `data-state`; different keyboard behavior.                                                                                                                |
+| Cards / surfaces                                                                        | `Card`                            | **No value.** `Card` is just a div with classes and would need every class overridden.                                                                                                                 |
+| Member Club wizard, tour page, Platform                                                 | n/a                               | Custom controls; no shadcn equivalents with the same DOM.                                                                                                                                              |
 
 If neither Button nor Input reaches parity, I'll use no shadcn at all and say so. shadcn's CSS variables will be set to the original's exact `:root` values if it is initialized.
 
@@ -221,6 +222,7 @@ If neither Button nor Input reaches parity, I'll use no shadcn at all and say so
 ## 7. Decisions (confirmed by you on 2026-11-01)
 
 **A. Language: next-intl, no locale in the URL.**
+
 - Same IT/EN switcher UI.
 - When the visitor has not chosen a language, the default follows their browser language (Accept-Language), with Italian as the fallback. This is a deliberate change: the original always defaulted to Italian.
 - The choice persists in next-intl's locale cookie. The `?lang=it|en` override is kept. `tour-operator` joins the same i18n setup instead of its CSS `.it`/`.en` blocks.
@@ -231,6 +233,7 @@ If neither Button nor Input reaches parity, I'll use no shadcn at all and say so
 **C. Old builds and scripts** (`index-old.html`, `index-originale.html`, `modifiche/`, `LEGGIMI.md`): not ported, deleted in Phase 5.
 
 **D. Member Club form: a real Next component rendered inline on `/lavora-con-noi`, no iframe.**
+
 - The iframe's box stays: `surface-3`, `max-w-[56rem]`, rounded, and the 700/760px viewport with internal scroll, so the page looks the same.
 - The form's own styles are rebuilt in Tailwind. Supabase and email behavior are unchanged.
 - The iframe's `<head>` tags (noindex, OG) disappear, because they only applied inside the iframe.

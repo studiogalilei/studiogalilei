@@ -6,3 +6,4 @@ legacy
 .visual-current
 .visual-diff
 package-lock.json
+lib/geo/*.json

@@ -2,7 +2,8 @@
 // and the rendered HTML / <head> of each page, for pixel-diffing two versions of the site.
 //
 //   node scripts/visual-baseline.ts --base http://localhost:3000 --out .visual-current
-//   node scripts/visual-baseline.ts --target legacy --base http://localhost:4100 --out .visual-baseline
+//   node scripts/visual-baseline.ts --base https://<deployment> --out .visual-baseline   (new reference)
+//   --target legacy captures the pre-migration static site (old URLs: /tour-operator-v2.html, /platform/)
 //   options: --only <substring>  (filter shot names)   --jobs <n>  (parallel pages, default 4)
 import { mkdir, writeFile } from "node:fs/promises";
 import { createHash } from "node:crypto";

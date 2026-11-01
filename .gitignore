@@ -1,5 +1,4 @@
 .scratch/
-legacy/
 .visual-baseline/
 .visual-current/
 .visual-diff/
@@ -12,6 +11,3 @@ next-env.d.ts
 !.env.example
 .vercel/
 test-results/
-.next-*/
-.visual-current-*/
-.visual-diff-*/

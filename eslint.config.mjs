@@ -9,12 +9,10 @@ const eslintConfig = defineConfig([
   globalIgnores([
     // Default ignores of eslint-config-next:
     ".next/**",
-    ".next-*/**",
     "out/**",
     "build/**",
     "next-env.d.ts",
-    // Migration-only local copies and artifacts:
-    "legacy/**",
+    // local screenshot output and scratch files
     ".scratch/**",
     ".visual-*/**",
   ]),
