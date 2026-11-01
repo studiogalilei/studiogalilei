@@ -44,9 +44,14 @@ const twMerge = extendTailwindMerge({
       ],
       leading: ["1.1", "1.15", "1.65", "1.7", "1.75"],
       tracking: ["1", "1.5", "2", "3", "8", "12", "14"],
-      radius: ["10", "14", "18", "20", "22"],
+      radius: ["10", "11", "14", "18", "20", "22"],
       shadow: ["surface-1", "surface-2", "surface-3", "surface-dark"],
     },
+  },
+  override: {
+    // In Tailwind v4 an explicit leading-* always wins over a font size's default line height,
+    // whatever the class order, so a later text-* must not remove it.
+    conflictingClassGroups: { "font-size": [] },
   },
 });
 

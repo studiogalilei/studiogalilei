@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect } from "react";
+import { afterHydration } from "@/components/effects/after-hydration";
 import { usePathname } from "@/i18n/navigation";
 
 /*
@@ -70,7 +71,7 @@ export function CardTilt() {
       );
       for (const el of candidates) {
         if (candidates.some((other) => other !== el && el.contains(other))) continue;
-        el.dataset.tilt = "";
+        el.dataset.tilt = "on";
         el.classList.add(...CARD.split(" "));
         if (el.getBoundingClientRect().top > window.innerHeight) {
           el.dataset.reveal = "hidden";
@@ -90,9 +91,15 @@ export function CardTilt() {
       timer = window.setTimeout(enhance, 30);
     };
     const observer = new MutationObserver(schedule);
-    observer.observe(main, { childList: true, subtree: true });
-    enhance();
+    // cards still waiting to ease in (e.g. after this effect re-ran) are observed again
+    main.querySelectorAll('[data-reveal="hidden"]').forEach((el) => reveal.observe(el));
+    // cards are server-rendered: enhance them only once React has hydrated them
+    const cancel = afterHydration(() => {
+      observer.observe(main, { childList: true, subtree: true });
+      enhance();
+    });
     return () => {
+      cancel();
       clearTimeout(timer);
       observer.disconnect();
       reveal.disconnect();

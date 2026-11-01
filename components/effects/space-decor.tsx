@@ -2,6 +2,7 @@
 
 import { useEffect, useState } from "react";
 import { createPortal } from "react-dom";
+import { afterHydration } from "@/components/effects/after-hydration";
 import { usePathname } from "@/i18n/navigation";
 
 /*
@@ -243,8 +244,9 @@ export function SpaceDecor() {
       setDecors(next);
     }
 
-    // after layout and fonts have settled
-    const frame = requestAnimationFrame(() => document.fonts.ready.then(draw));
+    // after hydration (it edits server-rendered sections) and once fonts have settled
+    let active = true;
+    const cancel = afterHydration(() => document.fonts.ready.then(() => active && draw()));
     const onResize = () => {
       if (window.innerWidth === width) return;
       width = window.innerWidth;
@@ -253,7 +255,8 @@ export function SpaceDecor() {
     };
     window.addEventListener("resize", onResize);
     return () => {
-      cancelAnimationFrame(frame);
+      active = false;
+      cancel();
       clearTimeout(timer);
       window.removeEventListener("resize", onResize);
       hosts.forEach((host) => host.remove());

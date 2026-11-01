@@ -130,6 +130,8 @@ async function load(page: Page, url: string) {
   const step = page.viewportSize()!.height / 2;
   for (let y = 0; y < height; y += step) {
     await page.evaluate((top) => window.scrollTo(0, top), y);
+    // real time too, so the browser renders a frame and IntersectionObservers fire
+    await page.waitForTimeout(60);
     await page.clock.runFor(150);
   }
   await page.clock.runFor(4000);
