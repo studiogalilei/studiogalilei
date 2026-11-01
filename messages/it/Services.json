@@ -1,1 +1,44 @@
-{}
+{
+  "title": "Servizi",
+  "globeLabel": "Mappamondo con i luoghi in cui lavora Studio Galilei",
+  "catalog": [
+    {
+      "title": "Advertising digitale e media",
+      "items": [
+        "Google Ads",
+        "Meta Ads",
+        "LinkedIn Ads",
+        "TikTok Ads",
+        "Gestione pubblicitaria televisiva",
+        "Sistemi di email marketing e outbound"
+      ]
+    },
+    {
+      "title": "Social media",
+      "items": [
+        "Gestione social: Meta (Facebook e Instagram), LinkedIn, TikTok, YouTube",
+        "Gestione community"
+      ]
+    },
+    {
+      "title": "Produzione contenuti",
+      "items": [
+        "Shooting fotografico",
+        "Foto e video AI, motion graphics",
+        "Video corporate / cinema d’azienda",
+        "Spot pubblicitari",
+        "Spot televisivi",
+        "Editing video",
+        "Post produzione foto e video",
+        "Grafiche per social, web e stampa"
+      ]
+    },
+    { "title": "Web", "items": ["Siti web", "E-commerce", "Landing page"] },
+    {
+      "title": "Software e automazioni",
+      "items": ["Automazioni di processo", "Software su misura", "CRM e gestionali", "Applicazioni"]
+    },
+    { "title": "Sicurezza", "items": ["Cybersecurity"] },
+    { "title": "Finanza", "items": ["Finanza agevolata"] }
+  ]
+}

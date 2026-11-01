@@ -1,1 +1,49 @@
-{}
+{
+  "title": "Services",
+  "globeLabel": "Globe showing where Studio Galilei works",
+  "catalog": [
+    {
+      "title": "Digital advertising and media",
+      "items": [
+        "Google Ads",
+        "Meta Ads",
+        "LinkedIn Ads",
+        "TikTok Ads",
+        "TV advertising management",
+        "Email marketing and outbound systems"
+      ]
+    },
+    {
+      "title": "Social media",
+      "items": [
+        "Social media management: Meta (Facebook and Instagram), LinkedIn, TikTok, YouTube",
+        "Community management"
+      ]
+    },
+    {
+      "title": "Content production",
+      "items": [
+        "Photo shoots",
+        "AI photo and video, motion graphics",
+        "Corporate video / brand films",
+        "Commercials",
+        "TV commercials",
+        "Video editing",
+        "Photo and video post-production",
+        "Graphics for social, web and print"
+      ]
+    },
+    { "title": "Web", "items": ["Websites", "E-commerce", "Landing pages"] },
+    {
+      "title": "Software and automation",
+      "items": [
+        "Process automation",
+        "Custom software",
+        "CRM and management systems",
+        "Applications"
+      ]
+    },
+    { "title": "Security", "items": ["Cybersecurity"] },
+    { "title": "Finance", "items": ["Subsidised finance"] }
+  ]
+}

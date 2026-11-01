@@ -1,1 +1,33 @@
-{}
+{
+  "kicker": "Technology & transparency",
+  "title": "Our integration<br></br>with Google Ads",
+  "intro": "Studio Galilei uses the official Google Ads API to manage partners' campaigns. Directly on their accounts, with full transparency.",
+  "steps": [
+    {
+      "title": "We build",
+      "desc": "We create, edit and structure campaigns, ad groups and keywords."
+    },
+    {
+      "title": "We measure",
+      "desc": "We monitor impressions, clicks, costs and conversions in real time."
+    },
+    {
+      "title": "We optimise",
+      "desc": "We adjust bids and budgets based on observed results, not promises."
+    },
+    {
+      "title": "We report",
+      "desc": "We produce clear, regular reports that anyone can read, even outside the industry."
+    }
+  ],
+  "trust": [
+    {
+      "title": "Explicit consent",
+      "desc": "Access to the partner's Google Ads account happens only through Google OAuth, after explicit authorisation."
+    },
+    {
+      "title": "Partner control",
+      "desc": "The partner keeps full control and can revoke the authorisation at any time from their Google account."
+    }
+  ]
+}

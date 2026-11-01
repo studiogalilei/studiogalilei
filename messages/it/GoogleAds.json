@@ -1,1 +1,33 @@
-{}
+{
+  "kicker": "Tecnologia & trasparenza",
+  "title": "La nostra integrazione<br></br>con Google Ads",
+  "intro": "Studio Galilei usa le API ufficiali di Google Ads per gestire le campagne dei partner. Direttamente sui loro account, in piena trasparenza.",
+  "steps": [
+    {
+      "title": "Costruiamo",
+      "desc": "Creiamo, modifichiamo e strutturiamo campagne, gruppi di annunci e parole chiave."
+    },
+    {
+      "title": "Misuriamo",
+      "desc": "Monitoriamo in tempo reale impressioni, clic, costi e conversioni."
+    },
+    {
+      "title": "Ottimizziamo",
+      "desc": "Aggiustiamo offerte e budget sulla base dei risultati osservati, non delle promesse."
+    },
+    {
+      "title": "Rendicontiamo",
+      "desc": "Generiamo report chiari e periodici, leggibili anche da chi non è del settore."
+    }
+  ],
+  "trust": [
+    {
+      "title": "Consenso esplicito",
+      "desc": "L'accesso all'account Google Ads del partner avviene solo tramite OAuth di Google, dopo autorizzazione esplicita."
+    },
+    {
+      "title": "Controllo del partner",
+      "desc": "Il partner mantiene il pieno controllo e può revocare l'autorizzazione in qualsiasi momento dal proprio account Google."
+    }
+  ]
+}
