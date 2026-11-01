@@ -28,8 +28,8 @@ export const viewport: Viewport = { themeColor: "#040F4D", viewportFit: "cover" 
 /** Landing page for tour operators, standalone (no site header and footer). */
 export default function TourOperatorPage() {
   return (
+    // the root layout's body styles are the main site's: keep the original's text rendering
     <ClientMessages namespaces={["TourOperator"]}>
-      // the root layout's body styles are the main site's: keep the original's text rendering
       <TourProvider className="text-16 leading-[1.6] [text-rendering:auto]">
         <TourHeader />
         <Hero />

@@ -155,7 +155,7 @@ export function ContactForm() {
           {sending ? t("sending") : t("send")}
         </button>
         {error && (
-          <p role="alert" className="text-14 leading-relaxed text-red-600">
+          <p role="alert" className="text-14 leading-relaxed">
             {error}
           </p>
         )}

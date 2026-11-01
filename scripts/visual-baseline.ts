@@ -124,6 +124,8 @@ async function settle(page: Page) {
 /** Scrolls through the page so lazy images load and in-view effects run to completion, then back to the top. */
 async function load(page: Page, url: string) {
   await page.goto(url, { waitUntil: "load" });
+  // React hydrates on real time (its scheduler isn't faked): let it finish before advancing timers
+  await page.waitForTimeout(800);
   await page.clock.runFor(1000);
   await settle(page);
   const height = await page.evaluate(() => document.documentElement.scrollHeight);

@@ -65,7 +65,10 @@ export function WorldMap() {
             {workedIn.map((place) => {
               const point = projection([place.lon, place.lat]);
               return point ? (
-                <g key={place.key} transform={`translate(${point[0]},${point[1]})`}>
+                <g
+                  key={place.key}
+                  transform={`translate(${point[0].toFixed(2)},${point[1].toFixed(2)})`}
+                >
                   <circle r="13" fill="#0689FF" opacity="0.45" filter="url(#map-pin-glow)" />
                   <circle r="5.5" fill="#061773" stroke="#FFFFFF" strokeWidth="2" />
                 </g>

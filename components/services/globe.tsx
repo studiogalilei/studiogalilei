@@ -52,7 +52,8 @@ export function Globe() {
     .translate([SIZE / 2, SIZE / 2])
     .rotate([-lon, -TILT])
     .clipAngle(90);
-  const path = geoPath(projection);
+  // rounded so server and browser floating point produce the same markup
+  const path = geoPath(projection).digits(2);
 
   return (
     <div ref={ref} className="flex flex-col items-center">
@@ -102,7 +103,10 @@ export function Globe() {
           const point = projection([place.lon, place.lat]);
           const facing = geoDistance([place.lon, place.lat], [lon, TILT]) < 1.25;
           return point && facing ? (
-            <g key={place.key} transform={`translate(${point[0]},${point[1]})`}>
+            <g
+              key={place.key}
+              transform={`translate(${point[0].toFixed(2)},${point[1].toFixed(2)})`}
+            >
               <circle r="14" fill="#0689FF" opacity="0.45" filter="url(#pin-glow)" />
               <circle r="6.5" fill="#061773" stroke="#FFFFFF" strokeWidth="2" />
             </g>
