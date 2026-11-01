@@ -86,6 +86,57 @@
     0 64px 120px -32px #040f4d4d;
   --shadow-surface-dark: inset 0 1px #ffffff1a, 0 0 0 1px #ffffff0f, 0 24px 48px -16px #01041e8c;
 
+  /* Tour operator landing page (/tour-operator) */
+  --breakpoint-tour-sm: 45.0625rem; /* max-tour-sm: ≤ 720px */
+  --breakpoint-tour-md: 66.3125rem; /* max-tour-md: ≤ 1060px */
+  --animate-glow: glow-orbit 3.8s linear infinite;
+  --animate-live-ping: live-ping 2s infinite;
+  --animate-bob: bob 6s ease-in-out infinite;
+  --animate-fade-up: fade-up 0.45s cubic-bezier(0.2, 0.7, 0.2, 1);
+  --animate-fade-up-fast: fade-up 0.35s cubic-bezier(0.2, 0.7, 0.2, 1);
+  --animate-progress: progress var(--progress-duration, 5s) linear forwards;
+
+  @keyframes glow-orbit {
+    to {
+      --glow-angle: 360deg;
+    }
+  }
+  @keyframes live-ping {
+    0% {
+      box-shadow: 0 0 0 0 rgba(59, 212, 126, 0.55);
+    }
+    70% {
+      box-shadow: 0 0 0 9px rgba(59, 212, 126, 0);
+    }
+    100% {
+      box-shadow: 0 0 0 0 rgba(59, 212, 126, 0);
+    }
+  }
+  @keyframes bob {
+    0%,
+    100% {
+      transform: translateY(0);
+    }
+    50% {
+      transform: translateY(-8px);
+    }
+  }
+  @keyframes fade-up {
+    from {
+      opacity: 0;
+      transform: translateY(10px);
+    }
+    to {
+      opacity: 1;
+      transform: none;
+    }
+  }
+  @keyframes progress {
+    to {
+      transform: scaleX(1);
+    }
+  }
+
   --animate-mc-enter: mc-enter 0.34s cubic-bezier(0.22, 0.61, 0.36, 1) both;
   --animate-mc-title: mc-enter 0.5s 0.42s cubic-bezier(0.22, 0.61, 0.36, 1) both;
   --animate-mc-rise: mc-enter 0.5s cubic-bezier(0.22, 0.61, 0.36, 1) both;
@@ -315,6 +366,13 @@
   syntax: "<number>";
   initial-value: 0;
   inherits: true;
+}
+
+/* Angle of the light travelling around the tour operator page's buttons. */
+@property --glow-angle {
+  syntax: "<angle>";
+  inherits: false;
+  initial-value: 0deg;
 }
 
 @layer base {
