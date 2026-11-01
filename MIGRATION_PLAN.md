@@ -4,6 +4,15 @@ Branch: `nextjs-migration`. Status: **Phase 0 done, waiting for approval before 
 
 Target versions (checked with `npm view` on 2026-11-01): **Next.js 16.4.3**, **Tailwind CSS 4.3.3**, **shadcn CLI 4.23.0**, React 19 (whatever Next 16.4 pins). Node 25 is installed locally; Vercel will use its default Node LTS.
 
+Doc-checked v16 conventions this plan relies on:
+- `middleware.ts` is now `proxy.ts` (Node runtime).
+- `next lint` is gone: ESLint runs from its own CLI with a flat `eslint.config.mjs` (`eslint-config-next`).
+- Turbopack is the default bundler.
+- `params`, `searchParams` and `cookies()` are async.
+- `themeColor` goes in the `viewport` export.
+- Tailwind 4.3: `@tailwindcss/postcss` plus a CSS-first `@theme`, no `tailwind.config`.
+- Next 16 no longer overrides CSS `scroll-behavior` on navigation. That matches the original's `scroll-behavior: auto`.
+
 ---
 
 ## 1. Inventory
