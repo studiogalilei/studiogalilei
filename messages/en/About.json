@@ -1,1 +1,22 @@
-{}
+{
+  "quote": "“Measure what is measurable, and make measurable what is not.”",
+  "responsibilityTitle": "We take responsibility",
+  "responsibilityText": "In many companies, growth depends on a few people, on tools that don't talk to each other and on numbers nobody reads. Our job is to make it observable: understand which levers produce results, decide where to act and turn what works into a system the company can run even without us.",
+  "talkToUs": "Talk to us",
+  "method": "The Galilei Method",
+  "principles": [
+    {
+      "title": "Observable",
+      "desc": "Every action is tied to a number that matters to the business, such as sales, leads or hours saved, not clicks and impressions. You see what works, not just what we did."
+    },
+    {
+      "title": "Governable",
+      "desc": "At every cycle you receive a written summary: what we saw, what we propose and how confident we are. The decision stays yours."
+    },
+    {
+      "title": "Replicable",
+      "desc": "What works becomes a process, an automation or software. Documented and owned by you, not tied to a person or a supplier."
+    }
+  ],
+  "vatAndTaxCode": "VAT and tax code"
+}
