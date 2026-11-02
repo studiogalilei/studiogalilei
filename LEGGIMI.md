@@ -118,3 +118,7 @@ Il sito usa ora indirizzi normali: `studiogalilei.com/servizi`, `/casi-studio`, 
 - **`vercel.json`** (nuovo, va pubblicato): `/index.html` → `/` (redirect permanente) e ogni percorso senza estensione, tranne `/api` e `/platform`, è servito da `index.html`. `tour-operator-v2.html` e `platform/` restano file a sé.
 - **Vecchi link**: uno script in testa a `index.html` converte al volo `/#/servizi` e `/index.html#/servizi` in `/servizi` (mantenendo `?lang=`), quindi i link già condivisi continuano a funzionare.
 - **Link interni**: `tour-operator-v2.html` punta a `/servizi`, `/chi-siamo` ecc.; nel bundle il link "Tour operator" è `/tour-operator-v2.html`; gli script `sg-effetti.js` e `sg-mobile.js` navigano con `history.pushState` invece di `location.hash`.
+
+## Aggiornamento: Area Privata = "Coming soon"
+
+"Area Privata" (testata, menu mobile, footer) apre di nuovo la pagina "Coming soon" invece di rimandare a `/platform/`. La cartella `platform/` resta nel repository ma non è collegata dal sito (chi conosce l'indirizzo `/platform/` la raggiunge ancora). Modifica in `modifiche/ritocchi-mobile.py` (`SG_SOON`).
