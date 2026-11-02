@@ -66,4 +66,4 @@ npm run test:visual                    # screenshots of localhost:3000 compared 
 
 ## Deployment
 
-Vercel detects Next.js automatically; there is no `vercel.json`. Pushes to a branch create Preview deployments, `main` deploys to production. Redirects for old addresses (`/index.html`, `/tour-operator-v2.html`, `/area-partner`) are in `next.config.ts`; old `/#/…` links are converted by a small script in the root layout. Set the environment variables above in the Vercel project for Production and Preview.
+Vercel detects Next.js automatically; there is no `vercel.json`. Pushes to a branch create Preview deployments, `main` deploys to production. Redirects for old addresses (`/index.html`, `/tour-operator-v2.html`) and `/platform → /area-partner` are in `next.config.ts` ("Area Privata" is a "coming soon" page at `/area-partner` while the Platform prototype is not public); old `/#/…` links are converted by a small script in the root layout. Set the environment variables above in the Vercel project for Production and Preview.

@@ -7,6 +7,10 @@
     "scopriSePossiamoApplicarloAnche": "Scopri se possiamo applicarlo anche alla tua realtà"
   },
   "Metadata": {
+    "comingSoon": {
+      "title": "Area Privata",
+      "description": "L'area riservata ai partner Studio Galilei è in arrivo."
+    },
     "home": {
       "title": "Studio Galilei | Marketing, AI e Software",
       "description": "Integriamo Marketing, AI e Software sotto lo stesso tetto per ridurre tempi, semplificare la gestione e costruire sistemi che restano tuoi."
@@ -817,6 +821,13 @@
     "ctaTitle": "Il tuo budget pubblicitario può rendere di più.",
     "ctaText": "Analizziamo i tuoi ecosistemi pubblicitari e ti mostriamo dove il ritorno può crescere.",
     "ctaLabel": "Richiedi un'analisi"
+  },
+  "ComingSoon": {
+    "kicker": "Studio Galilei Platform",
+    "title": "Coming soon",
+    "text": "Stiamo preparando l'area riservata ai partner: progetti, report e documenti in un unico posto. Sarà disponibile a breve.",
+    "contact": "Contattaci",
+    "home": "Torna alla home"
   },
   "Careers": {
     "title": "Lavorare in Studio Galilei",

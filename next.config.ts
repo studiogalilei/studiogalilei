@@ -13,8 +13,8 @@ const nextConfig: NextConfig = {
         destination: "/tour-operator",
         permanent: true,
       })),
-      // "Area Privata" points to the Platform while it is a prototype
-      { source: "/area-partner", destination: "/platform", permanent: false },
+      // "Area Privata" shows a "coming soon" page; the Platform prototype is not public yet
+      { source: "/platform", destination: "/area-partner", permanent: false },
     ];
   },
 };

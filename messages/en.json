@@ -7,6 +7,10 @@
     "scopriSePossiamoApplicarloAnche": "Find out if we can apply it to your business too"
   },
   "Metadata": {
+    "comingSoon": {
+      "title": "Private Area",
+      "description": "The Studio Galilei partner area is coming soon."
+    },
     "home": {
       "title": "Studio Galilei | Marketing, AI and Software",
       "description": "We bring Marketing, AI and Software under one roof to cut lead times, simplify management and build systems that stay yours."
@@ -817,6 +821,13 @@
     "ctaTitle": "Your advertising budget can return more.",
     "ctaText": "We analyse your advertising ecosystems and show you where the return can grow.",
     "ctaLabel": "Request an analysis"
+  },
+  "ComingSoon": {
+    "kicker": "Studio Galilei Platform",
+    "title": "Coming soon",
+    "text": "We are building the partner area: projects, reports and documents in one place. It will be available soon.",
+    "contact": "Contact us",
+    "home": "Back to home"
   },
   "Careers": {
     "title": "Working at Studio Galilei",
