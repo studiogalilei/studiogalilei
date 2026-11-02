@@ -121,4 +121,4 @@ Il sito usa ora indirizzi normali: `studiogalilei.com/servizi`, `/casi-studio`, 
 
 ## Aggiornamento: Area Privata = "Coming soon"
 
-"Area Privata" (testata, menu mobile, footer) apre di nuovo la pagina "Coming soon" invece di rimandare a `/platform/`. La cartella `platform/` resta nel repository ma non è collegata dal sito (chi conosce l'indirizzo `/platform/` la raggiunge ancora). Modifica in `modifiche/ritocchi-mobile.py` (`SG_SOON`).
+"Area Privata" (testata, menu mobile, footer) apre di nuovo la pagina "Coming soon" invece di rimandare a `/platform/`. La cartella `platform/` resta nel repository ma non è raggiungibile: `vercel.json` reindirizza `/platform` e `/platform/…` a `/area-partner` (redirect temporaneo). Per riattivare la Platform basta togliere i due redirect e ripristinare il collegamento in `ritocchi-mobile.py`. Modifica in `modifiche/ritocchi-mobile.py` (`SG_SOON`).

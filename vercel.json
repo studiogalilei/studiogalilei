@@ -1,6 +1,8 @@
 {
   "redirects": [
-    { "source": "/index.html", "destination": "/", "permanent": true }
+    { "source": "/index.html", "destination": "/", "permanent": true },
+    { "source": "/platform", "destination": "/area-partner", "permanent": false },
+    { "source": "/platform/:path*", "destination": "/area-partner", "permanent": false }
   ],
   "rewrites": [
     { "source": "/((?!api(?:/|$)|platform(?:/|$)|.*\\..*).*)", "destination": "/index.html" }
