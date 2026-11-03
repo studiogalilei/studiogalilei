@@ -2,6 +2,7 @@
 
 import { useLocale } from "next-intl";
 import { useLayoutEffect, useOptimistic, useRef, useState, useTransition } from "react";
+import { setLocale } from "@/i18n/actions";
 import { usePathname, useRouter } from "@/i18n/navigation";
 import type { Locale } from "@/i18n/routing";
 import { cn } from "@/lib/cn";
@@ -132,8 +133,11 @@ export function LanguageSwitcher({
             type="button"
             onClick={() => {
               if (value === selected) return;
-              startTransition(() => {
+              startTransition(async () => {
                 select(value);
+                // first the cookie (this also drops pages cached in the old language), then the
+                // current page in the new language
+                await setLocale(value);
                 router.replace(pathname, { locale: value, scroll: false });
               });
             }}
