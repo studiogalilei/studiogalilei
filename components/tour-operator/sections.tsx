@@ -240,7 +240,11 @@ export function Modules() {
               data-reveal
               className={cn(
                 reveal(),
-                "group relative rounded-2xl bg-white px-6 py-[26px] shadow-surface-1 hover:-translate-y-1 hover:shadow-surface-2 max-tour-sm:rounded-14 max-tour-sm:px-3.5 max-tour-sm:py-4",
+                "group relative rounded-2xl bg-white px-6 py-[26px] shadow-surface-1 max-tour-sm:rounded-14 max-tour-sm:px-3.5 max-tour-sm:py-4",
+                // hover: the lift (`translate`, kept apart from the reveal's `transform`) and the
+                // deeper shadow (a layer fading in, not a repainted box-shadow) both ease
+                "[transition:opacity_.8s_ease,transform_.8s_cubic-bezier(.2,.7,.2,1),translate_.35s_cubic-bezier(.2,.7,.2,1)] hover:-translate-y-1",
+                "after:pointer-events-none after:absolute after:inset-0 after:rounded-[inherit] after:opacity-0 after:shadow-surface-2 after:transition-opacity after:duration-350 after:content-[''] hover:after:opacity-100",
               )}
             >
               <div className="mb-[18px] grid size-9 place-items-center rounded-10 bg-pale text-13 font-semibold text-sg [transition:background_.3s,color_.3s] group-hover:bg-sg group-hover:text-white max-tour-sm:mb-3 max-tour-sm:size-7 max-tour-sm:rounded-lg max-tour-sm:text-11.5">

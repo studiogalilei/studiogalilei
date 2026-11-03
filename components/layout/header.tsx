@@ -65,7 +65,14 @@ export function Header() {
 
   useEffect(() => {
     if (!sky) return;
-    const onScroll = () => setScrolled(window.scrollY > 24);
+    // only tell React when the state flips: a setState per scroll event re-renders the header
+    let last: boolean | undefined;
+    const onScroll = () => {
+      const next = window.scrollY > 24;
+      if (next === last) return;
+      last = next;
+      setScrolled(next);
+    };
     onScroll();
     window.addEventListener("scroll", onScroll, { passive: true });
     return () => window.removeEventListener("scroll", onScroll);
@@ -79,16 +86,17 @@ export function Header() {
       className={cn(
         "sticky top-0 z-50 border-b",
         sky
-          ? "-mb-[73px] border-b-transparent bg-transparent transition-[background-color,border-color,backdrop-filter] duration-[350ms] ease-[ease]"
+          ? "-mb-[73px] border-b-transparent bg-transparent transition-[background-color,border-color] duration-[350ms] ease-[ease]"
           : "border-sg/10 bg-white",
-        solidSky && "border-b-white/10 bg-[#061773e0] backdrop-blur-md",
+        // near-opaque instead of a backdrop blur, which re-blurs the page on every scroll frame
+        solidSky && "border-b-white/10 bg-[#061773f5]",
       )}
     >
       <Container className="flex h-[72px] items-center justify-between gap-3 sm:gap-6">
         <Link href="/" aria-label={t("backToHome")} className="group flex-none">
           <LogoTile
             className={cn(
-              "size-[50px] rounded-xl transition-[transform,box-shadow] duration-200 ease-[ease] group-hover:-translate-y-px md:size-14 md:rounded-[13px]",
+              "size-[50px] rounded-xl transition-[translate,box-shadow] duration-200 ease-[ease] group-hover:-translate-y-px md:size-14 md:rounded-[13px]",
               sky
                 ? "shadow-[0_0_0_1px_rgba(255,255,255,.22),0_8px_20px_-10px_rgba(0,0,0,.6)]"
                 : "shadow-[0_6px_16px_-8px_rgba(6,23,115,.55)] group-hover:shadow-[0_10px_22px_-10px_rgba(6,23,115,.7)]",

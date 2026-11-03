@@ -23,6 +23,7 @@ export function Hero() {
         src="/images/tour-operator/hero-bg.webp"
         alt=""
         aria-hidden="true"
+        fetchPriority="high"
         className="absolute inset-0 -z-3 size-full object-cover object-[50%_88%]"
       />
       <div

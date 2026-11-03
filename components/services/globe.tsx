@@ -5,14 +5,16 @@ import { useTranslations } from "next-intl";
 import { useEffect, useRef } from "react";
 import { Check } from "@/components/icons";
 import { countries, workedIn } from "@/lib/geo/world";
+import {
+  createGlobeLoop,
+  createGlobeRenderer,
+  SIZE,
+  TILT,
+  type GlobeMessage,
+} from "./globe-render";
 
-const SIZE = 440;
-const TILT = 28; // latitude facing the viewer
-const SPEED = 0.012; // degrees per millisecond
-const FRAME_MS = 30; // ~30 redraws a second: smooth at this speed, half the work of 60
 const highlighted = new Set<string>(workedIn.flatMap((p) => ("country" in p ? [p.country] : [])));
 const graticule = geoGraticule10();
-
 /** Path data of the globe turned by `angle` degrees. */
 function draw(angle: number) {
   const lon = 40 - angle;
@@ -38,54 +40,98 @@ function draw(angle: number) {
 }
 
 /**
- * Slowly rotating globe with the places we work in. The first frame is server-rendered; the
- * rotation then updates the SVG directly (no React render per frame), only while on screen.
+ * Slowly rotating globe with the places we work in. The first frame is server-rendered SVG; the
+ * rotation is then drawn on a canvas laid over it, by a worker where the browser can hand it
+ * an OffscreenCanvas (the projection maths never touches the main thread), only while on screen.
  */
 export function Globe() {
   const t = useTranslations("Services");
   const places = useTranslations("WorldMap");
   const ref = useRef<HTMLDivElement>(null);
   const svg = useRef<SVGSVGElement>(null);
+  const stage = useRef<HTMLDivElement>(null);
   const first = draw(0);
 
   useEffect(() => {
     const root = svg.current;
-    if (!root || !ref.current || matchMedia("(prefers-reduced-motion: reduce)").matches) return;
-    const grid = root.querySelector<SVGPathElement>("[data-graticule]")!;
-    const shapes = root.querySelectorAll<SVGPathElement>("[data-country]");
-    const pins = root.querySelectorAll<SVGGElement>("[data-pin]");
-    const set = (el: Element, name: string, value: string) => {
-      if (el.getAttribute(name) !== value) el.setAttribute(name, value);
+    const box = stage.current;
+    if (!root || !box || !ref.current) return;
+    if (matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+    const live = root.querySelector<SVGGElement>("[data-live]")!;
+    // a fresh canvas each time: once handed to a worker, a canvas cannot be drawn on again
+    const surface = document.createElement("canvas");
+    surface.setAttribute("aria-hidden", "true");
+    surface.className = "pointer-events-none absolute inset-0 size-full";
+    surface.hidden = true;
+    box.append(surface);
+    // the canvas takes over from the server-rendered SVG shapes once it has drawn a frame
+    const takeOver = () => {
+      live.setAttribute("display", "none");
+      surface.hidden = false;
     };
 
-    let angle = 0;
-    let frame = 0;
-    let last = 0;
-    function tick(now: number) {
-      frame = requestAnimationFrame(tick);
-      if (last && now - last < FRAME_MS) return;
-      if (last) {
-        angle = (angle + (now - last) * SPEED) % 360;
-        const next = draw(angle);
-        set(grid, "d", next.graticule);
-        shapes.forEach((shape, i) => set(shape, "d", next.countries[i]));
-        pins.forEach((pin, i) => {
-          const transform = next.pins[i];
-          if (transform) set(pin, "transform", transform);
-          set(pin, "visibility", transform ? "visible" : "hidden");
-        });
+    // backing store at the device resolution (at most 2x: the globe is small and soft)
+    const size = () => {
+      const dpr = Math.min(window.devicePixelRatio || 1, 2);
+      const width = Math.max(1, Math.round(surface.getBoundingClientRect().width * dpr));
+      return { width, scale: width / SIZE };
+    };
+
+    let run: (on: boolean) => void;
+    let resize: () => void;
+    let dispose: () => void;
+    let worker: Worker | undefined;
+    if ("transferControlToOffscreen" in surface) {
+      // preferred: a worker draws, the main thread stays free for scrolling and input
+      try {
+        worker = new Worker(new URL("./globe.worker.ts", import.meta.url), { type: "module" });
+      } catch {
+        worker = undefined;
       }
-      last = now;
     }
-    const io = new IntersectionObserver(([entry]) => {
-      cancelAnimationFrame(frame);
-      last = 0;
-      if (entry.isIntersecting) frame = requestAnimationFrame(tick);
+    if (worker) {
+      const offscreen = surface.transferControlToOffscreen();
+      const post = (message: GlobeMessage, transfer: Transferable[] = []) =>
+        worker.postMessage(message, transfer);
+      worker.onmessage = takeOver;
+      post({ type: "init", canvas: offscreen, ...size() }, [offscreen]);
+      run = (on) => post({ type: "run", on });
+      resize = () => post({ type: "resize", ...size() });
+      dispose = () => worker.terminate();
+    } else {
+      const ctx = surface.getContext("2d");
+      if (!ctx) return;
+      const render = createGlobeRenderer(ctx);
+      let scale = 1;
+      const loop = createGlobeLoop((angle) => render(angle, scale));
+      resize = () => {
+        const next = size();
+        surface.width = surface.height = next.width;
+        scale = next.scale;
+        loop.redraw();
+      };
+      resize();
+      takeOver();
+      run = (on) => (on ? loop.start() : loop.stop());
+      dispose = loop.stop;
+    }
+
+    let width = surface.getBoundingClientRect().width;
+    const observer = new ResizeObserver(() => {
+      const next = surface.getBoundingClientRect().width;
+      if (next === width) return;
+      width = next;
+      resize();
     });
+    observer.observe(surface);
+    const io = new IntersectionObserver(([entry]) => run(entry.isIntersecting));
     io.observe(ref.current);
     return () => {
-      cancelAnimationFrame(frame);
       io.disconnect();
+      observer.disconnect();
+      dispose();
+      surface.remove();
+      live.removeAttribute("display");
     };
   }, []);
 
@@ -94,63 +140,64 @@ export function Globe() {
       <p className="text-center text-15 font-semibold tracking-[0.18em] text-sg/70 uppercase">
         We Work WorldWide
       </p>
-      <svg
-        ref={svg}
-        viewBox={`0 0 ${SIZE} ${SIZE}`}
-        className="mt-8 block h-auto w-full max-w-[440px]"
-        role="img"
-        aria-label={t("globeLabel")}
-      >
-        <defs>
-          <radialGradient id="globe-shade" cx="38%" cy="32%" r="75%">
-            <stop offset="0%" stopColor="#FFFFFF" />
-            <stop offset="100%" stopColor="#E9EDF7" />
-          </radialGradient>
-          {/* soft halo (a gradient rather than a blur filter, which would repaint every frame) */}
-          <radialGradient id="pin-glow">
-            <stop offset="0%" stopColor="#0689FF" stopOpacity="0.45" />
-            <stop offset="45%" stopColor="#0689FF" stopOpacity="0.32" />
-            <stop offset="100%" stopColor="#0689FF" stopOpacity="0" />
-          </radialGradient>
-        </defs>
-        <circle
-          cx={SIZE / 2}
-          cy={SIZE / 2}
-          r={SIZE / 2 - 8}
-          fill="url(#globe-shade)"
-          stroke="rgb(150,165,215)"
-          strokeWidth="1.2"
-        />
-        <path
-          data-graticule
-          d={first.graticule}
-          fill="none"
-          stroke="#061773"
-          strokeOpacity={0.1}
-          strokeWidth="0.8"
-        />
-        {countries.map((country, i) => (
-          <path
-            key={i}
-            data-country
-            d={first.countries[i]}
-            fill={highlighted.has(String(country.id)) ? "rgb(6,23,115)" : "rgb(168,182,222)"}
-            stroke="#FFFFFF"
-            strokeWidth="0.5"
+      <div ref={stage} className="relative mt-8 w-full max-w-[440px]">
+        <svg
+          ref={svg}
+          viewBox={`0 0 ${SIZE} ${SIZE}`}
+          className="block h-auto w-full"
+          role="img"
+          aria-label={t("globeLabel")}
+        >
+          <defs>
+            <radialGradient id="globe-shade" cx="38%" cy="32%" r="75%">
+              <stop offset="0%" stopColor="#FFFFFF" />
+              <stop offset="100%" stopColor="#E9EDF7" />
+            </radialGradient>
+            {/* soft halo (a gradient rather than a blur filter, which would repaint every frame) */}
+            <radialGradient id="pin-glow">
+              <stop offset="0%" stopColor="#0689FF" stopOpacity="0.45" />
+              <stop offset="45%" stopColor="#0689FF" stopOpacity="0.32" />
+              <stop offset="100%" stopColor="#0689FF" stopOpacity="0" />
+            </radialGradient>
+          </defs>
+          <circle
+            cx={SIZE / 2}
+            cy={SIZE / 2}
+            r={SIZE / 2 - 8}
+            fill="url(#globe-shade)"
+            stroke="rgb(150,165,215)"
+            strokeWidth="1.2"
           />
-        ))}
-        {workedIn.map((place, i) => (
-          <g
-            key={place.key}
-            data-pin
-            transform={first.pins[i] ?? undefined}
-            visibility={first.pins[i] ? "visible" : "hidden"}
-          >
-            <circle r="21" fill="url(#pin-glow)" />
-            <circle r="6.5" fill="#061773" stroke="#FFFFFF" strokeWidth="2" />
+          <g data-live>
+            <path
+              d={first.graticule}
+              fill="none"
+              stroke="#061773"
+              strokeOpacity={0.1}
+              strokeWidth="0.8"
+            />
+            {countries.map((country, i) => (
+              <path
+                key={i}
+                d={first.countries[i]}
+                fill={highlighted.has(String(country.id)) ? "rgb(6,23,115)" : "rgb(168,182,222)"}
+                stroke="#FFFFFF"
+                strokeWidth="0.5"
+              />
+            ))}
+            {workedIn.map((place, i) => (
+              <g
+                key={place.key}
+                transform={first.pins[i] ?? undefined}
+                visibility={first.pins[i] ? "visible" : "hidden"}
+              >
+                <circle r="21" fill="url(#pin-glow)" />
+                <circle r="6.5" fill="#061773" stroke="#FFFFFF" strokeWidth="2" />
+              </g>
+            ))}
           </g>
-        ))}
-      </svg>
+        </svg>
+      </div>
       <ul className="mt-8 grid w-full max-w-[380px] grid-cols-2 gap-x-6 gap-y-3">
         {workedIn.map((place) => (
           <li

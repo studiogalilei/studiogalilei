@@ -1,35 +1,15 @@
-import { geoNaturalEarth1, geoPath } from "d3-geo";
-import type { FeatureCollection } from "geojson";
-import { countries } from "@/lib/geo/world";
-
-const WIDTH = 960;
-const HEIGHT = 500;
-
-// Drawn once at build time: a pale world map behind the intro text.
-const world: FeatureCollection = {
-  type: "FeatureCollection",
-  features: countries.filter((c) => c.id !== "010"), // without Antarctica
-};
-const d =
-  geoPath(
-    geoNaturalEarth1().fitExtent(
-      [
-        [4, 4],
-        [WIDTH - 4, HEIGHT - 4],
-      ],
-      world,
-    ),
-  ).digits(2)(world) ?? "";
-
+/** Pale world map behind the intro text (a prerendered SVG file, see lib/geo/maps.ts). */
 export function WorldBackdrop() {
   return (
-    <svg
-      viewBox={`0 0 ${WIDTH} ${HEIGHT}`}
+    // eslint-disable-next-line @next/next/no-img-element -- a static SVG: nothing to optimize
+    <img
+      src="/maps/world-backdrop.svg"
+      alt=""
       aria-hidden="true"
-      className="pointer-events-none absolute inset-0 h-full w-full"
-      preserveAspectRatio="xMidYMid meet"
-    >
-      <path d={d} fill="#E4E7ED" stroke="#FFFFFF" strokeWidth="0.6" />
-    </svg>
+      width={960}
+      height={500}
+      decoding="async"
+      className="pointer-events-none absolute inset-0 h-full w-full object-contain"
+    />
   );
 }

@@ -16,6 +16,7 @@ export function Hero() {
         src="/images/hero-venezia.webp"
         alt=""
         aria-hidden="true"
+        fetchPriority="high"
         className="absolute inset-0 -z-20 h-full w-full object-cover object-[50%_88%]"
       />
       <div

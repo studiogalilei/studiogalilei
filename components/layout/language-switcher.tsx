@@ -1,12 +1,30 @@
 "use client";
 
 import { useLocale } from "next-intl";
-import { useTransition } from "react";
+import { useLayoutEffect, useRef, useState, useTransition } from "react";
 import { usePathname, useRouter } from "@/i18n/navigation";
 import type { Locale } from "@/i18n/routing";
 import { cn } from "@/lib/cn";
 
-/** EN / ITA toggle. "sky" is the white-on-navy look of the home page header. */
+const OPTIONS = [
+  { value: "en", label: "EN" },
+  { value: "it", label: "ITA" },
+] as const satisfies { value: Locale; label: string }[];
+
+const SLIDE_MS = 300;
+
+/**
+ * Switching language remounts the page (the locale is the root segment), usually before the
+ * pill has finished sliding: the new switcher picks the slide up from where the old one was.
+ */
+let slide: { tone: string; translate: string; width: string; left: number; at: number } | null =
+  null;
+
+/**
+ * EN / ITA toggle. "sky" is the white-on-navy look of the home page header.
+ * A pill slides under the chosen language as soon as it is clicked, while the page loads its
+ * texts in the background. Before hydration the active button paints the pill itself.
+ */
 export function LanguageSwitcher({
   tone = "default",
   className,
@@ -17,46 +35,123 @@ export function LanguageSwitcher({
   const locale = useLocale();
   const router = useRouter();
   const pathname = usePathname();
-  const [, startTransition] = useTransition();
+  const [pending, startTransition] = useTransition();
+  // the language the pill points at: the clicked one, right away
+  const [selected, setSelected] = useState<Locale>(locale);
+  const [lastLocale, setLastLocale] = useState(locale);
+  if (locale !== lastLocale) {
+    setLastLocale(locale);
+    setSelected(locale);
+  }
 
-  const option = (value: Locale, label: string) => {
-    const active = locale === value;
-    return (
-      <button
-        type="button"
-        onClick={() =>
-          startTransition(() => router.replace(pathname, { locale: value, scroll: false }))
-        }
-        aria-pressed={active}
-        lang={value}
-        className={cn(
-          "rounded-[7px] px-2.5 py-1.5 transition-colors",
-          tone === "sky"
-            ? active
-              ? "bg-white text-sg"
-              : "bg-transparent text-white/55 hover:text-white"
-            : active
-              ? "bg-[#E4E7ED] text-ink"
-              : "text-ink/50 hover:text-ink",
-        )}
-      >
-        {label}
-      </button>
-    );
-  };
+  const group = useRef<HTMLDivElement>(null);
+  const pill = useRef<HTMLSpanElement>(null);
+  const [ready, setReady] = useState(false);
+  const placed = useRef(false);
 
+  // place the pill under the selected button; it slides from there on, but not the first time
+  useLayoutEffect(() => {
+    const root = group.current;
+    const el = pill.current;
+    const button = root?.querySelector<HTMLElement>(`[lang="${selected}"]`);
+    if (!root || !el || !button) return;
+    const place = () => {
+      const first = !placed.current;
+      if (first) el.style.transition = "none";
+      el.style.width = `${button.offsetWidth}px`;
+      el.style.height = `${button.offsetHeight}px`;
+      el.style.translate = `${button.offsetLeft}px ${button.offsetTop}px`;
+      if (!first) return;
+      void el.offsetWidth; // commit the position before transitions come back
+      el.style.transition = "";
+      placed.current = true;
+      // finish a slide the previous switcher (before the remount) had started
+      const left = slide ? slide.left - (performance.now() - slide.at) : 0;
+      if (slide?.tone === tone && left > 0) {
+        el.animate(
+          [
+            { translate: slide.translate, width: slide.width },
+            { translate: el.style.translate, width: el.style.width },
+          ],
+          { duration: left, easing: "cubic-bezier(.3,.6,.3,1)" },
+        );
+      }
+      slide = null;
+    };
+    place();
+    setReady(true);
+    // the labels widen when Poppins arrives
+    const observer = new ResizeObserver(place);
+    observer.observe(button);
+    return () => {
+      observer.disconnect();
+      // unmounting mid-slide (the language switch remounts the page): hand the slide over
+      const running = el.getAnimations()[0];
+      const time = Number(running?.currentTime ?? 0);
+      if (!running || !el.isConnected) return;
+      const style = getComputedStyle(el);
+      const total = Number(running.effect?.getComputedTiming().duration ?? SLIDE_MS);
+      slide = {
+        tone,
+        translate: style.translate,
+        width: style.width,
+        left: total - time,
+        at: performance.now(),
+      };
+    };
+  }, [selected, tone]);
+
+  const sky = tone === "sky";
   return (
     <div
+      ref={group}
       role="group"
       aria-label={locale === "en" ? "Language" : "Lingua"}
+      aria-busy={pending || undefined}
       className={cn(
-        "inline-flex items-center gap-0.5 rounded-10 border p-0.5 text-13 font-semibold tracking-[0.04em]",
-        tone === "sky" ? "border-white/25" : "border-[#DADEE6]",
+        "relative isolate inline-flex items-center gap-0.5 rounded-10 border p-0.5 text-13 font-semibold tracking-[0.04em]",
+        sky ? "border-white/25" : "border-[#DADEE6]",
         className,
       )}
     >
-      {option("en", "EN")}
-      {option("it", "ITA")}
+      <span
+        ref={pill}
+        aria-hidden="true"
+        className={cn(
+          "absolute top-0 left-0 -z-1 rounded-[7px] transition-[translate,width] duration-300 ease-[cubic-bezier(.2,.7,.2,1)] motion-reduce:transition-none",
+          sky ? "bg-white" : "bg-[#E4E7ED]",
+          !ready && "invisible",
+        )}
+      />
+      {OPTIONS.map(({ value, label }) => {
+        const active = selected === value;
+        return (
+          <button
+            key={value}
+            type="button"
+            onClick={() => {
+              if (value === selected) return;
+              setSelected(value);
+              startTransition(() => router.replace(pathname, { locale: value, scroll: false }));
+            }}
+            aria-pressed={active}
+            lang={value}
+            className={cn(
+              "rounded-[7px] px-2.5 py-1.5 transition-colors duration-300",
+              sky
+                ? active
+                  ? "text-sg"
+                  : "text-white/55 hover:text-white"
+                : active
+                  ? "text-ink"
+                  : "text-ink/50 hover:text-ink",
+              active && !ready && (sky ? "bg-white" : "bg-[#E4E7ED]"),
+            )}
+          >
+            {label}
+          </button>
+        );
+      })}
     </div>
   );
 }

@@ -110,51 +110,54 @@ export function PortalPreview() {
               </div>
             ))}
           </div>
-          <svg
-            viewBox={`-10 0 ${WIDTH + 20} ${HEIGHT}`}
-            className="mt-5 block w-full"
-            aria-hidden="true"
-          >
+          <div className="@container relative mt-5">
+            <svg
+              viewBox={`-10 0 ${WIDTH + 20} ${HEIGHT}`}
+              className="block w-full"
+              aria-hidden="true"
+            >
+              {armed && (
+                <>
+                  <defs>
+                    <linearGradient id="sg-area" x1="0" y1="0" x2="0" y2="1">
+                      <stop offset="0" stopColor="#0689FF" stopOpacity=".22" />
+                      <stop offset="1" stopColor="#0689FF" stopOpacity="0" />
+                    </linearGradient>
+                  </defs>
+                  {/* The original area path broke right after the line ("L NaN 70"), so only the
+                      line's own outline gets filled; the end dot likewise landed at x = 0. */}
+                  <path
+                    d={LINE}
+                    fill="url(#sg-area)"
+                    className={cn("opacity-0", playing && "animate-chart-area")}
+                  />
+                </>
+              )}
+              <path
+                ref={line}
+                d={LINE}
+                fill="none"
+                stroke="#0689FF"
+                strokeWidth="2.5"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                style={armed ? { strokeDasharray: length, strokeDashoffset: length } : undefined}
+                className={cn(playing && "animate-chart-draw")}
+              />
+            </svg>
+            {/* The end dot (at x = 0, see above) is an HTML element, not an SVG circle, so its
+                endless pulse is a compositor animation instead of a repaint every frame. */}
             {armed && (
-              <>
-                <defs>
-                  <linearGradient id="sg-area" x1="0" y1="0" x2="0" y2="1">
-                    <stop offset="0" stopColor="#0689FF" stopOpacity=".22" />
-                    <stop offset="1" stopColor="#0689FF" stopOpacity="0" />
-                  </linearGradient>
-                </defs>
-                {/* The original area path broke right after the line ("L NaN 70"), so only the
-                    line's own outline gets filled; the end dot likewise landed at x = 0. */}
-                <path
-                  d={LINE}
-                  fill="url(#sg-area)"
-                  className={cn("opacity-0", playing && "animate-chart-area")}
-                />
-              </>
-            )}
-            <path
-              ref={line}
-              d={LINE}
-              fill="none"
-              stroke="#0689FF"
-              strokeWidth="2.5"
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              style={armed ? { strokeDasharray: length, strokeDashoffset: length } : undefined}
-              className={cn(playing && "animate-chart-draw")}
-            />
-            {armed && (
-              <circle
-                cx="0"
-                cy="5"
-                r="4.5"
+              <span
+                aria-hidden="true"
                 className={cn(
-                  "origin-center fill-ai stroke-white stroke-2 opacity-0 [transform-box:fill-box]",
-                  playing && "animate-chart-dot",
+                  "absolute top-[7.143%] left-[2.5%] size-[2.25cqw] -translate-1/2 rounded-full border-[0.5cqw] border-white bg-ai opacity-0",
+                  "after:absolute after:-inset-[0.5cqw] after:rounded-full after:opacity-0 after:shadow-[0_0_5px_1px_#0689ffb3] after:content-['']",
+                  playing && "animate-chart-dot after:animate-dot-glow",
                 )}
               />
             )}
-          </svg>
+          </div>
           <figcaption className="mt-3 text-right text-12.5 text-ink/45">{t("caption")}</figcaption>
         </div>
       </div>
