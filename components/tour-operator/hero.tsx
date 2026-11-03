@@ -46,10 +46,7 @@ export function Hero() {
         )}
       >
         <div className="self-end [grid-area:head] max-tour-md:text-center max-tour-sm:text-left">
-          <span className="mb-[22px] inline-flex items-center gap-2.5 rounded-full border border-white/18 bg-white/6 py-1.5 pr-3.5 pl-1.5 text-13.5 text-white/86 max-tour-sm:hidden">
-            <b className="rounded-full bg-cream px-2.5 py-[3px] text-12 font-semibold tracking-2 text-sg-deep">
-              Live
-            </b>
+          <span className="mb-[22px] inline-flex items-center rounded-full border border-white/18 bg-white/6 px-3.5 py-1.5 text-13.5 text-white/86 max-tour-sm:hidden">
             {t("softwareSuMisuraPerTourOperator")}
           </span>
           <h1 className="mb-[22px] text-[3.15rem] leading-[1.05] font-semibold tracking-[-0.035em] text-white max-tour-md:text-[3rem] max-tour-sm:mb-3.5 max-tour-sm:text-[2.3rem] [&_em]:bg-[linear-gradient(90deg,#fff_0%,#bfe2ff_45%,var(--color-cream)_100%)] [&_em]:bg-clip-text [&_em]:text-transparent [&_em]:not-italic">
