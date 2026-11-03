@@ -17,8 +17,7 @@ const SLIDE_MS = 300;
  * Switching language swaps the whole page (the locale is the root segment), usually before
  * the pill has finished sliding: the new switcher picks the slide up from where the old one was.
  */
-let slide: { tone: string; translate: string; width: string; left: number; at: number } | null =
-  null;
+let slide: { translate: string; width: string; left: number; at: number } | null = null;
 
 /**
  * EN / ITA toggle. "sky" is the white-on-navy look of the home page header.
@@ -58,14 +57,13 @@ export function LanguageSwitcher({
       const style = getComputedStyle(el);
       const total = Number(running.effect?.getComputedTiming().duration ?? SLIDE_MS);
       slide = {
-        tone,
         translate: style.translate,
         width: style.width,
         left: total - Number(running.currentTime ?? 0),
         at: performance.now(),
       };
     };
-  }, [tone]);
+  }, []);
 
   // place the pill under the selected button; it slides from there on, but not the first time
   useLayoutEffect(() => {
@@ -85,7 +83,7 @@ export function LanguageSwitcher({
       placed.current = true;
       // finish a slide the previous switcher (before the remount) had started
       const left = slide ? slide.left - (performance.now() - slide.at) : 0;
-      if (slide?.tone === tone && left > 0) {
+      if (slide && left > 0) {
         el.animate(
           [
             { translate: slide.translate, width: slide.width },
@@ -102,7 +100,7 @@ export function LanguageSwitcher({
     const observer = new ResizeObserver(place);
     observer.observe(button);
     return () => observer.disconnect();
-  }, [selected, tone]);
+  }, [selected]);
 
   const sky = tone === "sky";
   return (
@@ -112,7 +110,7 @@ export function LanguageSwitcher({
       aria-label={locale === "en" ? "Language" : "Lingua"}
       aria-busy={pending || undefined}
       className={cn(
-        "relative isolate inline-flex items-center gap-0.5 rounded-10 border p-0.5 text-13 font-semibold tracking-[0.04em]",
+        "relative isolate inline-flex items-center gap-0.5 rounded-10 border p-0.5 text-13 font-semibold tracking-[0.04em] transition-[border-color] duration-[350ms]",
         sky ? "border-white/25" : "border-[#DADEE6]",
         className,
       )}
@@ -121,7 +119,7 @@ export function LanguageSwitcher({
         ref={pill}
         aria-hidden="true"
         className={cn(
-          "absolute top-0 left-0 -z-1 rounded-[7px] transition-[translate,width] duration-300 ease-[cubic-bezier(.2,.7,.2,1)] motion-reduce:transition-none",
+          "absolute top-0 left-0 -z-1 rounded-[7px] transition-[translate,width,background-color] duration-300 ease-[cubic-bezier(.2,.7,.2,1)] motion-reduce:transition-none",
           sky ? "bg-white" : "bg-[#E4E7ED]",
           !ready && "invisible",
         )}

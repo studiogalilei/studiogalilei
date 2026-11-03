@@ -44,16 +44,18 @@ const mobileNav = [
 
 /**
  * The site's one navigation bar, rendered by the root layout on every page. On the home page it
- * floats transparent over the hero sky and turns navy on scroll.
+ * floats transparent over the hero sky until the page scrolls or the menu opens; from then on
+ * it is the same white bar, with the same soft shadow, as on every other page.
  */
 export function Navbar() {
   const t = useTranslations("Header");
   const pathname = usePathname();
   const [menuOpen, setMenuOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
-  // On the home page the bar sits transparent over the hero sky and turns navy on scroll.
-  const sky = pathname === "/";
-  const solidSky = sky && (scrolled || menuOpen);
+  // On the home page the bar floats over the hero (it does not take up room above it) and is
+  // transparent there, the "sky" look, only while the page is at the top and the menu closed.
+  const home = pathname === "/";
+  const sky = home && !scrolled && !menuOpen;
 
   const [lastPathname, setLastPathname] = useState(pathname);
   if (pathname !== lastPathname) {
@@ -73,7 +75,7 @@ export function Navbar() {
     // only tell React when the state flips: a setState per scroll event re-renders the header
     let last: boolean | undefined;
     const onScroll = () => {
-      const next = window.scrollY > (sky ? 24 : 4);
+      const next = window.scrollY > (home ? 24 : 4);
       if (next === last) return;
       last = next;
       setScrolled(next);
@@ -81,7 +83,7 @@ export function Navbar() {
     onScroll();
     window.addEventListener("scroll", onScroll, { passive: true });
     return () => window.removeEventListener("scroll", onScroll);
-  }, [sky]);
+  }, [home]);
 
   const isActive = (href: string) => pathname === href || pathname.startsWith(href + "/");
   const privateArea = t("privateArea");
@@ -95,10 +97,9 @@ export function Navbar() {
     <header
       className={cn(
         "sticky top-0 z-50 border-b transition-[background-color,border-color,box-shadow] duration-[350ms] ease-[ease] [view-transition-name:site-navbar]",
-        sky ? "-mb-[73px] border-b-transparent bg-transparent" : "border-sg/10 bg-white",
-        // near-opaque instead of a backdrop blur, which re-blurs the page on every scroll frame
-        solidSky && "border-b-white/10 bg-[#061773f5]",
-        !sky && scrolled && "shadow-[0_8px_24px_-16px_rgba(6,23,115,.35)]",
+        home && "-mb-[73px]",
+        sky ? "border-b-transparent bg-transparent" : "border-sg/10 bg-white",
+        scrolled && "shadow-[0_8px_24px_-16px_rgba(6,23,115,.35)]",
       )}
     >
       {/* three groups with equal space between them: the links sit in the middle of the room
@@ -164,7 +165,7 @@ export function Navbar() {
           <Link
             href="/contatti"
             className={cn(
-              "rounded-10 px-5 py-2.5 text-15 font-medium",
+              "rounded-10 px-5 py-2.5 text-15 font-medium transition-[background-color,color,box-shadow] duration-[350ms] ease-[ease]",
               sky
                 ? "bg-white text-sg shadow-[0_8px_24px_-10px_#ffffff80] hover:bg-[#e4e7ed]"
                 : "bg-sg text-white hover:bg-sg-deep",
@@ -177,7 +178,7 @@ export function Navbar() {
             aria-label={privateArea}
             title={privateArea}
             className={cn(
-              "inline-flex items-center gap-1.5 text-14 leading-none font-medium whitespace-nowrap transition-colors duration-150 ease-[ease]",
+              "inline-flex items-center gap-1.5 text-14 leading-none font-medium whitespace-nowrap transition-colors duration-[350ms] ease-[ease]",
               sky ? "text-white" : "text-ink/62 hover:text-sg",
             )}
           >
@@ -191,7 +192,7 @@ export function Navbar() {
             aria-label={privateArea}
             title={privateArea}
             className={cn(
-              "grid size-10 place-items-center rounded-10 active:bg-pale",
+              "grid size-10 place-items-center rounded-10 transition-colors duration-[350ms] active:bg-pale",
               sky ? "text-white" : "text-sg/70",
             )}
           >
@@ -200,7 +201,7 @@ export function Navbar() {
           <button
             type="button"
             className={cn(
-              "grid size-11 place-items-center rounded-lg",
+              "grid size-11 place-items-center rounded-lg transition-colors duration-[350ms]",
               sky ? "text-white" : "text-sg",
             )}
             aria-label={menuOpen ? t("closeMenu") : t("openMenu")}
