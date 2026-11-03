@@ -42,6 +42,8 @@ const mobileNav = [
   { key: "privateArea", href: "/area-partner", icon: Lock },
 ] as const;
 
+type NavKey = (typeof desktopNav)[number]["key"];
+
 /** The pages whose hero reaches up behind the navbar, transparent over it at the top. */
 const heroPages = new Set<string>(["/", "/chi-siamo", "/casi-studio"]);
 
@@ -94,47 +96,47 @@ export function Navbar() {
 
   const isActive = (href: string) => pathname === href || pathname.startsWith(href + "/");
   const activeKey = desktopNav.find(({ href }) => isActive(href))?.key;
+  // Where a click is taking the page: the bar shows its link as the current one at once (or no
+  // link, for home or contacts), without waiting for the new page to load. It clears when the
+  // router arrives there; a later click replaces it, back/forward drops it.
+  const [pendingKey, setPendingKey] = useState<NavKey | "none" | null>(null);
+  const pendingArrived = pendingKey === (activeKey ?? "none");
+  if (pendingKey && pendingArrived) setPendingKey(null);
+  const shownKey =
+    pendingKey && !pendingArrived ? (pendingKey === "none" ? undefined : pendingKey) : activeKey;
+
+  useEffect(() => {
+    // capture phase: next/link cancels the default once its own handler has run
+    const onClick = (e: MouseEvent) => {
+      if (e.defaultPrevented || e.button !== 0 || e.metaKey || e.ctrlKey || e.shiftKey || e.altKey)
+        return;
+      const a = (e.target as Element | null)?.closest?.("a[href]");
+      if (!(a instanceof HTMLAnchorElement) || a.hasAttribute("download")) return;
+      if (a.target && a.target !== "_self") return;
+      const url = new URL(a.href);
+      if (url.origin !== location.origin || url.pathname === location.pathname) return;
+      const match = (href: string) => url.pathname === href || url.pathname.startsWith(href + "/");
+      setPendingKey(desktopNav.find(({ href }) => match(href))?.key ?? "none");
+    };
+    const drop = () => setPendingKey(null);
+    document.addEventListener("click", onClick, true);
+    window.addEventListener("popstate", drop);
+    return () => {
+      document.removeEventListener("click", onClick, true);
+      window.removeEventListener("popstate", drop);
+    };
+  }, []);
+  // a navigation that never arrives (cancelled, failed) gives the underline back to the page
+  useEffect(() => {
+    if (!pendingKey) return;
+    const timer = setTimeout(() => setPendingKey(null), 8000);
+    return () => clearTimeout(timer);
+  }, [pendingKey]);
 
   const nav = useRef<HTMLElement>(null);
   const indicator = useRef<HTMLSpanElement>(null);
   const [indicatorReady, setIndicatorReady] = useState(false);
-  const placed = useRef(false);
-  useLayoutEffect(() => {
-    const bar = indicator.current;
-    const links = nav.current;
-    if (!bar || !links) return;
-    const link = activeKey ? links.querySelector<HTMLElement>(`[data-nav="${activeKey}"]`) : null;
-    const place = (how: "slide" | "jump" | "fade-in") => {
-      if (!link) {
-        bar.style.opacity = "0"; // fades out where it is
-        return;
-      }
-      // "jump": no transition at all; "fade-in": in place, only the opacity eases
-      if (how !== "slide") bar.style.transition = how === "jump" ? "none" : "opacity 300ms ease";
-      bar.style.translate = `${link.offsetLeft}px 0`;
-      bar.style.scale = `${link.offsetWidth} 1`;
-      if (how === "jump") void bar.offsetWidth; // commit the position before the opacity
-      bar.style.opacity = "1";
-      if (how !== "slide") {
-        void bar.offsetWidth;
-        setTimeout(() => (bar.style.transition = ""), how === "jump" ? 0 : 320);
-      }
-    };
-    const visible = placed.current && bar.style.opacity === "1";
-    place(!placed.current ? "jump" : visible ? "slide" : "fade-in");
-    placed.current = true;
-    setIndicatorReady(true);
-    // labels change width when the font arrives: follow without sliding. (Only on a real
-    // change: an observer also reports once when it starts, which would cut the slide short.)
-    let width = links.offsetWidth;
-    const observer = new ResizeObserver(() => {
-      if (links.offsetWidth === width) return;
-      width = links.offsetWidth;
-      place("jump");
-    });
-    observer.observe(links);
-    return () => observer.disconnect();
-  }, [activeKey]);
+  useIndicator(nav, indicator, shownKey, () => setIndicatorReady(true));
   const privateArea = t("privateArea");
   // the Platform prototype is a full-screen app with its own chrome
   if (pathname === "/platform" || pathname.startsWith("/platform/")) return null;
@@ -174,13 +176,13 @@ export function Navbar() {
           className="relative hidden h-full items-stretch gap-7 lg:flex"
         >
           {desktopNav.map(({ key, href }) => {
-            const active = key === activeKey;
+            const active = key === shownKey;
             return (
               <Link
                 key={key}
                 href={href}
                 data-nav={key}
-                aria-current={active ? "page" : undefined}
+                aria-current={key === activeKey ? "page" : undefined}
                 className={cn(
                   "group/nav relative inline-flex h-full items-center gap-1 text-15 font-medium transition-colors duration-300",
                   sky ? "text-white/80 hover:text-white" : "text-ink/80 hover:text-sg",
@@ -207,14 +209,14 @@ export function Navbar() {
               </Link>
             );
           })}
-          {/* The current page's underline: one element for all the links, which moves to the
-              new link on navigation (translate and scale only, so the compositor animates it
-              smoothly while the new page renders) and fades in place to and from home. */}
+          {/* The current page's underline: one element for all the links, moved by
+              useIndicator (translate and scale only, so the compositor animates it smoothly while
+              the new page renders). Its colour follows the bar's, at the bar's pace. */}
           <span
             ref={indicator}
             aria-hidden="true"
             className={cn(
-              "pointer-events-none absolute bottom-0 left-0 h-[2px] w-px origin-left opacity-0 transition-[translate,scale,opacity,background-color] duration-[450ms] ease-[cubic-bezier(.22,.8,.24,1)] motion-reduce:transition-none",
+              "pointer-events-none absolute bottom-0 left-0 h-[2px] w-px origin-left opacity-0 transition-[background-color] duration-[350ms] ease-[ease]",
               sky ? "bg-white" : "bg-sg",
             )}
           />
@@ -358,4 +360,111 @@ export function Navbar() {
       )}
     </header>
   );
+}
+
+/** Where the underline is drawn: its left edge in the nav, its width, its opacity. */
+type Place = { x: number; w: number; o: number };
+
+const frame = ({ x, w, o }: Place): Keyframe => ({
+  translate: `${x}px 0`,
+  scale: `${w} 1`,
+  opacity: String(o),
+});
+
+/**
+ * Moves the one underline of the desktop nav to the link `key` (none: it leaves):
+ * - between two links it slides, its ends easing together from one link's edges to the other's;
+ * - arriving from a page with no link (home, contacts) it grows from the link's centre out to
+ *   its edges, and leaving it shrinks back into its centre;
+ * - a move that starts while another is running starts from where the underline is on screen,
+ *   so a quick second click bends its path instead of jumping;
+ * - on the first render, and whenever the labels change width (the font arrives, the window
+ *   resizes), it is simply set in place.
+ * Edges are measured to the subpixel, so the underline spans exactly the whole link. The motion
+ * is a Web Animation of translate and scale (compositor only), which keeps running smoothly
+ * through the page's view transition; with reduced motion it is set in place every time.
+ */
+function useIndicator(
+  nav: React.RefObject<HTMLElement | null>,
+  indicator: React.RefObject<HTMLSpanElement | null>,
+  key: string | undefined,
+  onPlaced: () => void,
+) {
+  const placed = useRef<Place | null>(null);
+  const animation = useRef<Animation | null>(null);
+  useLayoutEffect(() => {
+    const bar = indicator.current;
+    const links = nav.current;
+    if (!bar || !links) return;
+    const target = (): Place | null => {
+      const link = key ? links.querySelector<HTMLElement>(`[data-nav="${key}"]`) : null;
+      if (!link) return null;
+      const box = link.getBoundingClientRect();
+      return { x: box.left - links.getBoundingClientRect().left, w: box.width, o: 1 };
+    };
+    const set = (place: Place) => {
+      animation.current?.cancel();
+      animation.current = null;
+      Object.assign(bar.style, frame(place));
+      placed.current = place;
+    };
+    // where the underline is on screen right now, mid-animation included
+    const current = (): Place => {
+      const style = getComputedStyle(bar);
+      return {
+        x: parseFloat(style.translate) || 0,
+        w: parseFloat(style.scale) || 0,
+        o: parseFloat(style.opacity) || 0,
+      };
+    };
+    const move = (to: Place, from: Keyframe[], timing: KeyframeAnimationOptions) => {
+      set(to);
+      if (matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+      animation.current = bar.animate([...from, frame(to)], timing);
+    };
+
+    const to = target();
+    const was = placed.current;
+    if (!was) {
+      // first render: in place, exactly where the server-drawn underline was
+      set(to ?? { x: 0, w: 0, o: 0 });
+    } else {
+      const now = current();
+      const visible = was.o > 0 && now.o > 0.05;
+      if (to && visible) {
+        // slide: both ends travel together, quick to leave and soft to land
+        move(to, [frame(now)], { duration: 480, easing: "cubic-bezier(.45,0,.15,1)" });
+      } else if (to) {
+        // appear: grow from the link's centre, fading in over the first part of the growth
+        const centre = { x: to.x + to.w / 2, w: 0, o: 0 };
+        move(to, [frame(centre), { opacity: 1, offset: 0.4 }], {
+          duration: 420,
+          easing: "cubic-bezier(.2,.75,.25,1)",
+        });
+      } else if (was.o > 0) {
+        // leave: shrink into the centre of where it is, fading out at the end
+        const centre = { x: now.x + now.w / 2, w: 0, o: 0 };
+        move(centre, [frame(now), { opacity: now.o, offset: 0.55 }], {
+          duration: 300,
+          easing: "cubic-bezier(.5,0,.75,0)",
+        });
+      }
+    }
+    onPlaced();
+
+    // Labels change width when the font arrives or the window resizes: follow in place. (Only on
+    // a real change: an observer also reports once when it starts, which would cut a move short.)
+    let width = links.getBoundingClientRect().width;
+    const observer = new ResizeObserver(() => {
+      const next = links.getBoundingClientRect().width;
+      if (next === width) return;
+      width = next;
+      const place = target();
+      if (place) set(place);
+    });
+    observer.observe(links);
+    return () => observer.disconnect();
+    // onPlaced only flips a flag once: the underline moves when the key does
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [key, nav, indicator]);
 }
