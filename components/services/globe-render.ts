@@ -1,5 +1,5 @@
-import { geoCentroid, geoDistance, geoGraticule10 } from "d3-geo";
-import type { Geometry, Position } from "geojson";
+import { geoCentroid, geoDistance } from "d3-geo";
+import type { Geometry, MultiLineString, Position } from "geojson";
 import { countries, workedIn } from "@/lib/geo/world";
 
 /*
@@ -42,7 +42,26 @@ function rings(geometry: Geometry): Position[][] {
 }
 
 const highlighted = new Set<string>(workedIn.flatMap((p) => ("country" in p ? [p.country] : [])));
-const graticule = geoGraticule10().coordinates.map(vectors);
+
+/**
+ * Meridians and parallels every 10°, as d3's 10° graticule draws them (meridians stop at
+ * ±80° except the four every 90°, which reach the poles), but with a point every 2°: lines
+ * on screen are drawn straight between points, and d3's own graticule has as few as three
+ * points on a meridian (pole, equator, pole), which then cut straight across the globe.
+ */
+export const graticuleLines: MultiLineString = (() => {
+  const steps = (from: number, to: number) =>
+    Array.from({ length: Math.round((to - from) / 2) + 1 }, (_, i) => from + i * 2);
+  const meridians = Array.from({ length: 36 }, (_, i) => -180 + i * 10).map((lon) => {
+    const pole = lon % 90 === 0 ? 90 : 80;
+    return steps(-pole, pole).map((lat): Position => [lon, lat]);
+  });
+  const parallels = Array.from({ length: 17 }, (_, i) => -80 + i * 10).map((lat) =>
+    steps(-180, 180).map((lon): Position => [lon, lat]),
+  );
+  return { type: "MultiLineString", coordinates: [...meridians, ...parallels] };
+})();
+const graticule = graticuleLines.coordinates.map(vectors);
 
 /** Each country's rings, and the cap around its centroid that holds it (to skip the far side). */
 const shapes = countries.map((country) => {

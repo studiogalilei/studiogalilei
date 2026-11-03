@@ -1,6 +1,6 @@
 "use client";
 
-import { geoDistance, geoGraticule10, geoOrthographic, geoPath } from "d3-geo";
+import { geoDistance, geoOrthographic, geoPath } from "d3-geo";
 import { useTranslations } from "next-intl";
 import { useEffect, useRef } from "react";
 import { Check } from "@/components/icons";
@@ -8,6 +8,7 @@ import { countries, workedIn } from "@/lib/geo/world";
 import {
   createGlobeLoop,
   createGlobeRenderer,
+  graticuleLines,
   SIZE,
   TILT,
   type GlobeMessage,
@@ -15,7 +16,6 @@ import {
 } from "./globe-render";
 
 const highlighted = new Set<string>(workedIn.flatMap((p) => ("country" in p ? [p.country] : [])));
-const graticule = geoGraticule10();
 /** Path data of the globe turned by `angle` degrees. */
 function draw(angle: number) {
   const lon = 40 - angle;
@@ -29,7 +29,7 @@ function draw(angle: number) {
   // rounded so server and browser floating point produce the same markup
   const path = geoPath(projection).digits(1);
   return {
-    graticule: path(graticule) ?? "",
+    graticule: path(graticuleLines) ?? "",
     countries: countries.map((country) => path(country) ?? ""),
     pins: workedIn.map((place) => {
       const point = projection([place.lon, place.lat]);
