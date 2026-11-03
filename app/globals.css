@@ -90,18 +90,12 @@
   /* Tour operator landing page (/tour-operator) */
   --breakpoint-tour-sm: 45.0625rem; /* max-tour-sm: ≤ 720px */
   --breakpoint-tour-md: 66.3125rem; /* max-tour-md: ≤ 1060px */
-  --animate-glow: glow-spin 3.8s linear infinite;
   --animate-live-ping: live-ping 2s infinite;
   --animate-bob: bob 6s ease-in-out infinite;
   --animate-fade-up: fade-up 0.45s cubic-bezier(0.2, 0.7, 0.2, 1);
   --animate-fade-up-fast: fade-up 0.35s cubic-bezier(0.2, 0.7, 0.2, 1);
   --animate-progress: progress var(--progress-duration, 5s) linear forwards;
 
-  @keyframes glow-spin {
-    to {
-      rotate: 360deg;
-    }
-  }
   /* a ring spreading ~9px around the dot; scale and opacity only, so the GPU animates it */
   @keyframes live-ping {
     0% {
