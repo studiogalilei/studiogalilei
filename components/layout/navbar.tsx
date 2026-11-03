@@ -42,20 +42,23 @@ const mobileNav = [
   { key: "privateArea", href: "/area-partner", icon: Lock },
 ] as const;
 
+/** The pages whose hero reaches up behind the navbar, transparent over it at the top. */
+const heroPages = new Set<string>(["/", "/chi-siamo", "/casi-studio"]);
+
 /**
- * The site's one navigation bar, rendered by the root layout on every page. On the home and About
- * us pages it floats transparent over the hero sky until the page scrolls or the menu opens;
- * from then on it is the same white bar, with the same soft shadow, as on every other page.
+ * The site's one navigation bar, rendered by the root layout on every page. On the home, About
+ * us and Case studies pages it floats transparent over the hero until the page scrolls or the
+ * menu opens; from then on it is the same white bar, with the same soft shadow, as on every
+ * other page.
  */
 export function Navbar() {
   const t = useTranslations("Header");
   const pathname = usePathname();
   const [menuOpen, setMenuOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
-  // On the pages with a navy hero (home, About us) the bar floats over it (it does not take up
-  // room above it) and is transparent there, the "sky" look, only while the page is at the top
-  // and the menu closed.
-  const overHero = pathname === "/" || pathname === "/chi-siamo";
+  // On the hero pages the bar floats over the hero (it does not take up room above it) and is
+  // transparent there, the "sky" look, only while the page is at the top and the menu closed.
+  const overHero = heroPages.has(pathname);
   const sky = overHero && !scrolled && !menuOpen;
 
   const [lastPathname, setLastPathname] = useState(pathname);
