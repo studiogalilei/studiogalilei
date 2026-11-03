@@ -1,7 +1,7 @@
 "use client";
 
 import { useTranslations } from "next-intl";
-import { useEffect, useState } from "react";
+import { useEffect, useState, ViewTransition } from "react";
 import {
   Briefcase,
   ChevronRight,
@@ -67,12 +67,13 @@ export function Navbar() {
     return () => document.removeEventListener("keydown", onKey);
   }, []);
 
+  // Home: the bar turns navy past the hero's top. Other pages: it lifts with a soft shadow
+  // as soon as the page scrolls under it.
   useEffect(() => {
-    if (!sky) return;
     // only tell React when the state flips: a setState per scroll event re-renders the header
     let last: boolean | undefined;
     const onScroll = () => {
-      const next = window.scrollY > 24;
+      const next = window.scrollY > (sky ? 24 : 4);
       if (next === last) return;
       last = next;
       setScrolled(next);
@@ -88,14 +89,16 @@ export function Navbar() {
   if (pathname === "/platform" || pathname.startsWith("/platform/")) return null;
 
   return (
+    // On navigation the pages fade under the bar (template.tsx). The bar is its own view
+    // transition group, painted above them, which cross-fades in place: link colours and its
+    // home/white look ease over while its current-page underline slides.
     <header
       className={cn(
-        "sticky top-0 z-50 border-b",
-        sky
-          ? "-mb-[73px] border-b-transparent bg-transparent transition-[background-color,border-color] duration-[350ms] ease-[ease]"
-          : "border-sg/10 bg-white",
+        "sticky top-0 z-50 border-b transition-[background-color,border-color,box-shadow] duration-[350ms] ease-[ease] [view-transition-name:site-navbar]",
+        sky ? "-mb-[73px] border-b-transparent bg-transparent" : "border-sg/10 bg-white",
         // near-opaque instead of a backdrop blur, which re-blurs the page on every scroll frame
         solidSky && "border-b-white/10 bg-[#061773f5]",
+        !sky && scrolled && "shadow-[0_8px_24px_-16px_rgba(6,23,115,.35)]",
       )}
     >
       {/* three groups with equal space between them: the links sit in the middle of the room
@@ -112,21 +115,49 @@ export function Navbar() {
           />
         </Link>
         <nav aria-label={t("mainNavigation")} className="hidden h-full items-stretch gap-7 lg:flex">
-          {desktopNav.map(({ key, href }) => (
-            <Link
-              key={key}
-              href={href}
-              className={cn(
-                "relative inline-flex h-full items-center gap-1 text-15 font-medium transition-colors",
-                sky ? "text-white/80 hover:text-white" : "text-ink/80 hover:text-sg",
-                !sky &&
-                  isActive(href) &&
-                  "text-sg after:absolute after:inset-x-0 after:bottom-0 after:h-[2px] after:bg-sg",
-              )}
-            >
-              {t(key)}
-            </Link>
-          ))}
+          {desktopNav.map(({ key, href }) => {
+            const active = !sky && isActive(href);
+            return (
+              <Link
+                key={key}
+                href={href}
+                aria-current={active ? "page" : undefined}
+                className={cn(
+                  "group/nav relative inline-flex h-full items-center gap-1 text-15 font-medium transition-colors",
+                  sky ? "text-white/80 hover:text-white" : "text-ink/80 hover:text-sg",
+                  active && "text-sg",
+                )}
+              >
+                {t(key)}
+                {/* hover: a faint line grows from the centre (a transform: compositor only) */}
+                {!active && (
+                  <span
+                    aria-hidden="true"
+                    className={cn(
+                      "absolute inset-x-0 bottom-0 h-[2px] scale-x-0 transition-transform duration-300 ease-[cubic-bezier(.2,.7,.2,1)] group-hover/nav:scale-x-100",
+                      sky ? "bg-white/45" : "bg-sg/25",
+                    )}
+                  />
+                )}
+                {/* the current page's underline: one named element, so a navigation slides it
+                    from the old link to the new one */}
+                {active && (
+                  <ViewTransition
+                    name="nav-indicator"
+                    share="nav-indicator"
+                    enter="nav-indicator-in"
+                    exit="nav-indicator-out"
+                    default="none"
+                  >
+                    <span
+                      aria-hidden="true"
+                      className="absolute inset-x-0 bottom-0 h-[2px] bg-sg"
+                    />
+                  </ViewTransition>
+                )}
+              </Link>
+            );
+          })}
         </nav>
         <div className="hidden items-center gap-6 lg:flex">
           <LanguageSwitcher tone={sky ? "sky" : "default"} />
@@ -176,7 +207,11 @@ export function Navbar() {
             aria-expanded={menuOpen}
             onClick={() => setMenuOpen(!menuOpen)}
           >
-            {menuOpen ? <X size={24} /> : <Menu size={24} />}
+            {/* the two icons cross-fade with a quarter turn */}
+            <span className="relative grid size-6 [&>svg]:col-start-1 [&>svg]:row-start-1 [&>svg]:transition-[opacity,rotate,scale] [&>svg]:duration-300 [&>svg]:ease-[cubic-bezier(.2,.7,.2,1)]">
+              <Menu size={24} className={cn(menuOpen && "scale-75 rotate-90 opacity-0")} />
+              <X size={24} className={cn(!menuOpen && "scale-75 -rotate-90 opacity-0")} />
+            </span>
           </button>
         </div>
       </Container>
