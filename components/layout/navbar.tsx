@@ -61,6 +61,9 @@ export function Navbar() {
   if (pathname !== lastPathname) {
     setLastPathname(pathname);
     setMenuOpen(false);
+    // a new page opens at the top: arriving on home, the transition already captures the
+    // transparent bar (the scroll listener corrects this right after if it is not at the top)
+    setScrolled(false);
   }
 
   useEffect(() => {
@@ -83,7 +86,7 @@ export function Navbar() {
     onScroll();
     window.addEventListener("scroll", onScroll, { passive: true });
     return () => window.removeEventListener("scroll", onScroll);
-  }, [home]);
+  }, [home, pathname]);
 
   const isActive = (href: string) => pathname === href || pathname.startsWith(href + "/");
   const privateArea = t("privateArea");
@@ -92,8 +95,8 @@ export function Navbar() {
 
   return (
     // On navigation the pages fade under the bar (template.tsx). The bar is its own view
-    // transition group, painted above them, which cross-fades in place: link colours and its
-    // home/white look ease over while its current-page underline slides.
+    // transition group, painted above them and shown live: its CSS transitions ease link
+    // colours and its home/white look, while its current-page underline slides.
     <header
       className={cn(
         "sticky top-0 z-50 border-b transition-[background-color,border-color,box-shadow] duration-[350ms] ease-[ease] [view-transition-name:site-navbar]",
@@ -124,7 +127,7 @@ export function Navbar() {
                 href={href}
                 aria-current={active ? "page" : undefined}
                 className={cn(
-                  "group/nav relative inline-flex h-full items-center gap-1 text-15 font-medium transition-colors",
+                  "group/nav relative inline-flex h-full items-center gap-1 text-15 font-medium transition-colors duration-300",
                   sky ? "text-white/80 hover:text-white" : "text-ink/80 hover:text-sg",
                   active && "text-sg",
                 )}
