@@ -43,25 +43,26 @@ const mobileNav = [
 ] as const;
 
 /**
- * The site's one navigation bar, rendered by the root layout on every page. On the home page it
- * floats transparent over the hero sky until the page scrolls or the menu opens; from then on
- * it is the same white bar, with the same soft shadow, as on every other page.
+ * The site's one navigation bar, rendered by the root layout on every page. On the home and About
+ * us pages it floats transparent over the hero sky until the page scrolls or the menu opens;
+ * from then on it is the same white bar, with the same soft shadow, as on every other page.
  */
 export function Navbar() {
   const t = useTranslations("Header");
   const pathname = usePathname();
   const [menuOpen, setMenuOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
-  // On the home page the bar floats over the hero (it does not take up room above it) and is
-  // transparent there, the "sky" look, only while the page is at the top and the menu closed.
-  const home = pathname === "/";
-  const sky = home && !scrolled && !menuOpen;
+  // On the pages with a navy hero (home, About us) the bar floats over it (it does not take up
+  // room above it) and is transparent there, the "sky" look, only while the page is at the top
+  // and the menu closed.
+  const overHero = pathname === "/" || pathname === "/chi-siamo";
+  const sky = overHero && !scrolled && !menuOpen;
 
   const [lastPathname, setLastPathname] = useState(pathname);
   if (pathname !== lastPathname) {
     setLastPathname(pathname);
     setMenuOpen(false);
-    // a new page opens at the top: arriving on home, the transition already captures the
+    // a new page opens at the top: arriving on a hero page, the transition already captures the
     // transparent bar (the scroll listener corrects this right after if it is not at the top)
     setScrolled(false);
   }
@@ -72,13 +73,13 @@ export function Navbar() {
     return () => document.removeEventListener("keydown", onKey);
   }, []);
 
-  // Home: the bar turns navy past the hero's top. Other pages: it lifts with a soft shadow
+  // Hero pages: the bar turns white past the hero's top. Other pages: it lifts with a soft shadow
   // as soon as the page scrolls under it.
   useEffect(() => {
     // only tell React when the state flips: a setState per scroll event re-renders the header
     let last: boolean | undefined;
     const onScroll = () => {
-      const next = window.scrollY > (home ? 24 : 4);
+      const next = window.scrollY > (overHero ? 24 : 4);
       if (next === last) return;
       last = next;
       setScrolled(next);
@@ -86,7 +87,7 @@ export function Navbar() {
     onScroll();
     window.addEventListener("scroll", onScroll, { passive: true });
     return () => window.removeEventListener("scroll", onScroll);
-  }, [home, pathname]);
+  }, [overHero, pathname]);
 
   const isActive = (href: string) => pathname === href || pathname.startsWith(href + "/");
   const activeKey = desktopNav.find(({ href }) => isActive(href))?.key;
@@ -142,7 +143,7 @@ export function Navbar() {
     <header
       className={cn(
         "sticky top-0 z-50 border-b transition-[background-color,border-color,box-shadow] duration-[350ms] ease-[ease] [view-transition-name:site-navbar]",
-        home && "-mb-[73px]",
+        overHero && "-mb-[73px]",
         sky ? "border-b-transparent bg-transparent" : "border-sg/10 bg-white",
         scrolled && "shadow-[0_8px_24px_-16px_rgba(6,23,115,.35)]",
       )}
@@ -180,11 +181,13 @@ export function Navbar() {
                 className={cn(
                   "group/nav relative inline-flex h-full items-center gap-1 text-15 font-medium transition-colors duration-300",
                   sky ? "text-white/80 hover:text-white" : "text-ink/80 hover:text-sg",
-                  active && "text-sg",
+                  // the current page in navy, or white over the hero sky (About us)
+                  active && (sky ? "text-white" : "text-sg"),
                   // before hydration the current link draws its own underline
                   active &&
                     !indicatorReady &&
-                    "after:absolute after:inset-x-0 after:bottom-0 after:h-[2px] after:bg-sg",
+                    "after:absolute after:inset-x-0 after:bottom-0 after:h-[2px]",
+                  active && !indicatorReady && (sky ? "after:bg-white" : "after:bg-sg"),
                 )}
               >
                 {t(key)}
@@ -207,7 +210,10 @@ export function Navbar() {
           <span
             ref={indicator}
             aria-hidden="true"
-            className="pointer-events-none absolute bottom-0 left-0 h-[2px] w-px origin-left bg-sg opacity-0 transition-[translate,scale,opacity] duration-[450ms] ease-[cubic-bezier(.22,.8,.24,1)] motion-reduce:transition-none"
+            className={cn(
+              "pointer-events-none absolute bottom-0 left-0 h-[2px] w-px origin-left opacity-0 transition-[translate,scale,opacity,background-color] duration-[450ms] ease-[cubic-bezier(.22,.8,.24,1)] motion-reduce:transition-none",
+              sky ? "bg-white" : "bg-sg",
+            )}
           />
         </nav>
         <div className="hidden items-center gap-6 lg:flex">
