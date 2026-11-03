@@ -157,11 +157,11 @@ export function Navbar() {
           href="/"
           aria-label={t("backToHome")}
           className={cn(
-            "group flex flex-none items-center gap-2.5 transition-colors duration-300 ease-[ease]",
+            "flex flex-none items-center gap-2.5 transition-colors duration-300 ease-[ease]",
             sky ? "text-white/80 hover:text-white" : "text-ink/80 hover:text-sg",
           )}
         >
-          <LogoTree className="block h-10 w-auto transition-[translate] duration-300 ease-[ease] group-hover:-translate-y-px md:h-11" />
+          <LogoTree className="block h-10 w-auto md:h-11" />
           <LogoWordmark className="hidden h-[15px] w-auto min-[340px]:block md:h-[17px] lg:hidden" />
         </Link>
         <nav
