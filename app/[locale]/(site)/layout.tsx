@@ -17,7 +17,6 @@ export const metadata: Metadata = {
     locale: "it_IT",
   },
   twitter: null,
-  icons: { icon: { url: "/icon.svg", type: "image/svg+xml" } },
 };
 
 export const viewport: Viewport = { themeColor: "#061773" };

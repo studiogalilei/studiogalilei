@@ -29,6 +29,12 @@ export function generateStaticParams() {
 export default async function RootLayout({ children }: LayoutProps<"/[locale]">) {
   return (
     <html lang={await locale()} className={`${poppins.variable} ${permanentMarker.variable}`}>
+      <head>
+        {/* The favicon is part of the layout, not of each page's metadata: metadata is streamed
+            per page, and switching language left the tab without an icon until it arrived.
+            Here it also covers the pages outside the site layout (tour operator). */}
+        <link rel="icon" href="/icon.svg" type="image/svg+xml" />
+      </head>
       <body>
         {/* Links shared before the move to real URLs used hash routes: /#/servizi -> /servizi */}
         <Script id="legacy-hash-routes" strategy="beforeInteractive">
