@@ -19,7 +19,7 @@ import {
   X,
 } from "@/components/icons";
 import { LanguageSwitcher } from "@/components/layout/language-switcher";
-import { LogoTree } from "@/components/logo";
+import { LogoTree, LogoWordmark } from "@/components/logo";
 import { Container } from "@/components/ui/container";
 import { Link, usePathname } from "@/i18n/navigation";
 import { company } from "@/lib/company";
@@ -150,15 +150,19 @@ export function Navbar() {
       {/* three groups with equal space between them: the links sit in the middle of the room
           between the logo and the language switcher */}
       <Container className="flex h-[72px] items-center justify-between gap-3 sm:gap-6">
-        <Link href="/" aria-label={t("backToHome")} className="group flex-none">
-          {/* the tree symbol alone, transparent, drawn in currentColor: it takes the same colour
-              as the nav links in every state (white over the hero sky, ink on the white bar) */}
-          <LogoTree
-            className={cn(
-              "block h-10 w-auto transition-[color,translate] duration-300 ease-[ease] group-hover:-translate-y-px md:h-11",
-              sky ? "text-white/80 group-hover:text-white" : "text-ink/80 group-hover:text-sg",
-            )}
-          />
+        {/* the tree symbol, transparent, drawn in currentColor: the link carries the same colour
+            as the nav links in every state (white over the hero sky, ink on the white bar). On
+            mobile, where the bar has room beside it, the wordmark follows in the same colour. */}
+        <Link
+          href="/"
+          aria-label={t("backToHome")}
+          className={cn(
+            "group flex flex-none items-center gap-2.5 transition-colors duration-300 ease-[ease]",
+            sky ? "text-white/80 hover:text-white" : "text-ink/80 hover:text-sg",
+          )}
+        >
+          <LogoTree className="block h-10 w-auto transition-[translate] duration-300 ease-[ease] group-hover:-translate-y-px md:h-11" />
+          <LogoWordmark className="hidden h-[15px] w-auto min-[340px]:block md:h-[17px] lg:hidden" />
         </Link>
         <nav
           ref={nav}
