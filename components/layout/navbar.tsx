@@ -19,7 +19,7 @@ import {
   X,
 } from "@/components/icons";
 import { LanguageSwitcher } from "@/components/layout/language-switcher";
-import { LogoTile } from "@/components/logo";
+import { LogoTree, LogoWordmark } from "@/components/logo";
 import { Container } from "@/components/ui/container";
 import { Link, usePathname } from "@/i18n/navigation";
 import { company } from "@/lib/company";
@@ -150,15 +150,19 @@ export function Navbar() {
       {/* three groups with equal space between them: the links sit in the middle of the room
           between the logo and the language switcher */}
       <Container className="flex h-[72px] items-center justify-between gap-3 sm:gap-6">
-        <Link href="/" aria-label={t("backToHome")} className="group flex-none">
-          <LogoTile
-            className={cn(
-              "size-[50px] rounded-xl transition-[translate,box-shadow] duration-200 ease-[ease] group-hover:-translate-y-px md:size-14 md:rounded-[13px]",
-              sky
-                ? "shadow-[0_0_0_1px_rgba(255,255,255,.22),0_8px_20px_-10px_rgba(0,0,0,.6)]"
-                : "shadow-[0_6px_16px_-8px_rgba(6,23,115,.55)] group-hover:shadow-[0_10px_22px_-10px_rgba(6,23,115,.7)]",
-            )}
-          />
+        {/* the tree symbol, transparent, drawn in currentColor: the link carries the same colour
+            as the nav links in every state (white over the hero sky, ink on the white bar). On
+            mobile, where the bar has room beside it, the wordmark follows in the same colour. */}
+        <Link
+          href="/"
+          aria-label={t("backToHome")}
+          className={cn(
+            "flex flex-none items-center gap-2.5 transition-colors duration-300 ease-[ease]",
+            sky ? "text-white/80 hover:text-white" : "text-ink/80 hover:text-sg",
+          )}
+        >
+          <LogoTree className="block h-10 w-auto md:h-11" />
+          <LogoWordmark className="hidden h-[15px] w-auto min-[340px]:block md:h-[17px] lg:hidden" />
         </Link>
         <nav
           ref={nav}
