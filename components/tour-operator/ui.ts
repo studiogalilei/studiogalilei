@@ -58,11 +58,15 @@ export function button({
   lightGlow?: boolean;
 }) {
   return cn(
-    "relative inline-flex cursor-pointer items-center justify-center rounded-14 border-0 font-semibold whitespace-nowrap no-underline [transition:translate_.25s_cubic-bezier(.2,.7,.2,1),scale_.25s_cubic-bezier(.2,.7,.2,1),box-shadow_.25s_ease,background_.15s_ease] hover:-translate-y-0.5 focus-visible:rounded-14! focus-visible:outline-offset-4! focus-visible:outline-[#7cc4ff]! active:translate-y-0 active:scale-[.985] max-tour-sm:w-full [&>svg]:flex-none",
+    "relative isolate inline-flex cursor-pointer items-center justify-center rounded-14 border-0 font-semibold whitespace-nowrap no-underline [transition:translate_.25s_cubic-bezier(.2,.7,.2,1),scale_.25s_cubic-bezier(.2,.7,.2,1),box-shadow_.25s_ease,background_.15s_ease] hover:-translate-y-0.5 focus-visible:rounded-14! focus-visible:outline-offset-4! focus-visible:outline-[#7cc4ff]! active:translate-y-0 active:scale-[.985] max-tour-sm:w-full [&>svg]:flex-none",
     "group/cta [--glow-2:#8fd0ff]",
     lightGlow && "[--glow-2:#3aa0ff]",
     kind === "whatsapp" &&
-      "bg-[linear-gradient(180deg,#22b86a,#1daa61_60%,#189a57)] text-white shadow-[0_18px_40px_-14px_rgba(29,170,97,0.7),inset_0_1px_0_rgba(255,255,255,0.28)] hover:bg-[#178f51] hover:bg-none",
+      "bg-[linear-gradient(180deg,#22b86a,#1daa61_60%,#189a57)] text-white shadow-[0_18px_40px_-14px_rgba(29,170,97,0.7),inset_0_1px_0_rgba(255,255,255,0.28)]",
+    // hover darkens through a layer that fades in: a gradient background cannot transition,
+    // so swapping it for a flat colour snapped (and flashed while the border light passed)
+    kind === "whatsapp" &&
+      "before:pointer-events-none before:absolute before:inset-0 before:-z-1 before:rounded-[inherit] before:bg-[#178f51] before:opacity-0 before:transition-opacity before:duration-200 before:content-[''] hover:before:opacity-100",
     kind === "email" &&
       !dark &&
       "bg-[linear-gradient(135deg,#0a2391_0%,#061773_45%,#040f4d_100%)] text-white shadow-[0_18px_40px_-14px_rgba(6,23,115,0.65),inset_0_1px_0_rgba(255,255,255,0.22)]",

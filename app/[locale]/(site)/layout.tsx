@@ -1,8 +1,6 @@
 import type { Metadata, Viewport } from "next";
 import { CardTilt } from "@/components/effects/card-tilt";
 import { Footer } from "@/components/layout/footer";
-import { Header } from "@/components/layout/header";
-import { SkipLink } from "@/components/layout/skip-link";
 import { company } from "@/lib/company";
 
 export const metadata: Metadata = {
@@ -42,13 +40,12 @@ const organization = {
 
 export default function SiteLayout({ children }: LayoutProps<"/[locale]">) {
   return (
-    <div className="flex min-h-screen flex-col bg-white">
+    // the navbar (root layout) is 73px tall: the footer still sits at the bottom of short pages
+    <div className="flex min-h-[calc(100dvh-73px)] flex-col bg-white">
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(organization) }}
       />
-      <SkipLink />
-      <Header />
       <main id="contenuto" tabIndex={-1} className="flex-1 outline-none">
         {children}
       </main>

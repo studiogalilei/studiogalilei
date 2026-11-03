@@ -42,7 +42,11 @@ const mobileNav = [
   { key: "privateArea", href: "/area-partner", icon: Lock },
 ] as const;
 
-export function Header() {
+/**
+ * The site's one navigation bar, rendered by the root layout on every page. On the home page it
+ * floats transparent over the hero sky and turns navy on scroll.
+ */
+export function Navbar() {
   const t = useTranslations("Header");
   const pathname = usePathname();
   const [menuOpen, setMenuOpen] = useState(false);
@@ -80,6 +84,8 @@ export function Header() {
 
   const isActive = (href: string) => pathname === href || pathname.startsWith(href + "/");
   const privateArea = t("privateArea");
+  // the Platform prototype is a full-screen app with its own chrome
+  if (pathname === "/platform" || pathname.startsWith("/platform/")) return null;
 
   return (
     <header
@@ -92,6 +98,8 @@ export function Header() {
         solidSky && "border-b-white/10 bg-[#061773f5]",
       )}
     >
+      {/* three groups with equal space between them: the links sit in the middle of the room
+          between the logo and the language switcher */}
       <Container className="flex h-[72px] items-center justify-between gap-3 sm:gap-6">
         <Link href="/" aria-label={t("backToHome")} className="group flex-none">
           <LogoTile

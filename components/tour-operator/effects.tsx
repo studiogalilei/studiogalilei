@@ -10,18 +10,14 @@ import { ContactButton } from "./contact-button";
 export function TourEffects() {
   const { setLightbox, root } = useTour();
 
-  // anchor and focus scrolling stop below the sticky header (the original's html scroll-padding)
+  // anchor and focus scrolling stop below the sticky navbar (the original's html scroll-padding)
   useEffect(() => {
     const html = document.documentElement;
-    const phone = matchMedia("(max-width: 720px)");
-    const apply = () => (html.style.scrollPaddingTop = phone.matches ? "70px" : "84px");
-    apply();
-    phone.addEventListener("change", apply);
+    html.style.scrollPaddingTop = "84px";
     // the browser jumped to the #fragment before this padding existed: line it up again
     const target = location.hash && document.getElementById(location.hash.slice(1));
     if (target && root.current?.contains(target)) target.scrollIntoView();
     return () => {
-      phone.removeEventListener("change", apply);
       html.style.scrollPaddingTop = "";
     };
   }, [root]);

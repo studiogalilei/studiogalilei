@@ -3,6 +3,8 @@ import localFont from "next/font/local";
 import { locale } from "next/root-params";
 import Script from "next/script";
 import { ClientMessages } from "@/components/client-messages";
+import { Navbar } from "@/components/layout/navbar";
+import { SkipLink } from "@/components/layout/skip-link";
 import { routing } from "@/i18n/routing";
 import "../globals.css";
 
@@ -32,7 +34,11 @@ export default async function RootLayout({ children }: LayoutProps<"/[locale]">)
         <Script id="legacy-hash-routes" strategy="beforeInteractive">
           {`if (location.hash.startsWith("#/")) location.replace(location.hash.slice(1) + (location.hash.indexOf("?") < 0 ? location.search : ""));`}
         </Script>
-        <ClientMessages namespaces={["Header", "ContactForm"]}>{children}</ClientMessages>
+        <ClientMessages namespaces={["Header", "ContactForm"]}>
+          <SkipLink />
+          <Navbar />
+          {children}
+        </ClientMessages>
       </body>
     </html>
   );
