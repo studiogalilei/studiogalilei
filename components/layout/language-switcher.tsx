@@ -1,7 +1,7 @@
 "use client";
 
 import { useLocale } from "next-intl";
-import { useLayoutEffect, useRef, useState, useTransition } from "react";
+import { useLayoutEffect, useOptimistic, useRef, useState, useTransition } from "react";
 import { usePathname, useRouter } from "@/i18n/navigation";
 import type { Locale } from "@/i18n/routing";
 import { cn } from "@/lib/cn";
@@ -14,8 +14,8 @@ const OPTIONS = [
 const SLIDE_MS = 300;
 
 /**
- * Switching language remounts the page (the locale is the root segment), usually before the
- * pill has finished sliding: the new switcher picks the slide up from where the old one was.
+ * Switching language swaps the whole page (the locale is the root segment), usually before
+ * the pill has finished sliding: the new switcher picks the slide up from where the old one was.
  */
 let slide: { tone: string; translate: string; width: string; left: number; at: number } | null =
   null;
@@ -36,18 +36,36 @@ export function LanguageSwitcher({
   const router = useRouter();
   const pathname = usePathname();
   const [pending, startTransition] = useTransition();
-  // the language the pill points at: the clicked one, right away
-  const [selected, setSelected] = useState<Locale>(locale);
-  const [lastLocale, setLastLocale] = useState(locale);
-  if (locale !== lastLocale) {
-    setLastLocale(locale);
-    setSelected(locale);
-  }
+  // The language the pill points at: the clicked one while the switch is under way, the
+  // page's own otherwise. (Optimistic, so it cannot go stale: Next keeps the previous page
+  // alive but hidden and shows it again when switching back, with whatever state it had.)
+  const [selected, select] = useOptimistic<Locale, Locale>(locale, (_, next) => next);
 
   const group = useRef<HTMLDivElement>(null);
   const pill = useRef<HTMLSpanElement>(null);
   const [ready, setReady] = useState(false);
   const placed = useRef(false);
+
+  // Leaving the screen (unmounted, or hidden by Next to be shown again later) mid-slide: hand
+  // the slide over to the switcher that takes this one's place. Whenever this one shows
+  // again, its pill is placed afresh, without sliding from where it was left.
+  useLayoutEffect(() => {
+    const el = pill.current;
+    return () => {
+      placed.current = false;
+      const running = el?.getAnimations()[0];
+      if (!el || !running || !el.isConnected) return;
+      const style = getComputedStyle(el);
+      const total = Number(running.effect?.getComputedTiming().duration ?? SLIDE_MS);
+      slide = {
+        tone,
+        translate: style.translate,
+        width: style.width,
+        left: total - Number(running.currentTime ?? 0),
+        at: performance.now(),
+      };
+    };
+  }, [tone]);
 
   // place the pill under the selected button; it slides from there on, but not the first time
   useLayoutEffect(() => {
@@ -83,22 +101,7 @@ export function LanguageSwitcher({
     // the labels widen when Poppins arrives
     const observer = new ResizeObserver(place);
     observer.observe(button);
-    return () => {
-      observer.disconnect();
-      // unmounting mid-slide (the language switch remounts the page): hand the slide over
-      const running = el.getAnimations()[0];
-      const time = Number(running?.currentTime ?? 0);
-      if (!running || !el.isConnected) return;
-      const style = getComputedStyle(el);
-      const total = Number(running.effect?.getComputedTiming().duration ?? SLIDE_MS);
-      slide = {
-        tone,
-        translate: style.translate,
-        width: style.width,
-        left: total - time,
-        at: performance.now(),
-      };
-    };
+    return () => observer.disconnect();
   }, [selected, tone]);
 
   const sky = tone === "sky";
@@ -131,8 +134,10 @@ export function LanguageSwitcher({
             type="button"
             onClick={() => {
               if (value === selected) return;
-              setSelected(value);
-              startTransition(() => router.replace(pathname, { locale: value, scroll: false }));
+              startTransition(() => {
+                select(value);
+                router.replace(pathname, { locale: value, scroll: false });
+              });
             }}
             aria-pressed={active}
             lang={value}

@@ -11,6 +11,7 @@ import {
   SIZE,
   TILT,
   type GlobeMessage,
+  type GlobeReady,
 } from "./globe-render";
 
 const highlighted = new Set<string>(workedIn.flatMap((p) => ("country" in p ? [p.country] : [])));
@@ -93,11 +94,34 @@ export function Globe() {
       const offscreen = surface.transferControlToOffscreen();
       const post = (message: GlobeMessage, transfer: Transferable[] = []) =>
         worker.postMessage(message, transfer);
-      worker.onmessage = takeOver;
+      // A worker without its own frame callbacks gets the page's: one tiny message a refresh.
+      let forward = false;
+      let on = false;
+      let frame = 0;
+      const pump = (time: number) => {
+        post({ type: "frame", time });
+        frame = requestAnimationFrame(pump);
+      };
+      const pumping = (next: boolean) => {
+        cancelAnimationFrame(frame);
+        if (next && forward) frame = requestAnimationFrame(pump);
+      };
+      worker.onmessage = (event: MessageEvent<GlobeReady>) => {
+        forward = !event.data.paced;
+        pumping(on);
+        takeOver();
+      };
       post({ type: "init", canvas: offscreen, ...size() }, [offscreen]);
-      run = (on) => post({ type: "run", on });
+      run = (next) => {
+        on = next;
+        post({ type: "run", on });
+        pumping(on);
+      };
       resize = () => post({ type: "resize", ...size() });
-      dispose = () => worker.terminate();
+      dispose = () => {
+        pumping(false);
+        worker.terminate();
+      };
     } else {
       const ctx = surface.getContext("2d");
       if (!ctx) return;

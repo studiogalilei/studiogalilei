@@ -1,5 +1,10 @@
 /// <reference lib="webworker" />
-import { createGlobeLoop, createGlobeRenderer, type GlobeMessage } from "./globe-render";
+import {
+  createGlobeLoop,
+  createGlobeRenderer,
+  type GlobeMessage,
+  type GlobeReady,
+} from "./globe-render";
 
 // The globe's rotation, drawn off the main thread on the canvas globe.tsx transferred here.
 let canvas: OffscreenCanvas | undefined;
@@ -19,10 +24,11 @@ self.onmessage = (event: MessageEvent<GlobeMessage>) => {
     canvas.width = canvas.height = message.width;
     scale = message.scale;
     loop.redraw();
-    if (message.type === "init") self.postMessage("ready");
+    if (message.type === "init") self.postMessage({ paced: loop.paced } satisfies GlobeReady);
   }
   if (message.type === "run") {
     if (message.on) loop?.start();
     else loop?.stop();
   }
+  if (message.type === "frame") loop?.frame(message.time);
 };
