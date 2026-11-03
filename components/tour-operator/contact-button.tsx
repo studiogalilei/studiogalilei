@@ -8,7 +8,7 @@ import { button, type ButtonKind, type ButtonSize } from "./ui";
 
 const ring = "[mask:linear-gradient(#000_0_0)_content-box_exclude,linear-gradient(#000_0_0)]";
 
-const SPEED = 160; // px per second along the border, the same on every button
+const SPEED = 105; // px per second along the border, the same on every button
 const HOVER_RATE = 2; // twice as fast while the button is hovered
 const STEP = 2; // px between keyframes along the border
 
@@ -17,12 +17,13 @@ const STEP = 2; // px between keyframes along the border
  * the border. Only the border ring shows them (the mask of the wrapper).
  */
 const TRAIL = [
-  { lag: 0, size: 26, color: "#ffffff" },
-  { lag: 10, size: 34, color: "rgba(255,255,255,0.85)" },
-  { lag: 24, size: 44, color: "var(--glow-2)" },
-  { lag: 42, size: 52, color: "color-mix(in oklab, var(--glow-2) 70%, transparent)" },
-  { lag: 64, size: 60, color: "color-mix(in oklab, var(--glow-2) 45%, transparent)" },
-  { lag: 90, size: 64, color: "color-mix(in oklab, var(--glow-2) 25%, transparent)" },
+  { lag: 0, size: 36, color: "#ffffff" },
+  { lag: 14, size: 46, color: "rgba(255,255,255,0.9)" },
+  { lag: 32, size: 58, color: "var(--glow-2)" },
+  { lag: 56, size: 70, color: "color-mix(in oklab, var(--glow-2) 80%, transparent)" },
+  { lag: 86, size: 80, color: "color-mix(in oklab, var(--glow-2) 60%, transparent)" },
+  { lag: 120, size: 88, color: "color-mix(in oklab, var(--glow-2) 40%, transparent)" },
+  { lag: 160, size: 92, color: "color-mix(in oklab, var(--glow-2) 22%, transparent)" },
 ];
 
 /**
@@ -97,7 +98,7 @@ function Glow({ delay }: { delay: boolean }) {
       if (!w || !h || `${w}x${h}` === size) return;
       size = `${w}x${h}`;
       const radius = parseFloat(getComputedStyle(button).borderTopLeftRadius) || 0;
-      const { points, length } = borderPath(w, h, radius, 0.6);
+      const { points, length } = borderPath(w, h, radius, 0.75);
       const lap = (length / SPEED) * 1000;
       // a new shape: the light carries on from the same share of the lap
       const share = spins[0] ? Number(spins[0].currentTime) / currentLap : delay ? 0.5 : 0;
@@ -137,7 +138,7 @@ function Glow({ delay }: { delay: boolean }) {
     <span
       aria-hidden="true"
       className={cn(
-        "pointer-events-none absolute inset-0 z-2 overflow-hidden rounded-[inherit] p-[1.2px]",
+        "pointer-events-none absolute inset-0 z-2 overflow-hidden rounded-[inherit] p-[1.5px]",
         ring,
         "motion-reduce:bg-[linear-gradient(135deg,rgba(255,255,255,0.7),transparent_50%,rgba(143,208,255,0.6))]",
       )}
