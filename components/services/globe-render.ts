@@ -208,8 +208,9 @@ export function frameScheduler(): FrameScheduler | undefined {
 export function createGlobeLoop(
   render: (angle: number) => void,
   scheduler: FrameScheduler | undefined = frameScheduler(),
+  startAngle = 0,
 ) {
-  let angle = 0;
+  let angle = startAngle;
   let last = 0; // time of the last drawn frame
   let running = false;
   let handle = 0;
@@ -260,11 +261,12 @@ export function createGlobeLoop(
 }
 
 export type GlobeMessage =
-  | { type: "init"; canvas: OffscreenCanvas; width: number; scale: number }
+  | { type: "init"; width: number; scale: number; angle: number }
   | { type: "resize"; width: number; scale: number }
   | { type: "run"; on: boolean }
   /** a display refresh, forwarded by the page to a worker without frame callbacks */
   | { type: "frame"; time: number };
 
-/** The worker's answer to "init": its first frame is drawn; `paced` as in createGlobeLoop. */
-export type GlobeReady = { paced: boolean };
+/** From the worker: its frames, and once set up whether it paces itself (as in createGlobeLoop). */
+export type GlobeFromWorker =
+  { type: "frame"; bitmap: ImageBitmap; angle: number } | { type: "ready"; paced: boolean };

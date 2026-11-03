@@ -2,17 +2,18 @@
 
 import { geoDistance, geoOrthographic, geoPath } from "d3-geo";
 import { useTranslations } from "next-intl";
-import { useEffect, useRef } from "react";
+import { useLayoutEffect, useMemo, useRef, useState } from "react";
 import { Check } from "@/components/icons";
 import { countries, workedIn } from "@/lib/geo/world";
 import {
   createGlobeLoop,
   createGlobeRenderer,
   graticuleLines,
+  SPEED,
   SIZE,
   TILT,
   type GlobeMessage,
-  type GlobeReady,
+  type GlobeFromWorker,
 } from "./globe-render";
 
 const highlighted = new Set<string>(workedIn.flatMap((p) => ("country" in p ? [p.country] : [])));
@@ -45,30 +46,85 @@ function draw(angle: number) {
  * rotation is then drawn on a canvas laid over it, by a worker where the browser can hand it
  * an OffscreenCanvas (the projection maths never touches the main thread), only while on screen.
  */
+/**
+ * Where the rotation is, kept across remounts: switching language swaps in a new copy of the
+ * page, whose globe would otherwise restart from its first angle (a visible jump). The loop
+ * turns at SPEED while running, so the angle follows from the time it has been running.
+ */
+const clock = { angle: 0, since: 0, running: false, mounted: false };
+/** A frame was drawn at `angle`: the clock follows the drawing (a worker starts with a delay). */
+function clockAt(angle: number) {
+  clock.angle = angle;
+  clock.since = performance.now();
+}
+const clockAngle = () =>
+  clock.running ? (clock.angle + (performance.now() - clock.since) * SPEED) % 360 : clock.angle;
+function clockRun(on: boolean) {
+  if (on === clock.running) return;
+  clock.angle = clockAngle();
+  clock.since = performance.now();
+  clock.running = on;
+}
+
 export function Globe() {
   const t = useTranslations("Services");
   const places = useTranslations("WorldMap");
   const ref = useRef<HTMLDivElement>(null);
   const svg = useRef<SVGSVGElement>(null);
   const stage = useRef<HTMLDivElement>(null);
-  const first = draw(0);
+  // the first frame: angle 0 when server-rendered (hydration must match), else where it was
+  const [startAngle] = useState(() => (clock.mounted ? clockAngle() : 0));
+  const first = useMemo(() => draw(startAngle), [startAngle]);
 
-  useEffect(() => {
+  // the angle the SVG frame shows (it can fall behind: see the start of the effect)
+  const shown = useRef(startAngle);
+
+  // A layout effect: runs before the browser paints, on mount and whenever Next shows this
+  // page again after hiding it (going back to a language), when the SVG frame may be stale.
+  useLayoutEffect(() => {
     const root = svg.current;
     const box = stage.current;
     if (!root || !box || !ref.current) return;
+    const angle = clock.mounted ? clockAngle() : startAngle;
+    clock.mounted = true;
     if (matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+    if (angle !== shown.current) {
+      // bring the SVG frame to the current angle before it is seen
+      const frame = draw(angle);
+      root.querySelector("[data-graticule]")?.setAttribute("d", frame.graticule);
+      root
+        .querySelectorAll("[data-country]")
+        .forEach((el, i) => el.setAttribute("d", frame.countries[i]));
+      root.querySelectorAll("[data-pin]").forEach((el, i) => {
+        const pin = frame.pins[i];
+        if (pin) el.setAttribute("transform", pin);
+        el.setAttribute("visibility", pin ? "visible" : "hidden");
+      });
+      shown.current = angle;
+    }
+    clock.angle = angle;
     const live = root.querySelector<SVGGElement>("[data-live]")!;
-    // a fresh canvas each time: once handed to a worker, a canvas cannot be drawn on again
+    // a fresh canvas each time it shows (it is removed when the globe goes away or is hidden)
     const surface = document.createElement("canvas");
     surface.setAttribute("aria-hidden", "true");
     surface.className = "pointer-events-none absolute inset-0 size-full";
-    surface.hidden = true;
+    // transparent rather than hidden until it takes over: a hidden canvas is not painted, and
+    // shown before it was, it flashed as an empty square over the bare globe for a frame
+    surface.style.opacity = "0";
     box.append(surface);
     // the canvas takes over from the server-rendered SVG shapes once it has drawn a frame
+    let taken = false;
+    let swap = 0;
     const takeOver = () => {
-      live.setAttribute("display", "none");
-      surface.hidden = false;
+      if (taken) return;
+      taken = true;
+      // two frames later the canvas' first image is on screen: swap in the same frame
+      swap = requestAnimationFrame(() => {
+        swap = requestAnimationFrame(() => {
+          live.setAttribute("display", "none");
+          surface.style.opacity = "";
+        });
+      });
     };
 
     // backing store at the device resolution (at most 2x: the globe is small and soft)
@@ -82,8 +138,12 @@ export function Globe() {
     let resize: () => void;
     let dispose: () => void;
     let worker: Worker | undefined;
-    if ("transferControlToOffscreen" in surface) {
-      // preferred: a worker draws, the main thread stays free for scrolling and input
+    const workers =
+      typeof OffscreenCanvas !== "undefined" &&
+      "transferToImageBitmap" in OffscreenCanvas.prototype &&
+      typeof ImageBitmapRenderingContext !== "undefined";
+    if (workers) {
+      // preferred: a worker draws, the main thread only shows its frames
       try {
         worker = new Worker(new URL("./globe.worker.ts", import.meta.url), { type: "module" });
       } catch {
@@ -91,9 +151,8 @@ export function Globe() {
       }
     }
     if (worker) {
-      const offscreen = surface.transferControlToOffscreen();
-      const post = (message: GlobeMessage, transfer: Transferable[] = []) =>
-        worker.postMessage(message, transfer);
+      const bitmaps = surface.getContext("bitmaprenderer")!;
+      const post = (message: GlobeMessage) => worker.postMessage(message);
       // A worker without its own frame callbacks gets the page's: one tiny message a refresh.
       let forward = false;
       let on = false;
@@ -106,19 +165,30 @@ export function Globe() {
         cancelAnimationFrame(frame);
         if (next && forward) frame = requestAnimationFrame(pump);
       };
-      worker.onmessage = (event: MessageEvent<GlobeReady>) => {
-        forward = !event.data.paced;
-        pumping(on);
+      worker.onmessage = (event: MessageEvent<GlobeFromWorker>) => {
+        const message = event.data;
+        if (message.type === "ready") {
+          forward = !message.paced;
+          pumping(on);
+          return;
+        }
+        // the frame's size matches the canvas'; the first one replaces the SVG shapes
+        if (surface.width !== message.bitmap.width) surface.width = message.bitmap.width;
+        if (surface.height !== message.bitmap.height) surface.height = message.bitmap.height;
+        bitmaps.transferFromImageBitmap(message.bitmap);
+        clockAt(message.angle);
         takeOver();
       };
-      post({ type: "init", canvas: offscreen, ...size() }, [offscreen]);
+      post({ type: "init", angle, ...size() });
       run = (next) => {
         on = next;
+        clockRun(on);
         post({ type: "run", on });
         pumping(on);
       };
       resize = () => post({ type: "resize", ...size() });
       dispose = () => {
+        clockRun(false);
         pumping(false);
         worker.terminate();
       };
@@ -127,7 +197,14 @@ export function Globe() {
       if (!ctx) return;
       const render = createGlobeRenderer(ctx);
       let scale = 1;
-      const loop = createGlobeLoop((angle) => render(angle, scale));
+      const loop = createGlobeLoop(
+        (a) => {
+          render(a, scale);
+          clockAt(a);
+        },
+        undefined,
+        angle,
+      );
       resize = () => {
         const next = size();
         surface.width = surface.height = next.width;
@@ -136,8 +213,15 @@ export function Globe() {
       };
       resize();
       takeOver();
-      run = (on) => (on ? loop.start() : loop.stop());
-      dispose = loop.stop;
+      run = (on) => {
+        clockRun(on);
+        if (on) loop.start();
+        else loop.stop();
+      };
+      dispose = () => {
+        clockRun(false);
+        loop.stop();
+      };
     }
 
     let width = surface.getBoundingClientRect().width;
@@ -154,10 +238,11 @@ export function Globe() {
       io.disconnect();
       observer.disconnect();
       dispose();
+      cancelAnimationFrame(swap);
       surface.remove();
       live.removeAttribute("display");
     };
-  }, []);
+  }, [startAngle]);
 
   return (
     <div ref={ref} className="flex flex-col items-center">
@@ -194,6 +279,7 @@ export function Globe() {
           />
           <g data-live>
             <path
+              data-graticule
               d={first.graticule}
               fill="none"
               stroke="#061773"
@@ -203,6 +289,7 @@ export function Globe() {
             {countries.map((country, i) => (
               <path
                 key={i}
+                data-country
                 d={first.countries[i]}
                 fill={highlighted.has(String(country.id)) ? "rgb(6,23,115)" : "rgb(168,182,222)"}
                 stroke="#FFFFFF"
@@ -212,6 +299,7 @@ export function Globe() {
             {workedIn.map((place, i) => (
               <g
                 key={place.key}
+                data-pin
                 transform={first.pins[i] ?? undefined}
                 visibility={first.pins[i] ? "visible" : "hidden"}
               >
