@@ -215,7 +215,7 @@ export function Navbar() {
             ref={indicator}
             aria-hidden="true"
             className={cn(
-              "pointer-events-none absolute bottom-0 left-0 h-[2px] w-px origin-left opacity-0 transition-[background-color] duration-[350ms] ease-[ease]",
+              "pointer-events-none absolute bottom-0 left-0 h-[2px] w-0 origin-left opacity-0 transition-[background-color] duration-[350ms] ease-[ease]",
               sky ? "bg-white" : "bg-sg",
             )}
           />
@@ -364,12 +364,6 @@ export function Navbar() {
 /** Where the underline is drawn: its left edge in the nav, its width, its opacity. */
 type Place = { x: number; w: number; o: number };
 
-const frame = ({ x, w, o }: Place): Keyframe => ({
-  translate: `${x}px 0`,
-  scale: `${w} 1`,
-  opacity: String(o),
-});
-
 /**
  * Moves the one underline of the desktop nav to the link `key` (none: it leaves):
  * - between two links it slides, its ends easing together from one link's edges to the other's;
@@ -377,11 +371,15 @@ const frame = ({ x, w, o }: Place): Keyframe => ({
  *   its edges, and leaving it shrinks back into its centre;
  * - a move that starts while another is running starts from where the underline is on screen,
  *   so a quick second click bends its path instead of jumping;
- * - on the first render, and whenever the labels change width (the font arrives, the window
+ * - on the first render, and whenever a label changes width (the font arrives, the window
  *   resizes), it is simply set in place.
- * Edges are measured to the subpixel, so the underline spans exactly the whole link. The motion
- * is a Web Animation of translate and scale (compositor only), which keeps running smoothly
- * through the page's view transition; with reduced motion it is set in place every time.
+ *
+ * At rest the underline is a plain box with the link's own width, its edges on whole device
+ * pixels just outside the link's (so it always spans all of it, crisp). A move is a Web
+ * Animation of translate and scale only (compositor, smooth through the page's view
+ * transition), FLIP style: the box takes its new width at once and the scale starts from the
+ * old width's ratio, ending at exactly 1. (Stretching a 1px box instead blurs it into a
+ * gradient on the GPU.) With reduced motion it is set in place every time.
  */
 function useIndicator(
   nav: React.RefObject<HTMLElement | null>,
@@ -389,7 +387,8 @@ function useIndicator(
   key: string | undefined,
   onPlaced: () => void,
 ) {
-  const placed = useRef<Place | null>(null);
+  // false until the first render has set the underline in place
+  const placed = useRef(false);
   const animation = useRef<Animation | null>(null);
   useLayoutEffect(() => {
     const bar = indicator.current;
@@ -398,70 +397,104 @@ function useIndicator(
     const target = (): Place | null => {
       const link = key ? links.querySelector<HTMLElement>(`[data-nav="${key}"]`) : null;
       if (!link) return null;
+      // the link's edges, out to the device pixels around them
+      const dpr = window.devicePixelRatio || 1;
+      const origin = links.getBoundingClientRect().left;
       const box = link.getBoundingClientRect();
-      return { x: box.left - links.getBoundingClientRect().left, w: box.width, o: 1 };
+      const left = Math.floor((box.left - origin) * dpr + 0.01) / dpr;
+      const right = Math.ceil((box.right - origin) * dpr - 0.01) / dpr;
+      return { x: left, w: right - left, o: 1 };
     };
-    const set = (place: Place) => {
+    // the box at rest: its own width, unscaled (or scaled to nothing, hidden)
+    const rest = (place: Place, hidden = false) => {
       animation.current?.cancel();
       animation.current = null;
-      Object.assign(bar.style, frame(place));
-      placed.current = place;
+      Object.assign(bar.style, {
+        width: `${place.w}px`,
+        translate: `${place.x}px 0`,
+        scale: hidden ? "0 1" : "none",
+        opacity: String(place.o),
+      });
     };
     // where the underline is on screen right now, mid-animation included
     const current = (): Place => {
-      const style = getComputedStyle(bar);
+      const box = bar.getBoundingClientRect();
       return {
-        x: parseFloat(style.translate) || 0,
-        w: parseFloat(style.scale) || 0,
-        o: parseFloat(style.opacity) || 0,
+        x: box.left - links.getBoundingClientRect().left,
+        w: box.width,
+        o: parseFloat(getComputedStyle(bar).opacity) || 0,
       };
     };
-    const move = (to: Place, from: Keyframe[], timing: KeyframeAnimationOptions) => {
-      set(to);
+    const animate = (frames: Keyframe[], timing: KeyframeAnimationOptions) => {
       if (matchMedia("(prefers-reduced-motion: reduce)").matches) return;
-      animation.current = bar.animate([...from, frame(to)], timing);
+      animation.current = bar.animate(frames, { ...timing, composite: "replace" });
     };
+    const at = (x: number, scale: number, opacity: number): Keyframe => ({
+      translate: `${x}px 0`,
+      scale: `${scale} 1`,
+      opacity: String(opacity),
+    });
 
     const to = target();
-    const was = placed.current;
-    if (!was) {
+    if (!placed.current) {
       // first render: in place, exactly where the server-drawn underline was
-      set(to ?? { x: 0, w: 0, o: 0 });
+      if (to) rest(to);
+      else rest({ x: 0, w: 0, o: 0 }, true);
+      placed.current = true;
     } else {
       const now = current();
-      const visible = was.o > 0 && now.o > 0.05;
+      const visible = now.o > 0.05 && now.w > 0.5;
       if (to && visible) {
         // slide: both ends travel together, quick to leave and soft to land
-        move(to, [frame(now)], { duration: 480, easing: "cubic-bezier(.45,0,.15,1)" });
+        rest(to);
+        animate([at(now.x, now.w / to.w, now.o), at(to.x, 1, 1)], {
+          duration: 480,
+          easing: "cubic-bezier(.45,0,.15,1)",
+        });
       } else if (to) {
         // appear: grow from the link's centre, fading in over the first part of the growth
-        const centre = { x: to.x + to.w / 2, w: 0, o: 0 };
-        move(to, [frame(centre), { opacity: 1, offset: 0.4 }], {
+        rest(to);
+        animate([at(to.x + to.w / 2, 0, 0), { opacity: 1, offset: 0.4 }, at(to.x, 1, 1)], {
           duration: 420,
           easing: "cubic-bezier(.2,.75,.25,1)",
         });
-      } else if (was.o > 0) {
+      } else if (visible) {
         // leave: shrink into the centre of where it is, fading out at the end
-        const centre = { x: now.x + now.w / 2, w: 0, o: 0 };
-        move(centre, [frame(now), { opacity: now.o, offset: 0.55 }], {
-          duration: 300,
-          easing: "cubic-bezier(.5,0,.75,0)",
-        });
+        const width = now.w;
+        rest({ x: now.x + width / 2, w: width, o: 0 }, true);
+        animate(
+          [at(now.x, 1, now.o), { opacity: now.o, offset: 0.55 }, at(now.x + width / 2, 0, 0)],
+          {
+            duration: 300,
+            easing: "cubic-bezier(.5,0,.75,0)",
+          },
+        );
+      } else {
+        rest({ x: 0, w: 0, o: 0 }, true);
       }
     }
     onPlaced();
 
-    // Labels change width when the font arrives or the window resizes: follow in place. (Only on
-    // a real change: an observer also reports once when it starts, which would cut a move short.)
-    let width = links.getBoundingClientRect().width;
-    const observer = new ResizeObserver(() => {
-      const next = links.getBoundingClientRect().width;
-      if (next === width) return;
-      width = next;
-      const place = target();
-      if (place) set(place);
+    // A label changes width when the font arrives or the window resizes: follow in place. (Only
+    // on a real change: an observer also reports once when it starts, which would cut a move
+    // short.)
+    const widths = new Map<Element, number>();
+    const observer = new ResizeObserver((entries) => {
+      let changed = false;
+      for (const { target: el } of entries) {
+        const w = el.getBoundingClientRect().width;
+        if (widths.has(el) && widths.get(el) !== w) changed = true;
+        widths.set(el, w);
+      }
+      const place = changed ? target() : null;
+      if (place) rest(place);
     });
+    for (const link of links.querySelectorAll("[data-nav]")) {
+      widths.set(link, link.getBoundingClientRect().width);
+      observer.observe(link);
+    }
     observer.observe(links);
+    widths.set(links, links.getBoundingClientRect().width);
     return () => observer.disconnect();
     // onPlaced only flips a flag once: the underline moves when the key does
     // eslint-disable-next-line react-hooks/exhaustive-deps
