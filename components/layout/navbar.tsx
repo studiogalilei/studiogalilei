@@ -45,13 +45,12 @@ const mobileNav = [
 type NavKey = (typeof desktopNav)[number]["key"];
 
 /** The pages whose hero reaches up behind the navbar, transparent over it at the top. */
-const heroPages = new Set<string>(["/", "/chi-siamo", "/casi-studio"]);
+const heroPages = new Set<string>(["/", "/chi-siamo", "/casi-studio", "/tour-operator"]);
 
 /**
- * The site's one navigation bar, rendered by the root layout on every page. On the home, About
- * us and Case studies pages it floats transparent over the hero until the page scrolls or the
- * menu opens; from then on it is the same white bar, with the same soft shadow, as on every
- * other page.
+ * The site's one navigation bar, rendered by the root layout on every page. On the pages with a
+ * hero (heroPages) it floats transparent over it until the page scrolls or the menu opens; from
+ * then on it is the same white bar, with the same soft shadow, as on every other page.
  */
 export function Navbar() {
   const t = useTranslations("Header");

@@ -14,9 +14,12 @@ export function Hero() {
   const t = useTranslations("TourOperator");
   const rich = (key: string) => t.rich(key, richTags);
   return (
+    // The hero reaches up behind the transparent navbar, which floats over it (73px: the bar
+    // plus its border, added to each top padding so the content stays where it was); the
+    // background layers fill the whole section, the room behind the bar included.
     <section
       id="top"
-      className="relative isolate overflow-hidden bg-sg-deep pt-14 pb-[88px] text-white max-tour-md:pt-8 max-tour-md:pb-16 max-tour-sm:pt-[18px] max-tour-sm:pb-12"
+      className="relative isolate overflow-hidden bg-sg-deep pt-[calc(56px+73px)] pb-[88px] text-white max-tour-md:pt-[calc(32px+73px)] max-tour-md:pb-16 max-tour-sm:pt-[calc(18px+73px)] max-tour-sm:pb-12"
     >
       {/* eslint-disable-next-line @next/next/no-img-element -- same markup as the legacy page */}
       <img
