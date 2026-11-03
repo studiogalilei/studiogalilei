@@ -430,23 +430,45 @@ h3 {
 
 /*
  * View transitions (navigations; see components/layout/page-transition.tsx and navbar.tsx).
- * Short and quiet: the old page leaves quickly, the new one settles in; the navbar only
- * cross-fades (link colours, its look on home) and its current-page underline slides.
+ *
+ * The new page fades in on top of the old one, which stays opaque beneath until the new one
+ * is nearly in: never both half transparent (the white page background showed through, a
+ * flash on dark sections). A small rise gives the arrival some direction.
  */
+::view-transition-group(.page-out) {
+  z-index: 1;
+}
+::view-transition-group(.page-in) {
+  z-index: 2;
+}
 ::view-transition-old(.page-out) {
-  animation: 150ms ease-in both vt-fade-out;
+  animation: 300ms linear both vt-page-out;
 }
 ::view-transition-new(.page-in) {
-  animation: 300ms cubic-bezier(0.2, 0.7, 0.2, 1) 70ms both vt-rise-in;
+  animation: 260ms cubic-bezier(0.2, 0.7, 0.2, 1) both vt-page-in;
+}
+@keyframes vt-page-out {
+  0%,
+  55% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+@keyframes vt-page-in {
+  from {
+    opacity: 0;
+    transform: translateY(6px);
+  }
 }
 /*
  * The navbar shows only its live state, never a cross-fade of two snapshots: its own CSS
- * transitions (background, link and button colours) ease it between looks, and it stays on
+ * transitions (background, link colours, the sliding underline) animate it, and it stays on
  * screen, above the pages, the whole time.
  */
 ::view-transition-group(site-navbar) {
   animation: none;
-  /* above the pages' groups (by default the page coming in, e.g. home's hero, covers it) */
   z-index: 100;
 }
 ::view-transition-old(site-navbar) {
@@ -455,37 +477,9 @@ h3 {
 ::view-transition-new(site-navbar) {
   animation: none;
 }
-::view-transition-group(.nav-indicator) {
-  z-index: 101;
-  animation-duration: 380ms;
-  animation-timing-function: cubic-bezier(0.2, 0.7, 0.2, 1);
-}
-::view-transition-old(.nav-indicator-out) {
-  animation: 200ms ease both vt-fade-out;
-}
-::view-transition-new(.nav-indicator-in) {
-  animation: 300ms ease 80ms both vt-fade-in;
-}
-/* everything else (the footer, the page background) simply cross-fades, as quickly */
 ::view-transition-old(root),
 ::view-transition-new(root) {
   animation-duration: 220ms;
-}
-@keyframes vt-fade-out {
-  to {
-    opacity: 0;
-  }
-}
-@keyframes vt-fade-in {
-  from {
-    opacity: 0;
-  }
-}
-@keyframes vt-rise-in {
-  from {
-    opacity: 0;
-    transform: translateY(10px);
-  }
 }
 @media (prefers-reduced-motion: reduce) {
   ::view-transition-group(*),

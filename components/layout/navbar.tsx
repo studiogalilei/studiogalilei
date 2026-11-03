@@ -1,7 +1,7 @@
 "use client";
 
 import { useTranslations } from "next-intl";
-import { useEffect, useState, ViewTransition } from "react";
+import { useEffect, useLayoutEffect, useRef, useState } from "react";
 import {
   Briefcase,
   ChevronRight,
@@ -89,6 +89,48 @@ export function Navbar() {
   }, [home, pathname]);
 
   const isActive = (href: string) => pathname === href || pathname.startsWith(href + "/");
+  const activeKey = desktopNav.find(({ href }) => isActive(href))?.key;
+
+  const nav = useRef<HTMLElement>(null);
+  const indicator = useRef<HTMLSpanElement>(null);
+  const [indicatorReady, setIndicatorReady] = useState(false);
+  const placed = useRef(false);
+  useLayoutEffect(() => {
+    const bar = indicator.current;
+    const links = nav.current;
+    if (!bar || !links) return;
+    const link = activeKey ? links.querySelector<HTMLElement>(`[data-nav="${activeKey}"]`) : null;
+    const place = (how: "slide" | "jump" | "fade-in") => {
+      if (!link) {
+        bar.style.opacity = "0"; // fades out where it is
+        return;
+      }
+      // "jump": no transition at all; "fade-in": in place, only the opacity eases
+      if (how !== "slide") bar.style.transition = how === "jump" ? "none" : "opacity 300ms ease";
+      bar.style.translate = `${link.offsetLeft}px 0`;
+      bar.style.scale = `${link.offsetWidth} 1`;
+      if (how === "jump") void bar.offsetWidth; // commit the position before the opacity
+      bar.style.opacity = "1";
+      if (how !== "slide") {
+        void bar.offsetWidth;
+        setTimeout(() => (bar.style.transition = ""), how === "jump" ? 0 : 320);
+      }
+    };
+    const visible = placed.current && bar.style.opacity === "1";
+    place(!placed.current ? "jump" : visible ? "slide" : "fade-in");
+    placed.current = true;
+    setIndicatorReady(true);
+    // labels change width when the font arrives: follow without sliding. (Only on a real
+    // change: an observer also reports once when it starts, which would cut the slide short.)
+    let width = links.offsetWidth;
+    const observer = new ResizeObserver(() => {
+      if (links.offsetWidth === width) return;
+      width = links.offsetWidth;
+      place("jump");
+    });
+    observer.observe(links);
+    return () => observer.disconnect();
+  }, [activeKey]);
   const privateArea = t("privateArea");
   // the Platform prototype is a full-screen app with its own chrome
   if (pathname === "/platform" || pathname.startsWith("/platform/")) return null;
@@ -118,50 +160,51 @@ export function Navbar() {
             )}
           />
         </Link>
-        <nav aria-label={t("mainNavigation")} className="hidden h-full items-stretch gap-7 lg:flex">
+        <nav
+          ref={nav}
+          aria-label={t("mainNavigation")}
+          className="relative hidden h-full items-stretch gap-7 lg:flex"
+        >
           {desktopNav.map(({ key, href }) => {
-            const active = !sky && isActive(href);
+            const active = key === activeKey;
             return (
               <Link
                 key={key}
                 href={href}
+                data-nav={key}
                 aria-current={active ? "page" : undefined}
                 className={cn(
                   "group/nav relative inline-flex h-full items-center gap-1 text-15 font-medium transition-colors duration-300",
                   sky ? "text-white/80 hover:text-white" : "text-ink/80 hover:text-sg",
                   active && "text-sg",
+                  // before hydration the current link draws its own underline
+                  active &&
+                    !indicatorReady &&
+                    "after:absolute after:inset-x-0 after:bottom-0 after:h-[2px] after:bg-sg",
                 )}
               >
                 {t(key)}
-                {/* hover: a faint line grows from the centre (a transform: compositor only) */}
-                {!active && (
-                  <span
-                    aria-hidden="true"
-                    className={cn(
-                      "absolute inset-x-0 bottom-0 h-[2px] scale-x-0 transition-transform duration-300 ease-[cubic-bezier(.2,.7,.2,1)] group-hover/nav:scale-x-100",
-                      sky ? "bg-white/45" : "bg-sg/25",
-                    )}
-                  />
-                )}
-                {/* the current page's underline: one named element, so a navigation slides it
-                    from the old link to the new one */}
-                {active && (
-                  <ViewTransition
-                    name="nav-indicator"
-                    share="nav-indicator"
-                    enter="nav-indicator-in"
-                    exit="nav-indicator-out"
-                    default="none"
-                  >
-                    <span
-                      aria-hidden="true"
-                      className="absolute inset-x-0 bottom-0 h-[2px] bg-sg"
-                    />
-                  </ViewTransition>
-                )}
+                {/* hover: a faint line grows from the centre (a transform: compositor only);
+                    on the current link it shrinks away under the underline */}
+                <span
+                  aria-hidden="true"
+                  className={cn(
+                    "absolute inset-x-0 bottom-0 h-[2px] scale-x-0 transition-transform duration-300 ease-[cubic-bezier(.2,.7,.2,1)]",
+                    !active && "group-hover/nav:scale-x-100",
+                    sky ? "bg-white/45" : "bg-sg/25",
+                  )}
+                />
               </Link>
             );
           })}
+          {/* The current page's underline: one element for all the links, which moves to the
+              new link on navigation (translate and scale only, so the compositor animates it
+              smoothly while the new page renders) and fades in place to and from home. */}
+          <span
+            ref={indicator}
+            aria-hidden="true"
+            className="pointer-events-none absolute bottom-0 left-0 h-[2px] w-px origin-left bg-sg opacity-0 transition-[translate,scale,opacity] duration-[450ms] ease-[cubic-bezier(.22,.8,.24,1)] motion-reduce:transition-none"
+          />
         </nav>
         <div className="hidden items-center gap-6 lg:flex">
           <LanguageSwitcher tone={sky ? "sky" : "default"} />
