@@ -9,27 +9,28 @@ const ring = "[mask:linear-gradient(#000_0_0)_content-box_exclude,linear-gradien
 
 /**
  * A light travelling around the border: a conic gradient on a square covering the button
- * spins (a compositor-only `rotate` animation) behind a mask that only shows the border.
+ * spins behind a mask that only shows the border. Both spins are compositor-only `rotate`
+ * animations: the outer one always runs, the inner one only while hovered, so the light
+ * speeds up from where it is instead of jumping (changing `animation-duration` would).
  */
-function Glow({ delay, halo, sticky }: { delay: boolean; halo?: boolean; sticky?: boolean }) {
+function Glow({ delay }: { delay: boolean }) {
   return (
     <span
       aria-hidden="true"
       className={cn(
-        "pointer-events-none absolute",
+        "pointer-events-none absolute inset-0 z-2 rounded-[inherit] p-[1.2px]",
         ring,
-        halo
-          ? "-inset-1 z-0 rounded-[18px] p-1 opacity-60 blur-[3px] motion-reduce:hidden"
-          : "inset-0 z-2 rounded-[inherit] p-[1.2px] motion-reduce:bg-[linear-gradient(135deg,rgba(255,255,255,0.7),transparent_50%,rgba(143,208,255,0.6))]",
-        halo && sticky && "rounded-2xl",
+        "motion-reduce:bg-[linear-gradient(135deg,rgba(255,255,255,0.7),transparent_50%,rgba(143,208,255,0.6))]",
       )}
     >
       <span
         className={cn(
-          "absolute top-1/2 left-1/2 aspect-square w-[120%] -translate-1/2 animate-glow bg-[conic-gradient(transparent_0deg,transparent_200deg,var(--glow-2)_250deg,#fff_318deg,var(--glow-2)_338deg,transparent_360deg)] group-hover/cta:[animation-duration:1.8s] motion-reduce:hidden",
+          "absolute top-1/2 left-1/2 aspect-square w-[120%] -translate-1/2 animate-glow motion-reduce:hidden",
           delay && "[animation-delay:-1.9s]",
         )}
-      />
+      >
+        <span className="absolute inset-0 animate-[glow-spin_3.4s_linear_infinite] bg-[conic-gradient(transparent_0deg,transparent_200deg,var(--glow-2)_250deg,#fff_318deg,var(--glow-2)_338deg,transparent_360deg)] [animation-play-state:paused] group-hover/cta:[animation-play-state:running]" />
+      </span>
     </span>
   );
 }
@@ -59,7 +60,6 @@ export function ContactButton({
       <Glow delay={delayGlow} />
       {kind === "whatsapp" ? <WhatsAppIcon /> : <MailIcon />}
       <span>{label}</span>
-      <Glow delay={delayGlow} halo sticky={size === "sticky"} />
     </>
   );
   return kind === "whatsapp" ? (

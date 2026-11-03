@@ -11,7 +11,6 @@ const poppins = Poppins({
   subsets: ["latin", "latin-ext"],
   variable: "--font-poppins",
   fallback: ["ui-sans-serif", "system-ui", "-apple-system", "Segoe UI", "sans-serif"],
-  adjustFontFallback: false,
 });
 
 const permanentMarker = localFont({

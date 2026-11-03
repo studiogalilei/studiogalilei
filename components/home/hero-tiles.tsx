@@ -6,34 +6,39 @@ import { LogoTree, LogoWordmark } from "@/components/logo";
 import { Link, useRouter } from "@/i18n/navigation";
 import { cn } from "@/lib/cn";
 
-// Back to front; each tile drifts more the closer it is (parallax).
+// Back to front; each tile drifts more the closer it is (parallax): `drift` is in em per unit of
+// pointer offset, `depth` the CSS variable of its distance.
 const TILES = [
   {
     label: "AI",
     color: "#0689FF",
     href: "/servizi/intelligenza-artificiale",
-    className:
-      "top-[1em] left-0 [transform:translateZ(var(--tile-zb))_translate3d(calc(var(--tile-mx)*-0.4em),calc(var(--tile-my)*-0.4em),0)]",
+    className: "top-[1em] left-0",
+    depth: "var(--tile-zb)",
+    drift: -0.4,
   },
   {
     label: "Marketing",
     color: "#D21205",
     href: "/servizi/marketing",
-    className:
-      "top-[5.5em] left-[31%] [transform:translateZ(var(--tile-zm))_translate3d(calc(var(--tile-mx)*0.3em),calc(var(--tile-my)*0.3em),0)]",
+    className: "top-[5.5em] left-[31%]",
+    depth: "var(--tile-zm)",
+    drift: 0.3,
   },
   {
     label: "Software",
     color: "#2F6B33",
     href: "/servizi/sviluppo-software",
-    className:
-      "top-[10em] left-[62%] [transform:translateZ(var(--tile-zf))_translate3d(calc(var(--tile-mx)*1em),calc(var(--tile-my)*1em),0)]",
+    className: "top-[10em] left-[62%]",
+    depth: "var(--tile-zf)",
+    drift: 1,
   },
 ];
 
 /**
  * The three 3D service tiles of the hero. On desktop they tilt with the pointer over the hero,
- * on touch screens they sway on their own; each one opens its service page.
+ * on touch screens they sway on their own (transform keyframes, so the compositor runs it);
+ * each one opens its service page.
  */
 export function HeroTiles() {
   const t = useTranslations("Home.hero");
@@ -119,19 +124,29 @@ export function HeroTiles() {
             "[--tile-bx:10deg] [--tile-by:-24deg] [--tile-bz:1.5deg] [--tile-zb:-150px] [--tile-zf:90px] [--tile-zm:-30px]",
             "max-md:[--tile-bx:7deg] max-md:[--tile-by:-14deg] max-md:[--tile-bz:1deg] max-md:[--tile-zb:-90px] max-md:[--tile-zf:60px]",
             "[transform:rotateX(calc(var(--tile-bx)+var(--tile-rx)))_rotateY(calc(var(--tile-by)+var(--tile-ry)))_rotate(var(--tile-bz))]",
-            "[transition:--tile-rx_.5s_cubic-bezier(.2,.7,.2,1),--tile-ry_.5s_cubic-bezier(.2,.7,.2,1),--tile-mx_.5s_cubic-bezier(.2,.7,.2,1),--tile-my_.5s_cubic-bezier(.2,.7,.2,1)]",
+            // the pointer sets the variables; the resulting transform eases on the compositor
+            "will-change-transform [transition:transform_.5s_cubic-bezier(.2,.7,.2,1)]",
             "[@media(hover:none)]:animate-tile-sway",
           )}
         >
-          <div className="pointer-events-none absolute right-0 -bottom-[2em] left-[10%] h-[6em] [transform:translateZ(-220px)] bg-[radial-gradient(closest-side,#01041e99,#0000)] blur-[18px]" />
+          {/* soft shadow: a wide radial falloff instead of a blur filter */}
+          <div className="pointer-events-none absolute right-[-3%] -bottom-[2.6em] left-[7%] h-[7.2em] [transform:translateZ(-220px)] bg-[radial-gradient(closest-side,#01041e8c,#01041e47_50%,#01041e14_78%,#0000)]" />
           {TILES.map((tile) => (
             <div
               key={tile.label}
               data-tile
               onClick={() => router.push(tile.href)}
-              style={{ background: tile.color }}
+              style={
+                {
+                  background: tile.color,
+                  "--tile-z": tile.depth,
+                  "--tile-k": tile.drift,
+                } as React.CSSProperties
+              }
               className={cn(
                 "pointer-events-auto absolute flex h-[15.5em] w-[12.5em] cursor-pointer flex-col items-center justify-center rounded-[1.2em] shadow-[inset_0_1px_#ffffff40,0_0_0_1px_#ffffff1f,0_60px_100px_-30px_#01041ebf] will-change-transform [-webkit-tap-highlight-color:transparent] [transition:transform_.45s_cubic-bezier(.2,.7,.2,1)] transform-3d",
+                "[transform:translateZ(var(--tile-z))_translate3d(calc(var(--tile-mx)*var(--tile-k)*1em),calc(var(--tile-my)*var(--tile-k)*1em),0)]",
+                "[@media(hover:none)]:animate-tile-drift",
                 tile.className,
               )}
             >

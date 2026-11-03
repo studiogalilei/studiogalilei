@@ -39,21 +39,14 @@ export function TourEffects() {
       (el as HTMLElement).dataset.in = "";
       io.unobserve(el);
     };
+    // In view, or already above it: the root reaches far above the viewport, so a block a fast
+    // scroll jumped over between two frames is still shown, with no scroll listener to run.
     const io = new IntersectionObserver(
       (entries) => entries.forEach((entry) => entry.isIntersecting && show(entry.target)),
-      { rootMargin: "0px 0px -8% 0px", threshold: 0.08 },
+      { rootMargin: "100000px 0px -8% 0px", threshold: 0.08 },
     );
     blocks.forEach((el) => io.observe(el));
-    // a fast scroll can jump over a block between two frames: reveal what is already above
-    const onScroll = () =>
-      blocks.forEach((el) => {
-        if (!("in" in el.dataset) && el.getBoundingClientRect().bottom < 0) show(el);
-      });
-    window.addEventListener("scroll", onScroll, { passive: true });
-    return () => {
-      io.disconnect();
-      window.removeEventListener("scroll", onScroll);
-    };
+    return () => io.disconnect();
   }, [root]);
 
   useEffect(() => {
@@ -100,7 +93,7 @@ export function Lightbox() {
       aria-modal="true"
       aria-label="Screenshot"
       onClick={(e) => e.target === e.currentTarget && setLightbox(null)}
-      className="fixed inset-0 z-100 flex animate-[fade-up_.25s_ease] flex-col bg-[rgba(4,15,77,0.94)] backdrop-blur-sm"
+      className="fixed inset-0 z-100 flex animate-[fade-up_.25s_ease] flex-col bg-[rgba(4,15,77,0.96)]"
     >
       <div className="flex items-center justify-between px-4 py-3 text-13 text-white/75">
         <span>{t("lightboxHint")}</span>
@@ -138,22 +131,22 @@ export function StickyBar() {
     const heroCta = root.current!.querySelector("#hero-cta");
     const final = root.current!.querySelector("#final");
     if (!heroCta || !final) return;
-    const onScroll = () => {
-      const hero = heroCta.getBoundingClientRect();
-      const past = hero.bottom < 0 || hero.top > window.innerHeight;
-      const end = final.getBoundingClientRect();
-      const atFinal = end.top < window.innerHeight && end.bottom > 0;
-      setShow(past && !atFinal);
-    };
-    onScroll();
-    window.addEventListener("scroll", onScroll, { passive: true });
-    return () => window.removeEventListener("scroll", onScroll);
+    // shown while the hero buttons are off screen and the final CTA is not yet on it: observed,
+    // not measured on every scroll event
+    const visible = new Map<Element, boolean>();
+    const io = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => visible.set(entry.target, entry.isIntersecting));
+      setShow(!visible.get(heroCta) && !visible.get(final));
+    });
+    io.observe(heroCta);
+    io.observe(final);
+    return () => io.disconnect();
   }, [root]);
 
   return (
     <div
       className={cn(
-        "fixed inset-x-0 bottom-0 z-40 hidden translate-y-[110%] gap-2.5 border-t border-white/10 bg-[rgba(4,15,77,0.9)] px-3.5 pt-3 pb-[calc(12px+env(safe-area-inset-bottom))] backdrop-blur-[14px] transition-transform duration-[350ms] ease-[cubic-bezier(.2,.7,.2,1)] max-tour-sm:flex",
+        "fixed inset-x-0 bottom-0 z-40 hidden translate-y-[110%] gap-2.5 border-t border-white/10 bg-[rgba(4,15,77,0.97)] px-3.5 pt-3 pb-[calc(12px+env(safe-area-inset-bottom))] transition-transform duration-[350ms] ease-[cubic-bezier(.2,.7,.2,1)] max-tour-sm:flex",
         show && !lightbox && "translate-y-0",
       )}
     >

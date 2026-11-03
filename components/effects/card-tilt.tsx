@@ -13,8 +13,10 @@ import { usePathname } from "@/i18n/navigation";
 const CARD_RADIUS = /\brounded-(14|2xl|18|20|22|\[(15|17|19|21)px\])(?=\s|$)/;
 const CARD_SURFACE = /\b(shadow-surface-\d|shadow-surface-dark|bg-white|bg-pale|bg-mist|border)\b/;
 
+// The 3D transform only applies while hovered: a permanent one would give every card on the
+// page its own compositor layer (memory and raster work for nothing, above all on phones).
 const CARD = [
-  "[transform:perspective(900px)_rotateX(var(--tilt-x,0deg))_rotateY(var(--tilt-y,0deg))_translateY(var(--tilt-lift,0px))]",
+  "data-hover:[transform:perspective(900px)_rotateX(var(--tilt-x,0deg))_rotateY(var(--tilt-y,0deg))_translateY(var(--tilt-lift,0px))]",
   "[transition:transform_.5s_cubic-bezier(.2,.7,.2,1),filter_.5s_ease]",
   "data-hover:[--tilt-lift:-5px] data-hover:drop-shadow-[0_18px_24px_#06177324]",
   "data-hover:[transition:transform_.15s_ease-out,filter_.3s_ease]",
@@ -42,8 +44,17 @@ export function CardTilt() {
       { rootMargin: "0px 0px -8% 0px" },
     );
 
+    // The card's box, read once per hover (and again after a scroll): reading it on every move
+    // would force a style recalc each time, and measure the already tilted card.
+    let boxes = new WeakMap<HTMLElement, DOMRect>();
+    const forget = () => (boxes = new WeakMap());
+    window.addEventListener("scroll", forget, { passive: true });
     function move(this: HTMLElement, e: PointerEvent) {
-      const r = this.getBoundingClientRect();
+      let r = boxes.get(this);
+      if (!r) {
+        r = this.getBoundingClientRect();
+        boxes.set(this, r);
+      }
       this.style.setProperty(
         "--tilt-y",
         `${(((e.clientX - r.left) / r.width - 0.5) * 6).toFixed(2)}deg`,
@@ -55,6 +66,7 @@ export function CardTilt() {
       this.dataset.hover = "";
     }
     function leave(this: HTMLElement) {
+      boxes.delete(this);
       this.style.removeProperty("--tilt-x");
       this.style.removeProperty("--tilt-y");
       delete this.dataset.hover;
@@ -101,6 +113,7 @@ export function CardTilt() {
     return () => {
       cancel();
       clearTimeout(timer);
+      window.removeEventListener("scroll", forget);
       observer.disconnect();
       reveal.disconnect();
     };

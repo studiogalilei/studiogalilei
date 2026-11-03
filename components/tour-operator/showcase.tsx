@@ -202,6 +202,9 @@ export function Showcase() {
                 width={s.width}
                 height={s.height}
                 data-active={i === current || undefined}
+                // the first screen is the hero picture; the others are only needed seconds later
+                fetchPriority={i === 0 ? "high" : "low"}
+                decoding="async"
                 className="absolute inset-0 size-full scale-[1.025] object-cover object-left-top opacity-0 [transition:opacity_.7s_ease,scale_1.2s_cubic-bezier(.2,.7,.2,1)] data-active:scale-100 data-active:opacity-100"
               />
             ))}

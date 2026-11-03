@@ -68,7 +68,7 @@ export function button({
       "bg-[linear-gradient(135deg,#0a2391_0%,#061773_45%,#040f4d_100%)] text-white shadow-[0_18px_40px_-14px_rgba(6,23,115,0.65),inset_0_1px_0_rgba(255,255,255,0.22)]",
     kind === "email" &&
       dark &&
-      "bg-white/8 bg-none text-white shadow-[inset_0_0_0_1px_rgba(255,255,255,0.28),0_18px_40px_-18px_rgba(0,0,0,0.55)] backdrop-blur-[6px] hover:bg-white/14",
+      "bg-white/8 bg-none text-white shadow-[inset_0_0_0_1px_rgba(255,255,255,0.28),0_18px_40px_-18px_rgba(0,0,0,0.55)] hover:bg-white/14",
     sizes[size],
     // after the sizes: cn() would drop a line height followed by a font size
     "leading-[1.2]",

@@ -154,37 +154,50 @@
   --animate-stamp: stamp 0.45s cubic-bezier(0.3, 1.6, 0.5, 1) forwards;
   /* home: hero tiles sway on touch screens; portal preview draws itself */
   --animate-tile-sway: tile-sway 9s ease-in-out infinite;
+  --animate-tile-drift: tile-drift 9s ease-in-out infinite;
   --animate-chart-draw: chart-draw 1.6s 0.35s cubic-bezier(0.45, 0, 0.2, 1) forwards;
   --animate-chart-area: appear 0.8s 1.4s ease forwards;
   --animate-chart-dot: appear 0.3s 1.9s ease forwards, dot-pulse 2s 2.2s ease-in-out infinite;
+  --animate-dot-glow: dot-glow 2s 2.2s ease-in-out infinite;
   --animate-bar-grow: bar-grow 0.7s cubic-bezier(0.2, 0.7, 0.2, 1) forwards;
   --animate-kpi-rise: kpi-rise 0.6s cubic-bezier(0.2, 0.7, 0.2, 1) forwards;
 
+  /* the hover tilt as keyframes of the transform itself (not of the --tile-* variables, which
+     would recompute styles on the main thread every frame) */
   @keyframes tile-sway {
     0%,
     100% {
-      --tile-rx: 0deg;
-      --tile-ry: 0deg;
-      --tile-mx: 0;
-      --tile-my: 0;
+      transform: rotateX(var(--tile-bx)) rotateY(var(--tile-by)) rotate(var(--tile-bz));
     }
     25% {
-      --tile-rx: 4deg;
-      --tile-ry: 7deg;
-      --tile-mx: 0.7;
-      --tile-my: -0.5;
+      transform: rotateX(calc(var(--tile-bx) + 4deg)) rotateY(calc(var(--tile-by) + 7deg))
+        rotate(var(--tile-bz));
     }
     50% {
-      --tile-rx: -2deg;
-      --tile-ry: 2deg;
-      --tile-mx: 0.2;
-      --tile-my: 0.6;
+      transform: rotateX(calc(var(--tile-bx) - 2deg)) rotateY(calc(var(--tile-by) + 2deg))
+        rotate(var(--tile-bz));
     }
     75% {
-      --tile-rx: -4deg;
-      --tile-ry: -6deg;
-      --tile-mx: -0.7;
-      --tile-my: -0.2;
+      transform: rotateX(calc(var(--tile-bx) - 4deg)) rotateY(calc(var(--tile-by) - 6deg))
+        rotate(var(--tile-bz));
+    }
+  }
+  @keyframes tile-drift {
+    0%,
+    100% {
+      transform: translateZ(var(--tile-z)) translate3d(0, 0, 0);
+    }
+    25% {
+      transform: translateZ(var(--tile-z))
+        translate3d(calc(var(--tile-k) * 0.7em), calc(var(--tile-k) * -0.5em), 0);
+    }
+    50% {
+      transform: translateZ(var(--tile-z))
+        translate3d(calc(var(--tile-k) * 0.2em), calc(var(--tile-k) * 0.6em), 0);
+    }
+    75% {
+      transform: translateZ(var(--tile-z))
+        translate3d(calc(var(--tile-k) * -0.7em), calc(var(--tile-k) * -0.2em), 0);
     }
   }
   @keyframes chart-draw {
@@ -200,12 +213,15 @@
   @keyframes dot-pulse {
     0%,
     100% {
-      transform: scale(1);
-      filter: drop-shadow(0 0 0 #0689ff00);
+      scale: 1;
     }
     50% {
-      transform: scale(1.35);
-      filter: drop-shadow(0 0 5px #0689ffb3);
+      scale: 1.35;
+    }
+  }
+  @keyframes dot-glow {
+    50% {
+      opacity: 1;
     }
   }
   @keyframes bar-grow {
@@ -224,25 +240,20 @@
       transform: translate(-50%);
     }
   }
-  /* "Scopri … applicarlo" button: pulsing halo, passing glint, nudging icon */
+  /* "Scopri … applicarlo" button: pulsing halo (a layer behind it growing ~18px past each edge
+     while it fades), passing glint, nudging icon */
   @keyframes beacon {
     0% {
-      box-shadow:
-        0 18px 40px -14px #061773a6,
-        inset 0 1px #ffffff38,
-        0 0 0 0 #0a2391a6;
+      opacity: 0.65;
+      scale: 1;
     }
     70% {
-      box-shadow:
-        0 18px 40px -14px #061773a6,
-        inset 0 1px #ffffff38,
-        0 0 0 18px #0a239100;
+      opacity: 0;
+      scale: 1.08 1.42;
     }
     100% {
-      box-shadow:
-        0 18px 40px -14px #061773a6,
-        inset 0 1px #ffffff38,
-        0 0 0 0 #0a239100;
+      opacity: 0;
+      scale: 1;
     }
   }
   /* the glint is a third of the button wide: from just off the left edge to past the right */
@@ -322,7 +333,7 @@
   background-size: cover;
 }
 
-/* Hero tiles tilt/parallax, set from the pointer: registered so they can transition and animate. */
+/* Hero tiles tilt/parallax, set from the pointer: registered so they default to zero. */
 @property --tile-rx {
   syntax: "<angle>";
   initial-value: 0deg;

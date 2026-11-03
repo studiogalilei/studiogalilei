@@ -82,13 +82,13 @@ function CaseStudy({
           aria-hidden="true"
           className="pointer-events-none absolute inset-0 -z-10 flex items-center justify-center"
         >
-          <div className="absolute inset-[-8%] rounded-full bg-[radial-gradient(closest-side,rgba(150,158,176,.36),rgba(150,158,176,.15)_55%,transparent)] blur-2xl" />
+          <div className="absolute inset-[-14%] rounded-full bg-[radial-gradient(closest-side,rgba(150,158,176,.34),rgba(150,158,176,.15)_50%,rgba(150,158,176,.05)_78%,transparent)]" />
           {backdrop}
         </div>
         <div className="relative">
           <div
             aria-hidden="true"
-            className="absolute inset-x-[-30%] inset-y-[-55%] -z-10 rounded-full bg-[radial-gradient(closest-side,rgba(255,255,255,1),rgba(255,255,255,.85)_55%,transparent)] blur-md"
+            className="absolute inset-x-[-30%] inset-y-[-55%] -z-10 rounded-full bg-[radial-gradient(closest-side,rgba(255,255,255,1),rgba(255,255,255,.85)_52%,rgba(255,255,255,.3)_82%,transparent)]"
           />
           <div className="flex flex-wrap items-center justify-center gap-x-8 gap-y-4">
             {logos.map((logo) => (
@@ -125,6 +125,7 @@ export default function CaseStudiesPage() {
           src="/images/casi-studio/banner.webp"
           alt=""
           aria-hidden="true"
+          fetchPriority="high"
           className="absolute inset-0 -z-10 h-full w-full object-cover object-[50%_58%] md:bottom-auto md:h-auto md:-translate-y-[41.17%] md:object-fill"
         />
         <div
