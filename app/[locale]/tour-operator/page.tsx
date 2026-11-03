@@ -1,5 +1,6 @@
 import { ClientMessages } from "@/components/client-messages";
 import type { Metadata, Viewport } from "next";
+import { pageMetadata } from "@/lib/metadata";
 import { Cases } from "@/components/tour-operator/cases";
 import { TourProvider } from "@/components/tour-operator/context";
 import { Lightbox, StickyBar, TourEffects } from "@/components/tour-operator/effects";
@@ -15,12 +16,9 @@ import {
   TourFooter,
 } from "@/components/tour-operator/sections";
 
-export const metadata: Metadata = {
-  title: "Software for tour operators",
-  description:
-    "Custom software for tour operators: bookings, departures, drivers, guides, passenger lists and customer messages in one app. Live at FunDallas Tours (Texas) and BeaVita Tours (Italy).",
-  robots: { index: false },
-};
+export async function generateMetadata(): Promise<Metadata> {
+  return { ...(await pageMetadata("tourOperator")), robots: { index: false } };
+}
 
 export const viewport: Viewport = { themeColor: "#040F4D", viewportFit: "cover" };
 

@@ -1,3 +1,4 @@
+import type { Metadata } from "next";
 import { Poppins } from "next/font/google";
 import localFont from "next/font/local";
 import { locale } from "next/root-params";
@@ -6,6 +7,7 @@ import { ClientMessages } from "@/components/client-messages";
 import { Navbar } from "@/components/layout/navbar";
 import { SkipLink } from "@/components/layout/skip-link";
 import { routing } from "@/i18n/routing";
+import { SITE_NAME, TITLE_TEMPLATE } from "@/lib/metadata";
 import "../globals.css";
 
 const poppins = Poppins({
@@ -21,6 +23,9 @@ const permanentMarker = localFont({
   variable: "--font-permanent-marker",
   adjustFontFallback: false,
 });
+
+// every page's title is "<page name> | Studio Galilei" (see lib/metadata.ts)
+export const metadata: Metadata = { title: { template: TITLE_TEMPLATE, default: SITE_NAME } };
 
 export function generateStaticParams() {
   return routing.locales.map((locale) => ({ locale }));

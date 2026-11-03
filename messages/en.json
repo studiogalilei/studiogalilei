@@ -8,11 +8,11 @@
   },
   "Metadata": {
     "comingSoon": {
-      "title": "Private Area",
+      "title": "Private area",
       "description": "The Studio Galilei partner area is coming soon."
     },
     "home": {
-      "title": "Studio Galilei | Marketing, AI and Software",
+      "title": "Marketing, AI and software",
       "description": "We bring Marketing, AI and Software under one roof to cut lead times, simplify management and build systems that stay yours."
     },
     "about": {
@@ -28,11 +28,11 @@
       "description": "We build and manage Google and Meta campaigns tailored to your goals. Structure, tracking and continuous optimisation, from day one."
     },
     "intelligenza-artificiale": {
-      "title": "Artificial Intelligence",
+      "title": "Artificial intelligence",
       "description": "We find where time, information or value is being lost and build automations that work for you. Without starting from the tool."
     },
     "sviluppo-software": {
-      "title": "Software Development",
+      "title": "Software development",
       "description": "Management systems, portals and integrations built around your real processes. Modular development, role-based permissions and progressive release."
     },
     "googleAds": {
@@ -52,7 +52,7 @@
       "description": "More leads at a lower cost for a tattoo franchise: the customer acquisition strategy built for a network of 8 studios in Italy."
     },
     "caseOnlySolutions": {
-      "title": "Only Solutions, case study",
+      "title": "Case study: Only Solutions",
       "description": "€687,545.50 in revenue in 45 days on €26,194.16 of ad spend: the Google Ads and Meta Ads ecosystem built for a technology e-commerce business."
     },
     "careers": {
@@ -60,12 +60,16 @@
       "description": "Why work at Studio Galilei: method, autonomy and results measured and credited to whoever produces them."
     },
     "contact": {
-      "title": "Contact us",
+      "title": "Contact",
       "description": "We are here to listen. A coffee or a call to compare notes is always a pleasure!"
     },
     "privacy": {
-      "title": "Privacy Policy",
+      "title": "Privacy policy",
       "description": "How Studio Galilei collects, uses, stores and protects personal data, including Google Ads API data, in compliance with the Google API Services User Data Policy."
+    },
+    "tourOperator": {
+      "title": "Software for tour operators",
+      "description": "Custom software for tour operators: bookings, departures, drivers, guides, passenger lists and customer messages in one app. Live at FunDallas Tours (Texas) and BeaVita Tours (Italy)."
     }
   },
   "Header": {

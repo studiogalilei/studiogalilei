@@ -3,21 +3,8 @@ import { CardTilt } from "@/components/effects/card-tilt";
 import { Footer } from "@/components/layout/footer";
 import { company } from "@/lib/company";
 
-export const metadata: Metadata = {
-  title: {
-    template: "%s | Studio Galilei",
-    default: "Studio Galilei | Marketing, AI e Software",
-  },
-  openGraph: {
-    type: "website",
-    siteName: "Studio Galilei",
-    title: "Studio Galilei | Marketing, AI e Software",
-    description: "Rendiamo visibile ciò che muove la crescita.",
-    url: "https://studiogalilei.com/",
-    locale: "it_IT",
-  },
-  twitter: null,
-};
+// titles and previews: the root layout's template and each page's pageMetadata()
+export const metadata: Metadata = { twitter: null };
 
 export const viewport: Viewport = { themeColor: "#061773" };
 

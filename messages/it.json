@@ -8,11 +8,11 @@
   },
   "Metadata": {
     "comingSoon": {
-      "title": "Area Privata",
+      "title": "Area privata",
       "description": "L'area riservata ai partner Studio Galilei è in arrivo."
     },
     "home": {
-      "title": "Studio Galilei | Marketing, AI e Software",
+      "title": "Marketing, AI e software",
       "description": "Integriamo Marketing, AI e Software sotto lo stesso tetto per ridurre tempi, semplificare la gestione e costruire sistemi che restano tuoi."
     },
     "about": {
@@ -28,11 +28,11 @@
       "description": "Costruiamo e gestiamo campagne Google e Meta calibrate sui tuoi obiettivi. Struttura, tracciamento e ottimizzazione continua — dal primo giorno."
     },
     "intelligenza-artificiale": {
-      "title": "Intelligenza Artificiale",
+      "title": "Intelligenza artificiale",
       "description": "Identifichiamo dove si perde tempo, informazione o valore e costruiamo automazioni che lavorano per te. Senza partire dallo strumento."
     },
     "sviluppo-software": {
-      "title": "Sviluppo Software",
+      "title": "Sviluppo software",
       "description": "Gestionali, portali e integrazioni costruiti sui tuoi processi reali. Sviluppo modulare, permessi per ruolo e rilascio progressivo."
     },
     "googleAds": {
@@ -52,7 +52,7 @@
       "description": "Più contatti a un costo più basso per un franchising di tatuaggi: la strategia di acquisizione clienti costruita per un network di 8 studi in Italia."
     },
     "caseOnlySolutions": {
-      "title": "Only Solutions, caso studio",
+      "title": "Caso studio: Only Solutions",
       "description": "687.545,50 € di fatturato in 45 giorni con 26.194,16 € di spesa pubblicitaria: l'ecosistema di Google Ads e Meta Ads costruito per un e-commerce di tecnologia."
     },
     "careers": {
@@ -60,12 +60,16 @@
       "description": "Perché lavorare in Studio Galilei: metodo, autonomia e risultati misurati e attribuiti a chi li produce."
     },
     "contact": {
-      "title": "Contattaci",
+      "title": "Contatti",
       "description": "Siamo qui per ascoltarti. Un caffè o una chiamata di confronto ci fa sempre piacere!"
     },
     "privacy": {
-      "title": "Privacy Policy",
+      "title": "Privacy policy",
       "description": "Come Studio Galilei raccoglie, utilizza, conserva e protegge i dati personali, inclusi i dati delle API di Google Ads, nel rispetto della Google API Services User Data Policy."
+    },
+    "tourOperator": {
+      "title": "Software per tour operator",
+      "description": "Software su misura per tour operator: prenotazioni, partenze, autisti, guide, liste passeggeri e messaggi ai clienti in un'unica app. Attivo da FunDallas Tours (Texas) e BeaVita Tours (Italia)."
     }
   },
   "Header": {
