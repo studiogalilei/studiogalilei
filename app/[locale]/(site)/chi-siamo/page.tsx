@@ -18,25 +18,30 @@ export default function AboutPage() {
 
   return (
     <>
-      <section className="relative isolate overflow-hidden bg-field-navy text-white">
-        {/* eslint-disable-next-line @next/next/no-img-element -- decorative background, sized by CSS */}
-        <img
-          src="/images/chi-siamo.webp"
-          alt=""
-          aria-hidden="true"
-          draggable={false}
-          className="pointer-events-none absolute right-[-14%] -bottom-[6%] -z-10 h-[108%] w-auto max-w-none opacity-[0.13] select-none md:right-[2%] md:opacity-[0.16]"
-        />
-        <Container className="flex min-h-[52vh] flex-col justify-center py-24 md:min-h-[58vh] md:py-32">
-          <figure className="max-w-[54rem]">
-            <blockquote className="text-[2.1rem] leading-1.15 font-semibold -tracking-3 text-balance md:text-[3.4rem]">
-              {t("quote")}
-            </blockquote>
-            <figcaption className="mt-8 text-15 font-semibold tracking-[0.18em] text-white/60 uppercase">
-              Galileo Galilei
-            </figcaption>
-          </figure>
-        </Container>
+      {/* The navy reaches up behind the transparent navbar, which floats over it (73px: the
+          bar plus its border). The telescope and the quote sit in the room below it, exactly
+          as they would without the bar above. */}
+      <section className="relative isolate overflow-hidden bg-field-navy pt-[73px] text-white">
+        <div className="relative overflow-hidden">
+          {/* eslint-disable-next-line @next/next/no-img-element -- decorative background, sized by CSS */}
+          <img
+            src="/images/chi-siamo.webp"
+            alt=""
+            aria-hidden="true"
+            draggable={false}
+            className="pointer-events-none absolute right-[-14%] -bottom-[6%] -z-10 h-[108%] w-auto max-w-none opacity-[0.13] select-none md:right-[2%] md:opacity-[0.16]"
+          />
+          <Container className="flex min-h-[52vh] flex-col justify-center py-24 md:min-h-[58vh] md:py-32">
+            <figure className="max-w-[54rem]">
+              <blockquote className="text-[2.1rem] leading-1.15 font-semibold -tracking-3 text-balance md:text-[3.4rem]">
+                {t("quote")}
+              </blockquote>
+              <figcaption className="mt-8 text-15 font-semibold tracking-[0.18em] text-white/60 uppercase">
+                Galileo Galilei
+              </figcaption>
+            </figure>
+          </Container>
+        </div>
       </section>
       <Section tone="pale">
         <Container className="grid gap-14 md:grid-cols-2 md:gap-20">

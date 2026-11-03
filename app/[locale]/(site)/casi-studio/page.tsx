@@ -119,29 +119,39 @@ export default function CaseStudiesPage() {
   const br = () => <br />;
   return (
     <>
-      <section className="relative isolate flex min-h-[72vh] items-end overflow-hidden bg-ink text-white md:aspect-[3024/1207] md:min-h-0">
-        {/* eslint-disable-next-line @next/next/no-img-element -- same markup as the legacy site */}
-        <img
-          src="/images/casi-studio/banner.webp"
-          alt=""
-          aria-hidden="true"
-          fetchPriority="high"
-          className="absolute inset-0 -z-10 h-full w-full object-cover object-[50%_58%] md:bottom-auto md:h-auto md:-translate-y-[41.17%] md:object-fill"
-        />
+      {/* The photo reaches up behind the transparent navbar, which floats over it (73px: the bar
+          plus its border). The title sits in the box below it, exactly where it would be without
+          the bar; the photo keeps its crop there and simply shows more of itself above. */}
+      <section className="relative isolate overflow-hidden bg-ink pt-[73px] text-white">
+        <div className="relative flex min-h-[72vh] items-end md:aspect-[3024/1207] md:min-h-0">
+          {/* eslint-disable-next-line @next/next/no-img-element -- same markup as the legacy site */}
+          <img
+            src="/images/casi-studio/banner.webp"
+            alt=""
+            aria-hidden="true"
+            fetchPriority="high"
+            className="absolute inset-x-0 -top-[73px] -z-10 h-[calc(100%+73px)] w-full object-cover object-[50%_58%] md:top-0 md:h-auto md:-translate-y-[41.17%] md:object-fill"
+          />
+          <Container className="pt-32 pb-16 md:pb-20">
+            <h1 className="max-w-[46rem] text-2rem leading-[1.3] font-semibold -tracking-3 sm:text-2.4rem md:text-[3.6rem]">
+              <span className="bg-sg/85 [box-decoration-break:clone] px-[0.18em] py-[0.04em] [-webkit-box-decoration-break:clone]">
+                {t.rich("heroTitle", {
+                  muted: (chunks) => <span className="text-[#B4BAC6]">{chunks}</span>,
+                  br,
+                })}
+              </span>
+            </h1>
+          </Container>
+        </div>
         <div
           className="absolute inset-0 -z-10 bg-gradient-to-t from-black/75 via-black/35 to-black/20"
           aria-hidden="true"
         />
-        <Container className="pt-32 pb-16 md:pb-20">
-          <h1 className="max-w-[46rem] text-2rem leading-[1.3] font-semibold -tracking-3 sm:text-2.4rem md:text-[3.6rem]">
-            <span className="bg-sg/85 [box-decoration-break:clone] px-[0.18em] py-[0.04em] [-webkit-box-decoration-break:clone]">
-              {t.rich("heroTitle", {
-                muted: (chunks) => <span className="text-[#B4BAC6]">{chunks}</span>,
-                br,
-              })}
-            </span>
-          </h1>
-        </Container>
+        {/* a darker band under the navbar, so its white links read over any part of the photo */}
+        <div
+          className="absolute inset-x-0 top-0 -z-10 h-[150px] bg-gradient-to-b from-black/55 via-black/25 to-transparent"
+          aria-hidden="true"
+        />
       </section>
       <section className="overflow-x-clip bg-white py-20 md:py-28">
         <Container className="space-y-16 md:space-y-24">
