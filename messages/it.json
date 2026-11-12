@@ -7,10 +7,6 @@
     "scopriSePossiamoApplicarloAnche": "Scopri se possiamo applicarlo anche alla tua realtà"
   },
   "Metadata": {
-    "comingSoon": {
-      "title": "Area privata",
-      "description": "L'area riservata ai partner Studio Galilei è in arrivo."
-    },
     "home": {
       "title": "Marketing, AI e software",
       "description": "Integriamo Marketing, AI e Software sotto lo stesso tetto per ridurre tempi, semplificare la gestione e costruire sistemi che restano tuoi."
@@ -70,6 +66,10 @@
     "tourOperator": {
       "title": "Software per tour operator",
       "description": "Software su misura per tour operator: prenotazioni, partenze, autisti, guide, liste passeggeri e messaggi ai clienti in un'unica app. Attivo da FunDallas Tours (Texas) e BeaVita Tours (Italia)."
+    },
+    "privateArea": {
+      "title": "Area privata",
+      "description": "Accedi al tuo account Studio Galilei."
     }
   },
   "Header": {
@@ -826,13 +826,6 @@
     "ctaText": "Analizziamo i tuoi ecosistemi pubblicitari e ti mostriamo dove il ritorno può crescere.",
     "ctaLabel": "Richiedi un'analisi"
   },
-  "ComingSoon": {
-    "kicker": "Studio Galilei Platform",
-    "title": "Coming soon",
-    "text": "Stiamo preparando l'area riservata ai partner: progetti, report e documenti in un unico posto. Sarà disponibile a breve.",
-    "contact": "Contattaci",
-    "home": "Torna alla home"
-  },
   "Careers": {
     "title": "Lavorare in Studio Galilei",
     "mission": {
@@ -1150,5 +1143,9 @@
     "bPrenotazioniCombinateBOgni": "<b>Prenotazioni combinate</b>Ogni prenotazione combinata compare una volta, con le tratte incluse elencate insieme.",
     "bInvioEConfermaTracciatiBOgniPdf": "<b>Invio e conferma tracciati</b>Ogni PDF ha un numero di versione; invio e conferma dell'autista sono registrati separatamente.",
     "tuttaLaGiornataDelTuoTour": "Tutta la giornata del tuo tour operator in <em>un'unica app</em>"
+  },
+  "PrivateArea": {
+    "signIn": "Accedi",
+    "openWorkspace": "Apri Workspace"
   }
 }

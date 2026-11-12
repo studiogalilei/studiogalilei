@@ -7,10 +7,6 @@
     "scopriSePossiamoApplicarloAnche": "Find out if we can apply it to your business too"
   },
   "Metadata": {
-    "comingSoon": {
-      "title": "Private area",
-      "description": "The Studio Galilei partner area is coming soon."
-    },
     "home": {
       "title": "Marketing, AI and software",
       "description": "We bring Marketing, AI and Software under one roof to cut lead times, simplify management and build systems that stay yours."
@@ -70,6 +66,10 @@
     "tourOperator": {
       "title": "Software for tour operators",
       "description": "Custom software for tour operators: bookings, departures, drivers, guides, passenger lists and customer messages in one app. Live at FunDallas Tours (Texas) and BeaVita Tours (Italy)."
+    },
+    "privateArea": {
+      "title": "Private area",
+      "description": "Sign in to your Studio Galilei account."
     }
   },
   "Header": {
@@ -826,13 +826,6 @@
     "ctaText": "We analyse your advertising ecosystems and show you where the return can grow.",
     "ctaLabel": "Request an analysis"
   },
-  "ComingSoon": {
-    "kicker": "Studio Galilei Platform",
-    "title": "Coming soon",
-    "text": "We are building the partner area: projects, reports and documents in one place. It will be available soon.",
-    "contact": "Contact us",
-    "home": "Back to home"
-  },
   "Careers": {
     "title": "Working at Studio Galilei",
     "mission": {
@@ -1150,5 +1143,9 @@
     "bPrenotazioniCombinateBOgni": "<b>Combination bookings</b>Each combination booking appears once, with its included tour portions listed together.",
     "bInvioEConfermaTracciatiBOgniPdf": "<b>Release and confirmation tracked</b>Each PDF has a version number; release and driver confirmation are tracked separately.",
     "tuttaLaGiornataDelTuoTour": "Your whole tour operation in <em>one app</em>"
+  },
+  "PrivateArea": {
+    "signIn": "Sign in",
+    "openWorkspace": "Open Workspace"
   }
 }

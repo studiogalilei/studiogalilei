@@ -4,6 +4,20 @@ import createNextIntlPlugin from "next-intl/plugin";
 const nextConfig: NextConfig = {
   cacheComponents: true,
   partialPrefetching: true,
+  async headers() {
+    return [
+      {
+        source: "/area-partner",
+        headers: [
+          {
+            key: "Content-Security-Policy",
+            value: "frame-ancestors 'none'; frame-src https://workspace.studiogalilei.com",
+          },
+          { key: "X-Frame-Options", value: "DENY" },
+        ],
+      },
+    ];
+  },
   async redirects() {
     return [
       { source: "/index.html", destination: "/", permanent: true },
@@ -13,7 +27,7 @@ const nextConfig: NextConfig = {
         destination: "/tour-operator",
         permanent: true,
       })),
-      // "Area Privata" shows a "coming soon" page; the Platform prototype is not public yet
+      // Old Private Area bookmarks open the current sign-in page.
       { source: "/platform", destination: "/area-partner", permanent: false },
     ];
   },
