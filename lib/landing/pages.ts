@@ -7,6 +7,8 @@
  * cases already public on the site), the number before the adjective, the limit said first.
  */
 
+import { sectors, type Sector } from "./sectors";
+
 export type LandingFaq = { q: string; a: string };
 export type LandingSection = { title: string; body?: string[]; bullets?: string[] };
 export type LandingStep = { title: string; text: string };
@@ -14,7 +16,7 @@ export type LandingPrice = { label: string; value: string; note: string };
 
 export type Landing = {
   path: string;
-  kind: "service" | "guide" | "local";
+  kind: "service" | "guide" | "local" | "sector";
   kicker: string;
   title: string;
   metaTitle: string;
@@ -627,4 +629,69 @@ export const landings: Landing[] = [
   },
 ];
 
-export const landingByPath = (path: string) => landings.find((l) => l.path === path)!;
+/** The other industries shown at the bottom of an industry page: the next three in the list. */
+const neighbours = (i: number) =>
+  [1, 2, 3].map((d) => `/settori/${sectors[(i + d) % sectors.length].slug}`);
+
+const sectorTitle = (s: Sector) => {
+  const full = `Software su misura ${s.per}`;
+  return full.length <= 58 ? full : `Software ${s.per}`;
+};
+
+const sectorLanding = (s: Sector, i: number): Landing => {
+  const done = s.done !== false;
+  return {
+    path: `/settori/${s.slug}`,
+    kind: "sector",
+    kicker: s.name,
+    title: `${s.product} ${s.per}`,
+    // the search result title: under 60 characters, the keyword first
+    metaTitle: sectorTitle(s),
+    description: s.description,
+    answer: s.answer,
+    sections: [
+      { title: `I problemi che si ripetono ${s.nel}`, bullets: s.problems },
+      {
+        title: done ? `Cosa abbiamo sviluppato ${s.per}` : `Cosa sviluppiamo ${s.per}`,
+        body: [s.built],
+      },
+      { title: "Cosa può includere il software", bullets: s.modules },
+      {
+        title: `Dove serve l'intelligenza artificiale ${s.nel}`,
+        bullets: s.ai,
+        body: [
+          "Prima viene il sistema, poi l'AI: senza dati ordinati sotto, un modello non ha niente di affidabile su cui lavorare.",
+        ],
+      },
+    ],
+    steps: { title: "Come lavoriamo", items: STEPS_SOFTWARE },
+    prices: {
+      title: "Quanto costa",
+      intro:
+        "Le fasce dei nostri progetti, IVA esclusa. Il preventivo preciso arriva dopo la mappatura dei processi.",
+      rows: [
+        {
+          label: "Gestionali e software su misura",
+          value: SOFTWARE_RANGE,
+          note: "Secondo moduli, integrazioni e ruoli.",
+        },
+        { label: "AI e automazioni", value: AI_RANGE, note: "Da sole o dentro il gestionale." },
+      ],
+      note: "Un progetto di media complessità richiede 8-10 settimane. Si può partire da un modulo solo.",
+    },
+    faqs: [
+      ...s.faqs,
+      {
+        q: `Quanto costa un software su misura ${s.per}?`,
+        a: `I nostri progetti di software su misura vanno ${SOFTWARE_RANGE}, IVA esclusa, secondo il numero di moduli e di integrazioni. I progetti di AI e automazione vanno ${AI_RANGE}.`,
+      },
+    ],
+    related: [...neighbours(i), "/gestionale-su-misura"],
+  };
+};
+
+export const sectorLandings = sectors.map(sectorLanding);
+
+const all = [...landings, ...sectorLandings];
+
+export const landingByPath = (path: string) => all.find((l) => l.path === path)!;

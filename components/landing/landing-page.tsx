@@ -55,7 +55,11 @@ function structuredData(page: Landing) {
   };
   const crumbs = [
     { name: "Home", item: SITE_URL },
-    ...(page.kind === "guide" ? [] : [{ name: "Servizi", item: `${SITE_URL}/servizi` }]),
+    ...(page.kind === "sector"
+      ? [{ name: "Settori", item: `${SITE_URL}/settori` }]
+      : page.kind === "guide"
+        ? []
+        : [{ name: "Servizi", item: `${SITE_URL}/servizi` }]),
     { name: page.title, item: url },
   ];
   const main =
@@ -125,7 +129,11 @@ export function LandingPage({ path }: { path: string }) {
       <PageHero
         crumbs={[
           { label: "Home", href: "/" },
-          ...(page.kind === "guide" ? [] : [{ label: "Servizi", href: "/servizi" }]),
+          ...(page.kind === "sector"
+            ? [{ label: "Settori", href: "/settori" }]
+            : page.kind === "guide"
+              ? []
+              : [{ label: "Servizi", href: "/servizi" }]),
           { label: page.title },
         ]}
         kicker={page.kicker}

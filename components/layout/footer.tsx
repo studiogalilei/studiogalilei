@@ -10,6 +10,7 @@ const solutions = [
   { label: "Gestionale su misura", href: "/gestionale-su-misura" },
   { label: "Agenti AI per aziende", href: "/agenti-ai-per-aziende" },
   { label: "Automazione dei processi", href: "/automazione-processi-aziendali" },
+  { label: "Software per settore", href: "/settori" },
   { label: "Software per tour operator", href: "/tour-operator" },
   { label: "Software house a Treviso", href: "/software-house-treviso" },
   { label: "Quanto costa un gestionale", href: "/guide/quanto-costa-un-gestionale-su-misura" },
