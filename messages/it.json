@@ -9,7 +9,7 @@
   "Metadata": {
     "home": {
       "title": "Software su misura e agenti AI per le aziende",
-      "description": "Software su misura e agenti AI che mettono ordine in azienda e ti restituiscono tempo. Software house di Treviso: prima il sistema, poi l'AI, e il codice resta tuo."
+      "description": "Tutta la tua azienda in un posto solo: gestionali, automazioni e agenti AI su misura che tolgono il lavoro ripetitivo. Software house di Treviso, e il codice resta tuo."
     },
     "about": {
       "title": "Chi siamo",
@@ -17,7 +17,7 @@
     },
     "services": {
       "title": "Servizi",
-      "description": "Gestionali e software su misura, agenti AI e automazioni dei processi, più i servizi di marketing, contenuti e finanza agevolata di Studio Galilei."
+      "description": "Gestionali su misura, workspace e portali, automazioni, agenti AI e integrazioni: cosa costruisce Studio Galilei, più la finanza agevolata."
     },
     "marketing": {
       "title": "Marketing",
@@ -98,8 +98,8 @@
   },
   "Home": {
     "hero": {
-      "title": "<partner>Ordine in azienda.</partner><br></br>E il tuo tempo<br></br>indietro",
-      "intro": "Costruiamo gestionali, workspace, automazioni e agenti AI su misura, che tolgono dalle tue giornate il lavoro ripetitivo. Prima il sistema, poi l'AI: tutto in un posto solo, e resta tuo.",
+      "title": "<partner>Tutta la tua azienda,</partner><br></br>in un posto solo",
+      "intro": "Costruiamo gestionali, automazioni e agenti AI su misura, che tolgono il lavoro ripetitivo e ti lasciano più tempo per i tuoi clienti.",
       "download": "Scarica la presentazione",
       "bookCall": "Prenota una chiamata conoscitiva",
       "exploreServices": "Scopri i servizi"
@@ -170,7 +170,7 @@
           "items": [
             {
               "title": "Titolarità di dati e strumenti",
-              "desc": "Account pubblicitari, dati, codice e automazioni sono intestati alla tua azienda."
+              "desc": "Dati, codice, account e automazioni sono intestati alla tua azienda."
             },
             {
               "title": "Finanza agevolata",
@@ -188,7 +188,7 @@
     },
     "cases": {
       "kicker": "Casi studio",
-      "title": "Dietro le quinte dei nostri risultati",
+      "title": "Un software nostro, in uso ogni giorno",
       "danInk": "Lead Generation per il Franchising di Tatuaggi N1 in Italia <flag></flag>",
       "flag": "Italia",
       "onlySolutions": "687.000,00 € in 45 giorni<br></br>ecosistema di Google Ads e Meta Ads",
@@ -314,56 +314,50 @@
     "globeLabel": "Mappamondo con i luoghi in cui lavora Studio Galilei",
     "catalog": [
       {
-        "title": "Advertising digitale e media",
+        "title": "Gestionali e software su misura",
         "items": [
-          "Google Ads",
-          "Meta Ads",
-          "LinkedIn Ads",
-          "TikTok Ads",
-          "Gestione pubblicitaria televisiva",
-          "Sistemi di email marketing e outbound"
+          "Gestionali costruiti sui tuoi processi",
+          "CRM, preventivi, ordini, magazzino, consegne",
+          "Applicazioni web e per il telefono"
         ]
       },
       {
-        "title": "Social media",
+        "title": "Workspace e portali",
         "items": [
-          "Gestione social: Meta (Facebook e Instagram), LinkedIn, TikTok, YouTube",
-          "Gestione community"
+          "Uno spazio unico per il team",
+          "Aree riservate per clienti e fornitori",
+          "Documenti, attività e permessi per ruolo"
         ]
       },
       {
-        "title": "Produzione contenuti",
+        "title": "Automazioni",
         "items": [
-          "Shooting fotografico",
-          "Foto e video AI, motion graphics",
-          "Video corporate / cinema d’azienda",
-          "Spot pubblicitari",
-          "Spot televisivi",
-          "Editing video",
-          "Post produzione foto e video",
-          "Grafiche per social, web e stampa"
+          "Dati da email e documenti",
+          "Solleciti, promemoria e report",
+          "Passaggi tra programmi"
         ]
       },
       {
-        "title": "Web",
-        "items": ["Siti web", "E-commerce", "Landing page"]
-      },
-      {
-        "title": "Software e automazioni",
+        "title": "Agenti AI",
         "items": [
-          "Automazioni di processo",
-          "Software su misura",
-          "CRM e gestionali",
-          "Applicazioni"
+          "Risposte a clienti e richieste interne",
+          "Lettura di documenti",
+          "Bozze di preventivi e riepiloghi"
         ]
       },
       {
-        "title": "Sicurezza",
-        "items": ["Cybersecurity"]
+        "title": "Integrazioni",
+        "items": [
+          "Contabilità e fatturazione elettronica",
+          "E-commerce e marketplace",
+          "Macchine e sensori"
+        ]
       },
       {
         "title": "Finanza",
-        "items": ["Finanza agevolata"]
+        "items": [
+          "Finanza agevolata"
+        ]
       }
     ]
   },
@@ -853,7 +847,7 @@
     "title": "Lavorare in Studio Galilei",
     "mission": {
       "title": "La nostra missione",
-      "text": "Rendere visibile e governabile ciò che muove la crescita delle imprese, costruendo il team più talentuoso d'Italia nel marketing, nel software e nell'AI."
+      "text": "Rendere visibile e governabile ciò che muove la crescita delle imprese, costruendo il team più talentuoso d'Italia nel software e nell'AI."
     },
     "startingPoint": {
       "title": "Il punto di partenza",

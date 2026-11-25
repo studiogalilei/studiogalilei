@@ -9,7 +9,7 @@
   "Metadata": {
     "home": {
       "title": "Custom software and AI agents for businesses",
-      "description": "Custom software and AI agents that bring order to your company and give you your time back. Software house in Treviso, Italy: the system first, then AI, and the code stays yours."
+      "description": "Your whole company in one place: custom management software, automation and AI agents that take away the repetitive work. Software house in Treviso, Italy, and the code stays yours."
     },
     "about": {
       "title": "About us",
@@ -17,7 +17,7 @@
     },
     "services": {
       "title": "Services",
-      "description": "Custom software, AI agents and process automation, plus Studio Galilei's marketing, content and subsidised finance services."
+      "description": "Custom management software, workspaces and portals, automation, AI agents and integrations: what Studio Galilei builds, plus subsidised finance."
     },
     "marketing": {
       "title": "Marketing",
@@ -98,8 +98,8 @@
   },
   "Home": {
     "hero": {
-      "title": "<partner>Order in your company.</partner><br></br>And your time<br></br>back",
-      "intro": "We build custom management software, workspaces, automation and AI agents that take the repetitive work out of your days. The system first, then AI: everything in one place, and it stays yours.",
+      "title": "<partner>Your whole company,</partner><br></br>in one place",
+      "intro": "We build custom management software, automation and AI agents that take away the repetitive work and leave you more time for your customers.",
       "download": "Download the presentation",
       "bookCall": "Book an intro call",
       "exploreServices": "Explore our services"
@@ -170,7 +170,7 @@
           "items": [
             {
               "title": "Ownership of data and tools",
-              "desc": "Ad accounts, data, code and automations are registered to your company."
+              "desc": "Data, code, accounts and automations are in your company's name."
             },
             {
               "title": "Subsidised finance",
@@ -188,7 +188,7 @@
     },
     "cases": {
       "kicker": "Case studies",
-      "title": "Behind the scenes of our results",
+      "title": "Software of ours, in use every day",
       "danInk": "Lead generation for the No. 1 tattoo franchise in Italy <flag></flag>",
       "flag": "Italy",
       "onlySolutions": "€687,000.00 in 45 days<br></br>a Google Ads and Meta Ads ecosystem",
@@ -314,56 +314,50 @@
     "globeLabel": "Globe showing where Studio Galilei works",
     "catalog": [
       {
-        "title": "Digital advertising and media",
+        "title": "Custom management software",
         "items": [
-          "Google Ads",
-          "Meta Ads",
-          "LinkedIn Ads",
-          "TikTok Ads",
-          "TV advertising management",
-          "Email marketing and outbound systems"
+          "Systems built around your processes",
+          "CRM, quotes, orders, warehouse, deliveries",
+          "Web and mobile applications"
         ]
       },
       {
-        "title": "Social media",
+        "title": "Workspaces and portals",
         "items": [
-          "Social media management: Meta (Facebook and Instagram), LinkedIn, TikTok, YouTube",
-          "Community management"
+          "One space for the whole team",
+          "Private areas for customers and suppliers",
+          "Documents, tasks and role-based permissions"
         ]
       },
       {
-        "title": "Content production",
+        "title": "Automation",
         "items": [
-          "Photo shoots",
-          "AI photo and video, motion graphics",
-          "Corporate video / brand films",
-          "Commercials",
-          "TV commercials",
-          "Video editing",
-          "Photo and video post-production",
-          "Graphics for social, web and print"
+          "Data from emails and documents",
+          "Reminders, follow-ups and reports",
+          "Hand-offs between tools"
         ]
       },
       {
-        "title": "Web",
-        "items": ["Websites", "E-commerce", "Landing pages"]
-      },
-      {
-        "title": "Software and automation",
+        "title": "AI agents",
         "items": [
-          "Process automation",
-          "Custom software",
-          "CRM and management systems",
-          "Applications"
+          "Replies to customers and internal requests",
+          "Document reading",
+          "Draft quotes and summaries"
         ]
       },
       {
-        "title": "Security",
-        "items": ["Cybersecurity"]
+        "title": "Integrations",
+        "items": [
+          "Accounting and e-invoicing",
+          "E-commerce and marketplaces",
+          "Machines and sensors"
+        ]
       },
       {
         "title": "Finance",
-        "items": ["Subsidised finance"]
+        "items": [
+          "Subsidised finance"
+        ]
       }
     ]
   },

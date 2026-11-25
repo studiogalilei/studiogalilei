@@ -1,7 +1,6 @@
 import { Booking } from "@/components/home/booking";
 import { CaseStudies } from "@/components/home/case-studies";
 import { ClientLogos } from "@/components/home/client-logos";
-import { GoogleAdsSection } from "@/components/home/google-ads";
 import { Hero } from "@/components/home/hero";
 import { PartnerSection } from "@/components/home/partner-section";
 import { ServicesGrid } from "@/components/home/services-grid";
@@ -20,7 +19,6 @@ export default function HomePage() {
       <ServicesGrid />
       <PartnerSection />
       <CaseStudies />
-      <GoogleAdsSection />
       <CoffeeCta />
       <Booking />
       <WorldMap />

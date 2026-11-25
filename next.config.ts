@@ -27,6 +27,14 @@ const nextConfig: NextConfig = {
         destination: "/tour-operator",
         permanent: true,
       })),
+      // Marketing is no longer offered (25/11/2026): its pages lead to what replaced them.
+      // Temporary on purpose, the pages are still in the repo.
+      { source: "/servizi/marketing", destination: "/servizi", permanent: false },
+      { source: "/en/servizi/marketing", destination: "/en/servizi", permanent: false },
+      ...["/casi-studio/dan-ink", "/casi-studio/onlysolutions"].flatMap((source) => [
+        { source, destination: "/casi-studio", permanent: false },
+        { source: `/en${source}`, destination: "/en/casi-studio", permanent: false },
+      ]),
       // Old Private Area bookmarks open the current sign-in page.
       { source: "/platform", destination: "/area-partner", permanent: false },
     ];

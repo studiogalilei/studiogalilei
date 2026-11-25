@@ -8,20 +8,6 @@ import { Link } from "@/i18n/navigation";
 
 const CASES = [
   {
-    key: "danInk",
-    href: "/casi-studio/dan-ink",
-    image: "/images/casi-studio/dan-ink.webp",
-    logo: "/images/logos/dan-ink-esteso.webp",
-    logoAlt: "Dän Ink",
-  },
-  {
-    key: "onlySolutions",
-    href: "/casi-studio/onlysolutions",
-    image: "/images/casi-studio/onlysolutions.webp",
-    logo: "/images/logos/only-solutions-esteso.webp",
-    logoAlt: "Only Solutions",
-  },
-  {
     key: "tourOperator",
     href: "/casi-studio/tour-operator",
     image: null,
@@ -30,7 +16,7 @@ const CASES = [
   },
 ] as const;
 
-/** Case studies teaser: banner photo and the three cases (a swipeable row on phones). */
+/** Case studies teaser: banner photo and our software cases (the marketing ones came out on 25/11/2026). */
 export function CaseStudies() {
   const t = useTranslations("Home.cases");
   return (
@@ -54,13 +40,13 @@ export function CaseStudies() {
         </div>
         <div
           data-no-tilt
-          className="-mx-6 mt-[18px] flex snap-x snap-mandatory scroll-px-6 [scrollbar-width:none] gap-3.5 overflow-x-auto px-6 pt-1 pb-2.5 md:mx-0 md:mt-6 md:grid md:grid-cols-3 md:gap-5 md:overflow-visible md:p-0 [&::-webkit-scrollbar]:hidden"
+          className="-mx-6 mt-[18px] flex snap-x snap-mandatory scroll-px-6 [scrollbar-width:none] gap-3.5 overflow-x-auto px-6 pt-1 pb-2.5 md:mx-0 md:mt-6 md:grid md:max-w-[26rem] md:grid-cols-1 md:gap-5 md:overflow-visible md:p-0 [&::-webkit-scrollbar]:hidden"
         >
           {CASES.map((item) => (
             <Link
               key={item.key}
               href={item.href}
-              className="group flex w-[82%] flex-none snap-start flex-col overflow-hidden rounded-18 border border-sg/10 bg-white shadow-[0_16px_34px_-26px_rgba(6,23,115,.55)] transition-[transform,box-shadow] duration-200 ease-[ease] hover:[transform:translateY(-2px)] hover:shadow-[0_22px_40px_-24px_rgba(6,23,115,.6)] md:w-auto"
+              className="group flex w-full flex-none snap-start flex-col overflow-hidden rounded-18 border border-sg/10 bg-white shadow-[0_16px_34px_-26px_rgba(6,23,115,.55)] transition-[transform,box-shadow] duration-200 ease-[ease] hover:[transform:translateY(-2px)] hover:shadow-[0_22px_40px_-24px_rgba(6,23,115,.6)] md:w-auto"
             >
               <div
                 aria-hidden="true"

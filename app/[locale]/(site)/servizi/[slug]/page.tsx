@@ -84,24 +84,6 @@ async function ServiceContent({ params }: Pick<PageProps<"/[locale]/servizi/[slu
           ))}
         </ul>
       </Container>
-      {slug === "marketing" && (
-        <Container className="relative z-10 mt-6">
-          <Link
-            href="/servizi/google-ads"
-            className="flex items-center justify-between gap-6 rounded-2xl bg-white p-7 shadow-surface-2 md:px-10"
-          >
-            <span className="flex items-center text-18 font-semibold text-sg">
-              Google Ads
-              <span className="ml-3 rounded-full bg-mk px-2 py-0.5 text-10 font-semibold text-white">
-                {t("offer")}
-              </span>
-            </span>
-            <span className="text-15 font-medium text-sg underline underline-offset-4">
-              {t("googleAdsLink")}
-            </span>
-          </Link>
-        </Container>
-      )}
       <Section tone="white" className="pb-12 md:pb-16">
         <Container>
           <div className="grid gap-4 sm:grid-cols-2">
