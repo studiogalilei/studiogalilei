@@ -4,6 +4,11 @@ import { routing, type Locale } from "@/i18n/routing";
 
 const i18n = createMiddleware(routing);
 
+// The answer pages exist in Italian only (lib/landing): their /en address leads to the Italian
+// one, and the Italian one is served as it is whatever language the visitor prefers.
+const ITALIAN_ONLY =
+  /^\/(settori|guide|confronti)(\/[^/]+)?$|^\/(domande|metodo|agenzie-partner|gestionale-su-misura|agenti-ai-per-aziende|automazione-processi-aziendali|software-house-treviso)$/;
+
 const isLocale = (value: string | null | undefined): value is Locale =>
   (routing.locales as readonly string[]).includes(value ?? "");
 
@@ -21,6 +26,16 @@ export default function proxy(request: NextRequest) {
     };
     response.cookies.set(name, lang, { maxAge, path: "/", sameSite: "lax" });
     return response;
+  }
+
+  const { pathname } = url;
+  if (pathname.startsWith("/en/") && ITALIAN_ONLY.test(pathname.slice(3))) {
+    url.pathname = pathname.slice(3);
+    return NextResponse.redirect(url);
+  }
+  if (ITALIAN_ONLY.test(pathname)) {
+    url.pathname = `/it${pathname}`;
+    return NextResponse.rewrite(url);
   }
 
   return i18n(request);

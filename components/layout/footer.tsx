@@ -17,6 +17,9 @@ const solutions = [
   { label: "Partner", href: "/agenzie-partner" },
   { label: "Quanto costa un gestionale", href: "/guide/quanto-costa-un-gestionale-su-misura" },
   { label: "Quanto costa un agente AI", href: "/guide/quanto-costa-un-agente-ai" },
+  { label: "Bandi per software e AI", href: "/guide/bandi-software-ai" },
+  { label: "Confronti", href: "/confronti" },
+  { label: "Domande e risposte", href: "/domande" },
 ] as const;
 
 const links = [

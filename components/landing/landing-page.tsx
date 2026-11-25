@@ -75,7 +75,11 @@ function structuredData(page: Landing) {
     })),
     { name: page.title, item: url },
   ];
-  const faqs = [...(page.objections?.items ?? []), ...page.faqs];
+  const faqs = [
+    ...(page.objections?.items ?? []),
+    ...page.faqs,
+    ...(page.groups ?? []).flatMap((g) => g.items),
+  ];
   const main = isArticle(page)
     ? {
         "@type": "Article",
@@ -230,7 +234,7 @@ export function LandingPage({ path }: { path: string }) {
             </div>
           </div>
           {page.facts && (
-            <dl className="grid content-center gap-px bg-line max-lg:border-t max-lg:border-line sm:max-lg:grid-cols-3 lg:border-l lg:border-line">
+            <dl className="grid content-center divide-y divide-line bg-sand max-lg:border-t max-lg:border-line sm:max-lg:grid-cols-3 lg:border-l lg:border-line">
               {page.facts.map((fact) => (
                 <div
                   key={fact.label}
@@ -246,6 +250,22 @@ export function LandingPage({ path }: { path: string }) {
           )}
         </div>
       </Container>
+
+      {page.groups && (
+        <Container className="pt-8 md:pt-10">
+          <nav aria-label="Argomenti" className="flex flex-wrap gap-2">
+            {page.groups.map((group) => (
+              <a
+                key={group.id}
+                href={`#${group.id}`}
+                className="rounded-full bg-white px-4 py-2 text-14 font-medium text-sg shadow-surface-1 hover:bg-pale"
+              >
+                {group.title}
+              </a>
+            ))}
+          </nav>
+        </Container>
+      )}
 
       {page.stats && (
         <Container className="pt-8 md:pt-12">
@@ -440,26 +460,28 @@ export function LandingPage({ path }: { path: string }) {
         </Container>
       )}
 
-      <Container className="pb-14 md:pb-20">
-        <section className={split}>
-          <div>
-            <h2 className={h2}>Domande frequenti</h2>
-            {page.path !== "/domande" && (
-              <p className={`mt-5 ${prose}`}>
-                Soldi, tempi, proprietà del codice, dati, AI: le altre risposte sono in{" "}
-                <Link
-                  href="/domande"
-                  className="font-medium text-sg underline decoration-1 underline-offset-4 hover:decoration-2"
-                >
-                  tutte le domande di chi compra software e AI
-                </Link>
-                .
-              </p>
-            )}
-          </div>
-          <Questions items={page.faqs} open={page.objections ? 0 : 1} />
-        </section>
-      </Container>
+      {page.faqs.length > 0 && (
+        <Container className="pb-14 md:pb-20">
+          <section className={split}>
+            <div>
+              <h2 className={h2}>Domande frequenti</h2>
+              {
+                <p className={`mt-5 ${prose}`}>
+                  Soldi, tempi, proprietà del codice, dati, AI: le altre risposte sono in{" "}
+                  <Link
+                    href="/domande"
+                    className="font-medium text-sg underline decoration-1 underline-offset-4 hover:decoration-2"
+                  >
+                    tutte le domande di chi compra software e AI
+                  </Link>
+                  .
+                </p>
+              }
+            </div>
+            <Questions items={page.faqs} open={page.objections ? 0 : 1} />
+          </section>
+        </Container>
+      )}
 
       {page.groups?.map((group) => (
         <Container key={group.id} className="pb-14 md:pb-20">

@@ -7,6 +7,8 @@
  * cases already public on the site), the number before the adjective, the limit said first.
  */
 
+import { answers, grants } from "./answers";
+import { compares } from "./compare";
 import { SECTOR_OBJECTIONS } from "./sector-objections";
 import { SECTOR_SHOTS, sectors, type Sector } from "./sectors";
 
@@ -209,8 +211,8 @@ export const landings: Landing[] = [
     ],
     related: [
       "/guide/quanto-costa-un-gestionale-su-misura",
+      "/confronti/gestionale-su-misura-o-gia-pronto",
       "/agenti-ai-per-aziende",
-      "/automazione-processi-aziendali",
       "/metodo",
     ],
   },
@@ -307,8 +309,8 @@ export const landings: Landing[] = [
     ],
     related: [
       "/guide/quanto-costa-un-agente-ai",
+      "/confronti/agente-ai-o-automazione",
       "/automazione-processi-aziendali",
-      "/gestionale-su-misura",
       "/metodo",
     ],
   },
@@ -384,9 +386,9 @@ export const landings: Landing[] = [
     ],
     related: [
       "/agenti-ai-per-aziende",
-      "/gestionale-su-misura",
+      "/confronti/agente-ai-o-automazione",
       "/guide/quanto-costa-un-agente-ai",
-      "/software-house-treviso",
+      "/gestionale-su-misura",
     ],
   },
   {
@@ -475,8 +477,8 @@ export const landings: Landing[] = [
     related: [
       "/gestionale-su-misura",
       "/agenti-ai-per-aziende",
-      "/automazione-processi-aziendali",
-      "/guide/quanto-costa-un-gestionale-su-misura",
+      "/confronti/software-house-freelance-o-team-interno",
+      "/domande",
     ],
   },
   {
@@ -570,9 +572,9 @@ export const landings: Landing[] = [
     ],
     related: [
       "/gestionale-su-misura",
+      "/confronti/gestionale-su-misura-o-gia-pronto",
+      "/guide/bandi-software-ai",
       "/guide/quanto-costa-un-agente-ai",
-      "/agenti-ai-per-aziende",
-      "/software-house-treviso",
     ],
   },
   {
@@ -655,9 +657,9 @@ export const landings: Landing[] = [
     ],
     related: [
       "/agenti-ai-per-aziende",
-      "/automazione-processi-aziendali",
+      "/confronti/agente-ai-o-automazione",
+      "/guide/bandi-software-ai",
       "/guide/quanto-costa-un-gestionale-su-misura",
-      "/software-house-treviso",
     ],
   },
   {
@@ -971,6 +973,9 @@ const sectorLanding = (s: Sector, i: number): Landing => {
 
 export const sectorLandings = sectors.map(sectorLanding);
 
-const all = [...landings, ...sectorLandings];
+/** The pages added by the other data files: comparisons, all the answers, grants. */
+export const extraLandings: Landing[] = [answers, grants, ...compares];
+
+const all = [...landings, ...extraLandings, ...sectorLandings];
 
 export const landingByPath = (path: string) => all.find((l) => l.path === path)!;
