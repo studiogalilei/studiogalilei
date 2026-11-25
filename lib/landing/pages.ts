@@ -64,7 +64,7 @@ const AI_RANGE = "da 3.000 a 40.000 €";
 const STEPS_SOFTWARE: LandingStep[] = [
   {
     title: "Mappiamo i processi",
-    text: "Guardiamo come lavori oggi: chi fa cosa, con quali fogli, email e programmi. Cerchiamo dove si perde tempo prima di disegnare qualsiasi schermata.",
+    text: "Guardiamo come lavori oggi, chi fa cosa e con quali fogli, email e programmi. Poi rimettiamo in ordine i passaggi, togliendo quelli che non servono, prima di disegnare qualsiasi schermata.",
   },
   {
     title: "Prototipo",
@@ -115,8 +115,8 @@ export const landings: Landing[] = [
     title: "Gestionale su misura per la tua azienda",
     metaTitle: "Gestionale su misura: sviluppo, costi e tempi",
     description:
-      "Sviluppiamo gestionali su misura per le PMI: costruiti sui tuoi processi, rilasciati un modulo alla volta, con l'AI dove serve. Progetti da 5.000 a 80.000 €, codice di tua proprietà.",
-    answer: `Un gestionale su misura è un software costruito sui processi della tua azienda, invece di adattare l'azienda a un programma già fatto. Lo sviluppiamo a moduli, prima la parte che oggi ti fa perdere più tempo e poi il resto. I nostri progetti vanno ${SOFTWARE_RANGE}, secondo quanti moduli e quante integrazioni servono, e il codice resta tuo.`,
+      "Gestionali su misura per PMI: prima mettiamo in ordine i passaggi, poi il software prepara il lavoro e il team approva. Un modulo alla volta, da 5.000 a 80.000 €.",
+    answer: `Un gestionale su misura è un software fatto per la tua azienda, invece di adattare l'azienda a un programma già fatto. Prima mettiamo in ordine i passaggi, cioè chi fa cosa e quando, poi il software li porta avanti da solo e il tuo team controlla e approva. Lo sviluppiamo a moduli, prima la parte che oggi ti fa perdere più tempo e poi il resto. I nostri progetti vanno ${SOFTWARE_RANGE}, secondo quanti moduli e quante integrazioni servono, e il codice resta tuo.`,
     sections: [
       {
         title: "Quando conviene un gestionale su misura",

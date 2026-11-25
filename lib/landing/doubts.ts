@@ -26,7 +26,7 @@ export const COMMON_DOUBTS: LandingFaq[] = [
   },
   {
     q: "Il mio team lo userà davvero?",
-    a: "Lo disegniamo sul modo in cui lavora oggi il team, e chi lo userà prova il prototipo prima del rilascio, quando correggere costa poco. Si parte dal modulo che toglie più fatica, così il primo motivo per usarlo arriva subito.",
+    a: "Prima di scrivere codice rimettiamo in ordine i passaggi insieme a chi li fa ogni giorno, e chi lo userà prova il prototipo prima del rilascio, quando correggere costa poco. Si parte dal modulo che toglie più fatica, così il primo motivo per usarlo arriva subito.",
   },
   {
     q: "Ci sono incentivi per pagarlo?",
@@ -277,7 +277,7 @@ export const SECTOR_DOUBTS: Record<string, LandingFaq[]> = {
   "media-comunicazione": [
     {
       q: "La redazione è affezionata ai suoi strumenti",
-      a: "Si costruisce sul flusso della redazione e non il contrario, partendo dal passaggio che oggi fa perdere più tempo, di solito l'adattamento dello stesso contenuto ai vari canali.",
+      a: "Si parte dal flusso della redazione, messo in ordine insieme a chi lo fa ogni giorno, e il primo modulo è il passaggio che oggi fa perdere più tempo, di solito l'adattamento dello stesso contenuto ai vari canali.",
     },
     {
       q: "Abbiamo un archivio enorme e disordinato",

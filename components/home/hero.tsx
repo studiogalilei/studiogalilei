@@ -3,7 +3,7 @@ import { Download } from "@/components/icons";
 import { ButtonLink, DownloadLink } from "@/components/ui/button";
 import { Container } from "@/components/ui/container";
 import { presentationPdf } from "@/lib/company";
-import { HeroCard } from "./hero-card";
+import { LiveFlow } from "./live-flow";
 import { ScrollToBooking } from "./scroll-to-booking";
 
 export function Hero() {
@@ -23,12 +23,16 @@ export function Hero() {
         aria-hidden="true"
         className="absolute inset-0 -z-10 bg-gradient-to-b from-sg-deep/90 via-sg-deep/80 to-sg-deep/60"
       />
-      <Container className="grid items-center gap-14 md:grid-cols-[minmax(0,1fr)_minmax(0,1fr)] md:gap-6">
+      <Container className="grid grid-cols-[minmax(0,1fr)] items-center gap-14 md:grid-cols-[minmax(0,1fr)_minmax(0,1fr)] md:gap-6">
         <div className="max-w-[36rem]">
           <h1 className="text-2.6rem leading-[1.06] font-semibold tracking-[-0.035em] md:text-[3.9rem]">
-            {t.rich("title", { partner: (chunks) => <span>{chunks}</span>, br: () => <br /> })}
+            {t.rich("title", {
+              partner: (chunks) => <span className="text-cream">{chunks}</span>,
+              br: () => <br />,
+            })}
           </h1>
           <p className="mt-7 text-18 leading-1.7 text-white/78">{t("intro")}</p>
+          <p className="mt-4 text-16 leading-1.7 text-white/60">{t("method")}</p>
           <div className="mt-10 flex flex-wrap gap-3 max-sm:grid">
             <DownloadLink
               href={presentationPdf.href}
@@ -50,8 +54,8 @@ export function Hero() {
             </ScrollToBooking>
           </div>
         </div>
-        <div className="mx-auto w-full md:pl-10">
-          <HeroCard />
+        <div className="mx-auto w-full max-w-[34rem] md:pl-6">
+          <LiveFlow />
         </div>
       </Container>
     </section>
