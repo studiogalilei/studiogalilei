@@ -7,6 +7,7 @@
  * cases already public on the site), the number before the adjective, the limit said first.
  */
 
+import { SECTOR_OBJECTIONS } from "./sector-objections";
 import { SECTOR_SHOTS, sectors, type Sector } from "./sectors";
 
 export type LandingFaq = { q: string; a: string };
@@ -938,6 +939,10 @@ const sectorLanding = (s: Sector, i: number): Landing => {
         ],
       },
     ],
+    objections: {
+      title: `I dubbi che sentiamo ${s.nel}`,
+      items: SECTOR_OBJECTIONS[s.slug],
+    },
     steps: { title: "Come lavoriamo", items: STEPS_SOFTWARE },
     prices: {
       title: "Quanto costa",
