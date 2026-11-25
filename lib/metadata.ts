@@ -47,7 +47,8 @@ export async function pageMetadata(key: string): Promise<Metadata> {
   const description = t(`${key}.description`);
   const path = PATHS[key];
   return {
-    title: name,
+    // the home page's title already starts with the company name
+    title: key === "home" ? { absolute: name } : name,
     description,
     ...(path ? { alternates: alternates(path, locale) } : {}),
     // the shared preview (link cards) carries the page's own title, not the home page's
@@ -55,7 +56,7 @@ export async function pageMetadata(key: string): Promise<Metadata> {
       type: "website",
       siteName: SITE_NAME,
       ...(path ? { url: localized(path, locale) } : {}),
-      title: fullTitle(name),
+      title: key === "home" ? name : fullTitle(name),
       description,
       locale: locale === "en" ? "en_US" : "it_IT",
     },

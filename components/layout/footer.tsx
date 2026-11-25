@@ -50,7 +50,7 @@ function FooterContent({ year }: { year: number }) {
             className="inline-flex flex-col items-center gap-5 text-[#CBD0DA] transition-colors hover:text-[#BCC2CF]"
           >
             <LogoTree className="h-[120px] w-auto md:h-[140px]" />
-            <LogoWordmark className="h-auto w-[200px] md:w-[230px]" title="StudioGalilei" />
+            <LogoWordmark className="h-auto w-[200px] md:w-[230px]" title="Studio Galilei" />
           </Link>
         </div>
         <nav aria-label="Studio Galilei">
@@ -66,8 +66,8 @@ function FooterContent({ year }: { year: number }) {
           </ul>
         </nav>
         {italian && (
-          <nav aria-label="Soluzioni">
-            <p className="mb-4 text-14 font-semibold text-sg">Soluzioni</p>
+          <nav aria-label="Cosa facciamo">
+            <p className="mb-4 text-14 font-semibold text-sg">Cosa facciamo</p>
             <ul className="space-y-2.5">
               {solutions.map(({ label, href }) => (
                 <li key={href}>

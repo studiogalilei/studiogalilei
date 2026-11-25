@@ -6,7 +6,6 @@ import { Hero } from "@/components/home/hero";
 import { PartnerSection } from "@/components/home/partner-section";
 import { ServicesGrid } from "@/components/home/services-grid";
 import { ClientMessages } from "@/components/client-messages";
-import { CoffeeCta } from "@/components/sections/cta-band";
 import { WorldMap } from "@/components/sections/world-map";
 import { pageMetadata } from "@/lib/metadata";
 
@@ -18,12 +17,11 @@ export default function HomePage() {
       <Hero />
       <ClientLogos />
       <ServicesGrid />
-      <PartnerSection />
       <CaseStudies />
+      <PartnerSection />
       <AgenciesBand />
-      <CoffeeCta />
-      <Booking />
       <WorldMap />
+      <Booking />
     </ClientMessages>
   );
 }

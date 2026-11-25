@@ -4,20 +4,21 @@
     "caffeOVideochiamata": "Caffè o videochiamata?",
     "siamoQuiPerAscoltartiUnCaffeOUna": "Un caffè nella nostra sede di Treviso o una videochiamata: guardiamo insieme il tuo caso, e se non siamo le persone giuste te lo diciamo.",
     "scriviciAdesso": "Scrivici adesso",
-    "scopriSePossiamoApplicarloAnche": "Scopri se possiamo applicarlo anche alla tua realtà"
+    "scopriSePossiamoApplicarloAnche": "Scopri se possiamo applicarlo anche alla tua realtà",
+    "prenotaUnaChiamata": "Prenota una chiamata"
   },
   "Metadata": {
     "home": {
-      "title": "Software su misura e agenti AI per le aziende",
+      "title": "Studio Galilei: software su misura e agenti AI, Treviso",
       "description": "Tutta la tua azienda in un posto solo: gestionali, automazioni e agenti AI su misura che tolgono il lavoro ripetitivo. Software house di Treviso, e il codice resta tuo."
     },
     "about": {
-      "title": "Chi siamo",
-      "description": "«Misura ciò che è misurabile, e rendi misurabile ciò che non lo è.» Il metodo di lavoro di Studio Galilei."
+      "title": "Chi siamo: Studio Galilei Srl, software house di Treviso",
+      "description": "Studio Galilei Srl è una software house della provincia di Treviso, nata nel 2024: gestionali su misura, automazioni e agenti AI per le PMI. Sede, partita IVA, chi la guida."
     },
     "services": {
-      "title": "Servizi",
-      "description": "Gestionali su misura, workspace e portali, automazioni, agenti AI e integrazioni: cosa costruisce Studio Galilei, più la finanza agevolata."
+      "title": "Servizi: gestionali su misura, automazioni, agenti AI",
+      "description": "Cosa costruisce Studio Galilei: gestionali su misura, workspace e portali, automazioni, agenti AI e integrazioni, da 3.000 a 80.000 €, più la ricerca di bandi."
     },
     "marketing": {
       "title": "Marketing",
@@ -29,15 +30,15 @@
     },
     "sviluppo-software": {
       "title": "Sviluppo software su misura",
-      "description": "Gestionali, portali e integrazioni costruiti sui tuoi processi reali. Sviluppo modulare, permessi per ruolo e rilascio progressivo."
+      "description": "Gestionali, portali e integrazioni costruiti sui tuoi processi reali, da 5.000 a 80.000 €: sviluppo a moduli, permessi per ruolo, rilascio progressivo."
     },
     "googleAds": {
       "title": "Google Ads",
       "description": "Studio Galilei usa le API ufficiali di Google Ads per gestire le campagne dei partner. Direttamente sui loro account, in piena trasparenza."
     },
     "caseStudies": {
-      "title": "Casi studio",
-      "description": "Dietro le quinte: i casi studio di Studio Galilei."
+      "title": "Casi studio: software su misura in uso ogni giorno",
+      "description": "I software che Studio Galilei ha costruito e che i clienti usano ogni giorno: il caso dei tour operator BeaVita Tours e FunDallas Tours, con le schermate vere."
     },
     "caseTourOperator": {
       "title": "Caso studio: tour operator",
@@ -56,7 +57,7 @@
       "description": "Perché lavorare in Studio Galilei: metodo, autonomia e risultati misurati e attribuiti a chi li produce."
     },
     "contact": {
-      "title": "Contatti",
+      "title": "Contatti e chiamata conoscitiva",
       "description": "Contatta Studio Galilei, software house di Treviso: prenota una chiamata conoscitiva di 45 minuti, scrivici o passa in sede per un caffè."
     },
     "privacy": {
@@ -94,7 +95,7 @@
     "skipToContent": "Vai al contenuto"
   },
   "Footer": {
-    "backToHome": "StudioGalilei, torna alla home",
+    "backToHome": "Studio Galilei, torna alla home",
     "writeToUs": "Scrivici adesso",
     "allRightsReserved": "Tutti i diritti riservati.",
     "vatAndTaxCode": "P.IVA e C.F."
@@ -105,7 +106,21 @@
       "intro": "Costruiamo gestionali, automazioni e agenti AI su misura, che tolgono il lavoro ripetitivo e ti lasciano più tempo per i tuoi clienti.",
       "download": "Scarica la presentazione",
       "bookCall": "Prenota una chiamata conoscitiva",
-      "exploreServices": "Scopri i servizi"
+      "exploreServices": "Scopri i servizi",
+      "facts": [
+        {
+          "value": "da 5.000 €",
+          "label": "un software su misura"
+        },
+        {
+          "value": "8-10 settimane",
+          "label": "un progetto medio"
+        },
+        {
+          "value": "Tuo",
+          "label": "il codice, i dati e gli account"
+        }
+      ]
     },
     "clients": {
       "label": "Aziende che hanno lavorato con Studio Galilei",
@@ -196,7 +211,9 @@
     "portal": {
       "label": "Anteprima del portale partner con dati di esempio",
       "tasks": "Attività",
-      "caption": "Anteprima portale, dati di esempio"
+      "caption": "Anteprima portale, dati di esempio",
+      "progress": "Avanzamento",
+      "modules": "Moduli in uso"
     },
     "cases": {
       "kicker": "Casi studio",
@@ -206,7 +223,8 @@
       "onlySolutions": "687.000,00 € in 45 giorni<br></br>ecosistema di Google Ads e Meta Ads",
       "tourOperator": "Tutta la giornata di un tour operator<br></br>in un'unica app",
       "readCase": "Leggi il caso",
-      "all": "Tutti i casi studio"
+      "all": "Tutti i casi studio",
+      "text": "Per due tour operator, BeaVita Tours in Italia e FunDallas Tours in Texas, abbiamo costruito l'app che tiene insieme prenotazioni, partenze, autisti, guide e messaggi ai clienti."
     },
     "googleAds": {
       "kicker": "Tecnologia & trasparenza",
@@ -276,7 +294,7 @@
   "Booking": {
     "kicker": "Chiamata conoscitiva",
     "title": "Prenota una chiamata conoscitiva",
-    "intro": "Scegli giorno e orario tra le disponibilità aggiornate in tempo reale. Ricevi subito la conferma con il link per la videochiamata.",
+    "intro": "Una videochiamata di 45 minuti, senza impegno: scegli giorno e orario tra le disponibilità aggiornate in tempo reale e ricevi subito la conferma con il link. Se preferisci un caffè in sede a Treviso, scrivici dalla pagina Contatti.",
     "openCalendar": "Apri il calendario in una nuova scheda",
     "loading": "Carico gli orari liberi",
     "error": "Non riesco a caricare gli orari in questo momento.",
@@ -300,15 +318,38 @@
     "chosen": "La tua chiamata"
   },
   "About": {
-    "quote": "«Misura ciò che è misurabile, e rendi misurabile ciò che non lo è.»",
-    "responsibilityTitle": "Ci assumiamo la responsabilità",
-    "responsibilityText": "In molte aziende la crescita dipende da poche persone, da strumenti che non si parlano e da numeri che nessuno legge. Il nostro lavoro è renderla osservabile: capire quali leve producono risultati, decidere dove intervenire e trasformare ciò che funziona in un sistema che l'azienda governa anche senza di noi.",
-    "talkToUs": "Parla con noi",
+    "kicker": "Chi siamo",
+    "title": "Studio Galilei Srl, software house di Treviso",
+    "intro": "Studio Galilei è una software house italiana della provincia di Treviso, nata nel 2024. Costruisce gestionali e software su misura, automazioni e agenti AI per le piccole e medie imprese, e cerca i bandi che possono coprire parte dell'investimento.",
+    "facts": {
+      "legalName": "Ragione sociale",
+      "office": "Sede",
+      "province": "Treviso",
+      "founded": "Anno di fondazione",
+      "ledBy": "Chi la guida",
+      "ledByValue": "Dramane Yigo, co-founder",
+      "does": "Cosa fa",
+      "doesValue": "Gestionali e software su misura, workspace e portali, automazioni, agenti AI, integrazioni, ricerca di bandi",
+      "forWhom": "Per chi",
+      "forWhomValue": "Piccole e medie imprese, e le agenzie e i consulenti che portano software e AI ai loro clienti",
+      "where": "Dove lavora",
+      "whereValue": "In Veneto di persona, in tutta Italia e all'estero a distanza: due software sono in uso in Italia e in Texas",
+      "prices": "Quanto costa",
+      "pricesValue": "Software su misura da 5.000 a 80.000 €, AI e automazioni da 3.000 a 40.000 €, progetto medio in 8-10 settimane"
+    },
+    "book": "Prenota una chiamata",
+    "namesakes": "In Italia esistono altre realtà con un nome simile. Questa è la pagina di Studio Galilei Srl, partita IVA 05642810260, che si occupa di software e intelligenza artificiale.",
+    "responsibilityTitle": "Mettiamo ordine, poi automatizziamo",
+    "responsibilityText": "In molte aziende il lavoro dipende da poche persone, da programmi che non si parlano e da fogli che solo qualcuno sa leggere. Noi costruiamo il sistema che tiene tutto in un posto solo, e sopra ci mettiamo l'intelligenza artificiale dove toglie lavoro ripetitivo.",
+    "story": "Siamo uno studio piccolo: chi lavora al tuo progetto lo conosce per intero e ti risponde direttamente. Entriamo nel problema prima di proporre lo strumento, e se un progetto non ha senso lo diciamo, anche quando saremmo noi a farlo.",
+    "linkMethod": "Il metodo Galilei",
+    "linkCases": "I casi studio",
+    "linkServices": "Cosa costruiamo",
     "method": "Metodo Galilei",
     "principles": [
       {
         "title": "Osservabile",
-        "desc": "Ogni azione è legata a un numero che conta per l'azienda, come vendite, contatti od ore risparmiate, non a click e impressioni. Vedi cosa funziona, non solo cosa abbiamo fatto."
+        "desc": "Ogni lavoro è legato a un numero che conta per l'azienda, come le ore risparmiate o gli errori evitati, così vedi cosa funziona e non solo cosa abbiamo fatto."
       },
       {
         "title": "Governabile",
@@ -316,9 +357,13 @@
       },
       {
         "title": "Replicabile",
-        "desc": "Ciò che funziona diventa processo, automazione o software. Documentato e intestato a te, non legato a una persona o a un fornitore."
+        "desc": "Ciò che funziona diventa processo, automazione o software, documentato e intestato a te, non legato a una persona o a un fornitore."
       }
     ],
+    "quote": "«Misura ciò che è misurabile, e rendi misurabile ciò che non lo è.»",
+    "quoteNote": "È la frase attribuita a Galileo Galilei da cui prendiamo il nome e la regola di lavoro: prima si misura, poi si promette.",
+    "ctaTitle": "Parliamone guardando il tuo caso",
+    "ctaText": "Una chiamata conoscitiva di 45 minuti, oppure un caffè in sede. Guardiamo il problema insieme, e se non siamo le persone giuste te lo diciamo.",
     "vatAndTaxCode": "P.IVA e C.F."
   },
   "Services": {
@@ -373,7 +418,12 @@
           "Finanza agevolata per la digitalizzazione delle imprese"
         ]
       }
-    ]
+    ],
+    "intro": "Software su misura da 5.000 a 80.000 €, AI e automazioni da 3.000 a 40.000 €, un progetto medio in 8-10 settimane. Si parte da un modulo solo, e il codice resta tuo.",
+    "book": "Prenota una chiamata",
+    "more": "Come funziona e quanto costa",
+    "ctaTitle": "Non sai da quale partire?",
+    "ctaText": "In 45 minuti guardiamo come lavori oggi e ti diciamo da dove conviene cominciare, o se non conviene affatto."
   },
   "Service": {
     "services": "Servizi",
@@ -511,7 +561,7 @@
     ]
   },
   "CaseStudies": {
-    "heroTitle": "<muted>Dietro le quinte</muted><br></br>i nostri casi studio",
+    "heroTitle": "<muted>Casi studio</muted><br></br>software in uso ogni giorno",
     "danInkLine": "Lead Generation per il Franchising di Tatuaggi N1 in Italia <flag></flag>",
     "italy": "Italia",
     "onlySolutionsLine": "687.000,00 € in 45 giorni<br></br>ecosistema di Google Ads e Meta Ads",
@@ -885,12 +935,13 @@
     "showPage": "Scopri come si lavora in Studio Galilei"
   },
   "Contact": {
-    "title": "Caffè o videochiamata?",
+    "title": "Prenota una chiamata o scrivici",
     "intro": "Un caffè nella nostra sede di Treviso o una videochiamata: guardiamo insieme il tuo caso, e se non siamo le persone giuste te lo diciamo.",
     "chooseChannel": "Scegli come preferisci contattarci",
     "phone": "Telefono",
     "orWriteHere": "oppure scrivici qui",
-    "vatAndTaxCode": "P.IVA e C.F."
+    "vatAndTaxCode": "P.IVA e C.F.",
+    "book": "Prenota una chiamata di 45 minuti"
   },
   "Privacy": {
     "hero": {

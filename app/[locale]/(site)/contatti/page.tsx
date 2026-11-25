@@ -3,6 +3,7 @@ import { ContactForm } from "@/components/contact/contact-form";
 import { WhatsAppIcon } from "@/components/contact-page/whatsapp-icon";
 import { Mail, Phone } from "@/components/icons";
 import { PageHero } from "@/components/sections/page-hero";
+import { ButtonLink } from "@/components/ui/button";
 import { Container } from "@/components/ui/container";
 import { company } from "@/lib/company";
 import { pageMetadata } from "@/lib/metadata";
@@ -34,7 +35,11 @@ export default function ContactPage() {
 
   return (
     <>
-      <PageHero title={t("title")} intro={t("intro")} />
+      <PageHero title={t("title")} intro={t("intro")}>
+        <ButtonLink href="/#sg-prenota" variant="light">
+          {t("book")}
+        </ButtonLink>
+      </PageHero>
       <Container className="relative z-2 -mt-18 pb-24 md:-mt-22 md:pb-32">
         <div className="grid overflow-hidden rounded-18 bg-white shadow-surface-3 lg:grid-cols-[1.7fr_1fr]">
           <div className="p-8 md:p-12">

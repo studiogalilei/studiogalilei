@@ -71,8 +71,8 @@ export function PortalPreview() {
     ),
   });
   const kpis = [
-    ["Lead", "+18%"],
-    ["CPL", "−9%"],
+    [t("progress"), "68%"],
+    [t("modules"), "3/5"],
     [t("tasks"), "7/9"],
   ];
 

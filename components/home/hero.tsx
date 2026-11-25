@@ -30,25 +30,32 @@ export function Hero() {
           </h1>
           <p className="mt-7 text-18 leading-1.7 text-white/78">{t("intro")}</p>
           <div className="mt-10 flex flex-wrap gap-3 max-sm:grid">
+            <ScrollToBooking>
+              <ButtonLink href="/contatti" variant="light" className="max-sm:w-full">
+                {t("bookCall")}
+              </ButtonLink>
+            </ScrollToBooking>
             <DownloadLink
               href={presentationPdf.href}
               filename={presentationPdf.filename}
-              variant="light"
+              variant="ghost-light"
               className="max-sm:w-full"
             >
               <Download size={17} strokeWidth={2.2} aria-hidden="true" />
               {t("download")}
             </DownloadLink>
-            <ScrollToBooking>
-              <ButtonLink
-                href="/contatti"
-                variant="ghost-light"
-                className="border-cream/80 text-cream hover:border-cream hover:bg-cream/10 max-sm:w-full"
-              >
-                {t("bookCall")}
-              </ButtonLink>
-            </ScrollToBooking>
           </div>
+          {/* what a buyer looks for first: price, time, ownership */}
+          <dl className="mt-10 grid max-w-[34rem] grid-cols-3 gap-x-5 border-t border-white/15 pt-6">
+            {(t.raw("facts") as { value: string; label: string }[]).map((fact) => (
+              <div key={fact.label} className="flex flex-col-reverse justify-end">
+                <dt className="mt-1.5 text-13 leading-[1.45] text-white/65">{fact.label}</dt>
+                <dd className="text-18 leading-1.15 font-semibold text-cream sm:text-22">
+                  {fact.value}
+                </dd>
+              </div>
+            ))}
+          </dl>
         </div>
         <div className="mx-auto w-full md:pl-10">
           <HeroCard />

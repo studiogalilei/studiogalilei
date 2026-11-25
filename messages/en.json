@@ -4,20 +4,21 @@
     "caffeOVideochiamata": "Coffee or video call?",
     "siamoQuiPerAscoltartiUnCaffeOUna": "A coffee at our office in Treviso or a video call: we look at your case together, and if we are not the right people we tell you.",
     "scriviciAdesso": "Write to us",
-    "scopriSePossiamoApplicarloAnche": "Find out if we can apply it to your business too"
+    "scopriSePossiamoApplicarloAnche": "Find out if we can apply it to your business too",
+    "prenotaUnaChiamata": "Book a call"
   },
   "Metadata": {
     "home": {
-      "title": "Custom software and AI agents for businesses",
+      "title": "Studio Galilei: custom software and AI agents, Italy",
       "description": "Your whole company in one place: custom management software, automation and AI agents that take away the repetitive work. Software house in Treviso, Italy, and the code stays yours."
     },
     "about": {
-      "title": "About us",
-      "description": "“Measure what is measurable, and make measurable what is not.” The Studio Galilei way of working."
+      "title": "About Studio Galilei Srl, software house in Treviso",
+      "description": "Studio Galilei Srl is a software house in the province of Treviso, Italy, founded in 2024: custom management software, automation and AI agents for SMEs."
     },
     "services": {
-      "title": "Services",
-      "description": "Custom management software, workspaces and portals, automation, AI agents and integrations: what Studio Galilei builds, plus subsidised finance."
+      "title": "Services: custom software, automation, AI agents",
+      "description": "What Studio Galilei builds: custom management software, workspaces and portals, automation, AI agents and integrations, from €3,000 to €80,000."
     },
     "marketing": {
       "title": "Marketing",
@@ -36,8 +37,8 @@
       "description": "Studio Galilei uses the official Google Ads API to manage partners' campaigns. Directly on their accounts, with full transparency."
     },
     "caseStudies": {
-      "title": "Case studies",
-      "description": "Behind the scenes: Studio Galilei case studies."
+      "title": "Case studies: custom software in daily use",
+      "description": "The software Studio Galilei has built and clients use every day: the tour operator case, BeaVita Tours and FunDallas Tours, with the real screens."
     },
     "caseTourOperator": {
       "title": "Case study: tour operator",
@@ -56,7 +57,7 @@
       "description": "Why work at Studio Galilei: method, autonomy and results measured and credited to whoever produces them."
     },
     "contact": {
-      "title": "Contact",
+      "title": "Contact and intro call",
       "description": "Contact Studio Galilei, a software house in Treviso, Italy: book a 45-minute intro call, write to us or come by for a coffee."
     },
     "privacy": {
@@ -94,7 +95,7 @@
     "skipToContent": "Skip to content"
   },
   "Footer": {
-    "backToHome": "StudioGalilei, back to home",
+    "backToHome": "Studio Galilei, back to home",
     "writeToUs": "Write to us",
     "allRightsReserved": "All rights reserved.",
     "vatAndTaxCode": "VAT and tax code"
@@ -105,7 +106,21 @@
       "intro": "We build custom management software, automation and AI agents that take away the repetitive work and leave you more time for your customers.",
       "download": "Download the presentation",
       "bookCall": "Book an intro call",
-      "exploreServices": "Explore our services"
+      "exploreServices": "Explore our services",
+      "facts": [
+        {
+          "value": "from €5,000",
+          "label": "a custom software project"
+        },
+        {
+          "value": "8-10 weeks",
+          "label": "an average project"
+        },
+        {
+          "value": "Yours",
+          "label": "code, data and accounts"
+        }
+      ]
     },
     "clients": {
       "label": "Companies that have worked with Studio Galilei",
@@ -196,7 +211,9 @@
     "portal": {
       "label": "Preview of the partner portal with sample data",
       "tasks": "Tasks",
-      "caption": "Portal preview, sample data"
+      "caption": "Portal preview, sample data",
+      "progress": "Progress",
+      "modules": "Modules in use"
     },
     "cases": {
       "kicker": "Case studies",
@@ -206,7 +223,8 @@
       "onlySolutions": "€687,000.00 in 45 days<br></br>a Google Ads and Meta Ads ecosystem",
       "tourOperator": "A tour operator's whole day<br></br>in a single app",
       "readCase": "Read the case",
-      "all": "All case studies"
+      "all": "All case studies",
+      "text": "For two tour operators, BeaVita Tours in Italy and FunDallas Tours in Texas, we built the app that holds bookings, departures, drivers, guides and customer messages together."
     },
     "googleAds": {
       "kicker": "Technology & transparency",
@@ -276,7 +294,7 @@
   "Booking": {
     "kicker": "Intro call",
     "title": "Book an intro call",
-    "intro": "Pick a day and time from our live availability. You'll get a confirmation with the video call link right away.",
+    "intro": "A 45-minute video call, no commitment: pick a day and time from our live availability and get the confirmation with the link right away. If you prefer a coffee at our office in Treviso, write to us from the Contact page.",
     "openCalendar": "Open the calendar in a new tab",
     "loading": "Loading available times",
     "error": "We can't load the available times right now.",
@@ -300,25 +318,52 @@
     "chosen": "Your call"
   },
   "About": {
-    "quote": "“Measure what is measurable, and make measurable what is not.”",
-    "responsibilityTitle": "We take responsibility",
-    "responsibilityText": "In many companies, growth depends on a few people, on tools that don't talk to each other and on numbers nobody reads. Our job is to make it observable: understand which levers produce results, decide where to act and turn what works into a system the company can run even without us.",
-    "talkToUs": "Talk to us",
-    "method": "The Galilei Method",
+    "kicker": "About us",
+    "title": "Studio Galilei Srl, a software house in Treviso, Italy",
+    "intro": "Studio Galilei is an Italian software house based in the province of Treviso, founded in 2024. It builds custom management software, automation and AI agents for small and mid-sized companies, and looks for the public grants that can cover part of the investment.",
+    "facts": {
+      "legalName": "Legal name",
+      "office": "Registered office",
+      "province": "Treviso, Italy",
+      "founded": "Founded",
+      "ledBy": "Led by",
+      "ledByValue": "Dramane Yigo, co-founder",
+      "does": "What it does",
+      "doesValue": "Custom management software, workspaces and portals, automation, AI agents, integrations, grant research",
+      "forWhom": "For whom",
+      "forWhomValue": "Small and mid-sized companies, and the agencies and consultants who bring software and AI to their own clients",
+      "where": "Where it works",
+      "whereValue": "In person across Veneto, remotely in the rest of Italy and abroad: two of its products run every day in Italy and in Texas",
+      "prices": "What it costs",
+      "pricesValue": "Custom software from €5,000 to €80,000, AI and automation from €3,000 to €40,000, an average project in 8-10 weeks"
+    },
+    "book": "Book a call",
+    "namesakes": "Other organisations in Italy have a similar name. This is the page of Studio Galilei Srl, VAT number IT05642810260, which works on software and artificial intelligence.",
+    "responsibilityTitle": "We bring order first, then we automate",
+    "responsibilityText": "In many companies the work depends on a few people, on programs that do not talk to each other and on spreadsheets only someone can read. We build the system that keeps everything in one place, and on top of it we add artificial intelligence where it removes repetitive work.",
+    "story": "We are a small studio: whoever works on your project knows all of it and answers you directly. We get into the problem before proposing a tool, and if a project makes no sense we say so, even when we would be the ones building it.",
+    "linkMethod": "The Galilei method",
+    "linkCases": "Case studies",
+    "linkServices": "What we build",
+    "method": "Galilei method",
     "principles": [
       {
         "title": "Observable",
-        "desc": "Every action is tied to a number that matters to the business, such as sales, leads or hours saved, not clicks and impressions. You see what works, not just what we did."
+        "desc": "Every piece of work is tied to a number that matters to the company, such as hours saved or errors avoided, so you see what works and not only what we did."
       },
       {
         "title": "Governable",
         "desc": "At every cycle you receive a written summary: what we saw, what we propose and how confident we are, and the decision stays yours."
       },
       {
-        "title": "Replicable",
-        "desc": "What works becomes a process, an automation or software. Documented and owned by you, not tied to a person or a supplier."
+        "title": "Repeatable",
+        "desc": "What works becomes a process, an automation or software, documented and in your name, not tied to a person or a supplier."
       }
     ],
+    "quote": "“Measure what is measurable, and make measurable what is not.”",
+    "quoteNote": "It is the sentence attributed to Galileo Galilei from which we take our name and our working rule: first we measure, then we promise.",
+    "ctaTitle": "Let's talk about your case",
+    "ctaText": "A 45-minute intro call, or a coffee at our office. We look at the problem together, and if we are not the right people we tell you.",
     "vatAndTaxCode": "VAT and tax code"
   },
   "Services": {
@@ -373,7 +418,12 @@
           "Subsidised finance for business digitalisation"
         ]
       }
-    ]
+    ],
+    "intro": "Custom software from €5,000 to €80,000, AI and automation from €3,000 to €40,000, an average project in 8-10 weeks. You can start from a single module, and the code stays yours.",
+    "book": "Book a call",
+    "more": "How it works and what it costs",
+    "ctaTitle": "Not sure where to start?",
+    "ctaText": "In 45 minutes we look at how you work today and tell you where it makes sense to begin, or whether it makes sense at all."
   },
   "Service": {
     "services": "Services",
@@ -511,7 +561,7 @@
     ]
   },
   "CaseStudies": {
-    "heroTitle": "<muted>Behind the scenes</muted><br></br>our case studies",
+    "heroTitle": "<muted>Case studies</muted><br></br>software in daily use",
     "danInkLine": "Lead generation for the No. 1 tattoo franchise in Italy <flag></flag>",
     "italy": "Italy",
     "onlySolutionsLine": "€687,000.00 in 45 days<br></br>a Google Ads and Meta Ads ecosystem",
@@ -885,12 +935,13 @@
     "showPage": "Discover how we work at Studio Galilei"
   },
   "Contact": {
-    "title": "Coffee or video call?",
+    "title": "Book a call or write to us",
     "intro": "A coffee at our office in Treviso or a video call: we look at your case together, and if we are not the right people we tell you.",
     "chooseChannel": "Choose how you'd like to reach us",
     "phone": "Phone",
     "orWriteHere": "or write to us here",
-    "vatAndTaxCode": "VAT and tax code"
+    "vatAndTaxCode": "VAT and tax code",
+    "book": "Book a 45-minute call"
   },
   "Privacy": {
     "hero": {

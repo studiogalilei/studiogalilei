@@ -161,7 +161,7 @@ export default function CaseStudiesPage() {
           />
         </Container>
       </section>
-      <CoffeeCta />
+      <CoffeeCta book />
     </>
   );
 }

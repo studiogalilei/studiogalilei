@@ -50,7 +50,7 @@ const mobileNav = [
 type NavKey = (typeof desktopNav)[number]["key"];
 
 /** The pages whose hero reaches up behind the navbar, transparent over it at the top. */
-const heroPages = new Set<string>(["/", "/chi-siamo", "/casi-studio", "/tour-operator"]);
+const heroPages = new Set<string>(["/", "/casi-studio", "/tour-operator"]);
 
 /**
  * The site's one navigation bar, rendered by the root layout on every page. On the pages with a
