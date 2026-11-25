@@ -99,7 +99,7 @@
   "Home": {
     "hero": {
       "title": "<partner>Order in your company.</partner><br></br>And your time<br></br>back",
-      "intro": "We build custom software and AI agents that take the repetitive work out of your days. The system first, then AI: everything in one place, and it stays yours.",
+      "intro": "We build custom management software, workspaces, automation and AI agents that take the repetitive work out of your days. The system first, then AI: everything in one place, and it stays yours.",
       "download": "Download the presentation",
       "bookCall": "Book an intro call",
       "exploreServices": "Explore our services"
@@ -110,7 +110,10 @@
     },
     "services": {
       "kicker": "What we do",
-      "title": "Three skills, one partner",
+      "title": "What we build",
+      "software": {"name": "Custom management software", "short": "Management systems, workspaces and portals built around your processes: everything in one place, and yours to keep."},
+      "automation": {"name": "Automation", "short": "The system does the repetitive work: data, reminders, reports and hand-offs between tools."},
+      "agents": {"name": "AI agents", "short": "They read requests and documents and prepare replies and actions. A person stays in control."},
       "marketing": {
         "name": "Marketing",
         "short": "Google and Meta campaigns that bring customers, not clicks. Measurable from day one."

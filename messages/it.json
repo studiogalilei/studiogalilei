@@ -99,7 +99,7 @@
   "Home": {
     "hero": {
       "title": "<partner>Ordine in azienda.</partner><br></br>E il tuo tempo<br></br>indietro",
-      "intro": "Costruiamo software su misura e agenti AI che tolgono dalle tue giornate il lavoro ripetitivo. Prima il sistema, poi l'AI: tutto in un posto solo, e resta tuo.",
+      "intro": "Costruiamo gestionali, workspace, automazioni e agenti AI su misura, che tolgono dalle tue giornate il lavoro ripetitivo. Prima il sistema, poi l'AI: tutto in un posto solo, e resta tuo.",
       "download": "Scarica la presentazione",
       "bookCall": "Prenota una chiamata conoscitiva",
       "exploreServices": "Scopri i servizi"
@@ -110,7 +110,10 @@
     },
     "services": {
       "kicker": "Cosa facciamo",
-      "title": "Tre competenze, un solo partner",
+      "title": "Cosa costruiamo",
+      "software": {"name": "Gestionali e software su misura", "short": "Gestionali, workspace e portali costruiti sui tuoi processi: tutto in un posto solo, e resta tuo."},
+      "automation": {"name": "Automazioni", "short": "Il lavoro ripetitivo lo fa il sistema: dati, solleciti, report e passaggi tra programmi."},
+      "agents": {"name": "Agenti AI", "short": "Leggono richieste e documenti, preparano risposte e azioni. Una persona resta al controllo."},
       "marketing": {
         "name": "Marketing",
         "short": "Campagne Google e Meta che portano clienti, non click. Misurabili dal primo giorno."

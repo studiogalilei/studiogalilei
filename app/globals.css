@@ -20,6 +20,8 @@
   /* the light and the deep ends of cream: panel backgrounds and small details on white */
   --color-sand: #f8f3e8;
   --color-sand-deep: #c9ad74;
+  /* sand dark enough to read as small text on white */
+  --color-sand-ink: #8a6d33;
   --color-line: #e3e8f4;
   --color-mk: #d21205;
   --color-ai: #0689ff;
@@ -353,6 +355,15 @@
 }
 
 @layer base {
+  /* anything clickable shows the hand */
+  a[href],
+  button:not(:disabled),
+  summary,
+  label[for],
+  [role="button"] {
+    cursor: pointer;
+  }
+
   /* Base typography of the original (Figma Make template), under Tailwind's utilities. */
   * {
     border-color: #06177324;

@@ -3,6 +3,7 @@ import { Download } from "@/components/icons";
 import { ButtonLink, DownloadLink } from "@/components/ui/button";
 import { Container } from "@/components/ui/container";
 import { presentationPdf } from "@/lib/company";
+import { HeroCard } from "./hero-card";
 import { ScrollToBooking } from "./scroll-to-booking";
 
 export function Hero() {
@@ -39,14 +40,19 @@ export function Hero() {
               {t("download")}
             </DownloadLink>
             <ScrollToBooking>
-              <ButtonLink href="/contatti" variant="ghost-light" className="max-sm:w-full">
+              <ButtonLink
+                href="/contatti"
+                variant="ghost-light"
+                className="border-cream/80 text-cream hover:border-cream hover:bg-cream/10 max-sm:w-full"
+              >
                 {t("bookCall")}
               </ButtonLink>
             </ScrollToBooking>
           </div>
         </div>
-        {/* the right-hand column is empty for now: the three service tiles (hero-tiles.tsx) came out
-            on 25/11/2026, a new single mark is on its way */}
+        <div className="mx-auto w-full md:pl-10">
+          <HeroCard />
+        </div>
       </Container>
     </section>
   );
