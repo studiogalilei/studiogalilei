@@ -7,6 +7,7 @@ import { company } from "@/lib/company";
 
 // the answer pages (lib/landing/pages.ts), Italian only
 const solutions = [
+  { label: "Il metodo Galilei", href: "/metodo" },
   { label: "Gestionale su misura", href: "/gestionale-su-misura" },
   { label: "Agenti AI per aziende", href: "/agenti-ai-per-aziende" },
   { label: "Automazione dei processi", href: "/automazione-processi-aziendali" },

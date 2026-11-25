@@ -16,7 +16,7 @@ export type LandingPrice = { label: string; value: string; note: string };
 
 export type Landing = {
   path: string;
-  kind: "service" | "guide" | "local" | "sector";
+  kind: "service" | "guide" | "local" | "sector" | "method";
   kicker: string;
   title: string;
   metaTitle: string;
@@ -27,6 +27,10 @@ export type Landing = {
   steps?: { title: string; items: LandingStep[] };
   prices?: { title: string; intro: string; rows: LandingPrice[]; note: string };
   caseStudy?: boolean;
+  /** Figures from published studies, each with its source: shown large under the answer. */
+  stats?: { value: string; label: string; source: string }[];
+  /** The studies quoted on the page, linked. */
+  sources?: { label: string; url: string }[];
   faqs: LandingFaq[];
   related: string[];
 };
@@ -183,7 +187,7 @@ export const landings: Landing[] = [
       "/guide/quanto-costa-un-gestionale-su-misura",
       "/agenti-ai-per-aziende",
       "/automazione-processi-aziendali",
-      "/software-house-treviso",
+      "/metodo",
     ],
   },
   {
@@ -280,7 +284,7 @@ export const landings: Landing[] = [
       "/guide/quanto-costa-un-agente-ai",
       "/automazione-processi-aziendali",
       "/gestionale-su-misura",
-      "/software-house-treviso",
+      "/metodo",
     ],
   },
   {
@@ -625,6 +629,139 @@ export const landings: Landing[] = [
       "/automazione-processi-aziendali",
       "/guide/quanto-costa-un-gestionale-su-misura",
       "/software-house-treviso",
+    ],
+  },
+  {
+    path: "/metodo",
+    kind: "method",
+    kicker: "Il metodo Galilei",
+    title: "Prima il sistema, poi l'AI",
+    metaTitle: "Il metodo Galilei: prima il sistema, poi l'AI",
+    description:
+      "Perché la maggior parte dei progetti di AI in azienda non rende, cosa dicono gli studi di MIT, RAND e Istat, e il metodo che usiamo: prima il sistema, poi l'AI.",
+    answer:
+      "L'intelligenza artificiale rende quando lavora sopra un sistema ordinato: dati in un posto solo, processi chiari, qualcuno che misura. Senza, resta una demo. Per questo il nostro metodo ha un ordine fisso: prima costruiamo il sistema, poi aggiungiamo l'AI dove i numeri dicono che serve. Gli studi pubblicati negli ultimi due anni raccontano cosa succede a chi fa il contrario.",
+    stats: [
+      {
+        value: "95%",
+        label:
+          "delle aziende analizzate non ottiene un ritorno misurabile dai progetti di AI generativa",
+        source: "MIT NANDA, 2025",
+      },
+      {
+        value: "80%",
+        label:
+          "e oltre dei progetti di AI fallisce, secondo le stime: il doppio dei progetti informatici senza AI",
+        source: "RAND, 2024",
+      },
+      {
+        value: "42%",
+        label:
+          "delle aziende ha abbandonato la maggior parte delle iniziative di AI. Un anno prima era il 17%",
+        source: "S&P Global, 2025",
+      },
+      {
+        value: "16,4%",
+        label: "delle imprese italiane con almeno 10 addetti usa l'AI. Tra le PMI il 15,7%",
+        source: "Istat, 2025",
+      },
+    ],
+    sections: [
+      {
+        title: "Perché tanti progetti di AI si fermano",
+        body: [
+          "RAND ha intervistato chi i progetti di AI li costruisce, e ha messo in fila le cause dei fallimenti. La prima non è tecnica: chi commissiona il progetto non ha chiaro, o non spiega, quale problema va risolto. Seguono la mancanza di dati adatti, l'attenzione alla tecnologia del momento invece che al problema di chi la userà, l'assenza di un'infrastruttura per gestire i dati, e l'AI applicata a problemi che non sa ancora risolvere.",
+          "Lo studio del MIT aggiunge un dettaglio che fa pensare: più di metà dei budget di AI generativa finisce in strumenti per vendite e marketing, mentre i ritorni più alti arrivano dall'automazione del lavoro d'ufficio, quello che non si vede.",
+          "Quattro cause su cinque, quindi, stanno prima dell'AI: nel problema scelto, nei dati, nel sistema che c'è sotto.",
+        ],
+      },
+      {
+        title: "Cosa succede quando si parte dallo strumento",
+        bullets: [
+          "Si compra o si fa costruire «un'AI» senza aver deciso quale lavoro deve togliere.",
+          "La demo funziona, perché gira su esempi scelti. Poi incontra i dati veri, sparsi tra fogli, email e programmi che non si parlano.",
+          "Nessuno conta quante volte sbaglia, quindi nessuno sa se fidarsi.",
+          "Il progetto resta un esperimento a lato del lavoro, finché qualcuno smette di usarlo.",
+        ],
+        body: [
+          "È il percorso che i numeri qui sopra descrivono. Non dipende dalla qualità dei modelli, che oggi è alta: dipende dall'ordine in cui si fanno le cose.",
+        ],
+      },
+      {
+        title: "Il metodo, in cinque regole",
+        bullets: [
+          "Prima il sistema. I dati in un posto solo e un processo chiaro vengono prima di qualsiasi modello. Spesso metà del guadagno arriva già qui, senza AI.",
+          "Un compito solo. Si parte dal lavoro ripetitivo che costa più ore, non da un progetto che vuole cambiare tutto.",
+          "Si misura prima di promettere. Il prototipo si prova sui casi veri dell'azienda e si contano gli errori. Se i numeri non reggono, ci si ferma.",
+          "Una persona al controllo. Sui passaggi delicati l'AI prepara e una persona decide.",
+          "Resta tuo. Codice, dati e documentazione sono dell'azienda, non di chi li ha costruiti.",
+        ],
+        body: [
+          "Il nome viene da una frase attribuita a Galileo: «Misura ciò che è misurabile, e rendi misurabile ciò che non lo è». È la terza regola, ed è quella che regge le altre.",
+        ],
+      },
+      {
+        title: "Per una PMI italiana è un vantaggio",
+        body: [
+          "Secondo l'Istat nel 2025 usa l'AI il 16,4% delle imprese italiane con almeno dieci addetti: il doppio dell'anno prima, ma ancora una su sei. Tra le grandi imprese è il 53,1%, tra le PMI il 15,7%.",
+          "Chi comincia adesso può farlo nell'ordine giusto, senza un pilota fallito alle spalle da spiegare in azienda.",
+        ],
+      },
+      {
+        title: "Come leggere questi numeri",
+        body: [
+          "Vanno presi per quello che sono. Lo studio del MIT è preliminare e si basa su interviste, questionari e casi pubblici, non su bilanci. L'80% citato da RAND è una stima raccolta da altre fonti. Il dato di S&P Global riguarda aziende di Nord America ed Europa. Dicono tutti la stessa cosa da angoli diversi, ed è per questo che li riportiamo: non per dire che l'AI non funziona, ma per dire quando funziona.",
+        ],
+      },
+    ],
+    faqs: [
+      {
+        q: "Cosa vuol dire «prima il sistema, poi l'AI»?",
+        a: "Vuol dire che prima si mettono in ordine dati e processi in un software che l'azienda usa ogni giorno, e solo dopo si aggiunge l'intelligenza artificiale, sui compiti dove i numeri mostrano che fa risparmiare tempo. Un modello di AI lavora bene solo su dati affidabili.",
+      },
+      {
+        q: "Perché tanti progetti di AI in azienda falliscono?",
+        a: "Secondo RAND le cause principali sono cinque: il problema da risolvere non è chiaro, mancano dati adatti, si insegue la tecnologia invece del bisogno, manca l'infrastruttura per gestire i dati, oppure il problema è troppo difficile per l'AI di oggi. Quattro su cinque non riguardano il modello.",
+      },
+      {
+        q: "Devo avere già un gestionale per usare l'AI?",
+        a: "No, ma serve un posto dove i dati stanno in ordine. Può essere il gestionale che hai, se permette di leggere e scrivere dati, oppure un sistema su misura costruito per questo. Lo si capisce nella mappatura iniziale.",
+      },
+      {
+        q: "Quindi l'AI non conviene?",
+        a: "Conviene, nell'ordine giusto. Lo studio del MIT trova i ritorni più alti proprio nell'automazione del lavoro d'ufficio. Non conviene comprarla come uno strumento da aggiungere a un'azienda che lavora ancora su fogli sparsi.",
+      },
+      {
+        q: "Da dove si parte in pratica?",
+        a: "Da una chiamata in cui guardiamo come lavori oggi. Da lì scegliamo insieme un compito solo, costruiamo un prototipo, lo misuriamo sui tuoi casi veri e decidiamo se andare avanti.",
+      },
+    ],
+    sources: [
+      {
+        label:
+          "MIT NANDA, «The GenAI Divide: State of AI in Business 2025», riportato da Fortune (agosto 2025)",
+        url: "https://fortune.com/2025/08/18/mit-report-95-percent-generative-ai-pilots-at-companies-failing-cfo/",
+      },
+      {
+        label:
+          "RAND, «The Root Causes of Failure for Artificial Intelligence Projects and How They Can Succeed» (agosto 2024)",
+        url: "https://www.rand.org/pubs/research_reports/RRA2680-1.html",
+      },
+      {
+        label:
+          "S&P Global Market Intelligence, «Generative AI shows rapid growth but yields mixed results» (ottobre 2025)",
+        url: "https://www.spglobal.com/market-intelligence/en/news-insights/research/2025/10/generative-ai-shows-rapid-growth-but-yields-mixed-results",
+      },
+      {
+        label: "Istat, «Imprese e Ict, anno 2025» (15 dicembre 2025)",
+        url: "https://www.istat.it/comunicato-stampa/imprese-e-ict-anno-2025/",
+      },
+    ],
+    related: [
+      "/agenti-ai-per-aziende",
+      "/gestionale-su-misura",
+      "/automazione-processi-aziendali",
+      "/guide/quanto-costa-un-agente-ai",
     ],
   },
 ];

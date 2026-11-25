@@ -6,6 +6,7 @@ Sede legale: Via Francesco Baracca 81, 31035 Crocetta del Montello (TV). Sede op
 
 ## Cosa facciamo
 
+- [Il metodo Galilei: prima il sistema, poi l'AI](https://www.studiogalilei.com/metodo): perché la maggior parte dei progetti di AI in azienda non rende, cosa dicono gli studi di MIT, RAND, S&P Global e Istat, e le cinque regole del metodo.
 - [Gestionale su misura per la tua azienda](https://www.studiogalilei.com/gestionale-su-misura): Sviluppiamo gestionali su misura per le PMI: costruiti sui tuoi processi, rilasciati un modulo alla volta, con l'AI dove serve. Progetti da 5.000 a 80.000 €, codice di tua proprietà.
 - [Agenti AI per aziende: cosa fanno e come li costruiamo](https://www.studiogalilei.com/agenti-ai-per-aziende): Costruiamo agenti AI su misura per le PMI, collegati ai programmi che usi già: leggono richieste e documenti, preparano risposte e azioni, con una persona al controllo. Da 3.000 a 40.000 €.
 - [Automazione dei processi aziendali con l'AI](https://www.studiogalilei.com/automazione-processi-aziendali): Automatizziamo il lavoro ripetitivo delle PMI: dati ricopiati a mano, solleciti, report, passaggi tra programmi. Con l'AI dove serve e una persona al controllo. Da 3.000 a 40.000 €.

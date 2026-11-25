@@ -26,7 +26,7 @@ export async function landingMetadata(path: string): Promise<Metadata> {
     // Italian only: the copy under /en points here
     alternates: { canonical: page.path, languages: { it: page.path, "x-default": page.path } },
     openGraph: {
-      type: page.kind === "guide" ? "article" : "website",
+      type: page.kind === "guide" || page.kind === "method" ? "article" : "website",
       siteName: SITE_NAME,
       url: page.path,
       title: page.metaTitle,
@@ -57,13 +57,13 @@ function structuredData(page: Landing) {
     { name: "Home", item: SITE_URL },
     ...(page.kind === "sector"
       ? [{ name: "Settori", item: `${SITE_URL}/settori` }]
-      : page.kind === "guide"
+      : page.kind === "guide" || page.kind === "method"
         ? []
         : [{ name: "Servizi", item: `${SITE_URL}/servizi` }]),
     { name: page.title, item: url },
   ];
   const main =
-    page.kind === "guide"
+    page.kind === "guide" || page.kind === "method"
       ? {
           "@type": "Article",
           headline: page.title,
@@ -131,7 +131,7 @@ export function LandingPage({ path }: { path: string }) {
           { label: "Home", href: "/" },
           ...(page.kind === "sector"
             ? [{ label: "Settori", href: "/settori" }]
-            : page.kind === "guide"
+            : page.kind === "guide" || page.kind === "method"
               ? []
               : [{ label: "Servizi", href: "/servizi" }]),
           { label: page.title },
@@ -149,6 +149,22 @@ export function LandingPage({ path }: { path: string }) {
           </p>
         </div>
       </Container>
+
+      {page.stats && (
+        <Container className="pt-10 md:pt-14">
+          <ul className="grid gap-px overflow-hidden rounded-18 bg-line shadow-surface-1 sm:grid-cols-2 lg:grid-cols-4">
+            {page.stats.map((stat) => (
+              <li key={stat.value} className="bg-white p-7">
+                <p className="text-[2.6rem] leading-none font-semibold -tracking-3 text-sg md:text-[3rem]">
+                  {stat.value}
+                </p>
+                <p className="mt-3 text-15 leading-1.65 text-ink/75">{stat.label}</p>
+                <p className="mt-3 text-13 text-ink/50">{stat.source}</p>
+              </li>
+            ))}
+          </ul>
+        </Container>
+      )}
 
       <Container className="py-16 md:py-24">
         <div className="max-w-[46rem] space-y-16 md:space-y-20">
@@ -273,6 +289,26 @@ export function LandingPage({ path }: { path: string }) {
               ))}
             </dl>
           </section>
+
+          {page.sources && (
+            <section>
+              <h2 className="text-18 font-semibold text-sg">Fonti</h2>
+              <ul className="mt-5 space-y-3">
+                {page.sources.map((source) => (
+                  <li key={source.url} className="text-15 leading-1.65 text-ink/70">
+                    <a
+                      href={source.url}
+                      target="_blank"
+                      rel="noopener"
+                      className="underline decoration-1 underline-offset-4 hover:text-sg"
+                    >
+                      {source.label}
+                    </a>
+                  </li>
+                ))}
+              </ul>
+            </section>
+          )}
 
           <nav aria-label="Pagine collegate">
             <h2 className="text-18 font-semibold text-sg">Continua a leggere</h2>
