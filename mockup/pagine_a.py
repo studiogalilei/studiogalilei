@@ -146,3 +146,122 @@ def _a_edil():
 .dc{display:flex;align-items:center;gap:8px;padding:5px 0;border-bottom:1px solid var(--line)}.dc:last-child{border:0}.dc div{flex:1;min-width:0}.dc b{font-weight:550;display:block}.dc small{color:var(--mut);font-size:11.5px}'''
     return page("edil","--strong:#2b2622;--ink:#2f2a26;--acc:#b4541a;--acc-soft:#f6e9df;--bg:#f6f4f1;--line:#e8e3dc;--info:#8a4a1c;--info-bg:#f6e9df","",LOGO["a_vs"],n,"Commesse","Paolo Zorzi","Direttore tecnico","",
         tabs(["Quadro","Contabilità","SAL","Rapportini","Documenti","Subappaltatori"],"Quadro")+'<span class="pill">Cantiere Silea</span><span class="pill"><i class="dot"></i>Rapportino di oggi ricevuto</span>',body,css,ws="Commesse e cantieri",avvisi=3)
+
+# ── Logistica: uscite di oggi, ondate di prelievo, mappa corridoi, partenze ──
+_A_BR_SVG = '<svg viewBox="0 0 34 32"><path d="M4 9.500 14 4l10 5.500L14 15z" fill="#f2b434"/><path d="M4 15.500 14 21l10-5.500" fill="none" stroke="#f2b434" stroke-width="2.400" stroke-linejoin="round"/><path d="M4 21.500 14 27l10-5.500" fill="none" stroke="#8b9aa3" stroke-width="2.400" stroke-linejoin="round"/><path d="M25 12.500h6.500m-3-3.500 3.500 3.500-3.500 3.500" fill="none" stroke="#e6ecef" stroke-width="2.200" stroke-linecap="round" stroke-linejoin="round"/></svg>'
+LOGO.update({"a_br": _logo(_A_BR_SVG, '<b style="font-family:Space Grotesk;font-weight:700;font-size:17px;letter-spacing:-.01em;color:#eef3f5">brentella<span style="font-weight:500;color:#f2b434"> logistica</span></b>')})
+
+@reg("logistica-trasporti")
+def _a_logi():
+    # ondata, zona, righe prelevate, righe totali, ordini, operatore
+    ond = [("W-2511-01","Corridoi A-B",86,86,22,"M. Bortolin"),
+           ("W-2511-02","Corridoi C-D",124,124,31,"S. Pavan"),
+           ("W-2511-03","Corridoi E-F",97,112,28,"L. Cescon"),
+           ("W-2511-04","Corridoi A-D",41,98,24,"D. Zanatta"),
+           ("W-2511-05","Corridoi G-H",0,73,19,""),
+           ("W-2511-06","Urgenti, tutte le zone",0,29,8,"")]
+    r_fatte = sum(o[2] for o in ond); r_tot = sum(o[3] for o in ond); ordini = sum(o[4] for o in ond)
+    def ost(f, t): return ("Chiusa","ok") if f == t else ("In corso","warn") if f else ("In coda","mu")
+    lo = ""
+    for cod, zona, f, t, no, op in ond:
+        st, k = ost(f, t)
+        lo += f'<div class="wv{" sel" if cod.endswith("04") else ""}"><div class="row"><b class="mono">{cod}</b><span class="sp"></span>{chip(st,k)}</div><div class="row sm"><span>{zona}, {no} ordini</span><span class="sp"></span><span>{op or "da assegnare"}</span></div><div class="row">{bar(round(f/t*100), "var(--ok)" if f == t else None)}<span class="mono q">{f}/{t}</span></div></div>'
+    # corriere, cut-off (minuti dalle 00), inizio allestimento, colli pronti, colli totali, ordini, banchina
+    cor = [("Lagunare Espressi", 15*60+30, 12*60+30, 148, 186, 58, 1),
+           ("Tre Cime Trasporti", 16*60+30, 13*60, 61, 142, 41, 2),
+           ("Ritiro cliente", 17*60, 14*60, 6, 6, 6, 4),
+           ("Postumia Corriere", 18*60, 14*60+15, 12, 96, 27, 3)]
+    assert sum(c[5] for c in cor) == ordini
+    c_pr = sum(c[3] for c in cor); c_tot = sum(c[4] for c in cor)
+    ora = 14*60+36
+    T0, T1 = 12*60, 19*60
+    def tx(m): return round((m - T0)/(T1 - T0)*100, 2)
+    def hm(m): return f"{m//60}:{m%60:02d}"
+    assi = "".join(f'<span style="left:{tx(h*60)}%">{h}:00</span>' for h in range(12, 20))
+    lc = ""
+    for nome, cut, ini, p, t, no, ban in cor:
+        manca = cut - ora
+        lc += f'<div class="cr"><div class="cn"><b>{nome}</b><small>Banchina {ban}, {no} ordini</small></div><div class="tl"><div class="tb" style="left:{tx(ini)}%;width:{tx(cut)-tx(ini)}%"><i style="width:{round(p/t*100)}%"></i></div><u style="left:{tx(cut)}%">{hm(cut)}</u></div><div class="cq"><b class="mono">{p}/{t}</b><small>colli, tra {manca//60} h {manca%60:02d}</small></div></div>' if manca >= 60 else f'<div class="cr"><div class="cn"><b>{nome}</b><small>Banchina {ban}, {no} ordini</small></div><div class="tl"><div class="tb urg" style="left:{tx(ini)}%;width:{tx(cut)-tx(ini)}%"><i style="width:{round(p/t*100)}%"></i></div><u style="left:{tx(cut)}%">{hm(cut)}</u></div><div class="cq"><b class="mono">{p}/{t}</b><small style="color:var(--warn)">colli, tra {manca} min</small></div></div>'
+    prossimo = min(c[1] for c in cor if c[1] > ora)
+    # mappa: 8 file di scaffali, 26 campate, corridoi di prelievo tra le coppie
+    NC, CW, CH = 26, 24, 19
+    ys = {"A":0, "B":41, "C":61, "D":102, "E":122, "F":163, "G":183, "H":224}
+    occ = ["#1c272d", "#1f3c40", "#2a5d60", "#3d8f8b"]
+    fermate = {("A",3):1, ("B",6):2, ("A",9):3, ("B",11):4, ("A",15):5, ("B",18):6, ("A",22):7,
+               ("D",24):8, ("C",20):9, ("D",17):10, ("C",13):11, ("D",10):12, ("C",7):13, ("D",2):14}
+    nf = len(fermate); fatte = 6
+    diff = {("F",14), ("F",21)}
+    celle = ""
+    for fl, y in ys.items():
+        celle += f'<text x="8" y="{y+14}" class="fl">{fl}</text>'
+        for c in range(1, NC+1):
+            x = 20 + (c-1)*CW
+            v = (c*7 + ord(fl)*13 + (c*c) % 5) % 4
+            if (fl, c) in fermate:
+                n = fermate[(fl, c)]
+                st = "f1" if n <= fatte else "f2" if n == fatte+1 else "f3"
+                celle += f'<rect x="{x}" y="{y}" width="{CW-2}" height="{CH}" rx="3" class="{st}"/><text x="{x+11}" y="{y+13.500}" class="fn {st}t">{n}</text>'
+            else:
+                celle += f'<rect x="{x}" y="{y}" width="{CW-2}" height="{CH}" rx="3" fill="{occ[v]}"{" class=df" if (fl,c) in diff else ""}/>'
+    def cx(c): return 20 + (c-1)*CW + 11
+    y1, y2 = 30, 91
+    xa = cx(22)
+    perc = f'<path d="M4,{y1} H{xa}" class="pd"/><path d="M{xa},{y1} H{cx(26)+16} V{y2} H4" class="pp"/><circle cx="{xa}" cy="{y1}" r="5" class="pc"/>'
+    camp = "".join(f'<text x="{cx(c)}" y="258" class="cl">{c:02d}</text>' for c in (1,5,10,15,20,26))
+    mappa = f'<svg viewBox="0 0 {20+NC*CW+18} 262" width="100%" class="mp">{celle}{perc}{camp}</svg>'
+    m_ott, m_arr = 212, 348
+    # tracking
+    trk = [("14:31","SP-48213","Ferramenta Bisol, Conegliano","Consegnata","ok","firma R. Bisol, 1 foto"),
+           ("14:18","SP-48207","Officina Marcon, Oderzo","Consegnata","ok","firma A. Marcon"),
+           ("14:02","SP-48198","Colorificio Sernaglia, Pieve di Soligo","In consegna","info","prevista entro le 15:10"),
+           ("13:47","SP-48176","Bar Centrale, Vittorio Veneto","Mancata consegna","bad","chiuso, riconsegna 26 nov"),
+           ("13:20","SP-48165","Vivai Da Ros, Susegana","Consegnata","ok","firma G. Da Ros, 2 foto")]
+    lt = "".join(f'<div class="tk"><span class="mono">{a}</span><div><div class="row"><b class="mono">{b}</b><span class="sp"></span>{chip(d,k)}</div><div>{c}</div><small>{e}</small></div></div>' for a,b,c,d,k,e in trk)
+    cons, sped = 96, 118
+    ub, dif = 312, 2
+    railI = [("grid",0),("scan",0),("truck",1),("layers",0),("route",0),("check",0),("chart",0)]
+    rail = "".join(f'<a class="{"on" if on else ""}">{ic(i)}</a>' for i, on in railI)
+    tb = "".join(f'<span class="{"on" if x == "Uscite" else ""}">{x}</span>' for x in ["Uscite","Ricevimento","Giacenze","Inventario","Spedizioni","Resi"])
+    css = '''.lapp{display:grid;grid-template-columns:60px 1fr;height:900px}
+.rail{background:#0b0f12;border-right:1px solid var(--line);display:flex;flex-direction:column;align-items:center;padding:14px 0;gap:6px}.rail .lg svg{width:32px;height:30px;margin-bottom:14px}
+.rail a{width:38px;height:38px;border-radius:10px;display:grid;place-items:center;color:var(--mut)}.rail a svg{width:18px;height:18px}.rail a.on{background:var(--acc-soft);color:var(--acc);box-shadow:inset 2px 0 0 var(--acc)}
+.rail .av{margin-top:auto;background:#1d272d;color:var(--ink)}
+.ltop{height:54px;display:flex;align-items:center;gap:12px;padding:0 20px;border-bottom:1px solid var(--line);background:#11171b}.ltop .wm{display:flex;margin-right:10px}
+.lt{display:flex;gap:2px;height:54px}.lt span{display:flex;align-items:center;padding:0 12px;color:var(--mut);font-weight:500;border-bottom:2px solid transparent}.lt span.on{color:var(--ink);border-color:var(--acc);font-weight:600}
+.pill{background:#171e22;border-color:var(--line)}.ck{font-family:"JetBrains Mono";font-size:12px;color:var(--mut)}
+.lbody{padding:16px 20px;display:flex;flex-direction:column;gap:12px;height:846px}
+.lh{display:flex;align-items:center;gap:26px}.lh h1{font-family:"Space Grotesk";font-size:21px;font-weight:600;letter-spacing:-.02em;white-space:nowrap}.lh p{color:var(--mut);font-size:12px}
+.stt{display:flex;gap:0;margin-left:auto}.stt div{padding:0 20px;border-left:1px solid var(--line)}.stt small{display:block;color:var(--mut);font-size:11px}.stt b{font-family:"Space Grotesk";font-size:19px;font-weight:600;letter-spacing:-.01em}.stt b span{font-size:12px;color:var(--mut);font-weight:500;font-family:Poppins}
+.cols{display:grid;grid-template-columns:292px 1fr 318px;gap:12px;flex:1;min-height:0}.col{display:flex;flex-direction:column;gap:12px;min-height:0}
+.card{box-shadow:none;border-radius:11px;padding:12px 14px}.ct{margin-bottom:8px}
+.chip{height:20px;font-size:11px}.c-mu{background:#222c32;color:#9fb0b9}.bar{background:#243037}
+.wv{padding:8px 10px;border:1px solid var(--line);border-radius:9px;margin-bottom:7px;display:flex;flex-direction:column;gap:4px}.wv:last-child{margin:0}.wv.sel{border-color:var(--acc);background:#1d2118}.wv .q{font-size:11px;width:52px;text-align:right;color:var(--mut)}.wv b{font-size:12px;font-weight:500}
+.mp{display:block}.mp .fl{fill:#8b9aa3;font:600 11px Poppins;text-anchor:middle}.mp .cl{fill:#6b7a83;font:10px "JetBrains Mono";text-anchor:middle}
+.mp .f1{fill:#f2b434}.mp .f2{fill:#fff3d1;stroke:#f2b434;stroke-width:2}.mp .f3{fill:#2d2716;stroke:#f2b434;stroke-width:1.200}.mp .fn{font:700 10.500px Poppins;text-anchor:middle}.mp .f1t,.mp .f2t{fill:#1b1503}.mp .f3t{fill:#f2b434}
+.mp .df{stroke:#ff7b6b;stroke-width:1.600}.mp .pd{stroke:#f2b434;stroke-width:2;fill:none}.mp .pp{stroke:#f2b434;stroke-width:1.600;fill:none;stroke-dasharray:4 4;opacity:.75}.mp .pc{fill:#fff3d1;stroke:#f2b434;stroke-width:2}
+.lg2{display:flex;align-items:center;gap:14px;color:var(--mut);font-size:11.500px;margin-top:8px}.lg2 i{display:inline-block;width:11px;height:11px;border-radius:3px;margin-right:5px;vertical-align:-1px}
+.ax{position:relative;height:16px;margin:0 118px 4px 150px;font:10.500px "JetBrains Mono";color:var(--mut)}.ax span{position:absolute;transform:translateX(-50%)}
+.cr{display:grid;grid-template-columns:150px 1fr 118px;align-items:center;padding:7px 0;border-top:1px solid var(--line)}.cn b{font-weight:600;display:block}.cr small{color:var(--mut);font-size:11px;display:block}
+.tl{position:relative;height:26px;background:repeating-linear-gradient(90deg,transparent 0,transparent calc(100%/7 - 1px),#222c32 calc(100%/7 - 1px),#222c32 calc(100%/7))}
+.tb{position:absolute;top:7px;height:12px;border-radius:4px;background:#26333a;overflow:hidden}.tb i{display:block;height:100%;background:#3d8f8b}.tb.urg i{background:var(--acc)}
+.tl u{position:absolute;top:1px;bottom:1px;border-left:2px solid var(--ink);padding-left:5px;font:500 10.500px "JetBrains Mono";text-decoration:none;color:var(--ink);line-height:24px}
+.now{position:absolute;top:22px;bottom:0;width:1.500px;background:var(--bad);z-index:3}.now em{position:absolute;top:-17px;left:-22px;width:44px;text-align:center;font:500 10.500px "JetBrains Mono";font-style:normal;color:#11171b;background:var(--bad);border-radius:4px}
+.cq{text-align:right}.cq b{font-size:12.500px}
+.tk{display:grid;grid-template-columns:38px 1fr;gap:8px;padding:7px 0;border-top:1px solid var(--line);font-size:12px}.tk:first-of-type{border:0;padding-top:0}.tk>span{color:var(--mut);font-size:11px;padding-top:2px}.tk b{font-weight:500;font-size:12px}.tk small{color:var(--mut);font-size:11px}
+.iv{display:grid;grid-template-columns:1fr auto auto;gap:5px 14px;font-size:12px}.iv span{color:var(--mut)}.iv b{font-weight:500;text-align:right}'''
+    nowp = tx(ora)
+    body = f'''<div class="lh"><div><h1>Uscite di oggi</h1><p>mercoledì 25 novembre, turno 2</p></div>
+<div class="stt"><div><small>Ordini da spedire</small><b>{ordini}</b></div><div><small>Righe prelevate</small><b>{r_fatte} <span>di {r_tot}, {_a_pc(r_fatte/r_tot*100)}%</span></b></div><div><small>Colli pronti in banchina</small><b>{c_pr} <span>di {c_tot}</span></b></div><div><small>Prossimo cut-off</small><b style="color:var(--acc)">{hm(prossimo)} <span>tra {prossimo-ora} min</span></b></div></div></div>
+<div class="cols">
+<div class="col"><div class="card" style="flex:1"><div class="ct">Ondate di prelievo<span>{sum(1 for o in ond if o[2]==o[3])} chiuse su {len(ond)}</span></div>{lo}</div>
+<div class="card"><div class="ct">Ricevimento<span>3 arrivi oggi</span></div><div class="iv"><span>Ferriera Valbelluna</span><b>18 bancali</b>{chip("Stoccato","ok")}<span>Minuterie Rossetto</span><b>6 bancali</b>{chip("In controllo","warn")}<span>Utensili Pedemonte</span><b>11 bancali</b>{chip("Atteso 16:00","mu")}</div><div class="sm" style="margin-top:8px;font-size:11.500px">2 documenti di trasporto letti in automatico</div></div></div>
+<div class="col"><div class="card"><div class="ct">Mappa dei corridoi, percorso di <span class="mono" style="margin:0;color:var(--acc);font-size:12.500px">W-2511-04</span><span>fermata {fatte+1} di {nf}, D. Zanatta</span></div>{mappa}
+<div class="lg2"><span><i style="background:{occ[0]}"></i>vuota</span><span><i style="background:{occ[2]}"></i>occupata</span><span><i style="background:{occ[3]}"></i>piena</span><span><i style="background:#f2b434"></i>prelievo</span><span><i style="background:{occ[1]};outline:1.500px solid #ff7b6b"></i>differenza inventario</span><span class="sp"></span><span style="color:var(--ink)">Percorso {m_ott} m contro {m_arr} m in ordine d'arrivo, <b style="color:var(--ok);font-weight:600">-{round((1-m_ott/m_arr)*100)}%</b></span></div></div>
+<div class="card" style="flex:1;position:relative"><div class="ct">Partenze per corriere<span>{c_pr} colli pronti su {c_tot}, {ordini} ordini</span></div>
+<div style="position:relative"><div class="ax">{assi}</div><div style="position:absolute;left:150px;right:118px;top:0;bottom:0;pointer-events:none"><div class="now" style="left:{nowp}%;top:17px"><em>{hm(ora)}</em></div></div>{lc}</div></div></div>
+<div class="col"><div class="card" style="flex:1"><div class="ct">Tracking e prove di consegna<span>{cons} su {sped}</span></div>{bar(round(cons/sped*100),"var(--ok)")}<div style="height:10px"></div>{lt}<div class="row sm" style="border-top:1px solid var(--line);padding-top:8px;font-size:11.500px">{ic("spark")}<span>14 risposte automatiche ai clienti oggi</span></div></div>
+<div class="card"><div class="ct">Inventario a rotazione<span>corridoio F</span></div><div class="iv" style="grid-template-columns:1fr auto"><span>Ubicazioni contate</span><b>{ub}</b><span>Differenze</span><b style="color:var(--bad)">{dif}</b><span>Accuratezza</span><b>{_a_pc((ub-dif)/ub*100)}%</b></div><hr><div class="iv" style="grid-template-columns:auto 1fr auto"><span class="mono">F-14-2</span><span>atteso 48, contato 46</span><b style="color:var(--bad)">-2</b><span class="mono">F-21-1</span><span>atteso 12, contato 14</span><b style="color:var(--warn)">+2</b></div></div></div></div>'''
+    theme = "--bg:#0f1417;--card:#171e22;--ink:#e6ecef;--mut:#8b9aa3;--line:#263138;--acc:#f2b434;--acc-soft:#2d2716;--ok:#5fd08e;--ok-bg:#15291f;--warn:#f2b434;--warn-bg:#2d2716;--bad:#ff7b6b;--bad-bg:#33201e;--info:#6cb8ff;--info-bg:#172838;--strong:#f3f7f9"
+    return _a_head(theme, css) + f'''<body><div class="lapp"><aside class="rail"><div class="lg">{_A_BR_SVG}</div>{rail}<a>{ic("cog")}</a><span class="av">DZ</span></aside>
+<div><header class="ltop"><div class="wm">{LOGO["a_br"].replace(_A_BR_SVG,"")}</div><div class="lt">{tb}</div><span class="sp"></span><span class="pill">Magazzino Quinto di Treviso</span><span class="pill"><i class="dot"></i>Gestionale allineato alle 14:35</span><span class="ck">mer 25 nov, {hm(ora)}</span></header>
+<div class="lbody">{body}</div></div></div></body></html>'''
