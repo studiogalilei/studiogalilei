@@ -1,5 +1,5 @@
 import "server-only";
-import { geoGraticule10, geoMercator, geoNaturalEarth1, geoPath } from "d3-geo";
+import { geoGraticule10, geoMercator, geoNaturalEarth1, geoOrthographic, geoPath } from "d3-geo";
 import type { FeatureCollection } from "geojson";
 import { countries, workedIn } from "./world";
 
@@ -21,77 +21,112 @@ function svg(body: string) {
 
 // Where every arrow starts: Treviso.
 const HOME = { lon: 12.24, lat: 45.67 };
+const FONT = "Poppins,system-ui,-apple-system,Segoe UI,sans-serif";
 
 /**
- * "We Work WorldWide" map. Zoomed on Europe, where most of the work is, so the countries are
- * large enough to read; an arrow leaves Veneto for each country abroad, and the one for Texas
- * runs off the western edge with its name. The arrows draw themselves and then keep flowing
- * (CSS inside the SVG: it runs when the file is shown as an image too).
+ * "We Work WorldWide" map, on a night-blue card. Europe is zoomed in, so the countries are
+ * large enough to read, and a round window on the left shows North America: an arrow leaves
+ * Treviso for each country abroad, and the long one crosses the Atlantic and lands in Texas.
+ * The arrows draw themselves and then keep flowing (CSS inside the SVG: it runs when the file
+ * is shown as an image too).
  */
 export function worldMapSvg() {
-  const projection = geoMercator().fitExtent(
+  const europe = geoMercator().fitExtent(
     [
-      [150, 14],
-      [WIDTH - 20, HEIGHT - 14],
+      [330, 20],
+      [WIDTH - 24, HEIGHT - 20],
     ],
     {
       type: "MultiPoint",
       coordinates: [
-        [-11, 34.5],
-        [45, 59.5],
+        [-10, 35],
+        [44, 59],
       ],
     },
   );
-  const path = geoPath(projection).digits(2);
-  const at = (lon: number, lat: number) => projection([lon, lat]) as [number, number];
+  const path = geoPath(europe).digits(2);
+  const at = (lon: number, lat: number) => europe([lon, lat]) as [number, number];
   const shapes = land
-    .map(
-      (country) =>
-        `<path d="${path(country) ?? ""}" fill="${highlighted.has(String(country.id)) ? "#061773" : "#DCE1EC"}"/>`,
-    )
+    .map((country) => {
+      const on = highlighted.has(String(country.id));
+      return `<path d="${path(country) ?? ""}" fill="${on ? "#FFFFFF" : "#FFFFFF"}" fill-opacity="${on ? 0.95 : 0.13}"/>`;
+    })
     .join("");
+
+  // the window on North America
+  const win = { x: 150, y: 262, r: 122 };
+  const america = geoOrthographic()
+    .rotate([97, -38])
+    .scale(250)
+    .translate([win.x, win.y])
+    .clipAngle(90);
+  const usa = geoPath(america).digits(2);
+  const americaLand = land
+    .map((country) => `<path d="${usa(country) ?? ""}" fill="#FFFFFF" fill-opacity="0.16"/>`)
+    .join("");
+  const texasPlace = workedIn.find((p) => p.key === "texas")!;
+  const [tx, ty] = america([texasPlace.lon, texasPlace.lat]) as [number, number];
 
   const [hx, hy] = at(HOME.lon, HOME.lat);
   // a curve bulging to the left of its direction, ending just short of the pin
-  const arc = (x: number, y: number, bend = 0.22) => {
+  const arc = (x: number, y: number, bend: number) => {
     const dx = x - hx;
     const dy = y - hy;
     const len = Math.hypot(dx, dy);
-    const ex = x - (dx / len) * 12;
-    const ey = y - (dy / len) * 12;
+    const ex = x - (dx / len) * 13;
+    const ey = y - (dy / len) * 13;
     const cx = (hx + ex) / 2 + dy * bend;
     const cy = (hy + ey) / 2 - dx * bend;
     return `M${hx.toFixed(1)},${hy.toFixed(1)} Q${cx.toFixed(1)},${cy.toFixed(1)} ${ex.toFixed(1)},${ey.toFixed(1)}`;
   };
   const abroad = workedIn.filter((p) => p.key !== "italy" && p.key !== "texas");
-  const arrows = abroad
-    .map((place, i) => {
-      const [x, y] = at(place.lon, place.lat);
-      return `<path class="a" style="animation-delay:${(i * 0.25).toFixed(2)}s,${(1.6 + i * 0.25).toFixed(2)}s" d="${arc(x, y)}" marker-end="url(#h)"/>`;
-    })
-    .join("");
-  // Texas is far off this map: its arrow crosses the Atlantic and leaves by the western edge
-  const texas =
-    `<path class="a" style="animation-delay:1s,2.6s" d="M${hx.toFixed(1)},${hy.toFixed(1)} C${(hx - 150).toFixed(1)},${(hy - 120).toFixed(1)} 230,${(hy - 70).toFixed(1)} 34,${(hy + 6).toFixed(1)}" marker-end="url(#h)"/>` +
-    `<text x="30" y="${(hy + 40).toFixed(1)}" font-family="Poppins,system-ui,sans-serif" font-size="17" font-weight="600" fill="#061773">Texas, USA</text>`;
-  const pins = abroad
-    .map((place) => {
-      const [x, y] = at(place.lon, place.lat);
-      return `<g transform="translate(${x.toFixed(2)},${y.toFixed(2)})"><circle r="15" fill="#0689FF" opacity="0.45" filter="url(#g)"/><circle r="6.5" fill="#061773" stroke="#FFFFFF" stroke-width="2.5"/></g>`;
-    })
-    .join("");
+  const line = (d: string, i: number) =>
+    `<path class="g" d="${d}"/><path class="a" style="animation-delay:${(i * 0.25).toFixed(2)}s,${(1.7 + i * 0.25).toFixed(2)}s" d="${d}" marker-end="url(#h)"/>`;
+  const arrows =
+    abroad
+      .map((place, i) => {
+        const [x, y] = at(place.lon, place.lat);
+        return line(arc(x, y, 0.24), i);
+      })
+      .join("") + line(arc(tx, ty, -0.3), abroad.length);
+
+  const pin = (x: number, y: number) =>
+    `<g transform="translate(${x.toFixed(2)},${y.toFixed(2)})"><circle class="p" r="8" fill="none" stroke="#EBDCBE" stroke-width="1.5"/><circle r="6.5" fill="#EBDCBE" stroke="#040F4D" stroke-width="2.5"/></g>`;
+  const pins =
+    abroad
+      .map((place) => {
+        const [x, y] = at(place.lon, place.lat);
+        return pin(x, y);
+      })
+      .join("") + pin(tx, ty);
+  const label = (x: number, y: number, text: string, size = 15) =>
+    `<text x="${x.toFixed(1)}" y="${y.toFixed(1)}" font-family="${FONT}" font-size="${size}" font-weight="600" fill="#FFFFFF" stroke="#040F4D" stroke-width="4" paint-order="stroke">${text}</text>`;
   const home =
-    `<g transform="translate(${hx.toFixed(2)},${hy.toFixed(2)})"><circle class="p" r="9" fill="none" stroke="#C9AD74" stroke-width="2"/><circle r="8" fill="#C9AD74" stroke="#FFFFFF" stroke-width="2.5"/></g>` +
-    `<text x="${(hx + 14).toFixed(1)}" y="${(hy + 24).toFixed(1)}" font-family="Poppins,system-ui,sans-serif" font-size="15" font-weight="600" fill="#FFFFFF" stroke="#061773" stroke-width="4" paint-order="stroke">Treviso</text>`;
+    `<g transform="translate(${hx.toFixed(2)},${hy.toFixed(2)})"><circle class="p" r="10" fill="none" stroke="#FFFFFF" stroke-width="2"/><circle r="9" fill="#FFFFFF" stroke="#C9AD74" stroke-width="4"/></g>` +
+    label(hx + 16, hy + 26, "Treviso", 16);
+
   return svg(
-    `<defs><filter id="g" x="-100%" y="-100%" width="300%" height="300%"><feGaussianBlur stdDeviation="6"/></filter>` +
-      `<marker id="h" viewBox="0 0 10 10" refX="7" refY="5" markerWidth="5.5" markerHeight="5.5" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 Z" fill="#C9AD74"/></marker>` +
-      `<style>.a{fill:none;stroke:#C9AD74;stroke-width:3.2;stroke-linecap:round;stroke-dasharray:1200;stroke-dashoffset:1200;animation:d 1.4s cubic-bezier(.3,.6,.3,1) forwards,f 2.4s linear infinite}` +
-      `@keyframes d{to{stroke-dashoffset:0}}@keyframes f{from{stroke-dasharray:14 9;stroke-dashoffset:23}to{stroke-dasharray:14 9;stroke-dashoffset:0}}` +
-      `.p{animation:r 2.4s ease-out infinite}@keyframes r{from{r:9px;opacity:.9}to{r:30px;opacity:0}}` +
+    `<defs>` +
+      `<radialGradient id="bg" cx="70%" cy="35%" r="90%"><stop offset="0" stop-color="#0A2391"/><stop offset="1" stop-color="#040F4D"/></radialGradient>` +
+      `<radialGradient id="globe" cx="35%" cy="30%" r="80%"><stop offset="0" stop-color="#1733B0"/><stop offset="1" stop-color="#061773"/></radialGradient>` +
+      `<clipPath id="w"><circle cx="${win.x}" cy="${win.y}" r="${win.r}"/></clipPath>` +
+      `<filter id="b" x="-20%" y="-20%" width="140%" height="140%"><feGaussianBlur stdDeviation="5"/></filter>` +
+      `<marker id="h" viewBox="0 0 10 10" refX="7" refY="5" markerWidth="5" markerHeight="5" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 Z" fill="#EBDCBE"/></marker>` +
+      `<style>.a{fill:none;stroke:#EBDCBE;stroke-width:3;stroke-linecap:round;stroke-dasharray:1400;stroke-dashoffset:1400;animation:d 1.5s cubic-bezier(.3,.6,.3,1) forwards,f 2.2s linear infinite}` +
+      `.g{fill:none;stroke:#C9AD74;stroke-width:9;stroke-linecap:round;opacity:.35;filter:url(#b)}` +
+      `@keyframes d{to{stroke-dashoffset:0}}@keyframes f{from{stroke-dasharray:15 10;stroke-dashoffset:25}to{stroke-dasharray:15 10;stroke-dashoffset:0}}` +
+      `.p{animation:r 2.4s ease-out infinite}@keyframes r{from{r:8px;opacity:.9}to{r:28px;opacity:0}}` +
       `@media (prefers-reduced-motion:reduce){.a,.p{animation:none;stroke-dashoffset:0}}</style></defs>` +
-      `<path d="${path(geoGraticule10()) ?? ""}" fill="none" stroke="#061773" stroke-opacity="0.05" stroke-width="0.8"/>` +
-      `<g stroke="#FFFFFF" stroke-width="0.9">${shapes}</g>${arrows}${texas}${pins}${home}`,
+      `<rect width="${WIDTH}" height="${HEIGHT}" fill="url(#bg)"/>` +
+      `<path d="${path(geoGraticule10()) ?? ""}" fill="none" stroke="#FFFFFF" stroke-opacity="0.06" stroke-width="0.8"/>` +
+      `<g stroke="#040F4D" stroke-width="0.9">${shapes}</g>` +
+      // the window: its own little globe, with a ring around it
+      `<circle cx="${win.x}" cy="${win.y}" r="${win.r + 10}" fill="#040F4D" fill-opacity="0.55"/>` +
+      `<circle cx="${win.x}" cy="${win.y}" r="${win.r}" fill="url(#globe)"/>` +
+      `<g clip-path="url(#w)"><path d="${usa(geoGraticule10()) ?? ""}" fill="none" stroke="#FFFFFF" stroke-opacity="0.08" stroke-width="0.8"/><g stroke="#061773" stroke-width="0.8">${americaLand}</g></g>` +
+      `<circle cx="${win.x}" cy="${win.y}" r="${win.r}" fill="none" stroke="#EBDCBE" stroke-opacity="0.7" stroke-width="2"/>` +
+      `${arrows}${pins}${home}` +
+      label(tx - 48, ty + 34, "Texas, USA", 17),
   );
 }
 

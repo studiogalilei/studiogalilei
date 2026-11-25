@@ -22,13 +22,13 @@ export function WorldMap() {
           {/* a prerendered SVG file (lib/geo/maps.ts): no map markup in the page */}
           {/* eslint-disable-next-line @next/next/no-img-element -- a static SVG: nothing to optimize */}
           <img
-            src="/maps/world.svg?v=2"
+            src="/maps/world.svg?v=3"
             alt={t("mapLabel")}
             width={960}
             height={500}
             loading="lazy"
             decoding="async"
-            className="block h-auto w-full rounded-18 bg-mist"
+            className="block h-auto w-full rounded-22 bg-sg-deep shadow-surface-3"
           />
           <ul className="mx-auto grid w-full max-w-[380px] grid-cols-2 gap-x-6 gap-y-4 lg:mx-0 lg:grid-cols-1">
             {workedIn.map((place) => (
