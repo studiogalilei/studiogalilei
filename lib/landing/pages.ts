@@ -636,7 +636,7 @@ export const landings: Landing[] = [
   {
     path: "/agenzie-partner",
     kind: "method",
-    kicker: "Per le agenzie",
+    kicker: "Partner",
     title: "Porta software e AI ai tuoi clienti, senza costruire un reparto",
     metaTitle: "Agenzie partner: software e AI per i tuoi clienti",
     description:

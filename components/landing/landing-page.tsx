@@ -38,14 +38,6 @@ export async function landingMetadata(path: string): Promise<Metadata> {
   };
 }
 
-function updatedLabel() {
-  return new Intl.DateTimeFormat("it-IT", {
-    day: "numeric",
-    month: "long",
-    year: "numeric",
-  }).format(new Date(`${LANDING_UPDATED}T12:00:00Z`));
-}
-
 function structuredData(page: Landing) {
   const url = `${SITE_URL}${page.path}`;
   const author = {
@@ -148,10 +140,6 @@ export function LandingPage({ path }: { path: string }) {
           </p>
           <div className="mt-7 flex flex-wrap items-center gap-x-6 gap-y-4">
             <ButtonLink href="/#sg-prenota">Prenota una chiamata</ButtonLink>
-            <p className="text-13 text-ink/55">
-              Aggiornato il {updatedLabel()}. Scritto da {LANDING_AUTHOR.name},{" "}
-              {LANDING_AUTHOR.role}.
-            </p>
           </div>
         </div>
       </Container>

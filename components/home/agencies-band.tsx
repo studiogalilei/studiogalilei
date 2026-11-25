@@ -4,13 +4,13 @@ import { Container } from "@/components/ui/container";
 
 const TEXT = {
   it: {
-    kicker: "Per agenzie e consulenti",
+    kicker: "Partner",
     title: "I tuoi clienti chiedono software e AI?",
     text: "Li costruiamo noi, in segnalazione o con il tuo marchio. Il cliente resta tuo, con un accordo scritto.",
     label: "Diventa partner",
   },
   en: {
-    kicker: "For agencies and consultants",
+    kicker: "Partners",
     title: "Are your clients asking for software and AI?",
     text: "We build it, by referral or under your brand. The client stays yours, with a written agreement.",
     label: "Become a partner",

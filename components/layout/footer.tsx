@@ -14,7 +14,7 @@ const solutions = [
   { label: "Software per settore", href: "/settori" },
   { label: "Software per tour operator", href: "/tour-operator" },
   { label: "Software house a Treviso", href: "/software-house-treviso" },
-  { label: "Per le agenzie partner", href: "/agenzie-partner" },
+  { label: "Partner", href: "/agenzie-partner" },
   { label: "Quanto costa un gestionale", href: "/guide/quanto-costa-un-gestionale-su-misura" },
   { label: "Quanto costa un agente AI", href: "/guide/quanto-costa-un-agente-ai" },
 ] as const;
