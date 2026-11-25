@@ -11,8 +11,9 @@ import { SITE_NAME, fullTitle } from "@/lib/metadata";
 import { SITE_URL } from "@/lib/site";
 
 const TITLE = "Software su misura per settore";
+const HEADING = "I settori con cui abbiamo lavorato";
 const DESCRIPTION =
-  "I settori per cui sviluppiamo software su misura: manifatturiero, moda, alimentare, edilizia, logistica, retail, sanità, turismo e altri. Per ognuno: problemi tipici, cosa costruiamo, costi.";
+  "I settori con cui abbiamo lavorato: manifatturiero, moda, alimentare, edilizia, logistica, retail, sanità, turismo e altri. Per ognuno: problemi tipici, cosa costruiamo, costi.";
 
 export async function generateMetadata(): Promise<Metadata> {
   return {
@@ -51,8 +52,8 @@ export default function SectorsPage() {
       <PageHero
         crumbs={[{ label: "Home", href: "/" }, { label: "Settori" }]}
         kicker="Settori"
-        title={TITLE}
-        intro="Ogni settore ha i suoi problemi, e un software generico li copre a metà. Qui trovi, settore per settore, cosa si inceppa di solito, cosa sviluppiamo e quanto costa."
+        title={HEADING}
+        intro="Ogni settore ha i suoi problemi, e un software generico li copre a metà. Qui trovi, settore per settore, cosa si inceppa di solito, cosa abbiamo sviluppato e quanto costa."
       />
       <Container className="relative z-2 -mt-18 pb-20 md:-mt-22 md:pb-28">
         <ul className="grid gap-px overflow-hidden rounded-18 bg-line shadow-surface-3 sm:grid-cols-2 lg:grid-cols-3">

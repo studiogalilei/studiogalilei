@@ -1,5 +1,21 @@
 # Le schermate, una funzione per settore. Eseguito da gen.py (usa page, nav, chip, bar, kpi, spark, ic).
 
+# I marchi delle aziende di fantasia: un simbolo disegnato e il nome, come su un prodotto vero.
+def _logo(svg, html): return f'{svg}<span style="line-height:1.05">{html}</span>'
+LOGO = {
+ "oo": _logo('<svg viewBox="0 0 32 32"><path d="M16 2 28 9v14l-12 7-12-7V9z" fill="#1d3fae"/><circle cx="16" cy="16" r="5.500" fill="none" stroke="#fff" stroke-width="2.600"/><path d="M16 5v4M16 23v4M6.500 10.500 10 12.500M22 19.500l3.500 2M6.500 21.500 10 19.500M22 12.500l3.500-2" stroke="#fff" stroke-width="2.200" stroke-linecap="round"/></svg>',
+   '<b style="font-family:Space Grotesk;font-weight:700;font-size:15px;letter-spacing:-.01em;color:#16224a">OFFICINE<br>OROBICHE</b>'),
+ "an": _logo('', '<b style="font-family:Cormorant Garamond;font-weight:600;font-size:21px;letter-spacing:.2em;color:#2b2824">ATELIER<span style="font-weight:500;opacity:.55"> NORD</span></b>'),
+ "mv": _logo('<svg viewBox="0 0 32 32"><circle cx="16" cy="16" r="14.500" fill="none" stroke="#c9a86a" stroke-width="1.200"/><path d="M9.500 10.500 16 22.500l6.500-12" fill="none" stroke="#c9a86a" stroke-width="1.600"/></svg>',
+   '<b style="font-family:Cormorant Garamond;font-weight:500;font-size:20px;letter-spacing:.06em;color:#f1eadc">Maison Verri</b>'),
+ "tp": _logo('<svg viewBox="0 0 32 32"><rect width="32" height="32" rx="8" fill="#1463c9"/><path d="m9 11 6 5-6 5M16.500 11l6 5-6 5" fill="none" stroke="#fff" stroke-width="2.800" stroke-linecap="round" stroke-linejoin="round"/></svg>',
+   '<b style="font-family:Space Grotesk;font-weight:700;font-size:17px;letter-spacing:-.02em;color:#0f2742">tecnopack<span style="font-weight:500;color:#1463c9"> service</span></b>'),
+ "ov": _logo('<svg viewBox="0 0 32 32"><path d="M16 29C7 25 4 17 6 6c11 0 19 4 20 13" fill="#1c7c54"/><path d="M9 10c5 4 8 9 8.500 18" fill="none" stroke="#e3f4ec" stroke-width="1.800" stroke-linecap="round"/><circle cx="24" cy="23" r="5" fill="#e0452f"/></svg>',
+   '<b style="font-weight:700;font-size:17px;letter-spacing:-.02em;color:#15402f">Orto Valle</b>'),
+ "fl": _logo('<svg viewBox="0 0 32 32"><circle cx="16" cy="16" r="15" fill="#12408f"/><path d="M16 8v16M8 16h16" stroke="#fff" stroke-width="4.200" stroke-linecap="round"/></svg>',
+   '<b style="font-weight:600;font-size:16px;letter-spacing:-.01em;color:#0e2a5c">Lariani<br><span style="font-size:9.500px;font-weight:500;letter-spacing:.18em;color:#5b6b85">FARMACEUTICI</span></b>'),
+}
+
 # ── 1. Manifatturiero meccanico: MES, reparto in tempo reale ──────────────────
 @reg("manifatturiero-meccanico")
 def _mes():
@@ -29,11 +45,11 @@ def _mes():
 <div class="g" style="grid-template-columns:repeat(4,1fr)">{kpi("OEE reparto","87,2%","▲ 2,1 punti sul turno 1","up")}{kpi("Disponibilità","92,1%","228 min di fermo su 6 macchine","mu")}{kpi("Prestazione","96,3%","Ciclo medio 41,6 s","mu")}{kpi("Qualità","98,3%","28 scarti su 1.647 pezzi","mu")}</div>
 <div class="g" style="grid-template-columns:repeat(3,1fr)">{cards}</div>
 <div class="g" style="grid-template-columns:1fr 300px;flex:1;min-height:0">
-<div class="card"><div class="ct">Ordini di produzione di oggi<span>5 di 11</span></div><table><tr><th>Ordine</th><th>Articolo</th><th>Lotto</th><th>Operatore</th><th>Avanzamento</th><th class="r">Scarto</th></tr>{righe}</table></div>
+<div class="card"><div class="ct">Ordini di produzione di oggi</div>{filters(["Tutti","In corso","In ritardo","Chiusi"],"In corso","Cerca ordine o lotto")}<table><tr><th>Ordine</th><th>Articolo</th><th>Lotto</th><th>Operatore</th><th>Avanzamento</th><th class="r">Scarto</th></tr>{righe}</table>{foot("5 di 11 ordini")}</div>
 <div class="card"><div class="ct">Fermi del turno<span>228 min</span></div>{fb}<hr><div class="row sm">{chip("2 non conformità aperte","warn")}<span class="sp"></span><span class="mono">L-2611-12</span></div></div></div>'''
     n = nav([("Produzione","grid",""),("Ordini","list","11"),("Macchine","cog",""),("Qualità","check","2"),("Magazzino","box",""),("OEE","chart","")],"Produzione")
-    return page("mes","--acc:#2f5bd0;--acc-soft:#e9effc;--bg:#f4f6f9","Officine Orobiche","OO",n,"Produzione","Marta Ferrari","Capoturno","Produzione / <b>Reparto in tempo reale</b>",
-        '<span class="pill">Stabilimento Bergamo</span><span class="pill"><i class="dot"></i>Turno 2, 14:00-22:00</span>',body,".mc{padding:12px 14px}")
+    return page("mes","--acc:#1d3fae;--acc-soft:#e8edfb;--bg:#f3f5fa;--strong:#16224a","",LOGO["oo"],n,"Produzione","Marta Ferrari","Capoturno","",
+        tabs(["Reparto","Ordini","Pianificazione","Storico turni"],"Reparto")+'<span class="pill">Stabilimento Bergamo</span><span class="pill"><i class="dot"></i>Turno 2, 14:00-22:00</span>',body,".mc{padding:12px 14px}",ws="MES di reparto",avvisi=3)
 
 # ── 2. Moda: collezione, matrice colore-taglia ───────────────────────────────
 @reg("moda-abbigliamento")
@@ -62,9 +78,9 @@ def _moda():
 <div class="card"><div class="ct">Distinta base<span>taglia M</span></div><dl class="kv"><dt>Lino 100% 210 g</dt><dd>2,10 m</dd><dt>Fodera cupro</dt><dd>1,45 m</dd><dt>Bottoni corozo 20 mm</dt><dd>4 pz</dd><dt>Spalline</dt><dd>1 paio</dd><dt>Etichette e cartellino</dt><dd>1 set</dd></dl><hr><div class="row"><span class="mu">Costo materiali</span><span class="sp"></span><b>38,60 €</b></div><div class="row sm" style="margin-top:4px">XL consuma 2,35 m di lino (+12%)</div></div>
 <div class="card"><div class="ct">Conto lavoro<span>Confezione Prato</span></div><div class="row sm"><span style="color:var(--ink)">Taglio</span><span class="sp"></span>completato</div>{bar(100,"var(--ok)")}<div class="row sm" style="margin-top:9px"><span style="color:var(--ink)">Confezione</span><span class="sp"></span>693 di 1.386</div>{bar(50)}<div class="row sm" style="margin-top:9px"><span style="color:var(--ink)">Stiro e controllo</span><span class="sp"></span>222 di 1.386</div>{bar(16,"#98a2b3")}<hr><dl class="kv"><dt>Rientro previsto</dt><dd>12 dic</dd><dt>Finestra di spedizione</dt><dd>15 gen – 15 feb</dd></dl></div></div></div>'''
     n=nav([("Collezioni","layers",""),("Stili","tag","86"),("Taglie e colori","grid",""),("Produzione","cog",""),("Magazzino","box",""),("Ordini wholesale","list","41")],"Stili")
-    return page("moda","--acc:#3d3a36;--acc-soft:#efece7;--bg:#f7f5f2;--line:#e7e2da;--info:#6b5a3e;--info-bg:#f1eadc","Atelier Nord","AN",n,"Stili","Giulia Bassi","Product manager","Collezioni / SS27 / <b>Giacca lino oversize</b>",
-        '<span class="pill">Stagione SS27</span>',body,
-        ".sw{width:16px;height:16px;border-radius:50%;border:1px solid #0002;flex:none}.matrix td{padding:10px 10px 10px 0}.matrix th.c{text-align:center}.mx{text-align:center}.mx b{display:block;font-size:15px;font-weight:600}.mx span{font-size:11px}.r.mx{text-align:right}.tot td{border-top:1px solid var(--line);color:var(--mut)}.tot b{color:var(--ink)}body{font-feature-settings:'tnum'}h1{font-family:Inter}")
+    return page("moda","--strong:#2b2824;--acc:#3d3a36;--acc-soft:#efece7;--bg:#f7f5f2;--line:#e7e2da;--info:#6b5a3e;--info-bg:#f1eadc","",LOGO["an"],n,"Stili","Giulia Bassi","Product manager","",
+        tabs(["Scheda","Varianti","Distinta base","Ordini","Storico"],"Varianti")+'<span class="pill">Stagione SS27</span><span class="pill">Capospalla donna</span>',body,
+        ".sw{width:16px;height:16px;border-radius:50%;border:1px solid #0002;flex:none}.matrix td{padding:10px 10px 10px 0}.matrix th.c{text-align:center}.mx{text-align:center}.mx b{display:block;font-size:15px;font-weight:600}.mx span{font-size:11px}.r.mx{text-align:right}.tot td{border-top:1px solid var(--line);color:var(--mut)}.tot b{color:var(--ink)}")
 
 # ── 3. Lusso: CRM clienti privati ────────────────────────────────────────────
 @reg("lusso-accessori")
@@ -85,8 +101,8 @@ def _lusso():
 <div class="card"><div class="ct">Post-vendita<span>Ticket R-1182</span></div><div class="row"><b style="font-weight:550">Sostituzione chiusura</b><span class="sp"></span>{chip("Pronto al ritiro","ok")}</div><div class="sm" style="margin-top:6px">Rientrato da Atelier Firenze il 19 nov. In garanzia, nessun costo.</div></div>
 <div class="card"><div class="ct">Prossimo appuntamento</div><div class="row"><div style="text-align:center;border:1px solid var(--line);border-radius:8px;padding:5px 11px"><span class="sm">GIO</span><b style="display:block;font-size:18px;font-weight:550">3</b></div><div><b style="font-weight:550">Presentazione privata, 16:30</b><div class="sm">Salotto primo piano · Chiara Valli</div></div></div></div></div></div>'''
     n=nav([("Clienti","users",""),("Boutique","tag",""),("Seriali","shield",""),("Riparazioni","wrench","7"),("Appuntamenti","cal","4")],"Clienti")
-    return page("lusso","--bg:#17140f;--card:#1f1b15;--ink:#f1eadc;--mut:#a39a88;--line:#332d23;--acc:#c9a86a;--acc-soft:#2b2519;--side:#13100c;--side-ink:#cfc6b4;--ok:#9ccf9f;--ok-bg:#1f2b20;--warn:#e2c27a;--warn-bg:#33291a","Maison Verri","MV",n,"Clienti","Chiara Valli","Client advisor","Clienti / Privati / <b>Elena M.</b>",
-        '<span class="pill">Boutique Milano</span>',body,
+    return page("lusso","--bg:#17140f;--card:#1f1b15;--ink:#f1eadc;--mut:#a39a88;--line:#332d23;--acc:#c9a86a;--acc-soft:#2b2519;--side:#13100c;--side-ink:#cfc6b4;--ok:#9ccf9f;--ok-bg:#1f2b20;--warn:#e2c27a;--warn-bg:#33291a","",LOGO["mv"],n,"Clienti","Chiara Valli","Client advisor","",
+        tabs(["Profilo","Acquisti","Riparazioni","Appuntamenti","Documenti"],"Profilo")+'<span class="pill">Boutique Milano</span>',body,
         ".top{background:#1a1611}.search{background:#17140f}.search kbd{background:#1f1b15}.btn{background:#1f1b15;color:var(--ink)}.btn.p{color:#17140f}.brand i{color:#17140f}.tl{position:relative;padding-left:18px}.tl::before{content:'';position:absolute;left:4px;top:6px;bottom:6px;width:1px;background:var(--line)}.ev{position:relative;padding:8px 0}.ev i{position:absolute;left:-17px;top:14px;width:7px;height:7px;border-radius:50%;background:var(--acc)}.ev b{font-weight:550}.av{background:#2b2519}")
 
 # ── 4. Packaging: monitoraggio remoto di una linea ───────────────────────────
@@ -108,8 +124,8 @@ def _pack():
 <div class="card"><div class="ct">Cause di fermo<span>24 ore</span></div>{cb}<hr><dl class="kv"><dt>Tempo medio di ripartenza</dt><dd>6 min</dd><dt>Fermo più lungo</dt><dd>9 min, 14:52</dd><dt>Disponibilità</dt><dd>97,1%</dd></dl></div>
 <div class="card"><div class="ct">Assistenza</div><dl class="kv"><dt>Prossima manutenzione</dt><dd>tra 126 ore di marcia</dd><dt>Ultimo intervento</dt><dd>4 nov, da remoto</dd><dt>Contratto</dt><dd>Service Plus</dd><dt>Scadenza</dt><dd>giugno 2027</dd></dl><hr><div class="ct" style="margin-bottom:6px">Ricambi consigliati</div><div class="row sm"><span style="color:var(--ink)">Barra saldante longitudinale</span><span class="sp"></span><span class="mono">RS-L4-018</span></div><div class="row sm" style="margin-top:5px"><span style="color:var(--ink)">Cinghia traino film</span><span class="sp"></span><span class="mono">CT-L4-204</span></div><hr><div class="row">{chip("Allarme A-217 temperatura saldatura","warn")}</div></div></div>'''
     n=nav([("Parco macchine","grid","38"),("Linee","pulse",""),("Allarmi","alert","3"),("Assistenza","wrench",""),("Ricambi","box",""),("Report","chart","")],"Linee")
-    return page("pack","--acc:#1463c9;--acc-soft:#e6f0fc;--bg:#f6f8fb","Tecnopack Service","TP",n,"Linee","Davide Zanetti","Tecnico service","Parco macchine / Dolciaria Sant'Anna / <b>Linea Flowpack L4</b>",
-        '<span class="pill">Cliente: Dolciaria Sant\'Anna</span>',body,
+    return page("pack","--strong:#0f2742;--acc:#1463c9;--acc-soft:#e6f0fc;--bg:#f6f8fb","",LOGO["tp"],n,"Linee","Davide Zanetti","Tecnico service","",
+        tabs(["Tempo reale","Allarmi","Manutenzione","Ricambi","Documenti"],"Tempo reale")+'<span class="pill">Dolciaria Sant\'Anna, Verona</span>',body,
         ".schema{display:flex;align-items:stretch;gap:6px}.st{flex:1;border:1px solid var(--line);border-radius:10px;padding:10px 12px;position:relative}.st i{display:block;width:100%;height:4px;border-radius:9px;margin-bottom:9px}.st b{display:block;font-weight:600;font-size:12.5px}.st span{font-size:11.5px;color:var(--mut)}.schema em{align-self:center;color:#b6bdc9;font-style:normal;font-size:18px}")
 
 # ── 5. Alimentare: genealogia del lotto ──────────────────────────────────────
@@ -129,8 +145,8 @@ def _food():
 <div class="mid"><svg viewBox="0 0 60 300" preserveAspectRatio="none"><path d="M0,150 C40,150 20,38 60,38 M0,150 C40,150 20,112 60,112 M0,150 C40,150 20,188 60,188 M0,150 C40,150 20,262 60,262" fill="none" stroke="#c5ccd8" stroke-width="1.500"/></svg></div>
 <div><p class="gt">A valle · spedizioni e giacenza</p>{ls}</div></div></div>'''
     n=nav([("Lotti","layers",""),("Produzione","cog",""),("Qualità","check","1"),("Allergeni","alert",""),("Spedizioni","truck",""),("Richiami","shield","")],"Lotti")
-    return page("food","--acc:#1c7c54;--acc-soft:#e3f4ec;--bg:#f6f8f6","Orto Valle","OV",n,"Lotti","Francesca Marchetti","Responsabile qualità","Lotti / Conserve / <b>B-10482</b>",
-        '<span class="pill">Stabilimento Parma</span>',body,
+    return page("food","--strong:#15402f;--acc:#1c7c54;--acc-soft:#e3f4ec;--bg:#f6f8f6","",LOGO["ov"],n,"Lotti","Francesca Marchetti","Responsabile qualità","",
+        tabs(["Genealogia","Analisi","Documenti","Spedizioni"],"Genealogia")+'<span class="pill">Stabilimento Parma</span><span class="pill">Linea 2, conserve</span>',body,
         ".gen{display:grid;grid-template-columns:1fr 60px 210px 60px 1fr;align-items:center;height:calc(100% - 30px)}.gt{font-size:11px;letter-spacing:.06em;text-transform:uppercase;color:var(--mut);margin-bottom:6px}.nd{display:grid;grid-template-columns:1fr auto;gap:1px 10px;border:1px solid var(--line);border-radius:9px;padding:11px 13px;margin-bottom:9px}.nd b{font-weight:600}.nd span{color:var(--mut)}.nd small{color:var(--mut);font-size:11.5px}.nd em{font-style:normal;font-weight:550;text-align:right}.mid{height:372px;margin-top:22px}.mid svg{width:100%;height:100%}.core{border:1.500px solid var(--acc);background:var(--acc-soft);border-radius:12px;padding:16px;display:flex;flex-direction:column;gap:5px;align-items:center;text-align:center}.core b{font-size:19px;font-weight:600}")
 
 # ── 6. Farmaceutico: batch record elettronico ────────────────────────────────
@@ -148,6 +164,6 @@ def _pharma():
 <div class="card"><div class="ct">Deviazione DEV-0931<span>minore</span></div><p style="line-height:1.55">Tempo di granulazione 22 min contro 18 previsti. Endpoint raggiunto, parametri di prodotto in specifica.</p><hr><dl class="kv"><dt>Valutazione QA</dt><dd>in corso</dd><dt>Impatto sul rilascio</dt><dd>blocca il rilascio</dd></dl></div>
 <div class="card"><div class="ct">Audit trail<span>24 nov 2026 · non modificabile</span></div>{au}</div></div></div>'''
     n=nav([("Batch record","file","4"),("Deviazioni","alert","1"),("Qualità","check",""),("Lotti","layers",""),("Audit trail","shield","")],"Batch record")
-    return page("pharma","--acc:#12408f;--acc-soft:#e7edf8;--bg:#f5f7fa","Farmaceutici Lariani","FL",n,"Batch record","Sara Fontana","Operatore di produzione","Batch record / In lavorazione / <b>F-22091</b>",
-        '<span class="pill">Reparto Solidi orali</span><span class="pill"><i class="dot"></i>Sessione firmata</span>',body,
+    return page("pharma","--strong:#0e2a5c;--acc:#12408f;--acc-soft:#e7edf8;--bg:#f5f7fa","",LOGO["fl"],n,"Batch record","Sara Fontana","Operatore di produzione","",
+        tabs(["Lavorazione","Materiali","Controlli","Allegati"],"Lavorazione")+'<span class="pill">Reparto Solidi orali</span><span class="pill"><i class="dot"></i>Sessione firmata</span>',body,
         ".n{display:grid;place-items:center;width:22px;height:22px;border-radius:50%;border:1.500px solid var(--line);font-size:11px;font-weight:600;color:var(--mut)}.n.d{background:var(--acc);border-color:var(--acc);color:#fff}.au{display:grid;grid-template-columns:62px 1fr;gap:10px;padding:6px 0;border-bottom:1px solid var(--line)}.au:last-child{border:0}.au span{color:var(--mut);font-size:11.5px;padding-top:1px}.au b{font-weight:600;display:block}.au small{color:var(--mut);font-size:11.5px}td{padding:8px 10px 8px 0}")

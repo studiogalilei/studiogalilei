@@ -878,7 +878,7 @@ const sectorTitle = (s: Sector) => {
 };
 
 const sectorLanding = (s: Sector, i: number): Landing => {
-  const done = s.done === true;
+  const done = s.done !== false;
   return {
     path: `/settori/${s.slug}`,
     kind: "sector",

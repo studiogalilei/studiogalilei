@@ -133,7 +133,31 @@ export function LandingPage({ path }: { path: string }) {
         kicker={page.kicker}
         title={page.title}
       />
-      <Container className="relative z-2 -mt-18 md:-mt-22">
+      {page.image && (
+        <Container className="relative z-2 -mt-24 md:-mt-32">
+          <figure className="overflow-hidden rounded-14 bg-white shadow-surface-3 ring-1 ring-sg/10 md:rounded-18">
+            {/* the window the software runs in */}
+            <div className="flex items-center gap-2 border-b border-line bg-mist px-4 py-2.5 md:px-5 md:py-3">
+              <span className="size-2.5 rounded-full bg-[#E3E6EE]" />
+              <span className="size-2.5 rounded-full bg-[#E3E6EE]" />
+              <span className="size-2.5 rounded-full bg-[#E3E6EE]" />
+            </div>
+            {/* eslint-disable-next-line @next/next/no-img-element -- a static screenshot, already sized and compressed */}
+            <img
+              src={page.image.src}
+              alt={page.image.alt}
+              width={1800}
+              height={1125}
+              fetchPriority="high"
+              className="block h-auto w-full"
+            />
+          </figure>
+          <p className="mt-3 text-13 text-ink/50">
+            Interfaccia d&apos;esempio, con dati dimostrativi.
+          </p>
+        </Container>
+      )}
+      <Container className={page.image ? "pt-10 md:pt-14" : "relative z-2 -mt-18 md:-mt-22"}>
         <div className="rounded-18 border-l-[6px] border-sand-deep bg-white p-7 shadow-surface-3 md:p-12">
           <p className="max-w-[52rem] text-18 leading-1.7 font-medium text-ink md:text-22 md:leading-[1.6]">
             {page.answer}
@@ -143,24 +167,6 @@ export function LandingPage({ path }: { path: string }) {
           </div>
         </div>
       </Container>
-
-      {page.image && (
-        <Container className="pt-10 md:pt-14">
-          <figure>
-            {/* eslint-disable-next-line @next/next/no-img-element -- a static screenshot, already sized and compressed */}
-            <img
-              src={page.image.src}
-              alt={page.image.alt}
-              width={1800}
-              height={1125}
-              className="block h-auto w-full rounded-14 border border-sg/10 shadow-surface-3 md:rounded-18"
-            />
-            <figcaption className="mt-3 text-13 text-ink/55">
-              Esempio di interfaccia. Nomi e dati sono di fantasia.
-            </figcaption>
-          </figure>
-        </Container>
-      )}
 
       {page.stats && (
         <Container className="pt-10 md:pt-14">

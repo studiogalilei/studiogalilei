@@ -1,6 +1,6 @@
 *{box-sizing:border-box;margin:0;padding:0}
 html,body{width:1440px;height:900px;overflow:hidden}
-body{font-family:Inter,system-ui,sans-serif;font-size:13px;line-height:1.45;color:var(--ink);background:var(--bg);-webkit-font-smoothing:antialiased;font-feature-settings:"cv11","ss01","tnum"}
+body{font-family:Poppins,system-ui,sans-serif;font-size:12.5px;line-height:1.45;color:var(--ink);background:var(--bg);-webkit-font-smoothing:antialiased;font-feature-settings:"tnum"}
 :root{--ink:#16202e;--mut:#667085;--line:#e6e9ef;--bg:#f5f6f8;--card:#fff;--acc:#2456d6;--acc-soft:#e8eefc;--side:#fff;--side-ink:#344054;--ok:#12805c;--ok-bg:#e3f6ee;--warn:#b25e09;--warn-bg:#fdf0db;--bad:#c0362c;--bad-bg:#fde8e6;--info:#2456d6;--info-bg:#e8eefc}
 .app{display:grid;grid-template-columns:228px 1fr;height:900px}
 .side{background:var(--side);border-right:1px solid var(--line);padding:18px 12px;display:flex;flex-direction:column;color:var(--side-ink)}
@@ -53,3 +53,39 @@ td.r,th.r{text-align:right;padding-right:0} .mono{font-family:"JetBrains Mono",u
 .kv dt{color:var(--mut)} .kv dd{text-align:right;font-weight:550}
 .sm{font-size:12px;color:var(--mut)}
 hr{border:0;border-top:1px solid var(--line);margin:10px 0}
+
+/* ── come i prodotti veri ── */
+.side{padding:20px 14px}
+.brand{padding:2px 6px 6px;gap:9px;font-size:15px}
+.brand svg{height:30px;width:auto;flex:none}
+.ws{font-size:10px;letter-spacing:.16em;text-transform:uppercase;color:var(--acc);font-weight:600;padding:2px 8px 10px}
+.nav a{padding:9px 11px;border-radius:9px;font-size:12.5px}
+.nav a.on{box-shadow:inset 3px 0 0 var(--acc)}
+.top{height:60px;gap:10px}
+.tabs{display:flex;gap:4px;background:var(--bg);border:1px solid var(--line);border-radius:11px;padding:4px}
+.tabs span{padding:6px 13px;border-radius:8px;color:var(--mut);font-weight:500;white-space:nowrap}
+.tabs span.on{background:var(--card);color:var(--ink);box-shadow:0 1px 2px #0001;font-weight:600}
+.bell{margin-left:auto;width:36px;height:36px;border:1px solid var(--line);border-radius:10px;display:grid;place-items:center;position:relative;color:var(--side-ink);background:var(--card)}
+.bell svg{width:17px;height:17px}.bell i{position:absolute;top:-5px;right:-5px;min-width:16px;height:16px;border-radius:9px;background:#d92d20;color:#fff;font-size:9.5px;font-style:normal;font-weight:700;display:grid;place-items:center}
+.h h1{font-size:21px;color:var(--strong,var(--ink));font-weight:600}
+.h .eyebrow{font-size:10.5px;letter-spacing:.16em;text-transform:uppercase;color:var(--acc);font-weight:600;margin-bottom:2px}
+.card{border-radius:13px;box-shadow:0 1px 2px #0b12220a}
+.ct{font-size:13.5px;color:var(--strong,var(--ink))}
+.kpi{position:relative}
+.kpi strong{color:var(--strong,var(--ink));font-size:24px;font-weight:600;margin-top:10px}
+.kpi small{font-size:12px;color:var(--ink)}
+.kpi u{position:absolute;top:13px;right:14px;width:30px;height:30px;border-radius:9px;background:var(--acc-soft);color:var(--acc);display:grid;place-items:center;text-decoration:none}
+.kpi u svg{width:15px;height:15px}
+.chip{border-radius:7px;height:22px;font-weight:600}
+.chip::before{display:none}
+th{background:var(--bg);padding:8px 10px 8px 0;border-bottom:0;font-size:10.5px;font-weight:500;text-transform:none;letter-spacing:0;font-size:11.5px}
+th:first-child,td:first-child{padding-left:12px} th:first-child{border-radius:8px 0 0 8px} th:last-child{border-radius:0 8px 8px 0;padding-right:12px} td:last-child{padding-right:12px}
+.filters{display:flex;align-items:center;gap:4px;margin-bottom:10px}
+.filters span{padding:5px 11px;border-radius:8px;color:var(--mut);font-size:12px;white-space:nowrap}
+.filters span.on{background:var(--acc-soft);color:var(--acc);font-weight:600}
+.filters em{margin-left:auto;font-style:normal;border:1px solid var(--line);border-radius:9px;padding:6px 12px;color:var(--mut);width:210px;display:flex;gap:7px;align-items:center}
+.filters em svg{width:13px;height:13px}
+.foot{display:flex;align-items:center;gap:8px;color:var(--mut);font-size:11.5px;padding-top:9px}
+.foot b{font-weight:500;border:1px solid var(--line);border-radius:6px;padding:1px 7px;color:var(--ink)}
+.me svg{width:14px;height:14px;margin-left:auto;color:var(--mut)}
+.row>.bar{flex:1}

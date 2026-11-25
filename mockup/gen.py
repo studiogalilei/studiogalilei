@@ -19,6 +19,9 @@ IC = {
  "tag":'<path d="M3 12.500V3.500h9l9 9-9 9z"/><circle cx="7.800" cy="8.300" r="1.300"/>',
  "shield":'<path d="M12 2.500 20 6v6c0 4.500-3.200 8-8 9.500-4.800-1.500-8-5-8-9.500V6z"/>',
  "wrench":'<path d="M14.500 6.500a4.500 4.500 0 0 0 5.800 5.800L11 21.500 7.500 18l9.300-9.300"/><path d="M14.500 6.500 17 4"/>',
+ "bell":'<path d="M6 16.500V11a6 6 0 0 1 12 0v5.500l1.500 2h-15z"/><path d="M10 21h4"/>',
+ "search":'<circle cx="11" cy="11" r="6.500"/><path d="m16 16 4.500 4.500"/>',
+ "down":'<path d="m6 9 6 6 6-6"/>',
  "pulse":'<path d="M2.500 12h4l2.500-7 4 14 2.500-7h6"/>',
 }
 def ic(n): return f'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.700" stroke-linecap="round" stroke-linejoin="round">{IC[n]}</svg>'
@@ -26,15 +29,22 @@ def nav(items, on):
     return "".join(f'<a class="{"on" if n==on else ""}">{ic(i)}{n}{f"<b>{b}</b>" if b else ""}</a>' for n,i,b in items)
 def chip(t,k="ok"): return f'<span class="chip c-{k}">{t}</span>'
 def bar(p,col=None,w=None): return f'<div class="bar"{f" style=width:{w}px" if w else ""}><i style="width:{p}%{f";background:{col}" if col else ""}"></i></div>'
-def kpi(l,v,d="",cls="mu"): return f'<div class="card kpi"><small>{l}</small><strong>{v}</strong><em class="{cls}">{d}</em></div>'
+_KI=["chart","layers","check","box","pulse","file","users","cal"]
+_kn=[0]
+def kpi(l,v,d="",cls="mu",i=None):
+    _kn[0]+=1
+    return f'<div class="card kpi"><u>{ic(i or _KI[_kn[0]%len(_KI)])}</u><small>{l}</small><strong>{v}</strong><em class="{cls}">{d}</em></div>'
 def spark(vals,w=260,h=64,col="var(--acc)"):
     mn,mx=min(vals),max(vals); pts=[(i*w/(len(vals)-1), h-4-(v-mn)/(mx-mn or 1)*(h-10)) for i,v in enumerate(vals)]
     d="M"+" L".join(f"{x:.1f},{y:.1f}" for x,y in pts)
     return f'<svg viewBox="0 0 {w} {h}" width="100%" height="{h}" preserveAspectRatio="none"><path d="{d} L{w},{h} L0,{h}Z" fill="{col}" opacity=".09"/><path d="{d}" fill="none" stroke="{col}" stroke-width="1.800" vector-effect="non-scaling-stroke"/></svg>'
-def page(slug, theme, brand, mark, navs, on, who, role, crumb, pills, body, extra_css=""):
-    return f'''<!doctype html><html lang="it"><head><meta charset="utf-8"><link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;550;600;650;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet"><link rel="stylesheet" href="../base.css"><style>:root{{{theme}}}{extra_css}</style></head><body><div class="app">
-<aside class="side"><div class="brand"><i>{mark}</i>{brand}</div><nav class="nav">{navs}</nav><div class="me"><span class="av">{"".join(w[0] for w in who.split()[:2])}</span><div><b style="font-weight:600">{who}</b><small>{role}</small></div></div></aside>
-<div class="main"><header class="top"><div class="crumb">{crumb}</div><div class="search">Cerca<kbd>⌘K</kbd></div>{pills}</header><div class="body">{body}</div></div></div></body></html>'''
+def tabs(items, on): return '<div class="tabs">'+"".join(f'<span class="{"on" if x==on else ""}">{x}</span>' for x in items)+'</div>'
+def filters(items, on, cerca="Cerca"): return '<div class="filters">'+"".join(f'<span class="{"on" if x==on else ""}">{x}</span>' for x in items)+f'<em>{ic("search")}{cerca}</em></div>'
+def foot(txt, pag="1"): return f'<div class="foot">{txt}<span class="sp"></span>Pagina <b>{pag}</b></div>'
+def page(slug, theme, brand, mark, navs, on, who, role, crumb, pills, body, extra_css="", ws="Workspace", avvisi=2, fonts=""):
+    return f'''<!doctype html><html lang="it"><head><meta charset="utf-8"><link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&family=Cormorant+Garamond:wght@500;600&family=Space+Grotesk:wght@500;600;700{fonts}&display=swap" rel="stylesheet"><link rel="stylesheet" href="../base.css"><style>:root{{{theme}}}{extra_css}</style></head><body><div class="app">
+<aside class="side"><div class="brand">{mark}</div><div class="ws">{ws}</div><nav class="nav">{navs}</nav><div class="me"><span class="av">{"".join(w[0] for w in who.split()[:2])}</span><div><b style="font-weight:600">{who}</b><small>{role}</small></div>{ic("down")}</div></aside>
+<div class="main"><header class="top">{pills}<div class="bell">{ic("bell")}{f"<i>{avvisi}</i>" if avvisi else ""}</div></header><div class="body">{body}</div></div></div></body></html>'''
 PAGES = {}
 def reg(slug): 
     def d(f): PAGES[slug]=f; return f

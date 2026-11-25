@@ -2,10 +2,8 @@
  * One page per industry we have built custom software for (texts from Dramane, 25/11/2026).
  * Each entry becomes an answer page under /settori/<slug> (see pages.ts).
  *
- * The texts are in the present tense ("sviluppiamo"): true whether or not a project in that
- * industry has been delivered. When Dramane confirms a delivered project for an industry, set
- * `done: true` (the heading becomes "Cosa abbiamo sviluppato") and put the past tense back in
- * `answer` and `built` for that entry.
+ * These are industries we have worked in (Dramane, 25/11/2026): the page says "cosa abbiamo
+ * sviluppato". For one where that is not yet true, set `done: false` and it says "sviluppiamo".
  * No results without a measured number: "ridotto i tempi" stays out until we can say by how much.
  */
 
