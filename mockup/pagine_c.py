@@ -531,7 +531,7 @@ def _c_studio():
 <div class="card inc"><div class="ct">Incarichi aperti<span>costo orario medio {costo_h} €, proiezione dalle ore registrate</span></div>
 <table><tr><th>Incarico e cliente</th><th>Fase</th><th>Ore su preventivo</th><th class="r">Proiezione</th><th class="r">Compenso</th><th class="r">Margine</th></tr>{righe}{tot}</table></div>
 <div class="g" style="grid-template-rows:auto 1fr;min-height:0">
-<div class="card"><div class="ct">Ore registrate, da lunedì a oggi<span>{_c_n(t_ts,1)} di {atteso*len(ts)} h</span></div>{tsr}</div>
+<div class="card"><div class="ct">Ore da lunedì a oggi<span>{_c_n(t_ts,1)} di {atteso*len(ts)} h</span></div>{tsr}</div>
 <div class="card" style="overflow:hidden"><div class="ct">Documenti attesi dai clienti<span>{len(doc)} nel portale</span></div>{dcs}</div>
 </div></div>"""
     n = nav([("Settimana","cal",str(aperte)),("Incarichi","c_folder",str(len(inc))),("Timesheet","c_clock",""),("Documenti","file",""),("Portale clienti","users",str(len(doc))),("Fatturazione","c_euro","4"),("Archivio progetti","layers","")],"Settimana")
