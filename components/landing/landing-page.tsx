@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { getLocale } from "next-intl/server";
 import { CtaBand } from "@/components/sections/cta-band";
 import { PageHero } from "@/components/sections/page-hero";
+import { ButtonLink } from "@/components/ui/button";
 import { Container } from "@/components/ui/container";
 import { Link } from "@/i18n/navigation";
 import { LANDING_AUTHOR, LANDING_UPDATED, landingByPath, type Landing } from "@/lib/landing/pages";
@@ -145,9 +146,13 @@ export function LandingPage({ path }: { path: string }) {
           <p className="max-w-[52rem] text-18 leading-1.7 font-medium text-ink md:text-22 md:leading-[1.6]">
             {page.answer}
           </p>
-          <p className="mt-6 text-13 text-ink/55">
-            Aggiornato il {updatedLabel()}. Scritto da {LANDING_AUTHOR.name}, {LANDING_AUTHOR.role}.
-          </p>
+          <div className="mt-7 flex flex-wrap items-center gap-x-6 gap-y-4">
+            <ButtonLink href="/#sg-prenota">Prenota una chiamata</ButtonLink>
+            <p className="text-13 text-ink/55">
+              Aggiornato il {updatedLabel()}. Scritto da {LANDING_AUTHOR.name},{" "}
+              {LANDING_AUTHOR.role}.
+            </p>
+          </div>
         </div>
       </Container>
 

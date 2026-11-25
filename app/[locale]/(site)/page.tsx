@@ -1,3 +1,4 @@
+import { AgenciesBand } from "@/components/home/agencies-band";
 import { Booking } from "@/components/home/booking";
 import { CaseStudies } from "@/components/home/case-studies";
 import { ClientLogos } from "@/components/home/client-logos";
@@ -19,6 +20,7 @@ export default function HomePage() {
       <ServicesGrid />
       <PartnerSection />
       <CaseStudies />
+      <AgenciesBand />
       <CoffeeCta />
       <Booking />
       <WorldMap />

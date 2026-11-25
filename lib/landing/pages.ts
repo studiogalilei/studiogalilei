@@ -634,6 +634,106 @@ export const landings: Landing[] = [
     ],
   },
   {
+    path: "/agenzie-partner",
+    kind: "method",
+    kicker: "Per le agenzie",
+    title: "Porta software e AI ai tuoi clienti, senza costruire un reparto",
+    metaTitle: "Agenzie partner: software e AI per i tuoi clienti",
+    description:
+      "Per agenzie di marketing, web agency e consulenti: i tuoi clienti chiedono gestionali, automazioni e agenti AI, noi li costruiamo. In segnalazione o con il tuo marchio, con un accordo scritto.",
+    answer:
+      "Se sei un'agenzia o un consulente, prima o poi un cliente ti chiede un gestionale, un'automazione o un agente AI. Puoi dire di no, improvvisare, oppure avere un partner che lo costruisce. Noi siamo quel partner: lavoriamo in segnalazione, o dietro il tuo marchio, con un accordo scritto su chi tiene il rapporto con il cliente e su come si divide il compenso.",
+    sections: [
+      {
+        title: "Per chi è",
+        bullets: [
+          "Agenzie di marketing e comunicazione i cui clienti chiedono CRM, automazioni o strumenti interni.",
+          "Web agency che fanno siti ed e-commerce e si fermano dove comincia il gestionale.",
+          "Consulenti di direzione, commercialisti e studi che vedono da vicino i processi dei loro clienti.",
+          "Rivenditori di software che ricevono richieste fuori dal loro prodotto.",
+        ],
+      },
+      {
+        title: "Due modi di lavorare insieme",
+        bullets: [
+          "In segnalazione. Ci presenti il cliente e seguiamo noi il progetto dall'inizio alla fine. A te va un compenso sul lavoro venduto, concordato prima.",
+          "Con il tuo marchio. Il cliente resta tuo e parla con te. Noi costruiamo dietro le quinte, partecipiamo alle riunioni quando serve e tu rivendi il lavoro al tuo prezzo.",
+        ],
+        body: [
+          "In tutti e due i casi il rapporto con il cliente è scritto nell'accordo, prima di incontrarlo: chi lo segue, come ci presentiamo, cosa succede se chiede altro.",
+        ],
+      },
+      {
+        title: "Cosa hai in più da offrire",
+        bullets: [
+          "Gestionali e software su misura, da 5.000 a 80.000 €.",
+          "Automazioni e agenti AI, da 3.000 a 40.000 €.",
+          "Workspace e portali riservati per i clienti dei tuoi clienti.",
+          "Integrazioni con i programmi che l'azienda usa già.",
+          "La ricerca di bandi e contributi che coprono parte dell'investimento: spesso è quello che fa dire di sì.",
+        ],
+      },
+      {
+        title: "Cosa vedi tu",
+        body: [
+          "Ogni agenzia partner ha un'area riservata con i progetti dei suoi clienti: a che punto sono, cosa è stato consegnato, cosa viene dopo. Non devi chiederci aggiornamenti, e hai sempre una risposta pronta quando il cliente chiama te.",
+        ],
+      },
+      {
+        title: "Come lavoriamo sul progetto",
+        body: [
+          "Con lo stesso metodo che usiamo sempre: prima il sistema, poi l'AI. Mappatura dei processi, prototipo, primo modulo in uso, espansione. Un progetto di media complessità richiede 8-10 settimane, e il codice resta del cliente finale.",
+          "Se un progetto non ha senso lo diciamo, a te prima che al cliente. Preferiamo perdere un lavoro che farti fare brutta figura.",
+        ],
+      },
+    ],
+    steps: {
+      title: "Come si comincia",
+      items: [
+        {
+          title: "Ci conosciamo",
+          text: "Una chiamata di 45 minuti, o un caffè nella nostra sede di Treviso. Ci racconti che clienti hai e cosa ti chiedono.",
+        },
+        {
+          title: "Scriviamo l'accordo",
+          text: "Come ci presentiamo, chi tiene il rapporto, come si divide il compenso, riservatezza reciproca sui clienti.",
+        },
+        {
+          title: "Il primo cliente insieme",
+          text: "Partiamo da un caso solo, così vediamo come lavoriamo prima di allargare.",
+        },
+      ],
+    },
+    faqs: [
+      {
+        q: "Quanto guadagna l'agenzia?",
+        a: "Dipende dal modo di lavorare. In segnalazione riconosciamo un compenso sul lavoro venduto, concordato per iscritto prima di incontrare il cliente. Con il tuo marchio decidi tu il prezzo finale e il margine è tuo.",
+      },
+      {
+        q: "Il cliente resta dell'agenzia?",
+        a: "Sì. Lo scriviamo nell'accordo: se lavoriamo con il tuo marchio il cliente parla con te, e in ogni caso non gli proponiamo servizi che fai tu.",
+      },
+      {
+        q: "Serve avere competenze tecniche?",
+        a: "No. A te basta riconoscere il bisogno: un cliente che lavora su fogli sparsi, che ricopia dati a mano o che chiede «qualcosa con l'AI». La parte tecnica, dalla mappatura alla consegna, la facciamo noi.",
+      },
+      {
+        q: "Lavorate solo con agenzie del Veneto?",
+        a: "No, con agenzie e consulenti di tutta Italia. Con chi è vicino a Treviso ci vediamo volentieri di persona.",
+      },
+      {
+        q: "Cosa succede se il progetto va male?",
+        a: "Il progetto parte da un prototipo provato sui casi veri del cliente: se non regge ci si ferma lì, con una spesa piccola. È il modo in cui proteggiamo il tuo rapporto con lui.",
+      },
+    ],
+    related: [
+      "/metodo",
+      "/gestionale-su-misura",
+      "/agenti-ai-per-aziende",
+      "/automazione-processi-aziendali",
+    ],
+  },
+  {
     path: "/metodo",
     kind: "method",
     kicker: "Il metodo Galilei",

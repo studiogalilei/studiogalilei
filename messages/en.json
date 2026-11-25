@@ -81,6 +81,9 @@
     "services": "Services",
     "caseStudies": "Case studies",
     "tourOperator": "Tour operator",
+    "sectors": "Industries",
+    "method": "Method",
+    "agencies": "For agencies",
     "careers": "Work with us",
     "privateArea": "Private Area",
     "contactUs": "Contact us",
@@ -129,7 +132,7 @@
     },
     "partners": {
       "title": "What you get when you work with us",
-      "text": "Every partner has a private portal, a reachable team and a shared plan.",
+      "text": "Every client has a private portal, a team within reach and a shared plan.",
       "groups": [
         {
           "kicker": "In the portal",

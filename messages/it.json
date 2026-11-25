@@ -81,6 +81,9 @@
     "services": "Servizi",
     "caseStudies": "Casi studio",
     "tourOperator": "Tour operator",
+    "sectors": "Settori",
+    "method": "Metodo",
+    "agencies": "Per le agenzie",
     "careers": "Lavora con noi",
     "privateArea": "Area Privata",
     "contactUs": "Contattaci",
@@ -129,7 +132,7 @@
     },
     "partners": {
       "title": "Cosa ricevi quando lavori con noi",
-      "text": "Ogni partner ha un portale riservato, un team raggiungibile e un piano condiviso.",
+      "text": "Ogni cliente ha un portale riservato, un team raggiungibile e un piano condiviso.",
       "groups": [
         {
           "kicker": "Nel portale",
