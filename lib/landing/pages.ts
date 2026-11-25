@@ -7,7 +7,7 @@
  * cases already public on the site), the number before the adjective, the limit said first.
  */
 
-import { sectors, type Sector } from "./sectors";
+import { SECTOR_SHOTS, sectors, type Sector } from "./sectors";
 
 export type LandingFaq = { q: string; a: string };
 export type LandingSection = { title: string; body?: string[]; bullets?: string[] };
@@ -27,6 +27,8 @@ export type Landing = {
   steps?: { title: string; items: LandingStep[] };
   prices?: { title: string; intro: string; rows: LandingPrice[]; note: string };
   caseStudy?: boolean;
+  /** An example screen of the software, shown under the answer. */
+  image?: { src: string; alt: string };
   /** Figures from published studies, each with its source: shown large under the answer. */
   stats?: { value: string; label: string; source: string }[];
   /** The studies quoted on the page, linked. */
@@ -782,6 +784,14 @@ const sectorLanding = (s: Sector, i: number): Landing => {
     kind: "sector",
     kicker: s.name,
     title: `${s.product} ${s.per}`,
+    ...(SECTOR_SHOTS.has(s.slug)
+      ? {
+          image: {
+            src: `/images/settori/${s.slug}.webp`,
+            alt: `Esempio di interfaccia: ${s.product.toLowerCase()} ${s.per}`,
+          },
+        }
+      : {}),
     // the search result title: under 60 characters, the keyword first
     metaTitle: sectorTitle(s),
     description: s.description,

@@ -6,7 +6,7 @@ import { PageHero } from "@/components/sections/page-hero";
 import { Container } from "@/components/ui/container";
 import { Link } from "@/i18n/navigation";
 import { sectorLandings } from "@/lib/landing/pages";
-import { sectors } from "@/lib/landing/sectors";
+import { SECTOR_SHOTS, sectors } from "@/lib/landing/sectors";
 import { SITE_NAME, fullTitle } from "@/lib/metadata";
 import { SITE_URL } from "@/lib/site";
 
@@ -59,6 +59,17 @@ export default function SectorsPage() {
           {sectors.map((s) => (
             <li key={s.slug} className="bg-white">
               <Link href={`/settori/${s.slug}`} className="group block h-full p-7 md:p-8">
+                {SECTOR_SHOTS.has(s.slug) && (
+                  // eslint-disable-next-line @next/next/no-img-element -- a static screenshot
+                  <img
+                    src={`/images/settori/${s.slug}.webp`}
+                    alt=""
+                    loading="lazy"
+                    width={1800}
+                    height={1125}
+                    className="mb-5 block h-auto w-full rounded-10 border border-sg/10"
+                  />
+                )}
                 <h2 className="text-18 font-semibold text-sg group-hover:underline">{s.name}</h2>
                 <p className="mt-2 text-14.5 leading-1.65 text-ink/65">{s.product}</p>
               </Link>

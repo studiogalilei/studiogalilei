@@ -151,6 +151,24 @@ export function LandingPage({ path }: { path: string }) {
         </div>
       </Container>
 
+      {page.image && (
+        <Container className="pt-10 md:pt-14">
+          <figure>
+            {/* eslint-disable-next-line @next/next/no-img-element -- a static screenshot, already sized and compressed */}
+            <img
+              src={page.image.src}
+              alt={page.image.alt}
+              width={1800}
+              height={1125}
+              className="block h-auto w-full rounded-14 border border-sg/10 shadow-surface-3 md:rounded-18"
+            />
+            <figcaption className="mt-3 text-13 text-ink/55">
+              Esempio di interfaccia. Nomi e dati sono di fantasia.
+            </figcaption>
+          </figure>
+        </Container>
+      )}
+
       {page.stats && (
         <Container className="pt-10 md:pt-14">
           <ul className="grid gap-px overflow-hidden rounded-18 bg-line shadow-surface-1 sm:grid-cols-2 lg:grid-cols-4">

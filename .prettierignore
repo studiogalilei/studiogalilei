@@ -8,3 +8,4 @@ legacy
 package-lock.json
 lib/geo/*.json
 presentazione/
+mockup/

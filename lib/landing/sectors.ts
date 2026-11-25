@@ -29,6 +29,19 @@ export type Sector = {
   faqs: { q: string; a: string }[];
 };
 
+/**
+ * Industries with an example screen in public/images/settori/<slug>.webp: real HTML, photographed
+ * (mockup/gen.py), with invented names and data. Shown as an example, never as a client's software.
+ */
+export const SECTOR_SHOTS = new Set([
+  "manifatturiero-meccanico",
+  "moda-abbigliamento",
+  "lusso-accessori",
+  "packaging-macchine-automatiche",
+  "alimentare-beverage",
+  "farmaceutico-medicale",
+]);
+
 export const sectors: Sector[] = [
   {
     slug: "manifatturiero-meccanico",
