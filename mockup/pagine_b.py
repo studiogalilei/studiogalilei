@@ -282,7 +282,7 @@ def _hotel():
 <div class="hr2"><div class="card"><div class="ct">Oggi, mercoledì 25 novembre<span>ore 11:20</span></div><div class="o3"><div><small>Arrivi</small><strong>{len(arrivi)}</strong><em>{fatti} già in camera</em></div><div><small>Partenze</small><strong>{len(partenze)}</strong><em>{usciti} già uscite</em></div><div><small>In casa stanotte</small><strong>{occ[OGGI]}<u>/{NCAM}</u></strong><em>occupazione {round(occ[OGGI]/NCAM*100)}%</em></div></div></div>
 <div class="card"><div class="ct">Arrivi<span>{len(arrivi)} camere</span></div>{ar}</div>
 <div class="card"><div class="ct">Partenze<span>{len(partenze)} camere</span></div>{pa}</div>
-<div class="card" style="flex:1"><div class="ct">Notti vendute per canale<span>{tot_n} notti nei 14 giorni</span></div><div class="stk">{stack}</div>{leg}<hr><dl class="kv"><dt>Opzioni da confermare</dt><dd>{opz}, camera 206 entro gio 26</dd><dt>Richieste particolari di oggi</dt><dd>3, riepilogo pronto</dd></dl></div></div></div></div>'''
+<div class="card" style="flex:1"><div class="ct">Notti vendute per canale<span>{tot_n} notti nei 14 giorni</span></div><div class="stk">{stack}</div>{leg}<div class="sm" style="margin-top:7px;padding-top:7px;border-top:1px solid var(--line);white-space:nowrap">{opz} opzione da confermare: camera 206, entro gio 26 nov</div></div></div></div></div>'''
     css = '''
 .hx{display:flex;flex-direction:column;height:900px;overflow:hidden}
 .hn{height:54px;flex:none;background:#2b2019;color:#e8dccd;display:flex;align-items:center;gap:8px;padding:0 18px}
@@ -498,7 +498,7 @@ def _agri():
 <div class="card"><div class="ct">Quaderno di campagna<span>ultimi 8 giorni</span></div>{filters(["Tutte","Trattamenti","Raccolta","Lavorazioni del terreno","Concimazioni"],"Tutte","Cerca")}<table class="tq"><tr><th>Data</th><th>App.</th><th>Operazione</th><th>Prodotto e dose</th><th class="r">Quantità</th><th>Operatore</th><th class="r">Stato</th></tr>{qr}</table>{foot("8 di 126 registrazioni della campagna, 41 trattamenti")}</div></div>
 <div class="g" style="grid-template-columns:1fr 238px 250px;flex:1;min-height:0">
 <div class="card"><div class="ct">Raccolta e lotti<span>ogni lotto è legato ad appezzamento e trattamenti</span></div><table class="tq"><tr><th>Lotto</th><th>Raccolta</th><th>Prodotto, app.</th><th class="r">Peso, kg</th><th>Destinazione</th><th class="r">Stato</th></tr>{lr}
-<tr class="tt"><td colspan="3"><b>Totale</b><span class="mu" style="margin-left:10px">radicchio {_num(kg_rad)} kg, kiwi {_num(kg_kw)} kg</span></td><td class="r mono">{_num(kg_tot)}</td><td colspan="2" class="mu">resa kiwi {_num(kg_kw/1000/3.80,1)} t/ha su 3,80 ha</td></tr></table></div>
+<tr class="tt"><td colspan="3"><b>Totale</b><span class="mu" style="margin-left:10px">radicchio {_num(kg_rad)} kg, kiwi {_num(kg_kw)} kg</span></td><td class="r mono">{_num(kg_tot)}</td><td colspan="2" class="mu">resa kiwi {_num(kg_kw/1000/3.80,1)} t/ha su 3,80 ha</td></tr></table><div class="prv"><b>Previsione di raccolta</b><span>radicchio, settimana 49: circa 9,5 t da R1 e R2, stimata su lotti e meteo</span></div></div>
 <div class="card"><div class="ct">Scadenze<span>{len(scad)} entro 40 giorni</span></div>{sc}</div>
 <div class="card"><div class="ct">Sensori<span>ore 11:05</span></div><div class="mt"><div><small>Aria</small><b>7,4 °C</b></div><div><small>Umidità</small><b>88%</b></div><div><small>Pioggia 24 h</small><b>3,2 mm</b></div></div><div class="sm" style="margin:9px 0 3px">Umidità del suolo a 30 cm</div>{sl}<hr><div class="row">{chip(f"{n_anom} anomalia","bad")}<span class="sm">R2 sopra soglia</span></div></div></div>'''
     n = nav([("Appezzamenti","map",str(len(app))),("Quaderno","file",str(da_conf)),("Raccolta e lotti","layers",str(len(lotti))),("Sensori e meteo","drop",str(n_anom)),("Magazzino","box",""),("Ordini e spedizioni","truck",""),("Scadenze","cal",str(len(scad)))],"Appezzamenti")
@@ -509,7 +509,7 @@ def _agri():
 .mp text{font-family:Poppins,sans-serif;text-anchor:middle}.mp .cd{font-size:17px;font-weight:700}.mp .ha{font-size:12.5px;font-weight:500;opacity:.9}
 .lcs{display:grid;grid-template-columns:1fr 1fr;gap:3px 18px;margin-top:9px}.lc{display:flex;align-items:center;gap:6px;font-size:11.5px;white-space:nowrap}.lc i{width:10px;height:10px;border-radius:3px;flex:none}.lc em{font-style:normal;color:var(--mut);font-family:"JetBrains Mono",monospace;font-size:10.5px}.lc b{margin-left:auto;font-weight:600}
 .tq td,.tq th{padding-right:8px}.tq td{padding-top:5px;padding-bottom:5px;font-size:12px}.tq td.r+td,.tq th.r+th{padding-left:8px}.selx{margin-top:9px;border-top:1px solid var(--line);padding-top:8px;display:flex;gap:10px;align-items:baseline;font-size:11.5px;white-space:nowrap}.selx b{font-weight:600;color:var(--strong)}.selx span{color:var(--mut)}.sc small,.sc b{white-space:nowrap}.tq .mono{font-size:11.5px}.tq .op{font-weight:600;color:var(--strong)}.tq .chip{height:20px;font-size:11px}
-.pt{display:inline-block;width:8px;height:8px;border-radius:2px;margin-right:7px}
+.prv{display:flex;align-items:center;gap:10px;margin-top:12px;border:1px solid var(--line);border-radius:9px;padding:8px 12px;background:var(--bg);font-size:12px;white-space:nowrap}.prv b{font-weight:600;color:var(--strong)}.prv span{color:var(--mut)}.prv .chip{height:20px;font-size:11px}.pt{display:inline-block;width:8px;height:8px;border-radius:2px;margin-right:7px}
 .filters{margin-bottom:8px}.filters em{width:150px}
 .tt td{border-top:1px solid #d6d2bd;background:#faf9f2}.tt b{font-weight:600}
 .sc{display:grid;grid-template-columns:50px 1fr;gap:10px;align-items:center;padding:4.500px 0;border-bottom:1px solid var(--line)}.sc:last-child{border:0;padding-bottom:0}
@@ -518,3 +518,92 @@ def _agri():
 .sc>div:last-child b{font-weight:600;display:block;color:var(--strong);font-size:12px;line-height:1.3}.sc>div:last-child small{color:var(--mut);font-size:11px;line-height:1.3;display:block}
 .mt{display:grid;grid-template-columns:repeat(3,1fr);gap:6px}.mt div{border:1px solid var(--line);border-radius:8px;padding:5px 8px}.mt small{display:block;color:var(--mut);font-size:10.5px;white-space:nowrap}.mt b{font-weight:600;font-size:14px;color:var(--strong);white-space:nowrap}
 .sd{gap:8px;padding:3px 0;font-size:11.5px}.sd .mono{width:20px;font-weight:500}.sd span{width:92px;white-space:nowrap;color:var(--mut)}.sd>b:last-child{width:30px;text-align:right;font-weight:600}.sd .bar{min-width:30px}''',ws="Gestione dei campi",avvisi=2,fonts="&family=Fraunces:wght@600")
+
+# ── B5. Automotive e componentistica: programmi di consegna, PPAP, PPM, lotti ──
+LOGO.update({
+ "vc": _logo('<svg viewBox="0 0 32 32"><path d="M16 2.500 27.700 9.250v13.500L16 29.500 4.300 22.750V9.250z" fill="none" stroke="#8b83ff" stroke-width="2.400" stroke-linejoin="round"/><path d="m10 11 6 11 6-11" fill="none" stroke="#fff" stroke-width="2.800" stroke-linecap="round" stroke-linejoin="round"/></svg>',
+   '<b style="font-family:Barlow Condensed,sans-serif;font-weight:700;font-size:21px;letter-spacing:.06em;color:#fff;line-height:.95">VENDRAMIN<br><span style="font-size:10.500px;font-weight:600;letter-spacing:.34em;color:#9aa3b2">COMPONENTI</span></b>'),
+})
+@reg("automotive-componentistica")
+def _auto():
+    sett = [("W48","23-27 nov","in corso"),("W49","30 nov-4 dic","fermo"),("W50","7-11 dic","previsione"),("W51","14-18 dic","previsione"),("W52","21-24 dic","previsione"),("W53","28-31 dic","chiusura")]
+    # codice, descrizione, cliente, chiamate per settimana, consegnato W48, giacenza, PPAP (testo, tipo)
+    cod = [("VC-10482","Staffa supporto motore sx","OEM Nord",[4800,4800,5200,5200,2400,0],1920,3100,("Approvato, liv. 3","ok")),
+           ("VC-10483","Staffa supporto motore dx","OEM Nord",[4800,4800,5200,5200,2400,0],1920,2950,("Approvato, liv. 3","ok")),
+           ("VC-20715","Boccola sospensione anteriore","Tier 1 Brenta",[12000,14400,12000,12000,6000,0],4800,5200,("Approvato, liv. 3","ok")),
+           ("VC-20731","Piastra rinforzo montante B","OEM Nord",[3600,3600,3600,4000,1800,0],1440,4100,("Rev. D in approvazione","warn")),
+           ("VC-31120","Leva comando freno a mano","Sistemi Adige",[2000,2400,2400,2400,1200,0],800,1300,("Approvato, liv. 2","ok")),
+           ("VC-31144","Supporto alternatore","Tier 1 Brenta",[6000,6000,5400,5400,3000,0],2400,6800,("Approvato, liv. 3","ok")),
+           ("VC-40208","Traversa sedile posteriore","Sistemi Adige",[1500,1500,1800,1800,900,0],300,150,("Provvisorio al 15 dic","warn")),
+           ("VC-40251","Rinforzo longherone","OEM Nord",[0,0,600,1200,1200,0],0,0,("Campionatura, 13 di 18","info"))]
+    var = {("VC-20715",1):2400,("VC-31144",2):-600}       # variazioni dell'ultimo rilascio EDI
+    tot = [sum(c[3][i] for c in cod) for i in range(6)]
+    cons = sum(c[4] for c in cod); perc = cons/tot[0]*100
+    righe = ""; rischi = 0; ripian = 0
+    for codice, desc, cli, w, fatto, giac, (pt, pk) in cod:
+        celle = ""
+        for i, q in enumerate(w):
+            d = var.get((codice, i))
+            vv = f'<em class="{"vu" if d and d>0 else "vd"}">{"▲ +" if d and d>0 else "▼ "}{_num(d)}</em>' if d else ""
+            if i == 0:
+                celle += f'<td class="wk w0">{"<span class=mu>nessuna chiamata</span>" if q == 0 else f"<div class=row><b class=mono>{_num(fatto)}</b><span class=mono>/ {_num(q)}</span></div>"+bar(round(fatto/q*100), "var(--bad)" if fatto/q < .3 else None)}</td>'
+            else:
+                celle += f'<td class="wk {"fc" if i >= 2 else ""}{" vr" if d else ""}">{"<span class=cz>chiuso</span>" if sett[i][2]=="chiusura" else f"<b class=mono>{_num(q)}</b>{vv}" if q else "<span class=mu>0</span>"}</td>'
+        if w[0] == 0: cop = None; st = chip("Avvio in W50","info")
+        else:
+            cop = giac/(w[0]/5)
+            if cop < 1: st = chip("Rischio ritardo","bad"); rischi += 1
+            elif cop < 2.5: st = chip("Da ripianificare","warn"); ripian += 1
+            else: st = chip("Coperto","ok")
+        righe += f'<tr><td><b class="ds">{desc}</b><div class="sub"><span class="mono">{codice}</span>{cli}</div></td><td>{chip(pt,pk)}</td>{celle}<td class="r mono">{_num(giac)}</td><td class="r mono">{"" if cop is None else _num(cop,1)+" gg"}</td><td class="r">{st}</td></tr>'
+    testa = "".join(f'<th class="wk {"w0" if i==0 else ""}"><b>{a}</b><span>{b}</span><i class="k{i if i<2 else (5 if c=="chiusura" else 2)}">{c}</i></th>' for i,(a,b,c) in enumerate(sett))
+    totr = "".join(f'<td class="wk {"w0" if i==0 else ""}">{f"<div class=row><b class=mono>{_num(cons)}</b><span class=mono>/ {_num(t)}</span></div>" if i==0 else f"<b class=mono>{_num(t)}</b>" if t else ""}</td>' for i,t in enumerate(tot))
+    # PPM per cliente, ultimi 12 mesi: consegnati, non conformi, obiettivo
+    ppm = [("OEM Nord",1248000,31,50),("Tier 1 Brenta",2106000,187,80),("Sistemi Adige",412000,12,100)]
+    pr = ""
+    for cli, pz, nc, ob in ppm:
+        v = nc/pz*1e6; fuori = v > ob
+        pr += f'<div class="pp"><div class="row"><b>{cli}</b><span class="sp"></span><strong class="{"dn" if fuori else ""}">{_num(v)}</strong><small>PPM</small></div><div class="tr2"><i style="width:{min(v/120*100,100):.1f}%;background:{"var(--bad)" if fuori else "var(--ok)"}"></i><u style="left:{ob/120*100:.1f}%"></u></div><div class="row sm" style="white-space:nowrap;font-size:11px"><span>{nc} su {_num(pz)} pezzi</span><span class="sp"></span><span>obiettivo {ob}</span></div></div>'
+    pz_t = sum(x[1] for x in ppm); nc_t = sum(x[2] for x in ppm)
+    # lotti in spedizione oggi: la quantità è la chiamata giornaliera (W48 diviso 5)
+    giorno = {c[0]: c[3][0]//5 for c in cod}
+    lotti = [("P-2511-482","VC-10482","Coil C-88213, S420MC","ASN 0048117","OEM Nord","14:00","Etichettato","ok"),
+             ("P-2511-483","VC-10483","Coil C-88213, S420MC","ASN 0048117","OEM Nord","14:00","Etichettato","ok"),
+             ("P-2511-715","VC-20715","Barra B-5571, 42CrMo4","ASN 0048118","Tier 1 Brenta","16:30","In carico","info"),
+             ("P-2511-208","VC-40208","Coil C-88240, DP600","da emettere","Sistemi Adige","17:00","Bloccato in CQ","bad")]
+    lr = "".join(f'<tr><td class="mono">{a}</td><td class="mono">{b}</td><td class="r mono">{_num(giorno[b])}</td><td>{c.split(",")[0]}</td><td>{e}, {f}</td><td class="r">{chip(g,k)}</td></tr>' for a,b,c,d,e,f,g,k in lotti)
+    pz_oggi = sum(giorno[l[1]] for l in lotti)
+    nc = [("NC-0412","VC-40208","Quota 14,2 fuori tolleranza su 38 pezzi","Selezione al 100%, lotto P-2511-208 fermo","aperta il 24 nov","bad"),
+          ("NC-0409","VC-20715","Bava residua, reclamo di Tier 1 Brenta","Rapporto 8D, risposta entro lun 30 nov","aperta il 19 nov","warn"),
+          ("NC-0398","VC-31144","Cricca in piega, 3 casi in 60 giorni","Stesso stampo ST-144, ricorrenza segnalata","aperta il 12 nov","warn")]
+    nr = "".join(f'<div class="nc"><div class="row"><span class="mono">{a}</span><span class="mono cdx">{b}</span><span class="sp"></span>{chip(e,k)}</div><b>{c}</b><small>{d}</small></div>' for a,b,c,d,e,k in nc)
+    body = f'''<div class="h"><div><h1>Programmi di consegna</h1><p>{len(cod)} codici, 3 clienti. Settimana 48: consegnati {_num(cons)} di {_num(tot[0])} pezzi, {_num(perc)}%</p></div><div class="act">{chip(f"{rischi} codice a rischio ritardo","bad")}{chip(f"{len(var)} variazioni dal cliente","warn")}<button class="btn">Storico rilasci</button><button class="btn p">Ripianifica produzione</button></div></div>
+<div class="card"><div class="row" style="margin-bottom:8px">{filters(["Tutti i clienti","OEM Nord","Tier 1 Brenta","Sistemi Adige"],"Tutti i clienti","Cerca codice")}<span class="sp"></span><span class="edi"><i class="dot"></i>Ultimo rilascio EDI oggi alle 06:10: 3 messaggi, {len(var)} variazioni</span></div>
+<table class="mx"><tr><th>Articolo</th><th>PPAP</th>{testa}<th class="r">Giacenza</th><th class="r">Copertura</th><th class="r">Stato</th></tr>{righe}
+<tr class="tt"><td colspan="2"><b>Totale chiamate</b></td>{totr}<td colspan="3" class="r mu">pezzi, consegne giornaliere dal lunedì al venerdì</td></tr></table></div>
+<div class="g" style="grid-template-columns:246px 1fr 296px;flex:1;min-height:0">
+<div class="card"><div class="ct" style="white-space:nowrap">PPM per cliente<span>12 mesi, totale {_num(nc_t/pz_t*1e6)}</span></div>{pr}</div>
+<div class="card"><div class="ct">Lotti in spedizione oggi<span>{len(lotti)} lotti, {_num(pz_oggi)} pezzi</span></div><table class="tl"><tr><th>Lotto</th><th>Codice</th><th class="r">Pezzi</th><th>Materiale</th><th>Cliente e ritiro</th><th class="r">Stato</th></tr>{lr}</table><div class="sm" style="margin-top:8px;white-space:nowrap">Etichette nel formato del cliente, dal pezzo al coil di origine in un passaggio.</div></div>
+<div class="card"><div class="ct">Non conformità aperte<span>{len(nc)}</span></div>{nr}</div></div>'''
+    n = nav([("Programmi clienti","cal",""),("Pianificazione","grid",""),("Lotti e tracciabilità","layers",""),("Qualità e PPAP","check","3"),("Non conformità","alert",str(len(nc))),("Spedizioni","truck",str(len(lotti))),("Messaggi EDI","file","3")],"Programmi clienti")
+    return page("auto","--strong:#161a22;--acc:#4f46e5;--acc-soft:#eceafd;--bg:#f3f4f7;--line:#e3e5eb;--side:#15181e;--side-ink:#aeb6c4;--info:#4f46e5;--info-bg:#eceafd","",LOGO["vc"],n,"Programmi clienti","Paolo Vendramin","Logistica clienti","",
+        tabs(["Chiamate","Per cliente","Spedizioni","Arretrati"],"Chiamate")+'<span class="pill">Stabilimento di Castelfranco</span><span class="pill">Mer 25 nov 2026, settimana 48</span>',body,
+        '''.side{border-right:0}.ws{color:#8b83ff}.nav a.on{background:#262a3d;color:#fff;box-shadow:inset 3px 0 0 #8b83ff}.nav b{background:#262b34;color:#aeb6c4}.nav a.on b{background:#8b83ff;color:#15181e}.me{border-top-color:#262b34}.me b{color:#fff}.me small{color:#8891a0}.av{background:#262a3d;color:#c9c5ff}
+.body{padding:16px 22px;gap:12px}.btn{white-space:nowrap}.h .act{align-items:center}.h p{white-space:nowrap}
+.card>.row>.filters{margin:0;flex:1}.edi{display:flex;align-items:center;gap:7px;color:var(--mut);font-size:12px;margin-left:14px;white-space:nowrap}
+.bell{color:#344054}.mx td{padding:3.500px 10px 3.500px 0;vertical-align:middle}.mx th{vertical-align:bottom}
+.mx .ds{font-weight:600;color:var(--strong);display:block;line-height:1.3}.mx .sub{color:var(--mut);font-size:11px;line-height:1.3}.mx .sub .mono{font-size:10.5px;margin-right:8px;color:var(--ink)}
+.mx .chip{height:20px;font-size:11px}
+th.wk{text-align:right;line-height:1.25;padding-top:5px;padding-bottom:5px}th.wk b{display:block;font-family:"JetBrains Mono",monospace;font-weight:500;color:var(--ink);font-size:12px}th.wk span{display:block;font-size:10.5px}th.wk i{font-style:normal;font-size:9.5px;text-transform:uppercase;letter-spacing:.07em;font-weight:600}
+.k0{color:var(--acc)}.k1{color:var(--ok)}.k2{color:#98a2b3}.k5{color:#98a2b3}
+td.wk{text-align:right;width:86px}td.wk b{font-weight:500;font-size:12px}td.wk.fc b{color:#7a8496}td.wk em{display:block;font-style:normal;font-size:10px;font-weight:600;line-height:1.1}.vu{color:var(--warn)}.vd{color:var(--info)}
+td.wk.vr{background:var(--warn-bg);box-shadow:inset 0 0 0 1px #f3d9a8}td.wk.vr b{color:var(--ink)}
+td.w0,th.w0{width:150px;background:#f7f6ff;padding-left:12px !important;padding-right:12px !important;text-align:left}th.w0{text-align:left;border-radius:0 !important}
+td.w0 .row{gap:5px;margin-bottom:3px}td.w0 b{font-weight:600}td.w0 span{color:var(--mut);font-size:11px}td.w0 .bar{min-width:0}
+.cz{color:#98a2b3;font-size:11px}
+.tt td{border-top:1px solid #cfd3dc;background:#fafafc}.tt b{font-weight:600}
+.pp{padding:5px 0 7px;border-bottom:1px solid var(--line)}.pp:last-of-type{border:0}.pp b{font-weight:600;color:var(--strong)}.pp strong{font-size:17px;font-weight:600;letter-spacing:-.02em;font-family:"Space Grotesk"}.pp small{color:var(--mut);font-size:10.5px;margin-left:-5px}
+.tr2{position:relative;height:6px;border-radius:9px;background:#eceff4;margin:3px 0 4px}.tr2 i{display:block;height:100%;border-radius:9px}.tr2 u{position:absolute;top:-3px;width:2px;height:12px;background:var(--strong);border-radius:1px}
+.card hr{margin:6px 0}
+.tl td,.tl th{padding-right:8px}.tl td{padding-top:6px;padding-bottom:6px;font-size:12px}.tl td.r+td,.tl th.r+th{padding-left:10px}.tl .mono{font-size:11.5px}.tl .chip{height:20px;font-size:11px}
+.nc small,.nc b{white-space:nowrap}.nc{padding:5px 0;border-bottom:1px solid var(--line)}.nc:last-child{border:0;padding-bottom:0}.nc .mono{font-size:11px;color:var(--mut)}.nc .cdx{color:var(--ink)}.nc b{display:block;font-weight:600;color:var(--strong);font-size:12px;margin-top:2px}.nc small{color:var(--mut);font-size:11px;display:block;line-height:1.35}.nc .chip{height:19px;font-size:10.5px}''',ws="Supply chain",avvisi=3,fonts="&family=Barlow+Condensed:wght@600;700")

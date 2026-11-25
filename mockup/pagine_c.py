@@ -412,7 +412,7 @@ def _c_pa():
 <h2>{s_[2]}</h2><p class="sm">{s_[3]}. Richiedente {s_[4]}, presentata {gsett[s_[1].weekday()]} {dm(s_[1])} 2026</p>
 <div class="tl"><div class="row"><span>Termine di {s_[8]} giorni</span><span class="sp"></span><b>{g} giorni rimasti</b></div><div class="bar"><i style="width:{usati/s_[8]*100:.0f}%"></i></div><div class="row sm"><span>{usati} trascorsi</span><span class="sp"></span><span>scade {gsett[scad.weekday()]} {dm(scad)} 2026</span></div></div>
 <div class="ct" style="margin:10px 0 4px">Iter della pratica<span>{fatti} passi su {len(passi)}</span></div><div class="iter">{it}</div>
-<div class="row dact"><button class="btn">Allegati, 7</button><button class="btn">Richiedi integrazioni</button><span class="sp"></span><button class="btn p">Apri istruttoria</button></div></div></div>"""
+<div class="row dact"><button class="btn">7 allegati</button><button class="btn">Integrazioni</button><span class="sp"></span><button class="btn p">Apri istruttoria</button></div></div></div>"""
     n = nav([("Scrivania","c_inbox",str(len(pr))),("Protocollo","file",""),("Istanze online","c_send",""),("Pagamenti","c_euro",""),("Atti e provvedimenti","c_pen",""),("Cittadini e imprese","users",""),("Statistiche","chart","")],"Scrivania")
     css = """
 body{font-family:'Titillium Web',Poppins,sans-serif;font-size:13.500px}.app{grid-template-columns:212px 1fr;grid-template-rows:900px}.main{min-height:0}.bell{color:var(--strong)}.body{padding:18px 22px}
@@ -441,7 +441,118 @@ tr.sel td{background:#eaf2fb}tr.sel td:first-child{box-shadow:inset 3px 0 0 var(
 .ps.ok i{background:var(--acc);border-color:var(--acc);color:#fff}.ps i svg{width:13px;height:13px}.ps i svg circle{display:none}
 .ps.now i{border-color:var(--acc);box-shadow:0 0 0 3px #d3e4f7}.ps.now i::after{content:'';width:8px;height:8px;border-radius:50%;background:var(--acc)}
 .ps b{font-weight:600;color:var(--strong);font-size:13px}.ps.todo b{color:var(--mut);font-weight:600}.ps small{color:var(--mut);font-size:12px;display:block;line-height:1.3}.ps .mono{font-size:11px;color:var(--mut)}
-.dact{margin-top:auto;padding-top:10px;border-top:1px solid var(--line);gap:8px}
+.dact .btn{white-space:nowrap}.dact{margin-top:auto;padding-top:10px;border-top:1px solid var(--line);gap:8px}
 """
     return page("pa", "--acc:#0066cc;--acc-soft:#e3eefa;--bg:#f2f5f8;--line:#dde3ea;--strong:#17324d;--ink:#1f2d3d;--mut:#5c6f82;--side:#17324d;--side-ink:#c9d6e3;--info:#0059b3;--info-bg:#e3eefa;--warn:#995c00;--warn-bg:#fdf0d9", "", LOGO["c_bsv"], n, "Scrivania", "Laura Moretto", "Istruttore tecnico", "",
         tabs(["Le mie pratiche","Ufficio","Scadenze","Archivio"],"Ufficio")+'<span class="pill">Settore Edilizia e territorio</span><span class="pill"><i class="dot"></i>Protocollo allineato, 25 nov 10:32</span>', body, css, ws="Sportello pratiche", avvisi=in_scad, fonts="&family=Titillium+Web:wght@400;600;700")
+
+
+# ── Studi professionali: settimana, incarichi, ore e portale clienti ─────────
+LOGO.update({
+ "c_tb": _logo('<svg viewBox="0 0 32 32"><rect x="2.500" y="2.500" width="27" height="27" rx="3" fill="#4a3aa7"/><path d="M8 24V8h16" fill="none" stroke="#fff" stroke-width="2.400" stroke-linecap="square"/><path d="M8 13.500a10.500 10.500 0 0 1 10.500 10.500" fill="none" stroke="#c9bff5" stroke-width="2"/><path d="M8 24 24 8" stroke="#c9bff5" stroke-width="1.400"/><circle cx="8" cy="24" r="2.300" fill="#fff"/></svg>',
+   '<b style="font-family:Manrope;font-weight:800;font-size:15.500px;letter-spacing:-.02em;color:#221b4d;white-space:nowrap">Tessari Bonfanti<br><span style="font-size:8.500px;font-weight:600;letter-spacing:.12em;color:#766f96">INGEGNERIA E ARCHITETTURA</span></b>'),
+})
+
+@reg("studi-professionali")
+def _c_studio():
+    import datetime as _dt
+    oggi = _dt.date(2026, 11, 25)
+    mesi = ["gen","feb","mar","apr","mag","giu","lug","ago","set","ott","nov","dic"]
+    gnome = ["Lunedì","Martedì","Mercoledì","Giovedì","Venerdì"]
+    costo_h = 48
+    # codice, incarico, cliente, responsabile, fase, n. fase su 5, ore previste, ore registrate, avanzamento %, compenso
+    inc = [
+        ("26-031","Direzione lavori scuola primaria","Comune di Pieve Alta","E. Tessari","Direzione lavori",4,620,498,82,58000),
+        ("26-044","Progetto esecutivo capannone logistico","Trasporti Vendramin srl","G. Bonfanti","Esecutivo",3,480,352,60,41500),
+        ("26-052","Adeguamento sismico palazzina uffici","Immobiliare Ca' Lunga","G. Bonfanti","Definitivo",2,340,121,40,29800),
+        ("26-058","Pratica antincendio magazzino","Cartotecnica Sile spa","M. Dal Pos","Deposito",4,120,96,85,9600),
+        ("26-063","Ristrutturazione villa bifamiliare","Fam. D. R.","S. Girardi","Autorizzazioni",2,260,88,35,22400),
+        ("26-067","Collaudo statico passerella ciclabile","Unione montana del Cesen","E. Tessari","Collaudo",5,90,84,95,8200),
+        ("26-071","Diagnosi energetica stabilimento","Fonderie Rosada","L. Fabris","Rilievo",1,150,34,24,13500),
+        ("26-074","Piano di sicurezza di cantiere","Edil Piavesella","M. Dal Pos","Prima emissione",1,70,12,18,5900),
+    ]
+    def proj(r): return round(r[7] / (r[8] / 100))
+    def marg(r): return (1 - proj(r) * costo_h / r[9]) * 100
+    oltre = [r for r in inc if proj(r) > r[6]]
+    def riga(r):
+        c, t, cl, resp, fase, nf, prev, reg_, av, comp = r
+        pj = proj(r); over = pj > prev
+        steps = "".join(f'<i class="{"d" if i < nf else ("c" if i == nf else "")}"></i>' for i in range(1, 6))
+        return (f'<tr><td><div class="row" style="gap:8px"><span class="mono cd">{c}</span><b>{t}</b></div><small>{cl}, {resp}</small></td>'
+                f'<td><div class="fs">{steps}</div><small>{fase}, {nf} di 5</small></td>'
+                f'<td><div class="row" style="gap:8px"><div class="bar" style="flex:1"><i style="width:{min(100, reg_/prev*100):.0f}%;background:{"var(--bad)" if over else "var(--acc)"}"></i></div><b class="pc">{reg_/prev*100:.0f}%</b></div><small>{reg_} di {prev} h, lavoro al {av}%</small></td>'
+                f'<td class="r"><b style="color:{"var(--bad)" if over else "inherit"}">{pj} h</b><small>{"+" if pj-prev>0 else "-"}{abs(pj-prev)} h</small></td>'
+                f'<td class="r"><b>{_c_n(comp)} €</b><small>costo {_c_n(pj*costo_h)} €</small></td><td class="r"><b class="mg{" lo" if marg(r) < 35 else ""}">{marg(r):.0f}%</b></td></tr>')
+    righe = "".join(riga(r) for r in inc)
+    t_prev = sum(r[6] for r in inc); t_reg = sum(r[7] for r in inc); t_comp = sum(r[9] for r in inc); t_pj = sum(proj(r) for r in inc)
+    t_marg = (1 - t_pj * costo_h / t_comp) * 100
+    tot = (f'<tr class="tot"><td><b>{len(inc)} incarichi aperti</b></td><td></td><td><b>{_c_n(t_reg)} di {_c_n(t_prev)} h</b></td><td class="r"><b>{_c_n(t_pj)} h</b></td><td class="r"><b>{_c_n(t_comp)} €</b></td><td class="r"><b>{t_marg:.0f}%</b></td></tr>')
+
+    # giorno (0 = lunedì 23), cliente, adempimento, incarico, stato
+    sca = [
+        (0,"Comune di Pieve Alta","Stato di avanzamento n. 4, contabilità","26-031","ok"),
+        (0,"Fonderie Rosada","Sopralluogo e rilievi in stabilimento","26-071","ok"),
+        (1,"Cartotecnica Sile spa","Deposito SCIA antincendio","26-058","ok"),
+        (1,"Immobiliare Ca' Lunga","Invio modello di calcolo al verificatore","26-052","ok"),
+        (2,"Trasporti Vendramin srl","Tavole strutturali, rev. C","26-044","now"),
+        (2,"Fam. D. R.","Integrazioni alla pratica edilizia","26-063","todo"),
+        (2,"Comune di Pieve Alta","Riunione di cantiere, ore 15:00","26-031","todo"),
+        (3,"Unione montana del Cesen","Certificato di collaudo statico","26-067","todo"),
+        (3,"Immobiliare Ca' Lunga","Relazione di calcolo al cliente","26-052","todo"),
+        (4,"Edil Piavesella","Piano di sicurezza, prima emissione","26-074","todo"),
+        (4,"Studio","Fatture di fine mese, 4 fasi concluse","","todo"),
+    ]
+    chiuse = sum(1 for x in sca if x[4] == "ok"); aperte = len(sca) - chiuse
+    lun = _dt.date(2026, 11, 23)
+    def giorno(i):
+        d = lun + _dt.timedelta(days=i); it = [x for x in sca if x[0] == i]
+        ev = "".join(f'<div class="ev {k}"><i></i><div><b>{ad}</b><small>{cl}{"<span class=mono>"+cd+"</span>" if cd else ""}</small></div></div>' for _,cl,ad,cd,k in it)
+        return f'<div class="day{" today" if d == oggi else ""}"><div class="dh"><b>{gnome[i]} {d.day}</b>{"<em>oggi</em>" if d == oggi else ""}<span class="sp"></span><span>{len(it)}</span></div>{ev}</div>'
+    sett = "".join(giorno(i) for i in range(5))
+
+    atteso = 24  # lunedì, martedì e mercoledì
+    ts = [("E. Tessari",22.5),("G. Bonfanti",24.0),("M. Dal Pos",19.0),("S. Girardi",24.5),("L. Fabris",16.0)]
+    t_ts = sum(h for _,h in ts)
+    tsr = "".join(f'<div class="tr"><span>{n}</span><div class="bar"><i style="width:{min(100,h/atteso*100):.0f}%;background:{"#d0871e" if h < atteso-6 else "var(--acc)"}"></i></div><b>{_c_n(h,1)} h</b></div>' for n,h in ts)
+    doc = [
+        ("Fam. D. R.","Atto di proprietà e visura catastale","26-063",_dt.date(2026,11,12),2),
+        ("Immobiliare Ca' Lunga","Relazione geologica del 2019","26-052",_dt.date(2026,11,16),1),
+        ("Trasporti Vendramin srl","Layout scaffalature firmato","26-044",_dt.date(2026,11,18),1),
+        ("Fonderie Rosada","Bollette di energia 2024 e 2025","26-071",_dt.date(2026,11,20),0),
+        ("Edil Piavesella","Cronoprogramma dei lavori","26-074",_dt.date(2026,11,23),0),
+    ]
+    def dr(cl, d, cd, q, sol):
+        g = (oggi - q).days
+        return f'<div class="dc"><div><b>{d}</b><small>{cl}, dal {q.day} {mesi[q.month-1]}{", "+str(sol)+(" sollecito" if sol==1 else " solleciti") if sol else ""}</small></div><span class="chip c-{"bad" if g>=10 else ("warn" if g>=7 else "mu")}">{g} giorni</span></div>'
+    dcs = "".join(dr(*x) for x in doc)
+    body = f"""<div class="h"><div><div class="eyebrow">Settimana 48, dal 23 al 27 novembre 2026</div><h1>Scadenze e incarichi dello studio</h1></div><div class="act">{chip(f"{len(oltre)} incarico oltre il budget di ore","bad")}<button class="btn">Registra ore</button><button class="btn p">Nuovo incarico</button></div></div>
+<div class="card wk"><div class="ct">Scadenze della settimana<span>{len(sca)} in agenda, {chiuse} chiuse, {aperte} da chiudere</span></div><div class="days">{sett}</div></div>
+<div class="g" style="grid-template-columns:1fr 306px;flex:1;min-height:0">
+<div class="card inc"><div class="ct">Incarichi aperti<span>costo orario medio {costo_h} €, proiezione dalle ore registrate</span></div>
+<table><tr><th>Incarico e cliente</th><th>Fase</th><th>Ore su preventivo</th><th class="r">Proiezione</th><th class="r">Compenso</th><th class="r">Margine</th></tr>{righe}{tot}</table></div>
+<div class="g" style="grid-template-rows:auto 1fr;min-height:0">
+<div class="card"><div class="ct">Ore registrate, da lunedì a oggi<span>{_c_n(t_ts,1)} di {atteso*len(ts)} h</span></div>{tsr}</div>
+<div class="card" style="overflow:hidden"><div class="ct">Documenti attesi dai clienti<span>{len(doc)} nel portale</span></div>{dcs}</div>
+</div></div>"""
+    n = nav([("Settimana","cal",str(aperte)),("Incarichi","c_folder",str(len(inc))),("Timesheet","c_clock",""),("Documenti","file",""),("Portale clienti","users",str(len(doc))),("Fatturazione","c_euro","4"),("Archivio progetti","layers","")],"Settimana")
+    css = """
+body{font-family:Manrope,Poppins,sans-serif;font-size:12.500px}.app{grid-template-rows:900px}.main{min-height:0}td.r,th.r{padding-left:8px}.ct{white-space:nowrap}.brand svg{height:32px}.brand{padding-bottom:10px}
+.h h1{font-weight:700;letter-spacing:-.02em}.ct{font-weight:700}.ct span{font-weight:500}.nav a{font-weight:600}.btn{font-weight:700}.chip{font-weight:700}
+.wk{padding:12px 14px 12px}.days{display:grid;grid-template-columns:repeat(5,1fr);gap:8px}
+.day{background:var(--bg);border-radius:9px;padding:8px 9px;border:1px solid transparent;min-width:0}.day.today{background:#fff;border-color:var(--acc);box-shadow:0 0 0 3px var(--acc-soft)}
+.dh{display:flex;align-items:center;gap:6px;margin-bottom:5px}.dh b{font-weight:700;color:var(--strong)}.dh em{font-style:normal;font-size:10px;font-weight:700;background:var(--acc);color:#fff;border-radius:4px;padding:0 5px}.dh span{color:var(--mut);font-weight:600}
+.ev{display:grid;grid-template-columns:8px 1fr;gap:7px;padding:4px 0;border-top:1px solid var(--line)}.ev i{width:8px;height:8px;border-radius:50%;margin-top:4px;border:1.500px solid #b9b4cf;background:#fff}
+.ev.ok i{background:var(--ok);border-color:var(--ok)}.ev.now i{background:#d0871e;border-color:#d0871e}
+.ev b{display:block;font-weight:600;font-size:12px;line-height:1.25;color:var(--strong)}.ev.ok b{color:var(--mut);text-decoration:line-through;text-decoration-color:#c3bfd6}
+.ev small{display:flex;gap:6px;color:var(--mut);font-size:11px;white-space:nowrap}.ev small .mono{font-size:10.500px;margin-left:auto}
+.inc{padding:12px 14px;overflow:hidden}td{padding:6.500px 8px 6.500px 0;line-height:1.3}td small{display:block;color:var(--mut);font-size:11px;margin-top:1px}td b{font-weight:700;color:var(--strong)}
+th{font-weight:600}.cd{font-size:10.500px;color:var(--acc);background:var(--acc-soft);border-radius:4px;padding:1px 5px}
+.fs{display:flex;gap:3px;margin-bottom:3px}.fs i{width:16px;height:5px;border-radius:2px;background:#e4e1ee}.fs i.d{background:#b3a8e6}.fs i.c{background:var(--acc)}
+.pc{width:34px;text-align:right}.mg{color:var(--ok)}.mg.lo{color:var(--bad)}
+.tot td{border-top:1.500px solid var(--strong);border-bottom:0;padding-top:8px}
+.tr{display:grid;grid-template-columns:84px 1fr 50px;gap:10px;align-items:center;padding:3px 0}.tr b{text-align:right;font-weight:700}.tr span{font-weight:500}
+.dc{display:flex;align-items:center;justify-content:space-between;gap:8px;padding:6px 0;border-bottom:1px solid var(--line)}.dc:last-child{border:0}
+.dc b{display:block;font-weight:700;font-size:12px;color:var(--strong);line-height:1.3}.dc small{color:var(--mut);font-size:11px;display:block;line-height:1.35}
+"""
+    return page("studio", "--acc:#4a3aa7;--acc-soft:#ece9f9;--bg:#f5f4f9;--line:#e4e1ee;--strong:#221b4d;--ink:#2a2547;--mut:#6f6a88;--info:#4a3aa7;--info-bg:#ece9f9", "", LOGO["c_tb"], n, "Settimana", "Elena Tessari", "Socia, ingegnere", "",
+        tabs(["Settimana","Mese","Per cliente","Per responsabile"],"Settimana")+'<span class="pill">Tutto lo studio, 5 persone</span><span class="pill"><i class="dot"></i>Timesheet aggiornati a oggi, 12:40</span>', body, css, ws="Studio e incarichi", avvisi=len(oltre), fonts="&family=Manrope:wght@500;600;700;800")
