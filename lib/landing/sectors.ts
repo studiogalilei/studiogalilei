@@ -2,9 +2,10 @@
  * One page per industry we have built custom software for (texts from Dramane, 25/11/2026).
  * Each entry becomes an answer page under /settori/<slug> (see pages.ts).
  *
- * `built` is what we have done in that industry: it is written in the past tense only because
- * the work exists. If an industry is still only something we can do, set `done: false` and the
- * page says "sviluppiamo" instead of "abbiamo sviluppato".
+ * The texts are in the present tense ("sviluppiamo"): true whether or not a project in that
+ * industry has been delivered. When Dramane confirms a delivered project for an industry, set
+ * `done: true` (the heading becomes "Cosa abbiamo sviluppato") and put the past tense back in
+ * `answer` and `built` for that entry.
  * No results without a measured number: "ridotto i tempi" stays out until we can say by how much.
  */
 
@@ -38,7 +39,7 @@ export const sectors: Sector[] = [
     description:
       "MES e gestionali su misura per aziende meccaniche: macchine, magazzino e qualità collegati in tempo reale, OEE in una dashboard, lotti tracciati.",
     answer:
-      "Un software su misura per un'azienda meccanica collega macchine, magazzino e controllo qualità in un unico sistema, al posto dell'ERP personalizzato a strati e dei fogli Excel tenuti in parallelo. Abbiamo sviluppato MES e gestionali che raccolgono i dati dalle macchine in tempo reale, mostrano l'OEE in una sola dashboard e tracciano ogni lotto.",
+      "Un software su misura per un'azienda meccanica collega macchine, magazzino e controllo qualità in un unico sistema, al posto dell'ERP personalizzato a strati e dei fogli Excel tenuti in parallelo. Sviluppiamo MES e gestionali che raccolgono i dati dalle macchine in tempo reale, mostrano l'OEE in una sola dashboard e tracciano ogni lotto.",
     problems: [
       "ERP vecchi, personalizzati negli anni e ormai lenti da far evolvere.",
       "Dati divisi tra produzione, qualità e magazzino, ognuno con il suo file.",
@@ -46,7 +47,7 @@ export const sectors: Sector[] = [
       "Progetti di AI che restano fermi a una linea sola, perché sotto mancano dati affidabili.",
     ],
     built:
-      "MES e gestionali su misura che collegano in tempo reale macchinari, magazzino e controllo qualità. Hanno sostituito i fogli Excel paralleli con dashboard OEE unificate e con la tracciabilità completa dei lotti, e lasciano una base dati pronta per l'AI predittiva.",
+      "MES e gestionali su misura che collegano in tempo reale macchinari, magazzino e controllo qualità. Sostituiscono i fogli Excel paralleli con dashboard OEE unificate e con la tracciabilità completa dei lotti, e lasciano una base dati pronta per l'AI predittiva.",
     modules: [
       "Raccolta dati dalle macchine e avanzamento di produzione in tempo reale.",
       "Dashboard OEE per macchina, linea e turno.",
@@ -84,7 +85,7 @@ export const sectors: Sector[] = [
     description:
       "Software su misura per la moda: matrice stile-colore-taglia, collezioni, campionari e conto lavoro in un sistema solo, collegato a e-commerce e magazzini.",
     answer:
-      "Un software su misura per la moda gestisce in modo nativo quello che un ERP generico regge solo a forza di personalizzazioni: la matrice stile-colore-taglia, le distinte base che cambiano per taglia, le collezioni stagionali, i pre-pack e il conto lavoro. Abbiamo costruito piattaforme che seguono collezioni, campionari, produzione e distribuzione, collegate a e-commerce, showroom digitali e magazzini.",
+      "Un software su misura per la moda gestisce in modo nativo quello che un ERP generico regge solo a forza di personalizzazioni: la matrice stile-colore-taglia, le distinte base che cambiano per taglia, le collezioni stagionali, i pre-pack e il conto lavoro. Costruiamo piattaforme che seguono collezioni, campionari, produzione e distribuzione, collegate a e-commerce, showroom digitali e magazzini.",
     problems: [
       "La matrice stile-colore-taglia, che moltiplica gli articoli e manda in crisi i gestionali pensati per un codice solo.",
       "Distinte base variabili per taglia e collezioni che cambiano ogni stagione.",
@@ -130,7 +131,7 @@ export const sectors: Sector[] = [
     description:
       "Software su misura per il lusso: gestione prodotto, CRM per i clienti più importanti, portali riservati e tracciabilità del singolo pezzo.",
     answer:
-      "Un software su misura per il lusso tiene insieme prodotto, cliente e canale: sa dov'è ogni pezzo, chi l'ha comprato e come va servito, tra boutique, wholesale e clienti privati. Abbiamo realizzato sistemi che uniscono gestione prodotto, CRM per i clienti più importanti, portali riservati e tracciabilità completa.",
+      "Un software su misura per il lusso tiene insieme prodotto, cliente e canale: sa dov'è ogni pezzo, chi l'ha comprato e come va servito, tra boutique, wholesale e clienti privati. Realizziamo sistemi che uniscono gestione prodotto, CRM per i clienti più importanti, portali riservati e tracciabilità completa.",
     problems: [
       "Un livello di servizio al cliente che un software standard non prevede.",
       "Tracciabilità richiesta sul singolo pezzo, non sul lotto.",
@@ -175,7 +176,7 @@ export const sectors: Sector[] = [
     description:
       "Software per costruttori di macchine automatiche: supervisione, raccolta dati, monitoraggio remoto e servizi digitali post-vendita.",
     answer:
-      "Per un costruttore di macchine automatiche il software è ciò che trasforma la macchina in un servizio: raccoglie i dati dagli impianti installati, li mostra al cliente e apre la strada ad assistenza remota e contratti di servizio. Abbiamo sviluppato software di supervisione e piattaforme dati che si collegano alle macchine e abilitano monitoraggio remoto, analisi delle prestazioni e servizi post-vendita.",
+      "Per un costruttore di macchine automatiche il software è ciò che trasforma la macchina in un servizio: raccoglie i dati dagli impianti installati, li mostra al cliente e apre la strada ad assistenza remota e contratti di servizio. Sviluppiamo software di supervisione e piattaforme dati che si collegano alle macchine e abilitano monitoraggio remoto, analisi delle prestazioni e servizi post-vendita.",
     problems: [
       "Il mercato chiede dati e servizi, non più solo la macchina.",
       "Macchine e controllori diversi, ognuno con il suo modo di esporre i dati.",
@@ -220,7 +221,7 @@ export const sectors: Sector[] = [
     description:
       "Gestionali su misura per l'alimentare: tracciabilità lotto per lotto, produzione a batch, rese, scadenze, allergeni, bilance ed etichettatrici.",
     answer:
-      "Un gestionale su misura per l'alimentare ricostruisce in pochi minuti la storia di un lotto, in avanti e indietro: da quali materie prime viene e a quali clienti è arrivato. Abbiamo costruito gestionali verticali con tracciabilità completa, produzione a batch e collegamento a bilance ed etichettatrici, per arrivare pronti ad audit e richiami.",
+      "Un gestionale su misura per l'alimentare ricostruisce in pochi minuti la storia di un lotto, in avanti e indietro: da quali materie prime viene e a quali clienti è arrivato. Costruiamo gestionali verticali con tracciabilità completa, produzione a batch e collegamento a bilance ed etichettatrici, per arrivare pronti ad audit e richiami.",
     problems: [
       "Tracciabilità lotto per lotto in entrambe le direzioni, da ricostruire in fretta quando serve.",
       "Rese variabili, scadenze e allergeni che un gestionale generico non conosce.",
@@ -266,7 +267,7 @@ export const sectors: Sector[] = [
     description:
       "Software su misura per aziende farmaceutiche e medicali: produzione, qualità e distribuzione con batch record, audit trail, tracciabilità e documentazione completa.",
     answer:
-      "Nel farmaceutico il software deve dimostrare, oltre che funzionare: chi ha fatto cosa, quando, e con quale autorizzazione. Abbiamo sviluppato sistemi per produzione, qualità e distribuzione con batch record, audit trail e documentazione completa, pensati per i requisiti del settore.",
+      "Nel farmaceutico il software deve dimostrare, oltre che funzionare: chi ha fatto cosa, quando, e con quale autorizzazione. Sviluppiamo sistemi per produzione, qualità e distribuzione con batch record, audit trail e documentazione completa, pensati per i requisiti del settore.",
     problems: [
       "Requisiti non negoziabili: batch record, audit trail, validazione, sicurezza dei dati.",
       "Sistemi standard che non arrivano ai requisiti più stretti.",
@@ -312,7 +313,7 @@ export const sectors: Sector[] = [
     description:
       "Software su misura per imprese edili: cantieri e commesse, contabilità di cantiere, avanzamento lavori e portale fornitori, in tempo reale.",
     answer:
-      "Un software su misura per l'edilizia porta in ufficio quello che succede in cantiere, mentre succede: avanzamenti, costi, documenti, presenze. Abbiamo realizzato software per la gestione di cantieri e commesse, contabilità di cantiere, portali fornitori e controllo dell'avanzamento lavori.",
+      "Un software su misura per l'edilizia porta in ufficio quello che succede in cantiere, mentre succede: avanzamenti, costi, documenti, presenze. Realizziamo software per la gestione di cantieri e commesse, contabilità di cantiere, portali fornitori e controllo dell'avanzamento lavori.",
     problems: [
       "Dati divisi tra cantiere e ufficio, che si incontrano solo a fine mese.",
       "Nessuna visibilità in tempo reale su costi e avanzamento.",
@@ -357,7 +358,7 @@ export const sectors: Sector[] = [
     description:
       "WMS e software di tracking su misura per logistica e trasporti: inventario affidabile, percorsi di prelievo ottimizzati, integrazione con ERP, e-commerce e corrieri.",
     answer:
-      "Un WMS su misura gestisce il magazzino sulle tue regole: ubicazioni, percorsi di prelievo, priorità, collegamento con ERP, e-commerce e corrieri. Abbiamo sviluppato sistemi di gestione magazzino e di tracking delle spedizioni con ottimizzazione dei percorsi e integrazioni profonde con i sistemi intorno.",
+      "Un WMS su misura gestisce il magazzino sulle tue regole: ubicazioni, percorsi di prelievo, priorità, collegamento con ERP, e-commerce e corrieri. Sviluppiamo sistemi di gestione magazzino e di tracking delle spedizioni con ottimizzazione dei percorsi e integrazioni profonde con i sistemi intorno.",
     problems: [
       "Volumi alti ed eventi in tempo reale che il sistema vecchio non regge.",
       "Inventario che non coincide con quello reale.",
@@ -402,7 +403,7 @@ export const sectors: Sector[] = [
     description:
       "Piattaforme omnicanale su misura per retail e distribuzione: negozi, e-commerce e magazzino collegati, con scorte, assortimenti e promozioni aggiornati in tempo reale.",
     answer:
-      "Una piattaforma omnicanale su misura dà a negozi, e-commerce e magazzino la stessa fotografia delle scorte e degli ordini, nello stesso momento. Abbiamo costruito piattaforme che collegano punti vendita, e-commerce e magazzino, con la gestione di assortimenti, promozioni e inventario in tempo reale.",
+      "Una piattaforma omnicanale su misura dà a negozi, e-commerce e magazzino la stessa fotografia delle scorte e degli ordini, nello stesso momento. Costruiamo piattaforme che collegano punti vendita, e-commerce e magazzino, con la gestione di assortimenti, promozioni e inventario in tempo reale.",
     problems: [
       "Negozi, e-commerce e magazzino centrale che lavorano ognuno sui suoi dati.",
       "Scorte viste in ritardo: articoli esauriti in un canale e fermi in un altro.",
@@ -447,7 +448,7 @@ export const sectors: Sector[] = [
     description:
       "Integrazioni su misura per e-commerce e marketplace: catalogo, ordini, magazzino e spedizioni allineati da soli, senza riconciliazioni manuali.",
     answer:
-      "Un backend su misura per l'e-commerce fa parlare tra loro catalogo, ordini, magazzino, pagamenti, marketplace e corrieri, senza file esportati e riconciliati a mano. Abbiamo sviluppato backend e integrazioni che automatizzano l'intero flusso dall'ordine alla spedizione e reggono i momenti di picco.",
+      "Un backend su misura per l'e-commerce fa parlare tra loro catalogo, ordini, magazzino, pagamenti, marketplace e corrieri, senza file esportati e riconciliati a mano. Sviluppiamo backend e integrazioni che automatizzano l'intero flusso dall'ordine alla spedizione e reggono i momenti di picco.",
     problems: [
       "Catalogo, ordini, magazzino, pagamenti e marketplace che non si parlano.",
       "Esportazioni manuali e riconciliazioni fatte di notte.",
@@ -492,7 +493,7 @@ export const sectors: Sector[] = [
     description:
       "Gestionali di commesse su misura per società di servizi B2B: timesheet, fatturazione ricorrente e portale clienti, sui processi reali dell'azienda.",
     answer:
-      "Un gestionale su misura per una società di servizi lega tra loro le ore lavorate, le commesse e le fatture, e mostra al cliente a che punto è il suo lavoro. Abbiamo creato portali clienti, gestionali di commesse e sistemi di fatturazione ricorrente personalizzati.",
+      "Un gestionale su misura per una società di servizi lega tra loro le ore lavorate, le commesse e le fatture, e mostra al cliente a che punto è il suo lavoro. Creiamo portali clienti, gestionali di commesse e sistemi di fatturazione ricorrente personalizzati.",
     problems: [
       "Fatturazione, timesheet e gestione clienti troppo particolari per un software generico.",
       "Giri manuali continui per far tornare ore, commesse e fatture.",
@@ -537,7 +538,7 @@ export const sectors: Sector[] = [
     description:
       "Software su misura per cliniche e poliambulatori privati: pazienti, appuntamenti, cartelle cliniche e fatturazione, con portale pazienti e protezione dei dati sanitari.",
     answer:
-      "Un software su misura per una clinica privata tiene in un unico sistema pazienti, appuntamenti, cartelle e fatture, con la protezione che i dati sanitari richiedono. Abbiamo realizzato software per la gestione di pazienti, appuntamenti, cartelle cliniche e fatturazione, con portali per i pazienti e integrazioni sicure.",
+      "Un software su misura per una clinica privata tiene in un unico sistema pazienti, appuntamenti, cartelle e fatture, con la protezione che i dati sanitari richiedono. Realizziamo software per la gestione di pazienti, appuntamenti, cartelle cliniche e fatturazione, con portali per i pazienti e integrazioni sicure.",
     problems: [
       "GDPR, Fascicolo Sanitario Elettronico e fatturazione elettronica da rispettare insieme.",
       "Sistemi diversi per agenda, cartelle e amministrazione.",
@@ -582,7 +583,7 @@ export const sectors: Sector[] = [
     description:
       "PMS su misura per hotel e strutture ricettive: prenotazioni, tariffe e canali di vendita in un sistema solo, senza riconciliazioni a mano.",
     answer:
-      "Un PMS su misura fa lavorare insieme prenotazioni, tariffe, canali di vendita e amministrazione, senza fogli di calcolo in mezzo. Abbiamo sviluppato PMS personalizzati e sistemi integrati di revenue e prenotazioni per strutture ricettive, oltre al software che due tour operator usano ogni giorno.",
+      "Un PMS su misura fa lavorare insieme prenotazioni, tariffe, canali di vendita e amministrazione, senza fogli di calcolo in mezzo. Sviluppiamo PMS personalizzati e sistemi integrati di revenue e prenotazioni per strutture ricettive, e abbiamo già in uso ogni giorno il software di due tour operator.",
     problems: [
       "Revenue management, channel manager, gestionale e marketing che non si parlano.",
       "Tariffe e disponibilità aggiornate a mano su più sistemi.",
@@ -627,7 +628,7 @@ export const sectors: Sector[] = [
     description:
       "Piattaforme su misura per energia e utilities: monitoraggio degli impianti, gestione dei clienti e reportistica per gli adempimenti, con i dati in un unico posto.",
     answer:
-      "Una piattaforma su misura per l'energia raccoglie i dati degli impianti e dei clienti in un posto solo, e da lì produce monitoraggio, report e adempimenti. Abbiamo costruito piattaforme di monitoraggio e di gestione clienti su misura, con reportistica normativa e strumenti per l'efficienza energetica.",
+      "Una piattaforma su misura per l'energia raccoglie i dati degli impianti e dei clienti in un posto solo, e da lì produce monitoraggio, report e adempimenti. Costruiamo piattaforme di monitoraggio e di gestione clienti su misura, con reportistica normativa e strumenti per l'efficienza energetica.",
     problems: [
       "Dati degli impianti chiusi nei sistemi dei singoli produttori.",
       "Gestione clienti e adempimenti su strumenti separati.",
@@ -672,7 +673,7 @@ export const sectors: Sector[] = [
     description:
       "Software su misura per aziende agricole e agroindustria: gestione dei campi, tracciabilità dal campo al consumatore, sensori e logistica collegati ai canali di vendita.",
     answer:
-      "Un software su misura per l'agroindustria segue il prodotto dal campo al cliente: appezzamenti, lavorazioni, raccolta, lotti, spedizioni. Abbiamo realizzato sistemi di gestione dei campi, tracciabilità e logistica, integrati con sensori e canali di vendita.",
+      "Un software su misura per l'agroindustria segue il prodotto dal campo al cliente: appezzamenti, lavorazioni, raccolta, lotti, spedizioni. Realizziamo sistemi di gestione dei campi, tracciabilità e logistica, integrati con sensori e canali di vendita.",
     problems: [
       "Tracciabilità richiesta dal campo fino al consumatore.",
       "Dati di sensori e macchine che restano nelle loro app.",
@@ -717,7 +718,7 @@ export const sectors: Sector[] = [
     description:
       "Software su misura per fornitori automotive: produzione just-in-time, qualità e supply chain con tracciabilità del pezzo e scambio dati con i costruttori.",
     answer:
-      "Un software su misura per un fornitore automotive tiene allineata la produzione alle chiamate del cliente e traccia ogni pezzo. Abbiamo sviluppato sistemi di gestione della produzione e della supply chain con tracciabilità completa e integrazioni verso i sistemi dei clienti costruttori.",
+      "Un software su misura per un fornitore automotive tiene allineata la produzione alle chiamate del cliente e traccia ogni pezzo. Sviluppiamo sistemi di gestione della produzione e della supply chain con tracciabilità completa e integrazioni verso i sistemi dei clienti costruttori.",
     problems: [
       "Consegne just-in-time, senza margine di errore.",
       "Tracciabilità del pezzo chiesta dal cliente.",
@@ -762,7 +763,7 @@ export const sectors: Sector[] = [
     description:
       "Gestionali su misura per aziende chimiche e di materiali: ricette e formule, lotti, sicurezza e tracciabilità, con attenzione alle normative ambientali.",
     answer:
-      "Un gestionale su misura per la chimica gira intorno alla ricetta e al lotto: cosa c'è dentro, in che quantità, da quale materia prima, con quali rischi. Abbiamo creato gestionali con gestione di ricette, lotti e sicurezza, centrati su tracciabilità e normative ambientali.",
+      "Un gestionale su misura per la chimica gira intorno alla ricetta e al lotto: cosa c'è dentro, in che quantità, da quale materia prima, con quali rischi. Creiamo gestionali con gestione di ricette, lotti e sicurezza, centrati su tracciabilità e normative ambientali.",
     problems: [
       "Ricette e formule con versioni, da proteggere.",
       "Lotti da tracciare dalle materie prime al prodotto finito.",
@@ -807,7 +808,7 @@ export const sectors: Sector[] = [
     description:
       "Piattaforme editoriali su misura per i media: gestione dei contenuti, flussi di redazione, diritti e distribuzione digitale.",
     answer:
-      "Una piattaforma editoriale su misura segue il contenuto dall'idea alla pubblicazione, con i passaggi di redazione, i diritti e i canali di distribuzione. Abbiamo realizzato piattaforme di gestione dei contenuti e flussi editoriali su misura, pensati per la produzione e la distribuzione digitale.",
+      "Una piattaforma editoriale su misura segue il contenuto dall'idea alla pubblicazione, con i passaggi di redazione, i diritti e i canali di distribuzione. Realizziamo piattaforme di gestione dei contenuti e flussi editoriali su misura, pensati per la produzione e la distribuzione digitale.",
     problems: [
       "Flussi di redazione che un CMS generico non rispecchia.",
       "Diritti su testi, foto e video difficili da seguire.",
@@ -852,7 +853,7 @@ export const sectors: Sector[] = [
     description:
       "Software gestionali e portali per il cittadino su misura per enti locali: processi interni e servizi online progettati su sicurezza, accessibilità e norme della PA.",
     answer:
-      "Un software su misura per un ente locale digitalizza i processi interni e i servizi al cittadino rispettando sicurezza, accessibilità e regole della Pubblica Amministrazione. Abbiamo sviluppato software gestionali e portali per il cittadino su misura, con attenzione a sicurezza, facilità d'uso e conformità.",
+      "Un software su misura per un ente locale digitalizza i processi interni e i servizi al cittadino rispettando sicurezza, accessibilità e regole della Pubblica Amministrazione. Sviluppiamo software gestionali e portali per il cittadino su misura, con attenzione a sicurezza, facilità d'uso e conformità.",
     problems: [
       "Processi interni e protocolli ancora in parte su carta.",
       "Servizi al cittadino da portare online in modo semplice.",
@@ -897,7 +898,7 @@ export const sectors: Sector[] = [
     description:
       "Software su misura per studi tecnici, di consulenza e società di ingegneria: progetti, timesheet, documenti e portale clienti in un unico sistema.",
     answer:
-      "Un software su misura per uno studio professionale mette insieme progetti, ore, documenti e clienti, e dice in ogni momento quanto è costato un incarico e a che punto è. Abbiamo costruito sistemi di project management, timesheet e documentazione con portali clienti e strumenti di collaborazione.",
+      "Un software su misura per uno studio professionale mette insieme progetti, ore, documenti e clienti, e dice in ogni momento quanto è costato un incarico e a che punto è. Costruiamo sistemi di project management, timesheet e documentazione con portali clienti e strumenti di collaborazione.",
     problems: [
       "Progetti, ore e documenti seguiti su strumenti diversi.",
       "Timesheet compilati a fine mese, a memoria.",

@@ -639,7 +639,7 @@ const sectorTitle = (s: Sector) => {
 };
 
 const sectorLanding = (s: Sector, i: number): Landing => {
-  const done = s.done !== false;
+  const done = s.done === true;
   return {
     path: `/settori/${s.slug}`,
     kind: "sector",
