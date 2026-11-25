@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
-"""Le schermate d'esempio dei settori: HTML vero, fotografato con Chrome (1440x900).
+"""Le schermate d'esempio dei settori: HTML vero, fotografato a 1440x900 (Chrome sul Mac, Playwright altrove).
 Dati inventati e coerenti, aziende di fantasia. Uso: python3 gen.py [slug ...]"""
-import pathlib, subprocess, sys
+import pathlib, shutil, subprocess, sys
 QUI = pathlib.Path(__file__).parent
 IC = {
  "grid":'<rect x="3" y="3" width="7" height="7" rx="1.5"/><rect x="14" y="3" width="7" height="7" rx="1.5"/><rect x="3" y="14" width="7" height="7" rx="1.5"/><rect x="14" y="14" width="7" height="7" rx="1.5"/>',
@@ -49,12 +49,26 @@ PAGES = {}
 def reg(slug): 
     def d(f): PAGES[slug]=f; return f
     return d
-exec((QUI/"pagine.py").read_text())
-def shoot(slug):
-    out=QUI/"out"; html=out/f"{slug}.html"; png=out/f"{slug}.png"
-    html.write_text(PAGES[slug]())
-    subprocess.run(["/Applications/Google Chrome.app/Contents/MacOS/Google Chrome","--headless=new","--disable-gpu","--hide-scrollbars","--force-device-scale-factor=2","--window-size=1440,900","--virtual-time-budget=6000",f"--screenshot={png}",f"file://{html}"],capture_output=True)
+# pagine.py e gli altri file pagine_*.py: una funzione per settore
+for _f in sorted(QUI.glob("pagine*.py")): exec(_f.read_text())
+def shoot(slugs):
+    """Scrive l'HTML e lo fotografa. Sul Mac con Chrome e cwebp, altrove con Playwright e sharp
+    (mockup/shoot.mjs): 1440x900 a scala 2, poi webp largo 1800."""
+    out=QUI/"out"; out.mkdir(exist_ok=True)
+    for slug in slugs: (out/f"{slug}.html").write_text(PAGES[slug]())
     dest=QUI.parent/"public/images/settori"; dest.mkdir(exist_ok=True)
-    subprocess.run(["cwebp","-quiet","-q","84","-resize","1800","0",str(png),"-o",str(dest/f"{slug}.webp")])
-    print("ok",slug)
-for s in (sys.argv[1:] or PAGES): shoot(s)
+    chrome=pathlib.Path("/Applications/Google Chrome.app/Contents/MacOS/Google Chrome")
+    if chrome.exists() and shutil.which("cwebp"):
+        for slug in slugs:
+            html=out/f"{slug}.html"; png=out/f"{slug}.png"
+            subprocess.run([str(chrome),"--headless=new","--disable-gpu","--hide-scrollbars","--force-device-scale-factor=2","--window-size=1440,900","--virtual-time-budget=6000",f"--screenshot={png}",f"file://{html}"],capture_output=True)
+            subprocess.run(["cwebp","-quiet","-q","84","-resize","1800","0",str(png),"-o",str(dest/f"{slug}.webp")])
+            print("ok",slug)
+    else:
+        subprocess.run(["node",str(QUI/"shoot.mjs"),*slugs],check=True)
+# --html: scrive solo l'HTML in mockup/out, senza fotografare
+_args=[a for a in sys.argv[1:] if not a.startswith("--")]
+if "--html" in sys.argv:
+    (QUI/"out").mkdir(exist_ok=True)
+    for s in (_args or PAGES): (QUI/"out"/f"{s}.html").write_text(PAGES[s]()); print("html",s)
+else: shoot(_args or list(PAGES))
