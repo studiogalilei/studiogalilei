@@ -86,7 +86,7 @@ const STEPS_AI: LandingStep[] = [
   },
   {
     title: "Ampliamo",
-    text: "Quando il primo compito funziona, aggiungiamo il successivo. Un pezzo alla volta.",
+    text: "Quando il primo compito funziona aggiungiamo il successivo, un pezzo alla volta.",
   },
 ];
 
@@ -99,7 +99,7 @@ export const landings: Landing[] = [
     metaTitle: "Gestionale su misura: sviluppo, costi e tempi",
     description:
       "Sviluppiamo gestionali su misura per le PMI: costruiti sui tuoi processi, rilasciati un modulo alla volta, con l'AI dove serve. Progetti da 5.000 a 80.000 €, codice di tua proprietà.",
-    answer: `Un gestionale su misura è un software costruito sui processi della tua azienda, invece di adattare l'azienda a un programma già fatto. Lo sviluppiamo a moduli: prima la parte che oggi ti fa perdere più tempo, poi il resto. I nostri progetti vanno ${SOFTWARE_RANGE}, secondo quanti moduli e quante integrazioni servono. Il codice resta tuo.`,
+    answer: `Un gestionale su misura è un software costruito sui processi della tua azienda, invece di adattare l'azienda a un programma già fatto. Lo sviluppiamo a moduli, prima la parte che oggi ti fa perdere più tempo e poi il resto. I nostri progetti vanno ${SOFTWARE_RANGE}, secondo quanti moduli e quante integrazioni servono, e il codice resta tuo.`,
     sections: [
       {
         title: "Quando conviene un gestionale su misura",
@@ -110,7 +110,7 @@ export const landings: Landing[] = [
           "Vuoi che clienti, fornitori o collaboratori entrino in un'area riservata e vedano solo quello che li riguarda.",
         ],
         body: [
-          "Quando non conviene: se un programma già pronto copre quasi tutto quello che fai, costa meno e si parte prima. In quel caso te lo diciamo, anche se il lavoro lo perderemmo noi.",
+          "Non conviene quando un programma già pronto copre quasi tutto quello che fai: costa meno, si parte prima, e in quel caso te lo diciamo anche se il lavoro lo perdiamo noi.",
         ],
       },
       {
@@ -127,7 +127,7 @@ export const landings: Landing[] = [
       {
         title: "Di chi è il software",
         body: [
-          "Tuo. Codice, documentazione, account e dati restano a tua disposizione. Se un giorno vuoi farlo seguire da qualcun altro, puoi.",
+          "È tuo: codice, documentazione, account e dati restano a tua disposizione, e se un giorno vuoi farlo seguire da qualcun altro puoi farlo.",
         ],
       },
     ],
@@ -162,7 +162,7 @@ export const landings: Landing[] = [
       },
       {
         q: "Il codice resta mio?",
-        a: "Sì. Il software che costruiamo è tuo: codice, documentazione, account e dati restano a tua disposizione.",
+        a: "Sì, il software che costruiamo è tuo: codice, documentazione, account e dati restano a tua disposizione.",
       },
       {
         q: "Si collega ai programmi che uso già?",
@@ -182,7 +182,7 @@ export const landings: Landing[] = [
       },
       {
         q: "Lavorate solo in Veneto?",
-        a: "No. Siamo a Treviso e incontriamo volentieri di persona le aziende del Veneto, ma lavoriamo in tutta Italia e all'estero: due nostri software sono in uso in Texas e in Italia.",
+        a: "No, siamo a Treviso e incontriamo volentieri di persona le aziende del Veneto, ma lavoriamo in tutta Italia e all'estero: due nostri software sono in uso in Texas e in Italia.",
       },
     ],
     related: [
@@ -199,7 +199,7 @@ export const landings: Landing[] = [
     title: "Agenti AI per aziende: cosa fanno e come li costruiamo",
     metaTitle: "Agenti AI per aziende e PMI: sviluppo su misura",
     description:
-      "Costruiamo agenti AI su misura per le PMI, collegati ai programmi che usi già: leggono richieste e documenti, preparano risposte e azioni, con una persona al controllo. Da 3.000 a 40.000 €.",
+      "Costruiamo agenti AI su misura per le PMI, collegati ai programmi che usi già: leggono richieste e documenti, preparano risposte e azioni, con una persona al controllo, da 3.000 a 40.000 €.",
     answer: `Un agente AI è un software che usa un modello di intelligenza artificiale per portare a termine un compito: legge una richiesta, cerca i dati nei tuoi sistemi, prepara la risposta o compie l'azione, e passa la mano a una persona quando serve. Li costruiamo su misura, collegati ai programmi che usi già. I progetti di AI e automazione vanno ${AI_RANGE}.`,
     sections: [
       {
@@ -215,7 +215,7 @@ export const landings: Landing[] = [
       {
         title: "Cosa non fa, e i limiti da conoscere prima",
         body: [
-          "Un agente sbaglia. Per questo lo misuriamo su casi veri prima di accenderlo, e lo teniamo sotto controllo dopo.",
+          "Un agente sbaglia, e per questo lo misuriamo su casi veri prima di accenderlo e lo teniamo sotto controllo dopo.",
           "Non decide da solo sui passaggi delicati: prezzi, contratti, reclami e pagamenti restano a una persona che approva.",
           "Non sostituisce un processo che non esiste. Se oggi il lavoro è disordinato, prima si mette ordine con un sistema, poi si aggiunge l'AI.",
         ],
@@ -223,7 +223,7 @@ export const landings: Landing[] = [
       {
         title: "Agente AI e chatbot: la differenza",
         body: [
-          "Un chatbot risponde a domande. Un agente fa un lavoro: entra nei tuoi sistemi, legge e scrive dati, e porta il compito fino in fondo. Un chatbot ti dice gli orari, un agente sposta la prenotazione.",
+          "Un chatbot risponde a domande, mentre un agente fa un lavoro: entra nei tuoi sistemi, legge e scrive dati e porta il compito fino in fondo. Il chatbot ti dice gli orari, l'agente sposta la prenotazione.",
         ],
       },
       {
@@ -267,7 +267,7 @@ export const landings: Landing[] = [
       },
       {
         q: "Si collega al mio gestionale?",
-        a: "Sì, quando il gestionale permette di leggere e scrivere dati dall'esterno. Lo verifichiamo all'inizio. Se non lo permette, si lavora su esportazioni, email e documenti, oppure si valuta un gestionale su misura.",
+        a: "Sì, quando il gestionale permette di leggere e scrivere dati dall'esterno, cosa che verifichiamo all'inizio. Se non lo permette si lavora su esportazioni, email e documenti, oppure si valuta un gestionale su misura.",
       },
       {
         q: "Cosa chiede il regolamento europeo sull'AI?",
@@ -275,11 +275,11 @@ export const landings: Landing[] = [
       },
       {
         q: "E se l'agente sbaglia?",
-        a: "Succede, e va messo in conto. Per questo misuriamo gli errori su casi veri prima di accenderlo, all'inizio facciamo approvare tutto a una persona e teniamo traccia di ogni azione, così un errore si vede e si corregge.",
+        a: "Succede, e va messo in conto: per questo misuriamo gli errori su casi veri prima di accenderlo, all'inizio facciamo approvare tutto a una persona e teniamo traccia di ogni azione, così un errore si vede e si corregge.",
       },
       {
         q: "Da dove si comincia?",
-        a: "Da un compito solo, quello ripetitivo che ti costa più ore. Costruiamo un prototipo, lo proviamo sui tuoi casi veri e misuriamo. Se i numeri non reggono, ci fermiamo lì.",
+        a: "Da un compito solo, quello ripetitivo che ti costa più ore: costruiamo un prototipo, lo proviamo sui tuoi casi veri e misuriamo, e se i numeri non reggono ci fermiamo lì.",
       },
     ],
     related: [
@@ -296,7 +296,7 @@ export const landings: Landing[] = [
     title: "Automazione dei processi aziendali con l'AI",
     metaTitle: "Automazione dei processi aziendali con l'AI per PMI",
     description:
-      "Automatizziamo il lavoro ripetitivo delle PMI: dati ricopiati a mano, solleciti, report, passaggi tra programmi. Con l'AI dove serve e una persona al controllo. Da 3.000 a 40.000 €.",
+      "Automatizziamo il lavoro ripetitivo delle PMI: dati ricopiati a mano, solleciti, report, passaggi tra programmi, con l'AI dove serve e una persona al controllo. Da 3.000 a 40.000 €.",
     answer: `Automatizzare un processo vuol dire far fare al software il lavoro ripetitivo che oggi fanno le persone: ricopiare dati, mandare solleciti, preparare report, passare informazioni da un programma all'altro. Con l'AI si automatizzano anche i passaggi dove c'è da leggere e capire un testo. I nostri progetti vanno ${AI_RANGE}.`,
     sections: [
       {
@@ -347,7 +347,7 @@ export const landings: Landing[] = [
       },
       {
         q: "Devo cambiare i programmi che uso?",
-        a: "No. Colleghiamo l'automazione agli strumenti che usi già. Cambiarli ha senso solo se sono loro a bloccare il lavoro, e in quel caso te lo diciamo prima.",
+        a: "No, colleghiamo l'automazione agli strumenti che usi già. Cambiarli ha senso solo se sono loro a bloccare il lavoro, e in quel caso te lo diciamo prima.",
       },
       {
         q: "Le persone vengono sostituite?",
@@ -355,7 +355,7 @@ export const landings: Landing[] = [
       },
       {
         q: "Come capisco se ne vale la pena?",
-        a: "Contando le ore. Durante la mappatura misuriamo quanto tempo porta via oggi quel lavoro e lo confrontiamo con il costo dell'automazione. Se il conto non torna, non la facciamo.",
+        a: "Contando le ore: durante la mappatura misuriamo quanto tempo porta via oggi quel lavoro e lo confrontiamo con il costo dell'automazione, e se il conto non torna non la facciamo.",
       },
     ],
     related: [
@@ -389,7 +389,7 @@ export const landings: Landing[] = [
         title: "Perché una software house vicina",
         body: [
           "Un gestionale si costruisce guardando come lavora l'azienda. Di persona si capisce in un'ora quello che in videochiamata richiede tre riunioni: per questo, con le aziende di Treviso e del Veneto, la prima mappatura la facciamo volentieri da te, in ufficio o in reparto.",
-          "Non è un obbligo. Seguiamo progetti anche a distanza: due nostri software per tour operator sono in uso ogni giorno in Texas e in Italia.",
+          "Non è un obbligo, perché seguiamo progetti anche a distanza: due nostri software per tour operator sono in uso ogni giorno in Texas e in Italia.",
         ],
       },
       {
@@ -428,11 +428,11 @@ export const landings: Landing[] = [
     faqs: [
       {
         q: "Dove si trova Studio Galilei?",
-        a: "A Treviso. La sede legale è a Crocetta del Montello (TV), in Via Francesco Baracca 81. Riceviamo su appuntamento: basta scriverci o prenotare una chiamata dal sito.",
+        a: "A Treviso, con sede legale a Crocetta del Montello (TV), in Via Francesco Baracca 81. Riceviamo su appuntamento: basta scriverci o prenotare una chiamata dal sito.",
       },
       {
         q: "Lavorate solo con aziende di Treviso?",
-        a: "No. Lavoriamo con aziende di tutto il Veneto, del resto d'Italia e dell'estero. Con chi è in zona facciamo volentieri il primo incontro di persona.",
+        a: "No, lavoriamo con aziende di tutto il Veneto, del resto d'Italia e dell'estero, e con chi è in zona facciamo volentieri il primo incontro di persona.",
       },
       {
         q: "Che tipo di software sviluppate?",
@@ -444,7 +444,7 @@ export const landings: Landing[] = [
       },
       {
         q: "Posso passare in sede?",
-        a: "Sì, su appuntamento. Scrivici o prenota una chiamata conoscitiva dal sito e fissiamo un orario.",
+        a: "Sì, su appuntamento: scrivici o prenota una chiamata conoscitiva dal sito e fissiamo un orario.",
       },
     ],
     related: [
@@ -483,7 +483,7 @@ export const landings: Landing[] = [
           "Consumo dell'AI, se c'è: si paga a utilizzo e dipende dai volumi.",
         ],
         body: [
-          "Sono le voci che un preventivo serio deve mostrare prima della firma. Se non le vedi, chiedile.",
+          "Sono le voci che un preventivo serio deve mostrare prima della firma, e se non le vedi conviene chiederle.",
         ],
       },
       {
@@ -531,7 +531,7 @@ export const landings: Landing[] = [
       },
       {
         q: "Si paga tutto all'inizio?",
-        a: "No. Si lavora a rilasci, e i pagamenti seguono le tappe concordate nel preventivo.",
+        a: "No, si lavora a rilasci, e i pagamenti seguono le tappe concordate nel preventivo.",
       },
       {
         q: "Quanto costa la manutenzione?",
@@ -615,7 +615,7 @@ export const landings: Landing[] = [
       },
       {
         q: "Un agente AI costa meno di una persona?",
-        a: "Non è il confronto giusto. L'agente toglie le ore ripetitive, le persone restano sui passaggi dove serve giudizio. Il conto da fare è quante ore di lavoro ripetitivo libera rispetto a quanto costa.",
+        a: "Non è il confronto giusto, perché l'agente toglie le ore ripetitive e le persone restano sui passaggi dove serve giudizio. Il conto da fare è quante ore di lavoro ripetitivo libera rispetto a quanto costa.",
       },
       {
         q: "Esistono agenti AI già pronti che costano meno?",
@@ -623,7 +623,7 @@ export const landings: Landing[] = [
       },
       {
         q: "Cosa succede se dopo il prototipo non funziona?",
-        a: "Ci si ferma. Il prototipo serve a questo: scoprire con una spesa piccola se il compito si presta, prima di investire nello sviluppo completo.",
+        a: "Ci si ferma, e il prototipo serve proprio a questo: scoprire con una spesa piccola se il compito si presta, prima di investire nello sviluppo completo.",
       },
     ],
     related: [
@@ -656,8 +656,8 @@ export const landings: Landing[] = [
       {
         title: "Due modi di lavorare insieme",
         bullets: [
-          "In segnalazione. Ci presenti il cliente e seguiamo noi il progetto dall'inizio alla fine. A te va un compenso sul lavoro venduto, concordato prima.",
-          "Con il tuo marchio. Il cliente resta tuo e parla con te. Noi costruiamo dietro le quinte, partecipiamo alle riunioni quando serve e tu rivendi il lavoro al tuo prezzo.",
+          "In segnalazione: ci presenti il cliente e seguiamo noi il progetto dall'inizio alla fine, e a te va un compenso sul lavoro venduto, concordato prima.",
+          "Con il tuo marchio: il cliente resta tuo e parla con te, noi costruiamo dietro le quinte e partecipiamo alle riunioni quando serve, e tu rivendi il lavoro al tuo prezzo.",
         ],
         body: [
           "In tutti e due i casi il rapporto con il cliente è scritto nell'accordo, prima di incontrarlo: chi lo segue, come ci presentiamo, cosa succede se chiede altro.",
@@ -707,15 +707,15 @@ export const landings: Landing[] = [
     faqs: [
       {
         q: "Quanto guadagna l'agenzia?",
-        a: "Dipende dal modo di lavorare. In segnalazione riconosciamo un compenso sul lavoro venduto, concordato per iscritto prima di incontrare il cliente. Con il tuo marchio decidi tu il prezzo finale e il margine è tuo.",
+        a: "Dipende dal modo di lavorare: in segnalazione riconosciamo un compenso sul lavoro venduto, concordato per iscritto prima di incontrare il cliente, mentre con il tuo marchio decidi tu il prezzo finale e il margine è tuo.",
       },
       {
         q: "Il cliente resta dell'agenzia?",
-        a: "Sì. Lo scriviamo nell'accordo: se lavoriamo con il tuo marchio il cliente parla con te, e in ogni caso non gli proponiamo servizi che fai tu.",
+        a: "Sì, lo scriviamo nell'accordo: se lavoriamo con il tuo marchio il cliente parla con te, e in ogni caso non gli proponiamo servizi che fai tu.",
       },
       {
         q: "Serve avere competenze tecniche?",
-        a: "No. A te basta riconoscere il bisogno: un cliente che lavora su fogli sparsi, che ricopia dati a mano o che chiede «qualcosa con l'AI». La parte tecnica, dalla mappatura alla consegna, la facciamo noi.",
+        a: "No, a te basta riconoscere il bisogno: un cliente che lavora su fogli sparsi, che ricopia dati a mano o che chiede «qualcosa con l'AI». La parte tecnica, dalla mappatura alla consegna, la facciamo noi.",
       },
       {
         q: "Lavorate solo con agenzie del Veneto?",
@@ -742,7 +742,7 @@ export const landings: Landing[] = [
     description:
       "Perché la maggior parte dei progetti di AI in azienda non rende, cosa dicono gli studi di MIT, RAND e Istat, e il metodo che usiamo: prima il sistema, poi l'AI.",
     answer:
-      "L'intelligenza artificiale rende quando lavora sopra un sistema ordinato: dati in un posto solo, processi chiari, qualcuno che misura. Senza, resta una demo. Per questo il nostro metodo ha un ordine fisso: prima costruiamo il sistema, poi aggiungiamo l'AI dove i numeri dicono che serve. Gli studi pubblicati negli ultimi due anni raccontano cosa succede a chi fa il contrario.",
+      "L'intelligenza artificiale rende quando lavora sopra un sistema ordinato: dati in un posto solo, processi chiari, qualcuno che misura, e senza tutto questo resta una demo. Per questo il nostro metodo ha un ordine fisso: prima costruiamo il sistema, poi aggiungiamo l'AI dove i numeri dicono che serve. Gli studi pubblicati negli ultimi due anni raccontano cosa succede a chi fa il contrario.",
     stats: [
       {
         value: "95%",
@@ -759,12 +759,12 @@ export const landings: Landing[] = [
       {
         value: "42%",
         label:
-          "delle aziende ha abbandonato la maggior parte delle iniziative di AI. Un anno prima era il 17%",
+          "delle aziende ha abbandonato la maggior parte delle iniziative di AI, contro il 17% di un anno prima",
         source: "S&P Global, 2025",
       },
       {
         value: "16,4%",
-        label: "delle imprese italiane con almeno 10 addetti usa l'AI. Tra le PMI il 15,7%",
+        label: "delle imprese italiane con almeno 10 addetti usa l'AI, tra le PMI il 15,7%",
         source: "Istat, 2025",
       },
     ],
@@ -792,11 +792,11 @@ export const landings: Landing[] = [
       {
         title: "Il metodo, in cinque regole",
         bullets: [
-          "Prima il sistema. I dati in un posto solo e un processo chiaro vengono prima di qualsiasi modello. Spesso metà del guadagno arriva già qui, senza AI.",
-          "Un compito solo. Si parte dal lavoro ripetitivo che costa più ore, non da un progetto che vuole cambiare tutto.",
-          "Si misura prima di promettere. Il prototipo si prova sui casi veri dell'azienda e si contano gli errori. Se i numeri non reggono, ci si ferma.",
-          "Una persona al controllo. Sui passaggi delicati l'AI prepara e una persona decide.",
-          "Resta tuo. Codice, dati e documentazione sono dell'azienda, non di chi li ha costruiti.",
+          "Prima il sistema: i dati in un posto solo e un processo chiaro vengono prima di qualsiasi modello, e spesso metà del guadagno arriva già qui, senza AI.",
+          "Un compito solo: si parte dal lavoro ripetitivo che costa più ore, non da un progetto che vuole cambiare tutto.",
+          "Si misura prima di promettere: il prototipo si prova sui casi veri dell'azienda, si contano gli errori e se i numeri non reggono ci si ferma.",
+          "Una persona al controllo: sui passaggi delicati l'AI prepara e una persona decide.",
+          "Resta tuo: codice, dati e documentazione sono dell'azienda, non di chi li ha costruiti.",
         ],
         body: [
           "Il nome viene da una frase attribuita a Galileo: «Misura ciò che è misurabile, e rendi misurabile ciò che non lo è». È la terza regola, ed è quella che regge le altre.",
@@ -831,7 +831,7 @@ export const landings: Landing[] = [
       },
       {
         q: "Quindi l'AI non conviene?",
-        a: "Conviene, nell'ordine giusto. Lo studio del MIT trova i ritorni più alti proprio nell'automazione del lavoro d'ufficio. Non conviene comprarla come uno strumento da aggiungere a un'azienda che lavora ancora su fogli sparsi.",
+        a: "Conviene, se la si mette nell'ordine giusto: lo studio del MIT trova i ritorni più alti proprio nell'automazione del lavoro d'ufficio, mentre non conviene comprarla come uno strumento da aggiungere a un'azienda che lavora ancora su fogli sparsi.",
       },
       {
         q: "Da dove si parte in pratica?",

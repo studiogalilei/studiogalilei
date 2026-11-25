@@ -6,13 +6,13 @@ const TEXT = {
   it: {
     kicker: "Partner",
     title: "I tuoi clienti chiedono software e AI?",
-    text: "Li costruiamo noi, in segnalazione o con il tuo marchio. Il cliente resta tuo, con un accordo scritto.",
+    text: "Li costruiamo noi, in segnalazione o con il tuo marchio, e il cliente resta tuo con un accordo scritto.",
     label: "Diventa partner",
   },
   en: {
     kicker: "Partners",
     title: "Are your clients asking for software and AI?",
-    text: "We build it, by referral or under your brand. The client stays yours, with a written agreement.",
+    text: "We build it, by referral or under your brand, and the client stays yours under a written agreement.",
     label: "Become a partner",
   },
 };

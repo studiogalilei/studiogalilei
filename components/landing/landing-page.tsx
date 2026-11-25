@@ -110,7 +110,7 @@ function structuredData(page: Landing) {
 }
 
 const h2 =
-  "text-1.75rem leading-1.15 font-semibold -tracking-2 text-balance text-sg before:mb-5 before:block before:h-1 before:w-12 before:rounded-full before:bg-sand-deep md:text-2.2rem";
+  "text-1.75rem leading-1.15 font-semibold -tracking-2 text-balance text-sg md:text-2.2rem";
 const panel = "-mx-2 rounded-18 bg-sand px-6 py-9 md:-mx-10 md:px-10 md:py-12";
 const prose = "text-16 leading-1.75 text-ink/75 md:text-17";
 
@@ -158,7 +158,7 @@ export function LandingPage({ path }: { path: string }) {
         </Container>
       )}
       <Container className={page.image ? "pt-10 md:pt-14" : "relative z-2 -mt-18 md:-mt-22"}>
-        <div className="rounded-18 border-l-[6px] border-sand-deep bg-white p-7 shadow-surface-3 md:p-12">
+        <div className="rounded-18 bg-white p-7 shadow-surface-3 md:p-12">
           <p className="max-w-[52rem] text-18 leading-1.7 font-medium text-ink md:text-22 md:leading-[1.6]">
             {page.answer}
           </p>
@@ -172,7 +172,7 @@ export function LandingPage({ path }: { path: string }) {
         <Container className="pt-10 md:pt-14">
           <ul className="grid gap-px overflow-hidden rounded-18 bg-line shadow-surface-1 sm:grid-cols-2 lg:grid-cols-4">
             {page.stats.map((stat) => (
-              <li key={stat.value} className="border-t-4 border-sand-deep bg-white p-7">
+              <li key={stat.value} className="bg-white p-7">
                 <p className="text-[2.6rem] leading-none font-semibold -tracking-3 text-sg md:text-[3rem]">
                   {stat.value}
                 </p>
@@ -197,7 +197,7 @@ export function LandingPage({ path }: { path: string }) {
                         aria-hidden="true"
                         className="mt-[0.62em] size-2 flex-none rounded-[2px] bg-sand-deep"
                       />
-                      <span>{item}</span>
+                      <span>{item.replace(/\.$/, "")}</span>
                     </li>
                   ))}
                 </ul>

@@ -79,11 +79,11 @@ export const sectors: Sector[] = [
       },
       {
         q: "Si possono collegare anche macchine vecchie?",
-        a: "Spesso sì. Le macchine recenti espongono i dati con protocolli standard come OPC UA; per quelle più vecchie si usano i segnali del PLC o sensori aggiunti. Lo si verifica macchina per macchina durante la mappatura.",
+        a: "Spesso sì: le macchine recenti espongono i dati con protocolli standard come OPC UA, mentre per quelle più vecchie si usano i segnali del PLC o sensori aggiunti. Lo si verifica macchina per macchina durante la mappatura.",
       },
       {
         q: "Devo sostituire l'ERP?",
-        a: "No. Di solito si lascia all'ERP quello che fa bene e si costruisce intorno il pezzo che manca, collegato. Sostituirlo ha senso solo se è lui a bloccare il lavoro.",
+        a: "No, di solito si lascia all'ERP quello che fa bene e si costruisce intorno il pezzo che manca, collegato. Sostituirlo ha senso solo se è lui a bloccare il lavoro.",
       },
     ],
   },
@@ -125,7 +125,7 @@ export const sectors: Sector[] = [
       },
       {
         q: "Si collega al nostro e-commerce e ai marketplace?",
-        a: "Sì. Catalogo, disponibilità e ordini passano da un sistema all'altro senza esportazioni manuali, con le piattaforme più diffuse e con i marketplace che mettono a disposizione un collegamento.",
+        a: "Sì: catalogo, disponibilità e ordini passano da un sistema all'altro senza esportazioni manuali, con le piattaforme più diffuse e con i marketplace che mettono a disposizione un collegamento.",
       },
       {
         q: "Gestisce anche lo scambio dati con i grandi retailer?",
@@ -166,11 +166,11 @@ export const sectors: Sector[] = [
     faqs: [
       {
         q: "Si può tracciare ogni singolo pezzo?",
-        a: "Sì. Ogni pezzo ha la sua scheda con numero di serie, materiali, lavorazioni, passaggi di mano e interventi di assistenza, consultabile da chi ha il permesso.",
+        a: "Sì, ogni pezzo ha la sua scheda con numero di serie, materiali, lavorazioni, passaggi di mano e interventi di assistenza, consultabile da chi ha il permesso.",
       },
       {
         q: "I dati dei clienti chi li vede?",
-        a: "Solo chi deve. I permessi sono per ruolo: una boutique vede i suoi clienti, la sede vede tutto, un rivenditore vede solo i suoi ordini. Ogni accesso resta registrato.",
+        a: "Solo chi deve: i permessi sono per ruolo, quindi una boutique vede i suoi clienti, la sede vede tutto e un rivenditore vede solo i suoi ordini, e ogni accesso resta registrato.",
       },
       {
         q: "Si integra con il gestionale e con le casse dei negozi?",
@@ -215,7 +215,7 @@ export const sectors: Sector[] = [
       },
       {
         q: "Funziona con controllori di marche diverse?",
-        a: "Sì. Si usano i protocolli standard dell'automazione, come OPC UA e MQTT, e dove serve un piccolo dispositivo a bordo macchina che traduce i dati.",
+        a: "Sì, si usano i protocolli standard dell'automazione, come OPC UA e MQTT, e dove serve un piccolo dispositivo a bordo macchina che traduce i dati.",
       },
       {
         q: "I dati della macchina di chi sono?",
@@ -265,7 +265,7 @@ export const sectors: Sector[] = [
       },
       {
         q: "Si collega alle bilance e alle etichettatrici che abbiamo?",
-        a: "Nella maggior parte dei casi sì. Lo verifichiamo modello per modello durante la mappatura.",
+        a: "Nella maggior parte dei casi sì, e lo verifichiamo modello per modello durante la mappatura.",
       },
     ],
   },
@@ -348,7 +348,7 @@ export const sectors: Sector[] = [
     faqs: [
       {
         q: "Funziona in cantiere, dal telefono?",
-        a: "Sì. La parte di cantiere si usa dal telefono, anche con poca rete: i dati inseriti si allineano appena torna la connessione.",
+        a: "Sì, la parte di cantiere si usa dal telefono, anche con poca rete: i dati inseriti si allineano appena torna la connessione.",
       },
       {
         q: "Si collega alla contabilità che usiamo già?",
@@ -356,7 +356,7 @@ export const sectors: Sector[] = [
       },
       {
         q: "I subappaltatori devono installare qualcosa?",
-        a: "No. Entrano in un portale dal browser, con le loro credenziali, e vedono solo i cantieri e i documenti che li riguardano.",
+        a: "No, entrano in un portale dal browser, con le loro credenziali, e vedono solo i cantieri e i documenti che li riguardano.",
       },
     ],
   },
@@ -401,7 +401,7 @@ export const sectors: Sector[] = [
       },
       {
         q: "Si collega ai corrieri?",
-        a: "Sì. Etichette, ritiri e stato delle spedizioni si scambiano con i corrieri che mettono a disposizione un collegamento, senza passare dai loro portali.",
+        a: "Sì: etichette, ritiri e stato delle spedizioni si scambiano con i corrieri che mettono a disposizione un collegamento, senza passare dai loro portali.",
       },
     ],
   },
@@ -446,7 +446,7 @@ export const sectors: Sector[] = [
       },
       {
         q: "Devo cambiare la piattaforma e-commerce?",
-        a: "No. Si collega quella che usi, se permette lo scambio di dati, come fanno le più diffuse.",
+        a: "No, si collega quella che usi, se permette lo scambio di dati, come fanno le più diffuse.",
       },
     ],
   },
@@ -483,7 +483,7 @@ export const sectors: Sector[] = [
     faqs: [
       {
         q: "Con quali piattaforme e marketplace si integra?",
-        a: "Con quelle che mettono a disposizione un collegamento per lo scambio dei dati, cioè le piattaforme e-commerce e i marketplace più diffusi. Lo verifichiamo canale per canale.",
+        a: "Con quelle che mettono a disposizione un collegamento per lo scambio dei dati, cioè le piattaforme e-commerce e i marketplace più diffusi, e lo verifichiamo canale per canale.",
       },
       {
         q: "Serve un software su misura o basta un connettore già pronto?",
@@ -528,7 +528,7 @@ export const sectors: Sector[] = [
     faqs: [
       {
         q: "Si collega alla fatturazione elettronica?",
-        a: "Sì. Le fatture si generano dai dati di commessa e di contratto e passano al sistema di fatturazione elettronica che usi, senza essere riscritte.",
+        a: "Sì, le fatture si generano dai dati di commessa e di contratto e passano al sistema di fatturazione elettronica che usi, senza essere riscritte.",
       },
       {
         q: "I clienti possono entrare e vedere i loro dati?",
@@ -536,7 +536,7 @@ export const sectors: Sector[] = [
       },
       {
         q: "Possiamo partire solo dai timesheet?",
-        a: "Sì. Si parte dal modulo che oggi costa più ore e si aggiungono gli altri dopo.",
+        a: "Sì, si parte dal modulo che oggi costa più ore e si aggiungono gli altri dopo.",
       },
     ],
   },
@@ -577,7 +577,7 @@ export const sectors: Sector[] = [
       },
       {
         q: "I pazienti possono prenotare online?",
-        a: "Sì. L'agenda online mostra solo gli orari davvero liberi e manda promemoria, riducendo le telefonate in segreteria.",
+        a: "Sì, l'agenda online mostra solo gli orari davvero liberi e manda promemoria, riducendo le telefonate in segreteria.",
       },
       {
         q: "L'AI può essere usata con i dati dei pazienti?",
@@ -626,7 +626,7 @@ export const sectors: Sector[] = [
       },
       {
         q: "Lavorate anche con i tour operator?",
-        a: "Sì. Per due tour operator, in Texas e in Italia, abbiamo costruito un'app che gestisce prenotazioni, partenze, autisti, guide e messaggi ai clienti.",
+        a: "Sì, per due tour operator, in Texas e in Italia, abbiamo costruito un'app che gestisce prenotazioni, partenze, autisti, guide e messaggi ai clienti.",
       },
     ],
   },
@@ -663,7 +663,7 @@ export const sectors: Sector[] = [
     faqs: [
       {
         q: "Si possono raccogliere dati da impianti di marche diverse?",
-        a: "Sì. Si usano i collegamenti messi a disposizione dai produttori e i protocolli standard, e i dati finiscono in un'unica piattaforma.",
+        a: "Sì, si usano i collegamenti messi a disposizione dai produttori e i protocolli standard, e i dati finiscono in un'unica piattaforma.",
       },
       {
         q: "I clienti finali possono vedere i loro dati?",
@@ -671,7 +671,7 @@ export const sectors: Sector[] = [
       },
       {
         q: "Si può partire da un solo tipo di impianto?",
-        a: "Sì. Si parte da quello più diffuso tra i tuoi clienti e si aggiungono gli altri in seguito.",
+        a: "Sì, si parte da quello più diffuso tra i tuoi clienti e si aggiungono gli altri in seguito.",
       },
     ],
   },
@@ -708,15 +708,15 @@ export const sectors: Sector[] = [
     faqs: [
       {
         q: "Funziona anche dove in campo non c'è rete?",
-        a: "Sì. L'app registra i dati sul telefono e li allinea quando torna la connessione.",
+        a: "Sì, l'app registra i dati sul telefono e li allinea quando torna la connessione.",
       },
       {
         q: "Si collega ai sensori e alle macchine che abbiamo?",
-        a: "Quando il produttore mette a disposizione i dati, sì. Lo verifichiamo dispositivo per dispositivo.",
+        a: "Sì, quando il produttore mette a disposizione i dati, e lo verifichiamo dispositivo per dispositivo.",
       },
       {
         q: "Tiene anche il registro dei trattamenti?",
-        a: "Sì. Ogni trattamento viene registrato per appezzamento e coltura, e resta legato al lotto raccolto.",
+        a: "Sì, ogni trattamento viene registrato per appezzamento e coltura, e resta legato al lotto raccolto.",
       },
     ],
   },
@@ -761,7 +761,7 @@ export const sectors: Sector[] = [
       },
       {
         q: "Lavora con l'ERP che abbiamo?",
-        a: "Sì. Di solito l'ERP resta per amministrazione e acquisti, e il sistema su misura copre produzione, tracciabilità e scambio dati con il cliente.",
+        a: "Sì, di solito l'ERP resta per amministrazione e acquisti, e il sistema su misura copre produzione, tracciabilità e scambio dati con il cliente.",
       },
     ],
   },
@@ -798,15 +798,15 @@ export const sectors: Sector[] = [
     faqs: [
       {
         q: "Le ricette restano riservate?",
-        a: "Sì. L'accesso alle formule è per ruolo: chi produce vede le quantità che gli servono, non necessariamente l'intera formula, e ogni accesso resta registrato.",
+        a: "Sì, l'accesso alle formule è per ruolo: chi produce vede le quantità che gli servono, non necessariamente l'intera formula, e ogni accesso resta registrato.",
       },
       {
         q: "Gestisce le schede di sicurezza?",
-        a: "Sì. Schede ed etichette sono legate alla formula, così quando la formula cambia si vede subito quali documenti vanno aggiornati.",
+        a: "Sì: schede ed etichette sono legate alla formula, così quando la formula cambia si vede subito quali documenti vanno aggiornati.",
       },
       {
         q: "Si collega a bilance e impianti di dosaggio?",
-        a: "Nella maggior parte dei casi sì. Lo verifichiamo impianto per impianto.",
+        a: "Nella maggior parte dei casi sì, e lo verifichiamo impianto per impianto.",
       },
     ],
   },
@@ -851,7 +851,7 @@ export const sectors: Sector[] = [
       },
       {
         q: "L'AI scrive gli articoli?",
-        a: "No. Fa il lavoro intorno: trascrive, riassume, propone titoli, cerca in archivio. Quello che esce lo decide e lo firma un redattore.",
+        a: "No, fa il lavoro intorno: trascrive, riassume, propone titoli, cerca in archivio. Quello che esce lo decide e lo firma un redattore.",
       },
     ],
   },
@@ -888,11 +888,11 @@ export const sectors: Sector[] = [
     faqs: [
       {
         q: "I portali rispettano le regole di accessibilità?",
-        a: "Sì. Si progettano fin dall'inizio secondo le linee guida sull'accessibilità che i siti della Pubblica Amministrazione devono seguire.",
+        a: "Sì, si progettano fin dall'inizio secondo le linee guida sull'accessibilità che i siti della Pubblica Amministrazione devono seguire.",
       },
       {
         q: "Si integra con SPID, CIE e pagoPA?",
-        a: "Sì. L'accesso con le identità digitali e i pagamenti attraverso la piattaforma pubblica si integrano nel portale.",
+        a: "Sì, l'accesso con le identità digitali e i pagamenti attraverso la piattaforma pubblica si integrano nel portale.",
       },
       {
         q: "Come lavorate con un ente pubblico?",
@@ -941,7 +941,7 @@ export const sectors: Sector[] = [
       },
       {
         q: "Si collega alla fatturazione?",
-        a: "Sì. Le ore e le fasi completate diventano le righe della fattura, senza essere ricopiate.",
+        a: "Sì, le ore e le fasi completate diventano le righe della fattura, senza essere ricopiate.",
       },
     ],
   },
