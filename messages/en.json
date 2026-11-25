@@ -174,7 +174,7 @@
             },
             {
               "title": "Subsidised finance",
-              "desc": "We check whether grants and incentives can cover part of your investment with Studio Galilei."
+              "desc": "An investment in software weighs less when a grant covers part of it. We look for the incentives that fit your project and tell you whether you can qualify."
             }
           ]
         }
@@ -355,9 +355,7 @@
       },
       {
         "title": "Finance",
-        "items": [
-          "Subsidised finance"
-        ]
+        "items": ["We look for grants and incentives that can cover part of the investment in software and AI", "We tell you whether your project can qualify, before you start", "Subsidised finance for business digitalisation"]
       }
     ]
   },

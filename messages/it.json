@@ -174,7 +174,7 @@
             },
             {
               "title": "Finanza agevolata",
-              "desc": "Verifichiamo se bandi e contributi possono coprire parte degli investimenti con Studio Galilei."
+              "desc": "Un investimento in software pesa meno se una parte la copre un bando. Cerchiamo noi i contributi e le agevolazioni adatti al tuo progetto e ti diciamo se puoi rientrarci."
             }
           ]
         }
@@ -355,9 +355,7 @@
       },
       {
         "title": "Finanza",
-        "items": [
-          "Finanza agevolata"
-        ]
+        "items": ["Cerchiamo bandi e contributi che possono coprire parte dell'investimento in software e AI", "Ti diciamo se il tuo progetto può rientrarci, prima di partire", "Finanza agevolata per la digitalizzazione delle imprese"]
       }
     ]
   },
