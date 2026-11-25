@@ -7,3 +7,4 @@ legacy
 .visual-diff
 package-lock.json
 lib/geo/*.json
+presentazione/
