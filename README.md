@@ -14,6 +14,8 @@ Production build: `npm run build && npm run start`.
 
 Checks: `npm run lint`, `npm run typecheck`, `npm run format:check` (`npm run format` to fix).
 
+`npm run lint` also runs `scripts/check-texts.mjs` (alone: `npm run check:texts`), which reads `messages/*.json` and every file in `lib/landing/` and fails on the marks the site's texts must not carry: a sentence of fewer than five words closed by a full stop inside a text of several sentences, the middle dot `·` used as a separator, a long dash used as a pause, an exclamation mark, or a brochure word (innovativo, soluzioni, a 360 gradi, chiavi in mano, leader, eccellenza, sinergia, valore aggiunto and their English twins). Run it before every push; exceptions (a proper name, a quotation) go in `ALLOWED` in the script.
+
 ## Environment variables
 
 | Name             | Required | Used by                                                                          |

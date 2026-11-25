@@ -12,11 +12,12 @@ import { SECTOR_SHOTS, sectors, type Sector } from "./sectors";
 export type LandingFaq = { q: string; a: string };
 export type LandingSection = { title: string; body?: string[]; bullets?: string[] };
 export type LandingStep = { title: string; text: string };
+export type LandingFact = { value: string; label: string };
 export type LandingPrice = { label: string; value: string; note: string };
 
 export type Landing = {
   path: string;
-  kind: "service" | "guide" | "local" | "sector" | "method";
+  kind: "service" | "guide" | "local" | "sector" | "method" | "compare";
   kicker: string;
   title: string;
   metaTitle: string;
@@ -27,6 +28,14 @@ export type Landing = {
   steps?: { title: string; items: LandingStep[] };
   prices?: { title: string; intro: string; rows: LandingPrice[]; note: string };
   caseStudy?: boolean;
+  /** The numbers a buyer looks for first (price, time), shown large next to the answer. */
+  facts?: LandingFact[];
+  /** A side-by-side comparison, shown right under the answer. */
+  table?: { title: string; columns: string[]; rows: { label: string; cells: string[] }[] };
+  /** Objections proper to this page's subject, shown before the general questions. */
+  objections?: { title: string; items: LandingFaq[] };
+  /** Further questions by theme (the page of all the answers). */
+  groups?: { id: string; title: string; intro?: string; items: LandingFaq[] }[];
   /** An example screen of the software, shown under the answer. */
   image?: { src: string; alt: string };
   /** Figures from published studies, each with its source: shown large under the answer. */
@@ -43,6 +52,17 @@ export const LANDING_AUTHOR = { name: "Dramane Yigo", role: "co-founder di Studi
 
 const SOFTWARE_RANGE = "da 5.000 a 80.000 €";
 const AI_RANGE = "da 3.000 a 40.000 €";
+
+const FACTS_SOFTWARE: LandingFact[] = [
+  { value: "da 5.000 €", label: "un software su misura, fino a 80.000 € secondo i moduli" },
+  { value: "8-10 settimane", label: "un progetto di media complessità" },
+  { value: "1 modulo", label: "per cominciare, il resto si aggiunge dopo" },
+];
+const FACTS_AI: LandingFact[] = [
+  { value: "da 3.000 €", label: "un agente AI o un'automazione, fino a 40.000 €" },
+  { value: "1 compito", label: "per cominciare, provato sui tuoi casi veri" },
+  { value: "1 persona", label: "che approva sempre i passaggi delicati" },
+];
 
 const STEPS_SOFTWARE: LandingStep[] = [
   {
@@ -93,6 +113,7 @@ const STEPS_AI: LandingStep[] = [
 export const landings: Landing[] = [
   {
     path: "/gestionale-su-misura",
+    facts: FACTS_SOFTWARE,
     kind: "service",
     kicker: "Sviluppo software",
     title: "Gestionale su misura per la tua azienda",
@@ -194,6 +215,7 @@ export const landings: Landing[] = [
   },
   {
     path: "/agenti-ai-per-aziende",
+    facts: FACTS_AI,
     kind: "service",
     kicker: "Intelligenza artificiale",
     title: "Agenti AI per aziende: cosa fanno e come li costruiamo",
@@ -291,12 +313,13 @@ export const landings: Landing[] = [
   },
   {
     path: "/automazione-processi-aziendali",
+    facts: FACTS_AI,
     kind: "service",
     kicker: "Intelligenza artificiale",
     title: "Automazione dei processi aziendali con l'AI",
     metaTitle: "Automazione dei processi aziendali con l'AI per PMI",
     description:
-      "Automatizziamo il lavoro ripetitivo delle PMI: dati ricopiati a mano, solleciti, report, passaggi tra programmi, con l'AI dove serve e una persona al controllo. Da 3.000 a 40.000 €.",
+      "Automatizziamo il lavoro ripetitivo delle PMI: dati ricopiati a mano, solleciti, report, passaggi tra programmi, con l'AI dove serve e una persona al controllo, da 3.000 a 40.000 €.",
     answer: `Automatizzare un processo vuol dire far fare al software il lavoro ripetitivo che oggi fanno le persone: ricopiare dati, mandare solleciti, preparare report, passare informazioni da un programma all'altro. Con l'AI si automatizzano anche i passaggi dove c'è da leggere e capire un testo. I nostri progetti vanno ${AI_RANGE}.`,
     sections: [
       {
@@ -319,7 +342,7 @@ export const landings: Landing[] = [
         title: "Automazione semplice o agente AI",
         body: [
           "Un'automazione semplice segue regole fisse: quando succede questo, fai quello. Costa meno ed è la scelta giusta quando i casi sono sempre uguali.",
-          "Un agente AI serve quando c'è da leggere e interpretare: un'email scritta a mano libera, un documento sempre diverso, una richiesta ambigua. Spesso la soluzione migliore mette insieme le due cose.",
+          "Un agente AI serve quando c'è da leggere e interpretare: un'email scritta a mano libera, un documento sempre diverso, una richiesta ambigua. Spesso il risultato migliore arriva mettendo insieme le due cose.",
         ],
       },
     ],
@@ -334,7 +357,7 @@ export const landings: Landing[] = [
           note: "Secondo quanti processi, quanti programmi da collegare e quanta AI serve.",
         },
       ],
-      note: "Se l'automazione usa un modello di AI c'è anche il suo consumo, a utilizzo. Lo stimiamo sul prototipo.",
+      note: "Se l'automazione usa un modello di AI c'è anche il suo consumo, a utilizzo, che stimiamo sul prototipo.",
     },
     faqs: [
       {
@@ -367,6 +390,7 @@ export const landings: Landing[] = [
   },
   {
     path: "/software-house-treviso",
+    facts: FACTS_SOFTWARE,
     kind: "local",
     kicker: "Treviso, Veneto",
     title: "Software house a Treviso: software su misura e agenti AI",
@@ -456,6 +480,7 @@ export const landings: Landing[] = [
   },
   {
     path: "/guide/quanto-costa-un-gestionale-su-misura",
+    facts: FACTS_SOFTWARE,
     kind: "guide",
     kicker: "Guida",
     title: "Quanto costa un gestionale su misura",
@@ -505,7 +530,7 @@ export const landings: Landing[] = [
     ],
     prices: {
       title: "Le nostre fasce",
-      intro: "Prezzi IVA esclusa, aggiornati alla data in fondo alla pagina.",
+      intro: "Le fasce dei nostri progetti, IVA esclusa.",
       rows: [
         {
           label: "Gestionali e software su misura",
@@ -551,6 +576,7 @@ export const landings: Landing[] = [
   },
   {
     path: "/guide/quanto-costa-un-agente-ai",
+    facts: FACTS_AI,
     kind: "guide",
     kicker: "Guida",
     title: "Quanto costa un agente AI per un'azienda",
@@ -562,7 +588,7 @@ export const landings: Landing[] = [
       {
         title: "Le due voci di costo",
         body: [
-          "La prima è lo sviluppo: capire il compito, costruire l'agente, collegarlo ai tuoi sistemi, provarlo su casi veri. Si paga una volta.",
+          "La prima è lo sviluppo: capire il compito, costruire l'agente, collegarlo ai tuoi sistemi, provarlo su casi veri, e si paga una volta.",
           "La seconda è il consumo: ogni volta che l'agente lavora usa un modello di AI, che il fornitore fa pagare a utilizzo. Con pochi casi al giorno è una cifra piccola, con migliaia va stimata bene. La calcoliamo sul prototipo, prima di partire.",
         ],
       },
@@ -579,7 +605,7 @@ export const landings: Landing[] = [
       {
         title: "Come capire se rende",
         body: [
-          "Si contano le ore. Se un compito porta via dieci ore a settimana e l'agente ne toglie la maggior parte, il conto si fa in fretta. Se ne porta via una, quasi mai conviene. Questo conto lo facciamo insieme prima del preventivo, e se non torna ci fermiamo.",
+          "Si contano le ore: se un compito porta via dieci ore a settimana e l'agente ne toglie la maggior parte, il conto si fa in fretta. Se ne porta via una, quasi mai conviene. Questo conto lo facciamo insieme prima del preventivo, e se non torna ci fermiamo.",
         ],
       },
       {
@@ -593,7 +619,7 @@ export const landings: Landing[] = [
     ],
     prices: {
       title: "Le nostre fasce",
-      intro: "Prezzi IVA esclusa, aggiornati alla data in fondo alla pagina.",
+      intro: "Le fasce dei nostri progetti, IVA esclusa.",
       rows: [
         {
           label: "Agenti AI e automazioni",
@@ -881,6 +907,7 @@ const sectorLanding = (s: Sector, i: number): Landing => {
   const done = s.done !== false;
   return {
     path: `/settori/${s.slug}`,
+    facts: FACTS_SOFTWARE,
     kind: "sector",
     kicker: s.name,
     title: `${s.product} ${s.per}`,

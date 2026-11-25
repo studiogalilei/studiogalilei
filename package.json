@@ -40,11 +40,12 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "eslint --max-warnings=0 .",
+    "lint": "eslint --max-warnings=0 . && node scripts/check-texts.mjs",
     "typecheck": "tsc --noEmit",
     "format": "prettier --write .",
     "format:check": "prettier --check .",
-    "test:visual": "node scripts/visual-baseline.ts && node scripts/visual-diff.ts"
+    "test:visual": "node scripts/visual-baseline.ts && node scripts/visual-diff.ts",
+    "check:texts": "node scripts/check-texts.mjs"
   },
   "overrides": {
     "minimatch@>=7.0.0 <11.0.1": "11.0.1"
