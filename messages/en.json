@@ -10,7 +10,7 @@
   "Metadata": {
     "home": {
       "title": "Studio Galilei: custom software and AI agents, Italy",
-      "description": "Your whole company in one place: custom management software, automation and AI agents that take away the repetitive work. Software house in Treviso, Italy, and the code stays yours."
+      "description": "Living management software, made to measure: it reads requests, prepares quotes and reminders, and your team approves. Software house in Treviso, Italy, with AI inside the system and code that stays yours."
     },
     "about": {
       "title": "About Studio Galilei Srl, software house in Treviso",
@@ -30,7 +30,7 @@
     },
     "sviluppo-software": {
       "title": "Custom software development",
-      "description": "Management systems, portals and integrations built around your real processes. Modular development, role-based permissions and progressive release."
+      "description": "Management systems, portals and integrations that put the steps in order and prepare the work for you. Modular development, role-based permissions and progressive release."
     },
     "googleAds": {
       "title": "Google Ads",
@@ -102,8 +102,9 @@
   },
   "Home": {
     "hero": {
-      "title": "<partner>Your whole company,</partner><br></br>in one place",
-      "intro": "We build custom management software, automation and AI agents that take away the repetitive work and leave you more time for your customers.",
+      "title": "<partner>Living software,</partner><br></br>made for your company",
+      "intro": "Living management software reads requests, fills in quotes, updates job orders and sends reminders to the people who need them. Your team checks and approves, and the system prepares the rest of the work.",
+      "method": "First we put your company's steps in order, then we keep them moving on their own.",
       "download": "Download the presentation",
       "bookCall": "Book an intro call",
       "exploreServices": "Explore our services",
@@ -131,7 +132,7 @@
       "title": "What we build",
       "software": {
         "name": "Custom management software",
-        "short": "Management systems, workspaces and portals built around your processes: everything in one place, and yours to keep."
+        "short": "Management systems, workspaces and portals that prepare the work and keep it in one place, and the code is yours."
       },
       "automation": {
         "name": "Automation",
@@ -373,7 +374,7 @@
       {
         "title": "Custom management software",
         "items": [
-          "Systems built around your processes",
+          "Systems that put your work in order",
           "CRM, quotes, orders, warehouse, deliveries",
           "Web and mobile applications"
         ]
@@ -498,7 +499,7 @@
     "sviluppo-software": {
       "name": "Software Development",
       "tagline": "Custom tools that stay yours.",
-      "description": "Management systems, portals and integrations built around your real processes. Modular development, role-based permissions and progressive release.",
+      "description": "Management systems, portals and integrations that put the steps in order and prepare the work for you. Modular development, role-based permissions and progressive release.",
       "features": [
         {
           "title": "Operational dashboards",
@@ -1142,7 +1143,7 @@
     "texasDispatchAutisti": "Texas, driver dispatch",
     "italiaDashboardOperativa": "Italy, operations dashboard",
     "softwareSuMisuraPerTourOperator": "Custom software for tour operators",
-    "prenotazioniPartenzeAutistiGuide": "Bookings, departures, drivers, guides, passenger lists and customer messages. A private system built around the workflows you already run, connected to your booking platform.",
+    "prenotazioniPartenzeAutistiGuide": "Bookings, departures, drivers, guides, passenger lists and customer messages. A private system that puts the day in order and connects to your booking platform.",
     "scriviciSuWhatsapp": "Message us on WhatsApp",
     "scriviciUnaEmail": "Send us an email",
     "primaConversazioneSenzaImpegno": "First conversation, no strings attached: we look at how you work today.",
@@ -1195,7 +1196,7 @@
     "troviamoIPuntiCritici": "We find the weak spots",
     "iPassaggiManualiCheCreanoPiu": "The manual steps that create the most operational risk or waste the most time.",
     "costruiamoIlPrimoModulo": "We build the first module",
-    "ilPrimoSistemaUtileAttornoAi": "The first useful system, built around the workflows you already run every day.",
+    "ilPrimoSistemaUtileAttornoAi": "The first useful system, starting from the steps that repeat every day.",
     "aggiungiamoSoloCioCheServe": "We add only what's needed",
     "automazioniEReportSoloDoveFanno": "Automation and reports only where they save real time or prevent real mistakes.",
     "comePartiamo": "How we start",

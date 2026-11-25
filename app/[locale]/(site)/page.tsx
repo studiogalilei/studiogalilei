@@ -1,4 +1,5 @@
 import { AgenciesBand } from "@/components/home/agencies-band";
+import { AiInside } from "@/components/home/ai-inside";
 import { Booking } from "@/components/home/booking";
 import { CaseStudies } from "@/components/home/case-studies";
 import { ClientLogos } from "@/components/home/client-logos";
@@ -16,6 +17,7 @@ export default function HomePage() {
     <ClientMessages namespaces={["Home.hero", "Home.portal"]}>
       <Hero />
       <ClientLogos />
+      <AiInside />
       <ServicesGrid />
       <CaseStudies />
       <PartnerSection />

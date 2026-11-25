@@ -14,6 +14,7 @@ import {
 } from "@/lib/landing/pages";
 import { SITE_NAME, seoDescription, seoTitle } from "@/lib/metadata";
 import { SITE_URL } from "@/lib/site";
+import { GuideNav, type GuideStop } from "./guide-nav";
 import { JsonLd } from "./json-ld";
 
 /*
@@ -182,12 +183,237 @@ function Questions({ items, open = 0 }: { items: LandingFaq[]; open?: number }) 
   );
 }
 
+/** The stops of a guided page, in reading order. */
+function guideStops(page: Landing): GuideStop[] {
+  const stops: GuideStop[] = page.sections.flatMap((section) =>
+    section.id && section.step ? [{ id: section.id, label: section.step }] : [],
+  );
+  if (page.steps) stops.push({ id: "come-si-parte", label: "Come si parte" });
+  if (page.objections) stops.push({ id: "dubbi", label: "I dubbi" });
+  return stops;
+}
+
+function Plain({ className, children }: { className?: string; children: React.ReactNode }) {
+  return <div className={className}>{children}</div>;
+}
+
 export function LandingPage({ path }: { path: string }) {
   const page = landingByPath(path);
   // the first sentence is the answer in one line, the rest is the detail under it
   const stop = page.answer.indexOf(". ");
   const lead = stop > 0 ? page.answer.slice(0, stop + 1) : page.answer;
   const rest = stop > 0 ? page.answer.slice(stop + 2) : "";
+  const guided = Boolean(page.guide);
+  // on a guided page the blocks sit in a column next to the side guide
+  const Box = guided ? Plain : Container;
+  const body = (
+    <>
+      <Box className="space-y-14 py-14 md:space-y-20 md:py-20">
+        {page.sections.map((section) => (
+          <section key={section.title} id={section.id} className={`scroll-mt-28 ${split}`}>
+            <div>
+              {section.step && (
+                <p className="mb-3 text-14 font-medium text-sand-ink">{section.step}</p>
+              )}
+              <h2 className={h2}>{section.title}</h2>
+            </div>
+            <div>
+              {section.intro && <p className={`mb-6 max-w-[44rem] ${prose}`}>{section.intro}</p>}
+              {section.bullets && (
+                <ul className="grid gap-3 sm:grid-cols-2">
+                  {section.bullets.map((item) => (
+                    <li
+                      key={item}
+                      className="rounded-14 bg-mist p-5 text-15 leading-1.65 text-ink/75"
+                    >
+                      <Bullet text={item} />
+                    </li>
+                  ))}
+                </ul>
+              )}
+              {section.body?.map((p, i) => (
+                <p
+                  key={p}
+                  className={`max-w-[44rem] ${prose} ${i > 0 || section.bullets ? "mt-5" : ""}`}
+                >
+                  {p}
+                </p>
+              ))}
+            </div>
+          </section>
+        ))}
+      </Box>
+
+      {page.guide && (
+        <Box className="pb-14 md:pb-20">
+          <aside className="rounded-18 bg-sg px-7 py-9 text-white shadow-surface-3 md:px-10 md:py-11">
+            <h2 className="text-1.5rem leading-1.15 font-semibold -tracking-2 text-balance md:text-1.75rem">
+              {page.guide.midCta.title}
+            </h2>
+            <p className="mt-4 max-w-[36rem] text-16 leading-1.7 text-white/80">
+              {page.guide.midCta.text}
+            </p>
+            <ButtonLink href={BOOK} variant="light" className="mt-7">
+              Prenota una chiamata conoscitiva
+            </ButtonLink>
+          </aside>
+        </Box>
+      )}
+
+      {page.steps && (
+        <section
+          id="come-si-parte"
+          className={`scroll-mt-28 bg-sand ${guided ? "rounded-18 p-7 md:p-10" : "py-14 md:py-20"}`}
+        >
+          <Box>
+            <h2 className={h2}>{page.steps.title}</h2>
+            <ol
+              className={`mt-9 grid gap-x-6 gap-y-8 sm:grid-cols-2 ${
+                guided || page.steps.items.length <= 3 ? "lg:grid-cols-3" : "lg:grid-cols-5"
+              }`}
+            >
+              {page.steps.items.map((step, i) => (
+                <li key={step.title}>
+                  <span
+                    aria-hidden="true"
+                    className="block text-[2.2rem] leading-none font-semibold -tracking-3 text-sand-deep"
+                  >
+                    {i + 1}
+                  </span>
+                  <h3 className="mt-3 text-17 font-semibold text-sg">{step.title}</h3>
+                  <p className="mt-2 text-15 leading-1.65 text-ink/75">{step.text}</p>
+                </li>
+              ))}
+            </ol>
+          </Box>
+        </section>
+      )}
+
+      {page.prices && (
+        <Box className="py-14 md:py-20">
+          <section className={split}>
+            <div>
+              <h2 className={h2}>{page.prices.title}</h2>
+              <p className={`mt-5 ${prose}`}>{page.prices.intro}</p>
+            </div>
+            <div>
+              <table className="block w-full text-left">
+                <thead className="sr-only">
+                  <tr>
+                    <th scope="col">Progetto</th>
+                    <th scope="col">Fascia di prezzo</th>
+                  </tr>
+                </thead>
+                <tbody className="grid gap-4 sm:grid-cols-2">
+                  {page.prices.rows.map((row) => (
+                    <tr
+                      key={row.label}
+                      className="flex flex-col rounded-18 bg-white p-6 shadow-surface-1 md:p-7"
+                    >
+                      <th scope="row" className="font-normal">
+                        <span className="block text-15 font-semibold text-sg">{row.label}</span>
+                      </th>
+                      <td className="mt-3 text-[1.4rem] leading-1.15 font-semibold -tracking-2 text-ink">
+                        {row.value.replace(" €", "\u00a0€")}
+                      </td>
+                      <td className="mt-3 text-14 leading-1.65 text-ink/60">{row.note}</td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+              <p className={`mt-6 max-w-[44rem] ${prose}`}>{page.prices.note}</p>
+              <div className="mt-7">
+                <ButtonLink href={BOOK}>{BOOK_LABEL}</ButtonLink>
+              </div>
+            </div>
+          </section>
+        </Box>
+      )}
+
+      {page.caseStudy && (
+        <Box className="pb-14 md:pb-20">
+          <section className="grid items-center gap-8 overflow-hidden rounded-18 bg-mist p-7 md:p-11 lg:grid-cols-2 lg:gap-12">
+            <div>
+              <h2 className={h2}>Un software nostro, in uso ogni giorno</h2>
+              <p className={`mt-5 ${prose}`}>
+                Per due tour operator, FunDallas Tours in Texas e BeaVita Tours in Italia, abbiamo
+                costruito un&apos;app che tiene insieme tutta la giornata: prenotazioni, partenze,
+                autisti, guide, liste passeggeri e messaggi ai clienti. Prima il team apriva
+                prenotazioni, chat e fogli di calcolo uno per uno, ora una schermata mostra tutto.
+              </p>
+              <p className="mt-5 flex flex-wrap gap-x-6 gap-y-2 text-16 font-medium">
+                <Link
+                  href="/casi-studio/tour-operator"
+                  className="text-sg underline decoration-1 underline-offset-4 hover:decoration-2"
+                >
+                  Leggi il caso studio dei tour operator
+                </Link>
+                <Link
+                  href="/tour-operator"
+                  className="text-sg underline decoration-1 underline-offset-4 hover:decoration-2"
+                >
+                  Software per tour operator
+                </Link>
+              </p>
+            </div>
+            {/* eslint-disable-next-line @next/next/no-img-element -- a static screenshot, already sized and compressed */}
+            <img
+              src="/images/tour-operator/beavita-dashboard-it.webp"
+              alt="La schermata principale del software costruito per BeaVita Tours: messaggi inviati, liste passeggeri e prenotazioni della giornata"
+              width={1310}
+              height={812}
+              loading="lazy"
+              className="h-auto w-full rounded-14 shadow-surface-2"
+            />
+          </section>
+        </Box>
+      )}
+
+      {page.objections && (
+        <Box className="pb-14 md:pb-20">
+          <section id="dubbi" className={`scroll-mt-28 ${split}`}>
+            <h2 className={h2}>{page.objections.title}</h2>
+            <Questions items={page.objections.items} open={1} />
+          </section>
+        </Box>
+      )}
+
+      {page.faqs.length > 0 && (
+        <Box className="pb-14 md:pb-20">
+          <section className={split}>
+            <div>
+              <h2 className={h2}>Domande frequenti</h2>
+              {
+                <p className={`mt-5 ${prose}`}>
+                  Soldi, tempi, proprietà del codice, dati, AI: le altre risposte sono in{" "}
+                  <Link
+                    href="/domande"
+                    className="font-medium text-sg underline decoration-1 underline-offset-4 hover:decoration-2"
+                  >
+                    tutte le domande di chi compra software e AI
+                  </Link>
+                  .
+                </p>
+              }
+            </div>
+            <Questions items={page.faqs} open={page.objections ? 0 : 1} />
+          </section>
+        </Box>
+      )}
+
+      {page.groups?.map((group) => (
+        <Box key={group.id} className="pb-14 md:pb-20">
+          <section id={group.id} className={`scroll-mt-24 ${split}`}>
+            <div>
+              <h2 className={h2}>{group.title}</h2>
+              {group.intro && <p className={`mt-5 ${prose}`}>{group.intro}</p>}
+            </div>
+            <Questions items={group.items} />
+          </section>
+        </Box>
+      ))}
+    </>
+  );
   return (
     // the texts are Italian whatever the site language
     <div lang="it">
@@ -317,183 +543,16 @@ export function LandingPage({ path }: { path: string }) {
         </Container>
       )}
 
-      <Container className="space-y-14 py-14 md:space-y-20 md:py-20">
-        {page.sections.map((section) => (
-          <section key={section.title} className={split}>
-            <h2 className={h2}>{section.title}</h2>
-            <div>
-              {section.bullets && (
-                <ul className="grid gap-3 sm:grid-cols-2">
-                  {section.bullets.map((item) => (
-                    <li
-                      key={item}
-                      className="rounded-14 bg-mist p-5 text-15 leading-1.65 text-ink/75"
-                    >
-                      <Bullet text={item} />
-                    </li>
-                  ))}
-                </ul>
-              )}
-              {section.body?.map((p, i) => (
-                <p
-                  key={p}
-                  className={`max-w-[44rem] ${prose} ${i > 0 || section.bullets ? "mt-5" : ""}`}
-                >
-                  {p}
-                </p>
-              ))}
-            </div>
-          </section>
-        ))}
-      </Container>
-
-      {page.steps && (
-        <section className="bg-sand py-14 md:py-20">
-          <Container>
-            <h2 className={h2}>{page.steps.title}</h2>
-            <ol
-              className={`mt-9 grid gap-x-6 gap-y-8 sm:grid-cols-2 ${page.steps.items.length > 3 ? "lg:grid-cols-5" : "lg:grid-cols-3"}`}
-            >
-              {page.steps.items.map((step, i) => (
-                <li key={step.title}>
-                  <span
-                    aria-hidden="true"
-                    className="block text-[2.2rem] leading-none font-semibold -tracking-3 text-sand-deep"
-                  >
-                    {i + 1}
-                  </span>
-                  <h3 className="mt-3 text-17 font-semibold text-sg">{step.title}</h3>
-                  <p className="mt-2 text-15 leading-1.65 text-ink/75">{step.text}</p>
-                </li>
-              ))}
-            </ol>
-          </Container>
-        </section>
-      )}
-
-      {page.prices && (
-        <Container className="py-14 md:py-20">
-          <section className={split}>
-            <div>
-              <h2 className={h2}>{page.prices.title}</h2>
-              <p className={`mt-5 ${prose}`}>{page.prices.intro}</p>
-            </div>
-            <div>
-              <table className="block w-full text-left">
-                <thead className="sr-only">
-                  <tr>
-                    <th scope="col">Progetto</th>
-                    <th scope="col">Fascia di prezzo</th>
-                  </tr>
-                </thead>
-                <tbody className="grid gap-4 sm:grid-cols-2">
-                  {page.prices.rows.map((row) => (
-                    <tr
-                      key={row.label}
-                      className="flex flex-col rounded-18 bg-white p-6 shadow-surface-1 md:p-7"
-                    >
-                      <th scope="row" className="font-normal">
-                        <span className="block text-15 font-semibold text-sg">{row.label}</span>
-                      </th>
-                      <td className="mt-3 text-[1.5rem] leading-1.15 font-semibold -tracking-2 whitespace-nowrap text-ink min-[1100px]:text-[1.7rem]">
-                        {row.value}
-                      </td>
-                      <td className="mt-3 text-14 leading-1.65 text-ink/60">{row.note}</td>
-                    </tr>
-                  ))}
-                </tbody>
-              </table>
-              <p className={`mt-6 max-w-[44rem] ${prose}`}>{page.prices.note}</p>
-              <div className="mt-7">
-                <ButtonLink href={BOOK}>{BOOK_LABEL}</ButtonLink>
-              </div>
-            </div>
-          </section>
+      {guided ? (
+        <Container className="lg:grid lg:grid-cols-[minmax(0,1fr)_15rem] lg:gap-12">
+          <div className="min-w-0">{body}</div>
+          <div className="hidden pt-14 md:pt-20 lg:block">
+            <GuideNav stops={guideStops(page)} />
+          </div>
         </Container>
+      ) : (
+        body
       )}
-
-      {page.caseStudy && (
-        <Container className="pb-14 md:pb-20">
-          <section className="grid items-center gap-8 overflow-hidden rounded-18 bg-mist p-7 md:p-11 lg:grid-cols-2 lg:gap-12">
-            <div>
-              <h2 className={h2}>Un software nostro, in uso ogni giorno</h2>
-              <p className={`mt-5 ${prose}`}>
-                Per due tour operator, FunDallas Tours in Texas e BeaVita Tours in Italia, abbiamo
-                costruito un&apos;app che tiene insieme tutta la giornata: prenotazioni, partenze,
-                autisti, guide, liste passeggeri e messaggi ai clienti. Prima il team apriva
-                prenotazioni, chat e fogli di calcolo uno per uno, ora una schermata mostra tutto.
-              </p>
-              <p className="mt-5 flex flex-wrap gap-x-6 gap-y-2 text-16 font-medium">
-                <Link
-                  href="/casi-studio/tour-operator"
-                  className="text-sg underline decoration-1 underline-offset-4 hover:decoration-2"
-                >
-                  Leggi il caso studio dei tour operator
-                </Link>
-                <Link
-                  href="/tour-operator"
-                  className="text-sg underline decoration-1 underline-offset-4 hover:decoration-2"
-                >
-                  Software per tour operator
-                </Link>
-              </p>
-            </div>
-            {/* eslint-disable-next-line @next/next/no-img-element -- a static screenshot, already sized and compressed */}
-            <img
-              src="/images/tour-operator/beavita-dashboard-it.webp"
-              alt="La schermata principale del software costruito per BeaVita Tours: messaggi inviati, liste passeggeri e prenotazioni della giornata"
-              width={1310}
-              height={812}
-              loading="lazy"
-              className="h-auto w-full rounded-14 shadow-surface-2"
-            />
-          </section>
-        </Container>
-      )}
-
-      {page.objections && (
-        <Container className="pb-14 md:pb-20">
-          <section className={split}>
-            <h2 className={h2}>{page.objections.title}</h2>
-            <Questions items={page.objections.items} open={1} />
-          </section>
-        </Container>
-      )}
-
-      {page.faqs.length > 0 && (
-        <Container className="pb-14 md:pb-20">
-          <section className={split}>
-            <div>
-              <h2 className={h2}>Domande frequenti</h2>
-              {
-                <p className={`mt-5 ${prose}`}>
-                  Soldi, tempi, proprietà del codice, dati, AI: le altre risposte sono in{" "}
-                  <Link
-                    href="/domande"
-                    className="font-medium text-sg underline decoration-1 underline-offset-4 hover:decoration-2"
-                  >
-                    tutte le domande di chi compra software e AI
-                  </Link>
-                  .
-                </p>
-              }
-            </div>
-            <Questions items={page.faqs} open={page.objections ? 0 : 1} />
-          </section>
-        </Container>
-      )}
-
-      {page.groups?.map((group) => (
-        <Container key={group.id} className="pb-14 md:pb-20">
-          <section id={group.id} className={`scroll-mt-24 ${split}`}>
-            <div>
-              <h2 className={h2}>{group.title}</h2>
-              {group.intro && <p className={`mt-5 ${prose}`}>{group.intro}</p>}
-            </div>
-            <Questions items={group.items} />
-          </section>
-        </Container>
-      ))}
 
       <Container className="space-y-12 pb-6 md:pb-10">
         {page.sources && (

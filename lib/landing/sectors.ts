@@ -502,7 +502,7 @@ export const sectors: Sector[] = [
     nel: "nei servizi alle imprese",
     product: "Gestionale di commesse e portale clienti",
     description:
-      "Gestionali di commesse su misura per società di servizi B2B: timesheet, fatturazione ricorrente e portale clienti, sui processi reali dell'azienda.",
+      "Gestionali di commesse su misura per società di servizi B2B: timesheet, fatturazione ricorrente e portale clienti in un sistema solo.",
     answer:
       "Un gestionale su misura per una società di servizi lega tra loro le ore lavorate, le commesse e le fatture, e mostra al cliente a che punto è il suo lavoro. Creiamo portali clienti, gestionali di commesse e sistemi di fatturazione ricorrente personalizzati.",
     problems: [

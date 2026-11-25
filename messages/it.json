@@ -9,8 +9,8 @@
   },
   "Metadata": {
     "home": {
-      "title": "Studio Galilei: software su misura e agenti AI, Treviso",
-      "description": "Tutta la tua azienda in un posto solo: gestionali, automazioni e agenti AI su misura che tolgono il lavoro ripetitivo. Software house di Treviso, e il codice resta tuo."
+      "title": "Studio Galilei: gestionali su misura e agenti AI, Treviso",
+      "description": "Gestionali vivi su misura: leggono le richieste, preparano preventivi e promemoria, e il tuo team approva. Software house di Treviso, con l'AI dentro il gestionale e il codice che resta tuo."
     },
     "about": {
       "title": "Chi siamo: Studio Galilei Srl, software house di Treviso",
@@ -30,7 +30,7 @@
     },
     "sviluppo-software": {
       "title": "Sviluppo software su misura",
-      "description": "Gestionali, portali e integrazioni costruiti sui tuoi processi reali, da 5.000 a 80.000 €: sviluppo a moduli, permessi per ruolo, rilascio progressivo."
+      "description": "Gestionali, portali e integrazioni che mettono in ordine i passaggi e preparano il lavoro al posto tuo. Sviluppo modulare, permessi per ruolo e rilascio progressivo."
     },
     "googleAds": {
       "title": "Google Ads",
@@ -102,8 +102,9 @@
   },
   "Home": {
     "hero": {
-      "title": "<partner>Tutta la tua azienda,</partner><br></br>in un posto solo",
-      "intro": "Costruiamo gestionali, automazioni e agenti AI su misura, che tolgono il lavoro ripetitivo e ti lasciano più tempo per i tuoi clienti.",
+      "title": "<partner>Gestionali vivi,</partner><br></br>su misura per la tua azienda",
+      "intro": "Un gestionale vivo legge le richieste, compila i preventivi, aggiorna le commesse e manda i promemoria a chi deve riceverli. Il tuo team controlla e approva, e il resto del lavoro lo prepara il sistema.",
+      "method": "Prima mettiamo in ordine i passaggi della tua azienda, poi li facciamo andare avanti da soli.",
       "download": "Scarica la presentazione",
       "bookCall": "Prenota una chiamata conoscitiva",
       "exploreServices": "Scopri i servizi",
@@ -131,7 +132,7 @@
       "title": "Cosa costruiamo",
       "software": {
         "name": "Gestionali e software su misura",
-        "short": "Gestionali, workspace e portali costruiti sui tuoi processi: tutto in un posto solo, e resta tuo."
+        "short": "Gestionali, workspace e portali che preparano il lavoro e lo tengono in un posto solo, e il codice resta tuo."
       },
       "automation": {
         "name": "Automazioni",
@@ -373,7 +374,7 @@
       {
         "title": "Gestionali e software su misura",
         "items": [
-          "Gestionali costruiti sui tuoi processi",
+          "Gestionali che mettono in ordine il lavoro",
           "CRM, preventivi, ordini, magazzino, consegne",
           "Applicazioni web e per il telefono"
         ]
@@ -498,7 +499,7 @@
     "sviluppo-software": {
       "name": "Sviluppo Software",
       "tagline": "Strumenti su misura che restano tuoi.",
-      "description": "Gestionali, portali e integrazioni costruiti sui tuoi processi reali. Sviluppo modulare, permessi per ruolo e rilascio progressivo.",
+      "description": "Gestionali, portali e integrazioni che mettono in ordine i passaggi e preparano il lavoro al posto tuo. Sviluppo modulare, permessi per ruolo e rilascio progressivo.",
       "features": [
         {
           "title": "Dashboard operative",
@@ -1142,7 +1143,7 @@
     "texasDispatchAutisti": "Texas, dispatch autisti",
     "italiaDashboardOperativa": "Italia, dashboard operativa",
     "softwareSuMisuraPerTourOperator": "Software su misura per tour operator",
-    "prenotazioniPartenzeAutistiGuide": "Prenotazioni, partenze, autisti, guide, liste passeggeri e messaggi ai clienti. Un gestionale privato costruito sui flussi che usi già e collegato alla tua piattaforma di booking.",
+    "prenotazioniPartenzeAutistiGuide": "Prenotazioni, partenze, autisti, guide, liste passeggeri e messaggi ai clienti. Un gestionale privato che mette in ordine la giornata e si collega alla tua piattaforma di booking.",
     "scriviciSuWhatsapp": "Scrivici su WhatsApp",
     "scriviciUnaEmail": "Scrivici una email",
     "primaConversazioneSenzaImpegno": "Prima conversazione senza impegno: guardiamo insieme come lavori oggi.",
@@ -1195,7 +1196,7 @@
     "troviamoIPuntiCritici": "Troviamo i punti critici",
     "iPassaggiManualiCheCreanoPiu": "I passaggi manuali che creano più rischio operativo o fanno perdere più tempo.",
     "costruiamoIlPrimoModulo": "Costruiamo il primo modulo",
-    "ilPrimoSistemaUtileAttornoAi": "Il primo sistema utile, attorno ai flussi che girano già ogni giorno.",
+    "ilPrimoSistemaUtileAttornoAi": "Il primo sistema utile, partendo dai passaggi che si ripetono ogni giorno.",
     "aggiungiamoSoloCioCheServe": "Aggiungiamo solo ciò che serve",
     "automazioniEReportSoloDoveFanno": "Automazioni e report solo dove fanno risparmiare tempo vero o evitano errori veri.",
     "comePartiamo": "Come partiamo",

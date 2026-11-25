@@ -10,10 +10,20 @@
 import { answers, grants } from "./answers";
 import { compares } from "./compare";
 import { SECTOR_OBJECTIONS } from "./sector-objections";
+import { COMMON_DOUBTS, SECTOR_DOUBTS } from "./doubts";
 import { SECTOR_SHOTS, sectors, type Sector } from "./sectors";
 
 export type LandingFaq = { q: string; a: string };
-export type LandingSection = { title: string; body?: string[]; bullets?: string[] };
+export type LandingSection = {
+  title: string;
+  /** Shown before the bullets. */
+  intro?: string;
+  body?: string[];
+  bullets?: string[];
+  /** On a guided page: the anchor and the short name of the stop in the side guide. */
+  id?: string;
+  step?: string;
+};
 export type LandingStep = { title: string; text: string };
 export type LandingFact = { value: string; label: string };
 export type LandingPrice = { label: string; value: string; note: string };
@@ -46,7 +56,14 @@ export type Landing = {
   /** The studies quoted on the page, linked. */
   sources?: { label: string; url: string }[];
   faqs: LandingFaq[];
+  /** Title of the questions block: "Domande frequenti" when not set. */
+  faqTitle?: string;
   related: string[];
+  /**
+   * A guided page: a side guide with the stops of the page and the call button always in view,
+   * and an invitation to book halfway down, after the reader has seen what we build.
+   */
+  guide?: { midCta: { title: string; text: string } };
 };
 
 /** Shown on every page and in the structured data: bump it when the texts or prices change. */
@@ -70,7 +87,7 @@ const FACTS_AI: LandingFact[] = [
 const STEPS_SOFTWARE: LandingStep[] = [
   {
     title: "Mappiamo i processi",
-    text: "Guardiamo come lavori oggi: chi fa cosa, con quali fogli, email e programmi. Cerchiamo dove si perde tempo prima di disegnare qualsiasi schermata.",
+    text: "Guardiamo come lavori oggi, chi fa cosa e con quali fogli, email e programmi. Poi rimettiamo in ordine i passaggi, togliendo quelli che non servono, prima di disegnare qualsiasi schermata.",
   },
   {
     title: "Prototipo",
@@ -122,8 +139,8 @@ export const landings: Landing[] = [
     title: "Gestionale su misura per la tua azienda",
     metaTitle: "Gestionale su misura: sviluppo, costi e tempi",
     description:
-      "Sviluppiamo gestionali su misura per le PMI: costruiti sui tuoi processi, rilasciati un modulo alla volta, con l'AI dove serve. Progetti da 5.000 a 80.000 €, codice di tua proprietà.",
-    answer: `Un gestionale su misura è un software costruito sui processi della tua azienda, invece di adattare l'azienda a un programma già fatto. Lo sviluppiamo a moduli, prima la parte che oggi ti fa perdere più tempo e poi il resto. I nostri progetti vanno ${SOFTWARE_RANGE}, secondo quanti moduli e quante integrazioni servono, e il codice resta tuo.`,
+      "Gestionali su misura per PMI: prima mettiamo in ordine i passaggi, poi il software prepara il lavoro e il team approva. Un modulo alla volta, da 5.000 a 80.000 €.",
+    answer: `Un gestionale su misura è un software fatto per la tua azienda, invece di adattare l'azienda a un programma già fatto. Prima mettiamo in ordine i passaggi, cioè chi fa cosa e quando, poi il software li porta avanti da solo e il tuo team controlla e approva. Lo sviluppiamo a moduli, prima la parte che oggi ti fa perdere più tempo e poi il resto. I nostri progetti vanno ${SOFTWARE_RANGE}, secondo quanti moduli e quante integrazioni servono, e il codice resta tuo.`,
     sections: [
       {
         title: "Quando conviene un gestionale su misura",
@@ -927,13 +944,22 @@ const sectorLanding = (s: Sector, i: number): Landing => {
     description: s.description,
     answer: s.answer,
     sections: [
-      { title: `I problemi che si ripetono ${s.nel}`, bullets: s.problems },
       {
-        title: done ? `Cosa abbiamo sviluppato ${s.per}` : `Cosa sviluppiamo ${s.per}`,
-        body: [s.built],
+        id: "problema",
+        step: "Il problema",
+        title: `I problemi che si ripetono ${s.nel}`,
+        bullets: s.problems,
       },
-      { title: "Cosa può includere il software", bullets: s.modules },
       {
+        id: "cosa-costruiamo",
+        step: "Cosa costruiamo",
+        title: done ? `Cosa abbiamo sviluppato ${s.per}` : `Cosa sviluppiamo ${s.per}`,
+        intro: s.built,
+        bullets: s.modules,
+      },
+      {
+        id: "ai",
+        step: "Dove entra l'AI",
         title: `Dove serve l'intelligenza artificiale ${s.nel}`,
         bullets: s.ai,
         body: [
@@ -941,11 +967,17 @@ const sectorLanding = (s: Sector, i: number): Landing => {
         ],
       },
     ],
-    objections: {
-      title: `I dubbi che sentiamo ${s.nel}`,
-      items: SECTOR_OBJECTIONS[s.slug],
+    guide: {
+      midCta: {
+        title: "Vuoi vedere come sarebbe nella tua azienda?",
+        text: `In 45 minuti guardiamo insieme come lavorate oggi e ti diciamo da quale modulo partirebbe il software, quanto costerebbe e in quanto tempo. Senza impegno, e se non siamo le persone giuste te lo diciamo.`,
+      },
     },
-    steps: { title: "Come lavoriamo", items: STEPS_SOFTWARE },
+    objections: {
+      title: "I dubbi prima di decidere",
+      items: [...(SECTOR_DOUBTS[s.slug] ?? []), ...(SECTOR_OBJECTIONS[s.slug] ?? [])],
+    },
+    steps: { title: "Come si parte", items: STEPS_SOFTWARE },
     prices: {
       title: "Quanto costa",
       intro:
@@ -962,6 +994,7 @@ const sectorLanding = (s: Sector, i: number): Landing => {
     },
     faqs: [
       ...s.faqs,
+      ...COMMON_DOUBTS,
       {
         q: `Quanto costa un software su misura ${s.per}?`,
         a: `I nostri progetti di software su misura vanno ${SOFTWARE_RANGE}, IVA esclusa, secondo il numero di moduli e di integrazioni. I progetti di AI e automazione vanno ${AI_RANGE}.`,
