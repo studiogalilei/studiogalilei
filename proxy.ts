@@ -23,13 +23,6 @@ export default function proxy(request: NextRequest) {
     return response;
   }
 
-  // Locales are internal route segments only: /en/servizi -> /servizi.
-  const [, first, ...rest] = url.pathname.split("/");
-  if (isLocale(first)) {
-    url.pathname = `/${rest.join("/")}`;
-    return NextResponse.redirect(url, 308);
-  }
-
   return i18n(request);
 }
 

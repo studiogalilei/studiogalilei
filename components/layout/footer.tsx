@@ -1,9 +1,20 @@
-import { useTranslations } from "next-intl";
+import { useLocale, useTranslations } from "next-intl";
 import { cacheLife } from "next/cache";
 import { LogoTree, LogoWordmark } from "@/components/logo";
 import { Container } from "@/components/ui/container";
 import { Link } from "@/i18n/navigation";
 import { company } from "@/lib/company";
+
+// the answer pages (lib/landing/pages.ts), Italian only
+const solutions = [
+  { label: "Gestionale su misura", href: "/gestionale-su-misura" },
+  { label: "Agenti AI per aziende", href: "/agenti-ai-per-aziende" },
+  { label: "Automazione dei processi", href: "/automazione-processi-aziendali" },
+  { label: "Software per tour operator", href: "/tour-operator" },
+  { label: "Software house a Treviso", href: "/software-house-treviso" },
+  { label: "Quanto costa un gestionale", href: "/guide/quanto-costa-un-gestionale-su-misura" },
+  { label: "Quanto costa un agente AI", href: "/guide/quanto-costa-un-agente-ai" },
+] as const;
 
 const links = [
   { key: "home", href: "/" },
@@ -25,9 +36,10 @@ export async function Footer() {
 function FooterContent({ year }: { year: number }) {
   const t = useTranslations("Footer");
   const nav = useTranslations("Header");
+  const italian = useLocale() === "it";
   return (
     <footer className="border-t border-sg/10 bg-[#E4E7ED] text-ink">
-      <Container className="grid gap-12 py-16 sm:grid-cols-2 md:py-20 lg:grid-cols-[1.4fr_1fr_auto]">
+      <Container className="grid gap-12 py-16 sm:grid-cols-2 md:py-20 lg:grid-cols-[1.2fr_1fr_1fr_auto]">
         <div>
           <Link
             href="/"
@@ -50,6 +62,20 @@ function FooterContent({ year }: { year: number }) {
             ))}
           </ul>
         </nav>
+        {italian && (
+          <nav aria-label="Soluzioni">
+            <p className="mb-4 text-14 font-semibold text-sg">Soluzioni</p>
+            <ul className="space-y-2.5">
+              {solutions.map(({ label, href }) => (
+                <li key={href}>
+                  <Link href={href} className="text-14 text-ink/65 hover:text-sg">
+                    {label}
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </nav>
+        )}
         <div>
           <p className="mb-4 text-14 font-semibold text-sg">{nav("contactUs")}</p>
           <address className="space-y-2.5 text-14 leading-relaxed text-ink/65 not-italic">

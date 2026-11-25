@@ -8,8 +8,8 @@
   },
   "Metadata": {
     "home": {
-      "title": "Marketing, AI e software",
-      "description": "Integriamo Marketing, AI e Software sotto lo stesso tetto per ridurre tempi, semplificare la gestione e costruire sistemi che restano tuoi."
+      "title": "Software su misura e agenti AI per le aziende",
+      "description": "Software house di Treviso: gestionali su misura, automazioni e agenti AI costruiti sui processi della tua azienda. Rilascio per gradi, codice di tua proprietà."
     },
     "about": {
       "title": "Chi siamo",
@@ -17,18 +17,18 @@
     },
     "services": {
       "title": "Servizi",
-      "description": "Advertising digitale, social media, produzione contenuti, web, software e automazioni, sicurezza e finanza agevolata: i servizi di Studio Galilei."
+      "description": "Gestionali e software su misura, agenti AI e automazioni dei processi, più i servizi di marketing, contenuti e finanza agevolata di Studio Galilei."
     },
     "marketing": {
       "title": "Marketing",
       "description": "Costruiamo e gestiamo campagne Google e Meta calibrate sui tuoi obiettivi. Struttura, tracciamento e ottimizzazione continua — dal primo giorno."
     },
     "intelligenza-artificiale": {
-      "title": "Intelligenza artificiale",
+      "title": "Intelligenza artificiale per le aziende",
       "description": "Identifichiamo dove si perde tempo, informazione o valore e costruiamo automazioni che lavorano per te. Senza partire dallo strumento."
     },
     "sviluppo-software": {
-      "title": "Sviluppo software",
+      "title": "Sviluppo software su misura",
       "description": "Gestionali, portali e integrazioni costruiti sui tuoi processi reali. Sviluppo modulare, permessi per ruolo e rilascio progressivo."
     },
     "googleAds": {
@@ -98,8 +98,8 @@
   },
   "Home": {
     "hero": {
-      "title": "<partner>Un partner.</partner><br></br>Tutto il necessario<br></br>per crescere",
-      "intro": "Integriamo Marketing, AI e Software sotto lo stesso tetto per ridurre tempi, semplificare la gestione e costruire sistemi che restano tuoi.",
+      "title": "<partner>Software e AI.</partner><br></br>Costruiti sui tuoi<br></br>processi",
+      "intro": "Gestionali su misura, automazioni e agenti AI per le aziende. Li progettiamo sul tuo modo di lavorare, li rilasciamo per gradi e restano tuoi.",
       "download": "Scarica la presentazione",
       "bookCall": "Prenota una chiamata conoscitiva",
       "exploreServices": "Scopri i servizi"

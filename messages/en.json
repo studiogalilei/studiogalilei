@@ -8,8 +8,8 @@
   },
   "Metadata": {
     "home": {
-      "title": "Marketing, AI and software",
-      "description": "We bring Marketing, AI and Software under one roof to cut lead times, simplify management and build systems that stay yours."
+      "title": "Custom software and AI agents for businesses",
+      "description": "Software house in Treviso, Italy: custom management software, automation and AI agents built around your company's processes. Released in stages, and the code stays yours."
     },
     "about": {
       "title": "About us",
@@ -17,18 +17,18 @@
     },
     "services": {
       "title": "Services",
-      "description": "Digital advertising, social media, content production, web, software and automation, security and subsidised finance: the services of Studio Galilei."
+      "description": "Custom software, AI agents and process automation, plus Studio Galilei's marketing, content and subsidised finance services."
     },
     "marketing": {
       "title": "Marketing",
       "description": "We build and manage Google and Meta campaigns tailored to your goals. Structure, tracking and continuous optimisation, from day one."
     },
     "intelligenza-artificiale": {
-      "title": "Artificial intelligence",
+      "title": "Artificial intelligence for businesses",
       "description": "We find where time, information or value is being lost and build automations that work for you. Without starting from the tool."
     },
     "sviluppo-software": {
-      "title": "Software development",
+      "title": "Custom software development",
       "description": "Management systems, portals and integrations built around your real processes. Modular development, role-based permissions and progressive release."
     },
     "googleAds": {
@@ -98,8 +98,8 @@
   },
   "Home": {
     "hero": {
-      "title": "<partner>One partner.</partner><br></br>All you need<br></br>to grow",
-      "intro": "We bring Marketing, AI and Software under one roof to cut lead times, simplify management and build systems that stay yours.",
+      "title": "<partner>Software and AI.</partner><br></br>Built around your<br></br>processes",
+      "intro": "Custom management software, automation and AI agents for businesses. We design them around the way you work, release them in stages, and they stay yours.",
       "download": "Download the presentation",
       "bookCall": "Book an intro call",
       "exploreServices": "Explore our services"

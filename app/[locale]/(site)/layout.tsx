@@ -2,6 +2,7 @@ import type { Metadata, Viewport } from "next";
 import { CardTilt } from "@/components/effects/card-tilt";
 import { Footer } from "@/components/layout/footer";
 import { company } from "@/lib/company";
+import { SITE_URL } from "@/lib/site";
 
 // titles and previews: the root layout's template and each page's pageMetadata()
 export const metadata: Metadata = { twitter: null };
@@ -10,18 +11,55 @@ export const viewport: Viewport = { themeColor: "#061773" };
 
 const organization = {
   "@context": "https://schema.org",
-  "@type": "Organization",
-  name: company.legalName,
-  url: "https://studiogalilei.com",
-  vatID: `IT${company.vat}`,
-  address: {
-    "@type": "PostalAddress",
-    streetAddress: company.street,
-    postalCode: company.zip,
-    addressLocality: company.city,
-    addressRegion: company.province,
-    addressCountry: "IT",
-  },
+  "@graph": [
+    {
+      "@type": ["Organization", "ProfessionalService"],
+      "@id": `${SITE_URL}/#organization`,
+      name: "Studio Galilei",
+      legalName: company.legalName,
+      url: SITE_URL,
+      logo: `${SITE_URL}/icon.svg`,
+      description:
+        "Software house di Treviso: gestionali e software su misura, automazioni e agenti AI per le piccole e medie imprese.",
+      foundingDate: "2024",
+      vatID: `IT${company.vat}`,
+      email: company.email,
+      telephone: company.phoneHref,
+      priceRange: "€€",
+      address: {
+        "@type": "PostalAddress",
+        streetAddress: company.street,
+        postalCode: company.zip,
+        addressLocality: company.city,
+        addressRegion: company.province,
+        addressCountry: "IT",
+      },
+      areaServed: [
+        { "@type": "City", name: "Treviso" },
+        { "@type": "AdministrativeArea", name: "Veneto" },
+        { "@type": "Country", name: "Italia" },
+      ],
+      knowsAbout: [
+        "Sviluppo software su misura",
+        "Gestionali su misura",
+        "Agenti AI",
+        "Automazione dei processi aziendali",
+        "Intelligenza artificiale per le PMI",
+      ],
+      sameAs: [
+        "https://www.linkedin.com/company/studio-galilei/",
+        "https://www.instagram.com/studiogalilei/",
+      ],
+    },
+    {
+      "@type": "WebSite",
+      "@id": `${SITE_URL}/#website`,
+      url: SITE_URL,
+      name: "Studio Galilei",
+      inLanguage: ["it", "en"],
+      publisher: { "@id": `${SITE_URL}/#organization` },
+    },
+  ],
 };
 
 export default function SiteLayout({ children }: LayoutProps<"/[locale]">) {

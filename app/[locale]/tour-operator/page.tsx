@@ -17,7 +17,7 @@ import {
 } from "@/components/tour-operator/sections";
 
 export async function generateMetadata(): Promise<Metadata> {
-  return { ...(await pageMetadata("tourOperator")), robots: { index: false } };
+  return pageMetadata("tourOperator");
 }
 
 export const viewport: Viewport = { themeColor: "#040F4D", viewportFit: "cover" };

@@ -5,9 +5,9 @@ import { SectionHeading } from "@/components/ui/section";
 import { Link } from "@/i18n/navigation";
 
 const SERVICES = [
-  { slug: "marketing", color: "#D21205", icon: Megaphone },
-  { slug: "intelligenza-artificiale", color: "#0689FF", icon: Sparkles },
   { slug: "sviluppo-software", color: "#2F6B33", icon: Code },
+  { slug: "intelligenza-artificiale", color: "#0689FF", icon: Sparkles },
+  { slug: "marketing", color: "#D21205", icon: Megaphone },
 ] as const;
 
 /** "What we do": the three services as coloured cards. */

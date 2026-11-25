@@ -8,6 +8,7 @@ import { Navbar } from "@/components/layout/navbar";
 import { SkipLink } from "@/components/layout/skip-link";
 import { routing } from "@/i18n/routing";
 import { SITE_NAME, TITLE_TEMPLATE } from "@/lib/metadata";
+import { SITE_URL } from "@/lib/site";
 import "../globals.css";
 
 const poppins = Poppins({
@@ -25,7 +26,10 @@ const permanentMarker = localFont({
 });
 
 // every page's title is "<page name> | Studio Galilei" (see lib/metadata.ts)
-export const metadata: Metadata = { title: { template: TITLE_TEMPLATE, default: SITE_NAME } };
+export const metadata: Metadata = {
+  metadataBase: new URL(SITE_URL),
+  title: { template: TITLE_TEMPLATE, default: SITE_NAME },
+};
 
 export function generateStaticParams() {
   return routing.locales.map((locale) => ({ locale }));
