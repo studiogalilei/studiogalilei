@@ -8,6 +8,7 @@ import { Link } from "@/i18n/navigation";
 import { LANDING_AUTHOR, LANDING_UPDATED, landingByPath, type Landing } from "@/lib/landing/pages";
 import { SITE_NAME, fullTitle } from "@/lib/metadata";
 import { SITE_URL } from "@/lib/site";
+import { GuideNav, type GuideStop } from "./guide-nav";
 import { JsonLd } from "./json-ld";
 
 /*
@@ -114,8 +115,19 @@ const h2 =
 const panel = "-mx-2 rounded-18 bg-sand px-6 py-9 md:-mx-10 md:px-10 md:py-12";
 const prose = "text-16 leading-1.75 text-ink/75 md:text-17";
 
+/** The stops of a guided page, in reading order. */
+function guideStops(page: Landing): GuideStop[] {
+  const stops: GuideStop[] = page.sections.flatMap((section) =>
+    section.id && section.step ? [{ id: section.id, label: section.step }] : [],
+  );
+  if (page.steps || page.prices) stops.push({ id: "come-si-parte", label: "Come si parte" });
+  stops.push({ id: "dubbi", label: "I dubbi" });
+  return stops;
+}
+
 export function LandingPage({ path }: { path: string }) {
   const page = landingByPath(path);
+  const guided = Boolean(page.guide);
   return (
     // the texts are Italian whatever the site language
     <div lang="it">
@@ -185,170 +197,207 @@ export function LandingPage({ path }: { path: string }) {
       )}
 
       <Container className="py-16 md:py-24">
-        <div className="max-w-[46rem] space-y-16 md:space-y-20">
-          {page.sections.map((section) => (
-            <section key={section.title}>
-              <h2 className={h2}>{section.title}</h2>
-              {section.bullets && (
-                <ul className="mt-6 space-y-3.5">
-                  {section.bullets.map((item) => (
-                    <li key={item} className={`flex gap-3.5 ${prose}`}>
-                      <span
-                        aria-hidden="true"
-                        className="mt-[0.62em] size-2 flex-none rounded-[2px] bg-sand-deep"
-                      />
-                      <span>{item.replace(/\.$/, "")}</span>
+        <div
+          className={
+            guided
+              ? "lg:grid lg:grid-cols-[minmax(0,46rem)_16rem] lg:justify-between lg:gap-16"
+              : undefined
+          }
+        >
+          <div className="max-w-[46rem] space-y-16 md:space-y-20">
+            {page.sections.map((section) => (
+              <section key={section.title} id={section.id} className="scroll-mt-28">
+                {section.step && (
+                  <p className="mb-3 text-14 font-medium text-sand-ink">{section.step}</p>
+                )}
+                <h2 className={h2}>{section.title}</h2>
+                {section.intro && <p className={`mt-5 ${prose}`}>{section.intro}</p>}
+                {section.bullets && (
+                  <ul className="mt-6 space-y-3.5">
+                    {section.bullets.map((item) => (
+                      <li key={item} className={`flex gap-3.5 ${prose}`}>
+                        <span
+                          aria-hidden="true"
+                          className="mt-[0.62em] size-2 flex-none rounded-[2px] bg-sand-deep"
+                        />
+                        <span>{item.replace(/\.$/, "")}</span>
+                      </li>
+                    ))}
+                  </ul>
+                )}
+                {section.body?.map((p) => (
+                  <p key={p} className={`mt-5 ${prose}`}>
+                    {p}
+                  </p>
+                ))}
+              </section>
+            ))}
+
+            {page.guide && (
+              <aside className="rounded-18 bg-sg px-7 py-9 text-white shadow-surface-3 md:px-10 md:py-11">
+                <h2 className="text-1.5rem leading-1.15 font-semibold -tracking-2 text-balance md:text-1.75rem">
+                  {page.guide.midCta.title}
+                </h2>
+                <p className="mt-4 max-w-[36rem] text-16 leading-1.7 text-white/80">
+                  {page.guide.midCta.text}
+                </p>
+                <ButtonLink href="/#sg-prenota" variant="light" className="mt-7">
+                  Prenota una chiamata conoscitiva
+                </ButtonLink>
+              </aside>
+            )}
+
+            {(page.steps || page.prices) && (
+              <div id="come-si-parte" className="scroll-mt-28 space-y-16 md:space-y-20">
+                {page.steps && (
+                  <section className={panel}>
+                    <h2 className={h2}>{page.steps.title}</h2>
+                    <ol className="mt-8 space-y-7">
+                      {page.steps.items.map((step, i) => (
+                        <li key={step.title} className="flex gap-5">
+                          <span
+                            aria-hidden="true"
+                            className="grid size-9 flex-none place-items-center rounded-10 bg-cream text-15 font-semibold text-sg"
+                          >
+                            {i + 1}
+                          </span>
+                          <div>
+                            <h3 className="text-18 font-semibold text-sg">{step.title}</h3>
+                            <p className={`mt-1.5 ${prose}`}>{step.text}</p>
+                          </div>
+                        </li>
+                      ))}
+                    </ol>
+                  </section>
+                )}
+
+                {page.prices && (
+                  <section className={panel}>
+                    <h2 className={h2}>{page.prices.title}</h2>
+                    <p className={`mt-5 ${prose}`}>{page.prices.intro}</p>
+                    <div className="mt-7 overflow-hidden rounded-14 bg-white shadow-surface-1">
+                      <table className="w-full text-left">
+                        <thead className="sr-only">
+                          <tr>
+                            <th scope="col">Progetto</th>
+                            <th scope="col">Fascia di prezzo</th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          {page.prices.rows.map((row) => (
+                            <tr
+                              key={row.label}
+                              className="flex flex-col border-b border-line last:border-0 md:table-row"
+                            >
+                              <th scope="row" className="p-5 pb-2 align-top font-normal md:p-6">
+                                <span className="block text-16 font-semibold text-sg">
+                                  {row.label}
+                                </span>
+                                <span className="mt-1 block text-14 leading-1.65 text-ink/60">
+                                  {row.note}
+                                </span>
+                              </th>
+                              <td className="px-5 pb-5 align-top text-17 font-semibold whitespace-nowrap text-ink md:p-6 md:text-right md:text-18">
+                                {row.value}
+                              </td>
+                            </tr>
+                          ))}
+                        </tbody>
+                      </table>
+                    </div>
+                    <p className={`mt-6 ${prose}`}>{page.prices.note}</p>
+                  </section>
+                )}
+              </div>
+            )}
+
+            {page.caseStudy && (
+              <section>
+                <h2 className={h2}>Un software nostro, in uso ogni giorno</h2>
+                <p className={`mt-5 ${prose}`}>
+                  Per due tour operator, FunDallas Tours in Texas e BeaVita Tours in Italia, abbiamo
+                  costruito un&apos;app che tiene insieme tutta la giornata: prenotazioni, partenze,
+                  autisti, guide, liste passeggeri e messaggi ai clienti. Prima il team apriva
+                  prenotazioni, chat e fogli di calcolo uno per uno; ora una schermata mostra tutto.
+                </p>
+                <p className="mt-5 flex flex-wrap gap-x-6 gap-y-2 text-16 font-medium">
+                  <Link
+                    href="/casi-studio/tour-operator"
+                    className="text-sg underline decoration-1 underline-offset-4 hover:decoration-2"
+                  >
+                    Leggi il caso studio
+                  </Link>
+                  <Link
+                    href="/tour-operator"
+                    className="text-sg underline decoration-1 underline-offset-4 hover:decoration-2"
+                  >
+                    Software per tour operator
+                  </Link>
+                </p>
+              </section>
+            )}
+
+            <section id="dubbi" className={`scroll-mt-28 ${panel}`}>
+              <h2 className={h2}>{page.faqTitle ?? "Domande frequenti"}</h2>
+              <dl className="mt-6 divide-y divide-sand-deep/30 border-y border-sand-deep/30">
+                {page.faqs.map(({ q, a }) => (
+                  <div key={q} className="py-6">
+                    <dt>
+                      <h3 className="text-18 font-semibold text-sg">{q}</h3>
+                    </dt>
+                    <dd className={`mt-2.5 ${prose}`}>{a}</dd>
+                  </div>
+                ))}
+              </dl>
+            </section>
+
+            {page.sources && (
+              <section>
+                <h2 className="text-18 font-semibold text-sg">Fonti</h2>
+                <ul className="mt-5 space-y-3">
+                  {page.sources.map((source) => (
+                    <li key={source.url} className="text-15 leading-1.65 text-ink/70">
+                      <a
+                        href={source.url}
+                        target="_blank"
+                        rel="noopener"
+                        className="underline decoration-1 underline-offset-4 hover:text-sg"
+                      >
+                        {source.label}
+                      </a>
                     </li>
                   ))}
                 </ul>
-              )}
-              {section.body?.map((p) => (
-                <p key={p} className={`mt-5 ${prose}`}>
-                  {p}
-                </p>
-              ))}
-            </section>
-          ))}
+              </section>
+            )}
 
-          {page.steps && (
-            <section className={panel}>
-              <h2 className={h2}>{page.steps.title}</h2>
-              <ol className="mt-8 space-y-7">
-                {page.steps.items.map((step, i) => (
-                  <li key={step.title} className="flex gap-5">
-                    <span
-                      aria-hidden="true"
-                      className="grid size-9 flex-none place-items-center rounded-10 bg-cream text-15 font-semibold text-sg"
-                    >
-                      {i + 1}
-                    </span>
-                    <div>
-                      <h3 className="text-18 font-semibold text-sg">{step.title}</h3>
-                      <p className={`mt-1.5 ${prose}`}>{step.text}</p>
-                    </div>
-                  </li>
-                ))}
-              </ol>
-            </section>
-          )}
-
-          {page.prices && (
-            <section className={panel}>
-              <h2 className={h2}>{page.prices.title}</h2>
-              <p className={`mt-5 ${prose}`}>{page.prices.intro}</p>
-              <div className="mt-7 overflow-hidden rounded-14 bg-white shadow-surface-1">
-                <table className="w-full text-left">
-                  <thead className="sr-only">
-                    <tr>
-                      <th scope="col">Progetto</th>
-                      <th scope="col">Fascia di prezzo</th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    {page.prices.rows.map((row) => (
-                      <tr
-                        key={row.label}
-                        className="flex flex-col border-b border-line last:border-0 md:table-row"
+            <nav aria-label="Pagine collegate">
+              <h2 className="text-18 font-semibold text-sg">Continua a leggere</h2>
+              <ul className="mt-5 grid gap-3 sm:grid-cols-2">
+                {page.related.map((href) => {
+                  const other = landingByPath(href);
+                  return (
+                    <li key={href}>
+                      <Link
+                        href={href}
+                        className="group block h-full rounded-14 bg-white p-5 shadow-surface-1"
                       >
-                        <th scope="row" className="p-5 pb-2 align-top font-normal md:p-6">
-                          <span className="block text-16 font-semibold text-sg">{row.label}</span>
-                          <span className="mt-1 block text-14 leading-1.65 text-ink/60">
-                            {row.note}
-                          </span>
-                        </th>
-                        <td className="px-5 pb-5 align-top text-17 font-semibold whitespace-nowrap text-ink md:p-6 md:text-right md:text-18">
-                          {row.value}
-                        </td>
-                      </tr>
-                    ))}
-                  </tbody>
-                </table>
-              </div>
-              <p className={`mt-6 ${prose}`}>{page.prices.note}</p>
-            </section>
-          )}
-
-          {page.caseStudy && (
-            <section>
-              <h2 className={h2}>Un software nostro, in uso ogni giorno</h2>
-              <p className={`mt-5 ${prose}`}>
-                Per due tour operator, FunDallas Tours in Texas e BeaVita Tours in Italia, abbiamo
-                costruito un&apos;app che tiene insieme tutta la giornata: prenotazioni, partenze,
-                autisti, guide, liste passeggeri e messaggi ai clienti. Prima il team apriva
-                prenotazioni, chat e fogli di calcolo uno per uno; ora una schermata mostra tutto.
-              </p>
-              <p className="mt-5 flex flex-wrap gap-x-6 gap-y-2 text-16 font-medium">
-                <Link
-                  href="/casi-studio/tour-operator"
-                  className="text-sg underline decoration-1 underline-offset-4 hover:decoration-2"
-                >
-                  Leggi il caso studio
-                </Link>
-                <Link
-                  href="/tour-operator"
-                  className="text-sg underline decoration-1 underline-offset-4 hover:decoration-2"
-                >
-                  Software per tour operator
-                </Link>
-              </p>
-            </section>
-          )}
-
-          <section className={panel}>
-            <h2 className={h2}>Domande frequenti</h2>
-            <dl className="mt-6 divide-y divide-sand-deep/30 border-y border-sand-deep/30">
-              {page.faqs.map(({ q, a }) => (
-                <div key={q} className="py-6">
-                  <dt>
-                    <h3 className="text-18 font-semibold text-sg">{q}</h3>
-                  </dt>
-                  <dd className={`mt-2.5 ${prose}`}>{a}</dd>
-                </div>
-              ))}
-            </dl>
-          </section>
-
-          {page.sources && (
-            <section>
-              <h2 className="text-18 font-semibold text-sg">Fonti</h2>
-              <ul className="mt-5 space-y-3">
-                {page.sources.map((source) => (
-                  <li key={source.url} className="text-15 leading-1.65 text-ink/70">
-                    <a
-                      href={source.url}
-                      target="_blank"
-                      rel="noopener"
-                      className="underline decoration-1 underline-offset-4 hover:text-sg"
-                    >
-                      {source.label}
-                    </a>
-                  </li>
-                ))}
+                        <span className="block text-13 text-ai">{other.kicker}</span>
+                        <span className="mt-1 block text-16 font-semibold text-sg group-hover:underline">
+                          {other.title}
+                        </span>
+                      </Link>
+                    </li>
+                  );
+                })}
               </ul>
-            </section>
+            </nav>
+          </div>
+          {guided && (
+            <div className="hidden lg:block">
+              <GuideNav stops={guideStops(page)} />
+            </div>
           )}
-
-          <nav aria-label="Pagine collegate">
-            <h2 className="text-18 font-semibold text-sg">Continua a leggere</h2>
-            <ul className="mt-5 grid gap-3 sm:grid-cols-2">
-              {page.related.map((href) => {
-                const other = landingByPath(href);
-                return (
-                  <li key={href}>
-                    <Link
-                      href={href}
-                      className="group block h-full rounded-14 bg-white p-5 shadow-surface-1"
-                    >
-                      <span className="block text-13 text-ai">{other.kicker}</span>
-                      <span className="mt-1 block text-16 font-semibold text-sg group-hover:underline">
-                        {other.title}
-                      </span>
-                    </Link>
-                  </li>
-                );
-              })}
-            </ul>
-          </nav>
         </div>
       </Container>
       <CtaBand

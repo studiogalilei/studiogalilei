@@ -7,10 +7,20 @@
  * cases already public on the site), the number before the adjective, the limit said first.
  */
 
+import { COMMON_DOUBTS, SECTOR_DOUBTS } from "./doubts";
 import { SECTOR_SHOTS, sectors, type Sector } from "./sectors";
 
 export type LandingFaq = { q: string; a: string };
-export type LandingSection = { title: string; body?: string[]; bullets?: string[] };
+export type LandingSection = {
+  title: string;
+  /** Shown before the bullets. */
+  intro?: string;
+  body?: string[];
+  bullets?: string[];
+  /** On a guided page: the anchor and the short name of the stop in the side guide. */
+  id?: string;
+  step?: string;
+};
 export type LandingStep = { title: string; text: string };
 export type LandingPrice = { label: string; value: string; note: string };
 
@@ -34,7 +44,14 @@ export type Landing = {
   /** The studies quoted on the page, linked. */
   sources?: { label: string; url: string }[];
   faqs: LandingFaq[];
+  /** Title of the questions block: "Domande frequenti" when not set. */
+  faqTitle?: string;
   related: string[];
+  /**
+   * A guided page: a side guide with the stops of the page and the call button always in view,
+   * and an invitation to book halfway down, after the reader has seen what we build.
+   */
+  guide?: { midCta: { title: string; text: string } };
 };
 
 /** Shown on every page and in the structured data: bump it when the texts or prices change. */
@@ -897,13 +914,22 @@ const sectorLanding = (s: Sector, i: number): Landing => {
     description: s.description,
     answer: s.answer,
     sections: [
-      { title: `I problemi che si ripetono ${s.nel}`, bullets: s.problems },
       {
-        title: done ? `Cosa abbiamo sviluppato ${s.per}` : `Cosa sviluppiamo ${s.per}`,
-        body: [s.built],
+        id: "problema",
+        step: "Il problema",
+        title: `I problemi che si ripetono ${s.nel}`,
+        bullets: s.problems,
       },
-      { title: "Cosa può includere il software", bullets: s.modules },
       {
+        id: "cosa-costruiamo",
+        step: "Cosa costruiamo",
+        title: done ? `Cosa abbiamo sviluppato ${s.per}` : `Cosa sviluppiamo ${s.per}`,
+        intro: s.built,
+        bullets: s.modules,
+      },
+      {
+        id: "ai",
+        step: "Dove entra l'AI",
         title: `Dove serve l'intelligenza artificiale ${s.nel}`,
         bullets: s.ai,
         body: [
@@ -911,7 +937,13 @@ const sectorLanding = (s: Sector, i: number): Landing => {
         ],
       },
     ],
-    steps: { title: "Come lavoriamo", items: STEPS_SOFTWARE },
+    guide: {
+      midCta: {
+        title: "Vuoi vedere come sarebbe nella tua azienda?",
+        text: `In 45 minuti guardiamo insieme come lavorate oggi e ti diciamo da quale modulo partirebbe il software, quanto costerebbe e in quanto tempo. Senza impegno, e se non siamo le persone giuste te lo diciamo.`,
+      },
+    },
+    steps: { title: "Come si parte", items: STEPS_SOFTWARE },
     prices: {
       title: "Quanto costa",
       intro:
@@ -926,7 +958,10 @@ const sectorLanding = (s: Sector, i: number): Landing => {
       ],
       note: "Un progetto di media complessità richiede 8-10 settimane. Si può partire da un modulo solo.",
     },
+    faqTitle: "I dubbi prima di decidere",
     faqs: [
+      ...(SECTOR_DOUBTS[s.slug] ?? []),
+      ...COMMON_DOUBTS,
       ...s.faqs,
       {
         q: `Quanto costa un software su misura ${s.per}?`,
