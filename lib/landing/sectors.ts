@@ -48,6 +48,10 @@ export const SECTOR_SHOTS = new Set([
   "energia-utilities",
   "agricoltura-agroindustria",
   "automotive-componentistica",
+  "chimica-materiali",
+  "media-comunicazione",
+  "pubblica-amministrazione",
+  "studi-professionali",
 ]);
 
 export const sectors: Sector[] = [
