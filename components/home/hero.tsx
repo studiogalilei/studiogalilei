@@ -3,7 +3,6 @@ import { Download } from "@/components/icons";
 import { ButtonLink, DownloadLink } from "@/components/ui/button";
 import { Container } from "@/components/ui/container";
 import { presentationPdf } from "@/lib/company";
-import { HeroTiles } from "./hero-tiles";
 import { ScrollToBooking } from "./scroll-to-booking";
 
 export function Hero() {
@@ -46,9 +45,8 @@ export function Hero() {
             </ScrollToBooking>
           </div>
         </div>
-        <div className="mx-auto w-full max-w-[520px] md:max-w-none md:pl-10">
-          <HeroTiles />
-        </div>
+        {/* the right-hand column is empty for now: the three service tiles (hero-tiles.tsx) came out
+            on 25/11/2026, a new single mark is on its way */}
       </Container>
     </section>
   );

@@ -9,7 +9,7 @@
   "Metadata": {
     "home": {
       "title": "Software su misura e agenti AI per le aziende",
-      "description": "Software house di Treviso: gestionali su misura, automazioni e agenti AI costruiti sui processi della tua azienda. Rilascio per gradi, codice di tua proprietà."
+      "description": "Software su misura e agenti AI che mettono ordine in azienda e ti restituiscono tempo. Software house di Treviso: prima il sistema, poi l'AI, e il codice resta tuo."
     },
     "about": {
       "title": "Chi siamo",
@@ -98,8 +98,8 @@
   },
   "Home": {
     "hero": {
-      "title": "<partner>Software e AI.</partner><br></br>Costruiti sui tuoi<br></br>processi",
-      "intro": "Gestionali su misura, automazioni e agenti AI per le aziende. Li progettiamo sul tuo modo di lavorare, li rilasciamo per gradi e restano tuoi.",
+      "title": "<partner>Ordine in azienda.</partner><br></br>E il tuo tempo<br></br>indietro",
+      "intro": "Costruiamo software su misura e agenti AI che tolgono dalle tue giornate il lavoro ripetitivo. Prima il sistema, poi l'AI: tutto in un posto solo, e resta tuo.",
       "download": "Scarica la presentazione",
       "bookCall": "Prenota una chiamata conoscitiva",
       "exploreServices": "Scopri i servizi"

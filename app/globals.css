@@ -17,6 +17,9 @@
   --color-pale: #eef1fa;
   --color-mist: #f7f8fc;
   --color-cream: #ebdcbe;
+  /* the light and the deep ends of cream: panel backgrounds and small details on white */
+  --color-sand: #f8f3e8;
+  --color-sand-deep: #c9ad74;
   --color-line: #e3e8f4;
   --color-mk: #d21205;
   --color-ai: #0689ff;

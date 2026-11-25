@@ -9,7 +9,7 @@
   "Metadata": {
     "home": {
       "title": "Custom software and AI agents for businesses",
-      "description": "Software house in Treviso, Italy: custom management software, automation and AI agents built around your company's processes. Released in stages, and the code stays yours."
+      "description": "Custom software and AI agents that bring order to your company and give you your time back. Software house in Treviso, Italy: the system first, then AI, and the code stays yours."
     },
     "about": {
       "title": "About us",
@@ -98,8 +98,8 @@
   },
   "Home": {
     "hero": {
-      "title": "<partner>Software and AI.</partner><br></br>Built around your<br></br>processes",
-      "intro": "Custom management software, automation and AI agents for businesses. We design them around the way you work, release them in stages, and they stay yours.",
+      "title": "<partner>Order in your company.</partner><br></br>And your time<br></br>back",
+      "intro": "We build custom software and AI agents that take the repetitive work out of your days. The system first, then AI: everything in one place, and it stays yours.",
       "download": "Download the presentation",
       "bookCall": "Book an intro call",
       "exploreServices": "Explore our services"
