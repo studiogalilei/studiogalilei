@@ -12,7 +12,6 @@ const solutions = [
   { label: "Agenti AI per aziende", href: "/agenti-ai-per-aziende" },
   { label: "Automazione dei processi", href: "/automazione-processi-aziendali" },
   { label: "Software per settore", href: "/settori" },
-  { label: "Software per tour operator", href: "/tour-operator" },
   { label: "Software house a Treviso", href: "/software-house-treviso" },
   { label: "Partner", href: "/agenzie-partner" },
   { label: "Quanto costa un gestionale", href: "/guide/quanto-costa-un-gestionale-su-misura" },
@@ -25,7 +24,9 @@ const solutions = [
 const links = [
   { key: "home", href: "/" },
   { key: "about", href: "/chi-siamo" },
+  { key: "services", href: "/servizi" },
   { key: "caseStudies", href: "/casi-studio" },
+  { key: "tourOperator", href: "/tour-operator" },
   { key: "careers", href: "/lavora-con-noi" },
 ] as const;
 

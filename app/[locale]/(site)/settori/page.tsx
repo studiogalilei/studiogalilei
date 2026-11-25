@@ -7,7 +7,7 @@ import { Container } from "@/components/ui/container";
 import { Link } from "@/i18n/navigation";
 import { sectorLandings } from "@/lib/landing/pages";
 import { SECTOR_SHOTS, sectors } from "@/lib/landing/sectors";
-import { SITE_NAME, fullTitle } from "@/lib/metadata";
+import { SITE_NAME, fullTitle, seoDescription, seoTitle } from "@/lib/metadata";
 import { SITE_URL } from "@/lib/site";
 
 const TITLE = "Software su misura per settore";
@@ -17,8 +17,8 @@ const DESCRIPTION =
 
 export async function generateMetadata(): Promise<Metadata> {
   return {
-    title: TITLE,
-    description: DESCRIPTION,
+    title: { absolute: seoTitle(TITLE) },
+    description: seoDescription(DESCRIPTION),
     alternates: { canonical: "/settori", languages: { it: "/settori", "x-default": "/settori" } },
     openGraph: {
       type: "website",

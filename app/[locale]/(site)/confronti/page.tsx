@@ -5,7 +5,7 @@ import { PageHero } from "@/components/sections/page-hero";
 import { Container } from "@/components/ui/container";
 import { Link } from "@/i18n/navigation";
 import { compares } from "@/lib/landing/compare";
-import { SITE_NAME, fullTitle } from "@/lib/metadata";
+import { SITE_NAME, fullTitle, seoDescription, seoTitle } from "@/lib/metadata";
 import { SITE_URL } from "@/lib/site";
 
 const TITLE = "Confronti: le scelte prima di un software su misura";
@@ -13,8 +13,8 @@ const DESCRIPTION =
   "Su misura o già pronto, agente AI o automazione, software house o freelance o team interno: i confronti onesti sulle scelte da fare prima di comprare software e AI.";
 
 export const metadata: Metadata = {
-  title: TITLE,
-  description: DESCRIPTION,
+  title: { absolute: seoTitle(TITLE) },
+  description: seoDescription(DESCRIPTION),
   alternates: {
     canonical: "/confronti",
     languages: { it: "/confronti", "x-default": "/confronti" },

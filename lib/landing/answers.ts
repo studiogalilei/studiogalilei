@@ -412,7 +412,7 @@ export const grants: Landing = {
   title: "Bandi e agevolazioni per software e AI: cosa c'è a novembre 2026",
   metaTitle: "Bandi software e AI per PMI: agevolazioni 2026",
   description:
-    "Iperammortamento, Nuova Sabatini, voucher delle Camere di commercio: quali agevolazioni possono coprire parte di un software su misura o di un progetto di AI a novembre 2026.",
+    "Quali agevolazioni possono coprire parte di un software su misura o di un progetto di AI a novembre 2026, tra iperammortamento, Nuova Sabatini e voucher camerali.",
   answer:
     "A novembre 2026 un'impresa italiana che investe in software ha tre strade principali: l'iperammortamento per i beni 4.0, la Nuova Sabatini e i voucher digitali delle Camere di commercio. Transizione 5.0 e il credito d'imposta 4.0 non sono più disponibili per i nuovi investimenti. Nessuna agevolazione copre qualsiasi software, e nessuna paga tutto il progetto: nella prima chiamata verifichiamo se il tuo può rientrare, e in quale.",
   facts: [

@@ -12,7 +12,7 @@ import {
   type Landing,
   type LandingFaq,
 } from "@/lib/landing/pages";
-import { SITE_NAME, fullTitle } from "@/lib/metadata";
+import { SITE_NAME, seoDescription, seoTitle } from "@/lib/metadata";
 import { SITE_URL } from "@/lib/site";
 import { JsonLd } from "./json-ld";
 
@@ -28,8 +28,8 @@ export async function landingMetadata(path: string): Promise<Metadata> {
   const page = landingByPath(path);
   const locale = await getLocale();
   return {
-    title: { absolute: page.metaTitle.length > 48 ? page.metaTitle : fullTitle(page.metaTitle) },
-    description: page.description,
+    title: { absolute: seoTitle(page.metaTitle) },
+    description: seoDescription(page.description),
     // Italian only: the copy under /en points here
     alternates: { canonical: page.path, languages: { it: page.path, "x-default": page.path } },
     openGraph: {
