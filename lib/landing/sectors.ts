@@ -550,7 +550,7 @@ export const sectors: Sector[] = [
       },
       {
         q: "Possiamo partire solo dai timesheet?",
-        a: "Sì, si parte dal modulo che oggi costa più ore e si aggiungono gli altri dopo.",
+        a: "Sì, la prima tappa può essere proprio quella, e il resto si aggiunge dopo.",
       },
     ],
   },

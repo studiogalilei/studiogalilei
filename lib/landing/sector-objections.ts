@@ -16,7 +16,7 @@ export const SECTOR_OBJECTIONS: Record<string, LandingFaq[]> = {
   "moda-abbigliamento": [
     {
       q: "Siamo in piena campagna vendite: non possiamo fermarci per cambiare sistema",
-      a: "Non ci si ferma, si sceglie il momento. Il primo modulo entra in uso tra una campagna e l'altra e sul resto si continua a lavorare come prima, finché il nuovo non ha fatto una stagione intera accanto al vecchio.",
+      a: "Non ci si ferma, si sceglie il momento. La prima parte entra in uso tra una campagna e l'altra e sul resto si continua a lavorare come prima, finché il nuovo non ha fatto una stagione intera accanto al vecchio.",
     },
   ],
   "lusso-accessori": [
@@ -38,7 +38,7 @@ export const SECTOR_OBJECTIONS: Record<string, LandingFaq[]> = {
   "alimentare-beverage": [
     {
       q: "I margini sono bassi: un software su misura è un lusso",
-      a: "Lo è se rifà tutto. Si parte dal punto in cui oggi si perde più tempo o più prodotto, spesso le schede di lotto o le etichette, con un modulo solo. Se il conto delle ore risparmiate non regge quel costo, non lo proponiamo.",
+      a: "Lo è se rifà tutto. Si parte dal punto in cui oggi si perde più tempo o più prodotto, spesso le schede di lotto o le etichette, come prima tappa. Se il conto delle ore risparmiate non regge quel costo, non lo proponiamo.",
     },
   ],
   "farmaceutico-medicale": [

@@ -27,7 +27,7 @@ export function GET() {
 - Cosa fa: gestionali e software su misura, workspace e portali, automazioni, agenti AI, integrazioni, ricerca di bandi e agevolazioni
 - Per chi: piccole e medie imprese italiane, e agenzie e consulenti («Partner») che portano software e AI ai loro clienti
 - Dove lavora: Veneto di persona, resto d'Italia ed estero a distanza
-- Metodo: «prima il sistema, poi l'AI». Mappatura dei processi, prototipo, primo modulo in uso, espansione, assistenza
+- Metodo: «prima il sistema, poi l'AI». Studio dell'azienda (la giornata di chi lavora da solo o i reparti), passaggi in ordine con l'AI nei punti in cui il lavoro si ripete, verifica dei bandi, sistema unico costruito a tappe, assistenza
 - Software in uso: l'app per i tour operator BeaVita Tours (Italia) e FunDallas Tours (Texas)
 - Contatti: ${company.email}, ${company.phone}
 - Primo passo: chiamata conoscitiva di 45 minuti, senza impegno, prenotabile da ${SITE_URL}/#sg-prenota

@@ -71,7 +71,7 @@ export function GuideNav({ stops }: { stops: GuideStop[] }) {
       </ol>
       <div className="mt-6 rounded-14 bg-white p-5 shadow-surface-1">
         <p className="text-15 leading-1.65 font-medium text-sg">
-          45 minuti per capire da dove partire nella tua azienda.
+          45 minuti per capire quanto tempo potete riprendervi.
         </p>
         <ButtonLink
           href="/#sg-prenota"

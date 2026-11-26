@@ -68,11 +68,11 @@ export const answers: Landing = {
       items: [
         {
           q: "Quanto costa un software su misura?",
-          a: "Nei nostri progetti da 5.000 a 80.000 €, IVA esclusa. La parte bassa è un modulo solo con poche integrazioni, la parte alta un gestionale con più moduli, più ruoli e collegamenti ad altri programmi. I progetti di AI e automazione vanno da 3.000 a 40.000 €.",
+          a: "Nei nostri progetti da 5.000 a 80.000 €, IVA esclusa. La parte bassa è il sistema di chi lavora da solo o con pochi collaboratori, la parte alta un gestionale che collega più reparti, più ruoli e altri programmi. I progetti di AI e automazione vanno da 3.000 a 40.000 €.",
         },
         {
           q: "Perché non mi dite un prezzo preciso subito?",
-          a: "Perché prima di guardare come lavori sarebbe un numero inventato. Dopo la prima chiamata diamo una fascia stretta, e il preventivo preciso arriva dopo la mappatura dei processi, con l'elenco dei moduli e di ciò che è escluso.",
+          a: "Perché prima di guardare come lavori sarebbe un numero inventato. Dopo la prima chiamata diamo una fascia stretta, e il preventivo preciso arriva dopo lo studio dell'azienda, con l'elenco delle tappe e di ciò che è escluso.",
         },
         {
           q: "Cosa pago dopo la consegna?",
@@ -80,7 +80,7 @@ export const answers: Landing = {
         },
         {
           q: "Ho paura che il costo lieviti a metà progetto",
-          a: "È il rischio più citato, e ha due cause: un perimetro vago e richieste aggiunte in corsa. Si riduce lavorando a moduli con un prezzo per modulo, e mettendo per iscritto ogni richiesta nuova con il suo costo prima di farla. Se un'aggiunta non la vuoi pagare, resta fuori.",
+          a: "È il rischio più citato, e ha due cause: un perimetro vago e richieste aggiunte in corsa. Si riduce lavorando a tappe con un prezzo per tappa, e mettendo per iscritto ogni richiesta nuova con il suo costo prima di farla. Se un'aggiunta non la vuoi pagare, resta fuori.",
         },
         {
           q: "Come capisco se l'investimento rientra?",
@@ -103,7 +103,7 @@ export const answers: Landing = {
       items: [
         {
           q: "Quanto tempo serve?",
-          a: "Un progetto di media complessità richiede 8-10 settimane. Un'automazione su un processo solo ne richiede meno, un gestionale con molti moduli di più, ma arriva a pezzi: il primo modulo entra in uso prima della fine.",
+          a: "Un progetto di media complessità richiede 8-10 settimane. Un'automazione su un processo solo ne richiede meno, un gestionale che collega molti reparti di più, ma arriva a tappe: la prima parte entra in uso prima della fine.",
         },
         {
           q: "Quanto tempo devo metterci io?",
@@ -115,7 +115,7 @@ export const answers: Landing = {
         },
         {
           q: "E se il progetto va in ritardo?",
-          a: "Può succedere, di solito perché emergono casi che nessuno aveva raccontato. Lavorando a rilasci il ritardo riguarda un modulo e non tutto il progetto, e lo vedi subito perché a ogni rilascio c'è qualcosa da provare.",
+          a: "Può succedere, di solito perché emergono casi che nessuno aveva raccontato. Lavorando a rilasci il ritardo riguarda una tappa e non tutto il progetto, e lo vedi subito perché a ogni rilascio c'è qualcosa da provare.",
         },
       ],
     },
@@ -130,7 +130,7 @@ export const answers: Landing = {
         },
         {
           q: "Ho già avuto una brutta esperienza con una software house",
-          a: "Succede spesso, e quasi sempre per gli stessi motivi: un preventivo unico per tutto, mesi senza vedere niente, un prodotto che non somiglia al lavoro reale. Per questo partiamo da un prototipo navigabile e rilasciamo un modulo alla volta: se non funziona te ne accorgi dopo poche settimane, non dopo un anno.",
+          a: "Succede spesso, e quasi sempre per gli stessi motivi: un preventivo unico per tutto, mesi senza vedere niente, un prodotto che non somiglia al lavoro reale. Per questo partiamo da un prototipo navigabile e rilasciamo una tappa alla volta: se non funziona te ne accorgi dopo poche settimane, non dopo un anno.",
         },
         {
           q: "Chi mi risponde quando qualcosa non va?",
@@ -142,7 +142,7 @@ export const answers: Landing = {
         },
         {
           q: "Posso interrompere il progetto a metà?",
-          a: "Lavorare a moduli serve anche a questo: alla fine di ogni modulo si decide se continuare. Le condizioni di uscita si scrivono nel contratto prima di partire, e ciò che è stato consegnato e pagato resta a te, con il suo codice.",
+          a: "Lavorare a tappe serve anche a questo: alla fine di ogni tappa si decide se continuare. Le condizioni di uscita si scrivono nel contratto prima di partire, e ciò che è stato consegnato e pagato resta a te, con il suo codice.",
         },
         {
           q: "Meglio una software house, un freelance o assumere?",
@@ -184,7 +184,7 @@ export const answers: Landing = {
       items: [
         {
           q: "I miei collaboratori non lo useranno",
-          a: "Succede quando il software chiede più lavoro di prima. Per questo le schermate si disegnano guardando le persone lavorare, il prototipo lo provano loro e non solo tu, e il primo modulo deve togliere un fastidio che sentono ogni giorno. Se dopo il rilascio non lo usano, è un difetto nostro da correggere.",
+          a: "Succede quando il software chiede più lavoro di prima. Per questo le schermate si disegnano guardando le persone lavorare, il prototipo lo provano loro e non solo tu, e la prima parte deve togliere un fastidio che sentono ogni giorno. Se dopo il rilascio non lo usano, è un difetto nostro da correggere.",
         },
         {
           q: "Abbiamo persone poco abituate al computer",
@@ -242,7 +242,7 @@ export const answers: Landing = {
         },
         {
           q: "Durante il passaggio l'azienda si ferma?",
-          a: "No. Per un periodo si lavora con il vecchio e il nuovo affiancati su un modulo solo, e si spegne il vecchio quando i numeri coincidono.",
+          a: "No. Per un periodo si lavora con il vecchio e il nuovo affiancati su una parte sola, e si spegne il vecchio quando i numeri coincidono.",
         },
       ],
     },

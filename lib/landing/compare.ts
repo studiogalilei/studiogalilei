@@ -38,7 +38,7 @@ export const compares: Landing[] = [
           label: "Tempo per partire",
           cells: [
             "Giorni o settimane",
-            "Un progetto medio richiede 8-10 settimane, il primo modulo arriva prima",
+            "Un progetto medio richiede 8-10 settimane, la prima parte arriva prima",
           ],
         },
         {
@@ -52,7 +52,7 @@ export const compares: Landing[] = [
           label: "Funzioni",
           cells: [
             "Centinaia, molte che non userai",
-            "Solo quelle che servono, aggiunte un modulo alla volta",
+            "Solo quelle che servono, aggiunte una tappa alla volta",
           ],
         },
         {
@@ -341,7 +341,7 @@ export const compares: Landing[] = [
         title: "Come lavoriamo noi, per confronto",
         body: [
           "Studio Galilei è una software house piccola, nata nel 2024 in provincia di Treviso. Chi lavora al tuo progetto lo conosce per intero e ti risponde direttamente. Il limite è la dimensione: non siamo la scelta giusta per un progetto che richiede decine di persone in parallelo.",
-          "Lavoriamo a moduli, con un prototipo prima dello sviluppo, e consegniamo codice, accessi e documentazione. I progetti vanno da 5.000 a 80.000 € per il software su misura e da 3.000 a 40.000 € per AI e automazioni.",
+          "Partiamo dallo studio dell'azienda, lavoriamo a tappe con un prototipo prima dello sviluppo, e consegniamo codice, accessi e documentazione. I progetti vanno da 5.000 a 80.000 € per il software su misura e da 3.000 a 40.000 € per AI e automazioni.",
         ],
       },
     ],
@@ -360,7 +360,7 @@ export const compares: Landing[] = [
       },
       {
         q: "Come capisco se un preventivo è serio?",
-        a: "Elenca i moduli, le integrazioni, cosa è escluso, i costi dopo il rilascio e di chi è il codice. Se due preventivi sono molto diversi, di solito descrivono due progetti diversi.",
+        a: "Elenca cosa copre, le integrazioni, cosa è escluso, i costi dopo il rilascio e di chi è il codice. Se due preventivi sono molto diversi, di solito descrivono due progetti diversi.",
       },
     ],
     related: [

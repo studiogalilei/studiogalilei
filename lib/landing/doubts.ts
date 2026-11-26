@@ -4,7 +4,7 @@
  * Grounded in docs/ricerca-obiezioni.md: the barriers Italian SMEs report (cost, skills, staff
  * resistance, integration with what they already use, supplier risk, lock-in) worded the way
  * owners say them. The answers only promise what the rest of the site already promises: one
- * module at a time, the existing ERP kept, code and data that stay with the client, support
+ * stage at a time, the existing ERP kept, code and data that stay with the client, support
  * from the people who built it.
  */
 
@@ -22,11 +22,11 @@ export const COMMON_DOUBTS: LandingFaq[] = [
   },
   {
     q: "Quanto tempo ci toglie mentre lo costruite?",
-    a: "Qualche incontro all'inizio, per raccontarci come lavorate davvero, e poi una prova del prototipo con i vostri dati. Dopo vi chiediamo un parere a ogni modulo rilasciato, non riunioni ogni settimana.",
+    a: "Qualche incontro all'inizio, per raccontarci come lavorate davvero, e poi una prova del prototipo con i vostri dati. Dopo vi chiediamo un parere a ogni tappa rilasciata, non riunioni ogni settimana.",
   },
   {
     q: "Il mio team lo userà davvero?",
-    a: "Prima di scrivere codice rimettiamo in ordine i passaggi insieme a chi li fa ogni giorno, e chi lo userà prova il prototipo prima del rilascio, quando correggere costa poco. Si parte dal modulo che toglie più fatica, così il primo motivo per usarlo arriva subito.",
+    a: "Prima di scrivere codice rimettiamo in ordine i passaggi insieme a chi li fa ogni giorno, e chi lo userà prova il prototipo prima del rilascio, quando correggere costa poco. La prima parte che entra in uso è quella che toglie più fatica, così il primo motivo per usarlo arriva subito.",
   },
   {
     q: "Ci sono incentivi per pagarlo?",
@@ -103,7 +103,7 @@ export const SECTOR_DOUBTS: Record<string, LandingFaq[]> = {
     },
     {
       q: "In alta stagione non possiamo fermarci per cambiare sistema",
-      a: "Si parte in bassa stagione, un modulo alla volta, e il passaggio si fa quando la parte nuova è già stata provata con i vostri dati.",
+      a: "Si parte in bassa stagione, una tappa alla volta, e il passaggio si fa quando la parte nuova è già stata provata con i vostri dati.",
     },
   ],
   "farmaceutico-medicale": [
@@ -145,7 +145,7 @@ export const SECTOR_DOUBTS: Record<string, LandingFaq[]> = {
     },
     {
       q: "Ogni cliente ci chiede un'integrazione diversa",
-      a: "Ogni integrazione è un modulo a sé, quindi un cliente nuovo con il suo formato si aggiunge senza toccare il resto del sistema.",
+      a: "Ogni integrazione è un pezzo a sé, quindi un cliente nuovo con il suo formato si aggiunge senza toccare il resto del sistema.",
     },
   ],
   "retail-distribuzione": [
@@ -215,7 +215,7 @@ export const SECTOR_DOUBTS: Record<string, LandingFaq[]> = {
     },
     {
       q: "Una struttura indipendente può permetterselo?",
-      a: "Si parte da un modulo, di solito quello che oggi fa perdere più ore alla reception, e i nostri progetti partono da 5.000 €. Gli altri moduli arrivano quando il primo ha già reso.",
+      a: "I nostri progetti partono da 5.000 €, si pagano a tappe e spesso rientrano in un bando per la digitalizzazione. La prima tappa è di solito quella che oggi fa perdere più ore alla reception, e le altre arrivano quando la prima ha già reso.",
     },
   ],
   "energia-utilities": [
@@ -257,7 +257,7 @@ export const SECTOR_DOUBTS: Record<string, LandingFaq[]> = {
     },
     {
       q: "Uno studio piccolo regge un cliente automotive?",
-      a: "Siamo uno studio piccolo e lo diciamo. Per questo lavoriamo a moduli, con codice e documentazione che restano vostri, e chi risponde quando serve è chi l'ha costruito.",
+      a: "Siamo uno studio piccolo e lo diciamo. Per questo lavoriamo a tappe, con codice e documentazione che restano vostri, e chi risponde quando serve è chi l'ha costruito.",
     },
   ],
   "chimica-materiali": [
@@ -277,7 +277,7 @@ export const SECTOR_DOUBTS: Record<string, LandingFaq[]> = {
   "media-comunicazione": [
     {
       q: "La redazione è affezionata ai suoi strumenti",
-      a: "Si parte dal flusso della redazione, messo in ordine insieme a chi lo fa ogni giorno, e il primo modulo è il passaggio che oggi fa perdere più tempo, di solito l'adattamento dello stesso contenuto ai vari canali.",
+      a: "Si parte dal flusso della redazione, messo in ordine insieme a chi lo fa ogni giorno, e la prima tappa è il passaggio che oggi fa perdere più tempo, di solito l'adattamento dello stesso contenuto ai vari canali.",
     },
     {
       q: "Abbiamo un archivio enorme e disordinato",

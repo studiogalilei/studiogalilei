@@ -19,7 +19,7 @@ import { JsonLd } from "./json-ld";
 
 /*
  * An "answer page" (see lib/landing/pages.ts): the direct answer first, then the reasoning,
- * prices, method and the questions people actually ask, each also given to search engines
+ * method, the questions people actually ask and, last, the prices, each also given to search engines
  * as structured data.
  */
 
@@ -190,6 +190,7 @@ function guideStops(page: Landing): GuideStop[] {
   );
   if (page.steps) stops.push({ id: "come-si-parte", label: "Come si parte" });
   if (page.objections) stops.push({ id: "dubbi", label: "I dubbi" });
+  if (page.prices) stops.push({ id: "prezzi", label: "Quanto costa" });
   return stops;
 }
 
@@ -267,6 +268,9 @@ export function LandingPage({ path }: { path: string }) {
         >
           <Box>
             <h2 className={h2}>{page.steps.title}</h2>
+            {page.steps.intro && (
+              <p className={`mt-5 max-w-[44rem] ${prose}`}>{page.steps.intro}</p>
+            )}
             <ol
               className={`mt-9 grid gap-x-6 gap-y-8 sm:grid-cols-2 ${
                 guided || page.steps.items.length <= 3 ? "lg:grid-cols-3" : "lg:grid-cols-5"
@@ -287,47 +291,6 @@ export function LandingPage({ path }: { path: string }) {
             </ol>
           </Box>
         </section>
-      )}
-
-      {page.prices && (
-        <Box className="py-14 md:py-20">
-          <section className={split}>
-            <div>
-              <h2 className={h2}>{page.prices.title}</h2>
-              <p className={`mt-5 ${prose}`}>{page.prices.intro}</p>
-            </div>
-            <div>
-              <table className="block w-full text-left">
-                <thead className="sr-only">
-                  <tr>
-                    <th scope="col">Progetto</th>
-                    <th scope="col">Fascia di prezzo</th>
-                  </tr>
-                </thead>
-                <tbody className="grid gap-4 sm:grid-cols-2">
-                  {page.prices.rows.map((row) => (
-                    <tr
-                      key={row.label}
-                      className="flex flex-col rounded-18 bg-white p-6 shadow-surface-1 md:p-7"
-                    >
-                      <th scope="row" className="font-normal">
-                        <span className="block text-15 font-semibold text-sg">{row.label}</span>
-                      </th>
-                      <td className="mt-3 text-[1.4rem] leading-1.15 font-semibold -tracking-2 text-ink">
-                        {row.value.replace(" €", "\u00a0€")}
-                      </td>
-                      <td className="mt-3 text-14 leading-1.65 text-ink/60">{row.note}</td>
-                    </tr>
-                  ))}
-                </tbody>
-              </table>
-              <p className={`mt-6 max-w-[44rem] ${prose}`}>{page.prices.note}</p>
-              <div className="mt-7">
-                <ButtonLink href={BOOK}>{BOOK_LABEL}</ButtonLink>
-              </div>
-            </div>
-          </section>
-        </Box>
       )}
 
       {page.caseStudy && (
@@ -397,6 +360,47 @@ export function LandingPage({ path }: { path: string }) {
               }
             </div>
             <Questions items={page.faqs} open={page.objections ? 0 : 1} />
+          </section>
+        </Box>
+      )}
+
+      {page.prices && (
+        <Box className="pb-14 md:pb-20">
+          <section id="prezzi" className={`scroll-mt-28 ${split}`}>
+            <div>
+              <h2 className={h2}>{page.prices.title}</h2>
+              <p className={`mt-5 ${prose}`}>{page.prices.intro}</p>
+            </div>
+            <div>
+              <table className="block w-full text-left">
+                <thead className="sr-only">
+                  <tr>
+                    <th scope="col">Progetto</th>
+                    <th scope="col">Fascia di prezzo</th>
+                  </tr>
+                </thead>
+                <tbody className="grid gap-4 sm:grid-cols-2">
+                  {page.prices.rows.map((row) => (
+                    <tr
+                      key={row.label}
+                      className="flex flex-col rounded-18 bg-white p-6 shadow-surface-1 md:p-7"
+                    >
+                      <th scope="row" className="font-normal">
+                        <span className="block text-15 font-semibold text-sg">{row.label}</span>
+                      </th>
+                      <td className="mt-3 text-[1.4rem] leading-1.15 font-semibold -tracking-2 text-ink">
+                        {row.value.replace(" €", "\u00a0€")}
+                      </td>
+                      <td className="mt-3 text-14 leading-1.65 text-ink/60">{row.note}</td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+              <p className={`mt-6 max-w-[44rem] ${prose}`}>{page.prices.note}</p>
+              <div className="mt-7">
+                <ButtonLink href={BOOK}>{BOOK_LABEL}</ButtonLink>
+              </div>
+            </div>
           </section>
         </Box>
       )}
