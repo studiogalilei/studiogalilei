@@ -40,7 +40,7 @@ export function PrivateAreaSignIn({
         title={title}
         src={`${workspace}/website-sign-in?lang=${language}`}
         onLoad={connect}
-        className="block h-[max(480px,calc(100dvh-73px))] w-full border-0"
+        className="block h-[max(480px,calc(100dvh-73px))] lg:h-[max(480px,calc(100dvh-93px))] w-full border-0"
         referrerPolicy="origin"
       />
       <noscript>

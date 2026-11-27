@@ -19,7 +19,7 @@ export function Hero() {
     // background layers fill the whole section, the room behind the bar included.
     <section
       id="top"
-      className="relative isolate overflow-hidden bg-sg-deep pt-[calc(56px+73px)] pb-[88px] text-white max-tour-md:pt-[calc(32px+73px)] max-tour-md:pb-16 max-tour-sm:pt-[calc(18px+73px)] max-tour-sm:pb-12"
+      className="relative isolate overflow-hidden bg-sg-deep pt-[calc(56px+73px)] pb-[88px] lg:pt-[calc(56px+93px)] text-white max-tour-md:pt-[calc(32px+73px)] max-tour-md:pb-16 max-tour-sm:pt-[calc(18px+73px)] max-tour-sm:pb-12"
     >
       {/* eslint-disable-next-line @next/next/no-img-element -- same markup as the legacy page */}
       <img

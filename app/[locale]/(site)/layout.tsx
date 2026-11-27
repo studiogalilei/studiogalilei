@@ -27,7 +27,7 @@ const organization = {
 export default function SiteLayout({ children }: LayoutProps<"/[locale]">) {
   return (
     // the navbar (root layout) is 73px tall: the footer still sits at the bottom of short pages
-    <div className="flex min-h-[calc(100dvh-73px)] flex-col bg-white">
+    <div className="flex min-h-[calc(100dvh-73px)] flex-col bg-white lg:min-h-[calc(100dvh-93px)]">
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(organization) }}

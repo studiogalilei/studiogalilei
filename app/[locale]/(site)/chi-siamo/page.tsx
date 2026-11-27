@@ -21,7 +21,7 @@ export default function AboutPage() {
       {/* The navy reaches up behind the transparent navbar, which floats over it (73px: the
           bar plus its border). The telescope and the quote sit in the room below it, exactly
           as they would without the bar above. */}
-      <section className="relative isolate overflow-hidden bg-field-navy pt-[73px] text-white">
+      <section className="relative isolate overflow-hidden bg-field-navy pt-[73px] text-white lg:pt-[93px]">
         <div className="relative overflow-hidden">
           {/* eslint-disable-next-line @next/next/no-img-element -- decorative background, sized by CSS */}
           <img

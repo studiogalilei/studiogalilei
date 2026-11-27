@@ -122,7 +122,7 @@ export default function CaseStudiesPage() {
       {/* The photo reaches up behind the transparent navbar, which floats over it (73px: the bar
           plus its border). The title sits in the box below it, exactly where it would be without
           the bar; the photo keeps its crop there and simply shows more of itself above. */}
-      <section className="relative isolate overflow-hidden bg-ink pt-[73px] text-white">
+      <section className="relative isolate overflow-hidden bg-ink pt-[73px] text-white lg:pt-[93px]">
         <div className="relative flex min-h-[72vh] items-end md:aspect-[3024/1207] md:min-h-0">
           {/* eslint-disable-next-line @next/next/no-img-element -- same markup as the legacy site */}
           <img

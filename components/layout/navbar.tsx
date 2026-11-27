@@ -146,14 +146,14 @@ export function Navbar() {
     <header
       className={cn(
         "sticky top-0 z-50 border-b transition-[background-color,border-color,box-shadow] duration-[350ms] ease-[ease] [view-transition-name:site-navbar]",
-        overHero && "-mb-[73px]",
+        overHero && "-mb-[73px] lg:-mb-[93px]",
         sky ? "border-b-transparent bg-transparent" : "border-sg/10 bg-white",
         scrolled && "shadow-[0_8px_24px_-16px_rgba(6,23,115,.35)]",
       )}
     >
       {/* three groups with equal space between them: the links sit in the middle of the room
           between the logo and the language switcher */}
-      <Container className="flex h-[72px] items-center justify-between gap-3 sm:gap-6">
+      <Container className="flex h-[72px] items-center justify-between gap-3 sm:gap-6 lg:h-[92px]">
         {/* the tree symbol, transparent, drawn in currentColor: the link carries the same colour
             as the nav links in every state (white over the hero sky, ink on the white bar). On
             mobile, where the bar has room beside it, the wordmark follows in the same colour. */}
@@ -167,7 +167,7 @@ export function Navbar() {
         >
           {/* 27/11/2026, Dre: «per il logo metti questo sul sito». Il marchio Software & AI al posto di
               albero e scritta separati. */}
-          <img src="/logo-software-ai.svg" alt="Studio Galilei Software & AI" width={48} height={46} className="block h-12 w-auto md:h-16" />
+          <img src="/logo-software-ai.svg" alt="Studio Galilei Software & AI" width={48} height={46} className="block h-12 w-auto md:h-16 lg:h-[78px]" />
         </Link>
         <nav
           ref={nav}
