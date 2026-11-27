@@ -38,20 +38,6 @@ export const SECTOR_SHOTS = new Set([
   "packaging-macchine-automatiche",
   "alimentare-beverage",
   "farmaceutico-medicale",
-  "edilizia-costruzioni",
-  "logistica-trasporti",
-  "retail-distribuzione",
-  "e-commerce-marketplace",
-  "servizi-alle-imprese",
-  "sanita-privata-cliniche",
-  "turismo-hospitality",
-  "energia-utilities",
-  "agricoltura-agroindustria",
-  "automotive-componentistica",
-  "chimica-materiali",
-  "media-comunicazione",
-  "pubblica-amministrazione",
-  "studi-professionali",
 ]);
 
 export const sectors: Sector[] = [
@@ -516,7 +502,7 @@ export const sectors: Sector[] = [
     nel: "nei servizi alle imprese",
     product: "Gestionale di commesse e portale clienti",
     description:
-      "Gestionali di commesse su misura per società di servizi B2B: timesheet, fatturazione ricorrente e portale clienti in un sistema solo.",
+      "Gestionali di commesse su misura per società di servizi B2B: timesheet, fatturazione ricorrente e portale clienti, sui processi reali dell'azienda.",
     answer:
       "Un gestionale su misura per una società di servizi lega tra loro le ore lavorate, le commesse e le fatture, e mostra al cliente a che punto è il suo lavoro. Creiamo portali clienti, gestionali di commesse e sistemi di fatturazione ricorrente personalizzati.",
     problems: [
@@ -550,7 +536,7 @@ export const sectors: Sector[] = [
       },
       {
         q: "Possiamo partire solo dai timesheet?",
-        a: "Sì, la prima tappa può essere proprio quella, e il resto si aggiunge dopo.",
+        a: "Sì, si parte dal modulo che oggi costa più ore e si aggiungono gli altri dopo.",
       },
     ],
   },

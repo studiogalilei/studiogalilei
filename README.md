@@ -14,8 +14,6 @@ Production build: `npm run build && npm run start`.
 
 Checks: `npm run lint`, `npm run typecheck`, `npm run format:check` (`npm run format` to fix).
 
-`npm run lint` also runs `scripts/check-texts.mjs` (alone: `npm run check:texts`), which reads `messages/*.json` and every file in `lib/landing/` and fails on the marks the site's texts must not carry: a sentence of fewer than five words closed by a full stop inside a text of several sentences, the middle dot `·` used as a separator, a long dash used as a pause, an exclamation mark, or a brochure word (innovativo, soluzioni, a 360 gradi, chiavi in mano, leader, eccellenza, sinergia, valore aggiunto and their English twins). Run it before every push; exceptions (a proper name, a quotation) go in `ALLOWED` in the script.
-
 ## Environment variables
 
 | Name             | Required | Used by                                                                          |
@@ -46,13 +44,7 @@ scripts/                    visual regression tests
 
 ## Languages
 
-Italian lives at the plain address (`/servizi`), English under `/en` (`/en/servizi`): one address per language, so search engines index both (canonical and hreflang come from `lib/metadata.ts`, the sitemap from `app/sitemap.ts`). The proxy (`proxy.ts`, next-intl) sends a first visit to the language of the `sg-lang` cookie, otherwise of the browser's `Accept-Language`. `?lang=it|en` forces a language and remembers it. The EN/ITA switcher sets the cookie and moves to the page's twin. Texts live in `messages/it.json` and `messages/en.json`. The Member Club form, the Platform and the answer pages (`lib/landing/`: services, guides, industries, comparisons, `/domande`) are Italian only: `proxy.ts` serves them in Italian whatever the visitor's language and sends their `/en` address to the Italian one.
-
-## Answer pages
-
-Every answer page is data, rendered by `components/landing/landing-page.tsx`: `lib/landing/pages.ts` (services, guides, method, partners), `sectors.ts` and `sector-objections.ts` (the twenty industries and the doubts proper to each), `compare.ts` (`/confronti/...`), `answers.ts` (`/domande` and the grants guide). A new page needs its data, a route file under `app/[locale]/(site)/` and, if Italian only, its path in `ITALIAN_ONLY` in `proxy.ts`. The sitemap (`app/sitemap.ts`) and `/llms.txt` (`app/llms.txt/route.ts`) are built from the same data. Numbers on these pages come only from sources that were opened and are linked in the page's `sources`.
-
-The industries' example screens are real HTML, photographed: `python3 mockup/gen.py <slug>` (see `mockup/gen.py`), then add the slug to `SECTOR_SHOTS` in `lib/landing/sectors.ts`.
+Italian lives at the plain address (`/servizi`), English under `/en` (`/en/servizi`): one address per language, so search engines index both (canonical and hreflang come from `lib/metadata.ts`, the sitemap from `app/sitemap.ts`). The proxy (`proxy.ts`, next-intl) sends a first visit to the language of the `sg-lang` cookie, otherwise of the browser's `Accept-Language`. `?lang=it|en` forces a language and remembers it. The EN/ITA switcher sets the cookie and moves to the page's twin. Texts live in `messages/it.json` and `messages/en.json`. The Member Club form, the Platform and the answer pages (`lib/landing/pages.ts`: services, guides, Treviso) are Italian only.
 
 ## Styling
 

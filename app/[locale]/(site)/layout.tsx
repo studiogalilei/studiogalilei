@@ -17,17 +17,6 @@ const organization = {
       "@id": `${SITE_URL}/#organization`,
       name: "Studio Galilei",
       legalName: company.legalName,
-      alternateName: [company.legalName, "Studio Galilei S.r.l.", "StudioGalilei"],
-      slogan: "Prima il sistema, poi l'AI",
-      founder: { "@type": "Person", name: "Dramane Yigo", jobTitle: "Co-founder" },
-      contactPoint: {
-        "@type": "ContactPoint",
-        contactType: "sales",
-        email: company.email,
-        telephone: company.phoneHref,
-        availableLanguage: ["it", "en"],
-        url: `${SITE_URL}/#sg-prenota`,
-      },
       url: SITE_URL,
       logo: `${SITE_URL}/icon.svg`,
       description:
@@ -49,30 +38,6 @@ const organization = {
         { "@type": "City", name: "Treviso" },
         { "@type": "AdministrativeArea", name: "Veneto" },
         { "@type": "Country", name: "Italia" },
-      ],
-      makesOffer: [
-        {
-          "@type": "Offer",
-          name: "Gestionali e software su misura",
-          url: `${SITE_URL}/gestionale-su-misura`,
-          priceSpecification: {
-            "@type": "PriceSpecification",
-            priceCurrency: "EUR",
-            minPrice: 5000,
-            maxPrice: 80000,
-          },
-        },
-        {
-          "@type": "Offer",
-          name: "Agenti AI e automazioni",
-          url: `${SITE_URL}/agenti-ai-per-aziende`,
-          priceSpecification: {
-            "@type": "PriceSpecification",
-            priceCurrency: "EUR",
-            minPrice: 3000,
-            maxPrice: 40000,
-          },
-        },
       ],
       knowsAbout: [
         "Sviluppo software su misura",

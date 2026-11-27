@@ -1,5 +1,5 @@
 import type { MetadataRoute } from "next";
-import { LANDING_UPDATED, extraLandings, landings, sectorLandings } from "@/lib/landing/pages";
+import { LANDING_UPDATED, landings, sectorLandings } from "@/lib/landing/pages";
 import { SITE_URL, TRANSLATED_PATHS, localized } from "@/lib/site";
 
 const abs = (path: string) => `${SITE_URL}${path === "/" ? "" : path}`;
@@ -15,8 +15,6 @@ export default function sitemap(): MetadataRoute.Sitemap {
   });
   const answers = [
     ...landings.map((p) => p.path),
-    ...extraLandings.map((p) => p.path),
-    "/confronti",
     "/settori",
     ...sectorLandings.map((p) => p.path),
   ].map((path) => ({

@@ -12,22 +12,6 @@ export const SITE_NAME = "Studio Galilei";
 export const TITLE_TEMPLATE = `%s | ${SITE_NAME}`;
 export const fullTitle = (name: string) => TITLE_TEMPLATE.replace("%s", name);
 
-/** The title for search results: with the site name when the whole stays within 60 characters. */
-export const seoTitle = (name: string) => (fullTitle(name).length <= 60 ? fullTitle(name) : name);
-
-/** The description for search results: whole sentences (or clauses) up to 160 characters. */
-export function seoDescription(text: string) {
-  if (text.length <= 160) return text;
-  let out = "";
-  for (const sentence of text.split(/(?<=[.:])\s+/)) {
-    if ((out + " " + sentence).trim().length > 160) break;
-    out = (out + " " + sentence).trim();
-  }
-  if (out.length >= 90) return out.replace(/:$/, ".");
-  const cut = text.slice(0, 159);
-  return `${cut.slice(0, cut.lastIndexOf(","))}.`;
-}
-
 /** Where each "Metadata" key lives: gives every page its canonical address and its twin in the other language. */
 const PATHS: Record<string, string> = {
   home: "/",
@@ -63,16 +47,15 @@ export async function pageMetadata(key: string): Promise<Metadata> {
   const description = t(`${key}.description`);
   const path = PATHS[key];
   return {
-    // the home page's title already starts with the company name
-    title: { absolute: key === "home" ? name : seoTitle(name) },
-    description: seoDescription(description),
+    title: name,
+    description,
     ...(path ? { alternates: alternates(path, locale) } : {}),
     // the shared preview (link cards) carries the page's own title, not the home page's
     openGraph: {
       type: "website",
       siteName: SITE_NAME,
       ...(path ? { url: localized(path, locale) } : {}),
-      title: key === "home" ? name : fullTitle(name),
+      title: fullTitle(name),
       description,
       locale: locale === "en" ? "en_US" : "it_IT",
     },

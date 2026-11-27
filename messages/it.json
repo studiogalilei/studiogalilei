@@ -2,43 +2,42 @@
   "Common": {
     "percorso": "Percorso",
     "caffeOVideochiamata": "Caffè o videochiamata?",
-    "siamoQuiPerAscoltartiUnCaffeOUna": "Un caffè nella nostra sede di Treviso o una videochiamata: guardiamo insieme il tuo caso, e se non siamo le persone giuste te lo diciamo.",
+    "siamoQuiPerAscoltartiUnCaffeOUna": "Siamo qui per ascoltarti. Un caffè o una chiamata di confronto ci fa sempre piacere!",
     "scriviciAdesso": "Scrivici adesso",
-    "scopriSePossiamoApplicarloAnche": "Scopri se possiamo applicarlo anche alla tua realtà",
-    "prenotaUnaChiamata": "Prenota una chiamata"
+    "scopriSePossiamoApplicarloAnche": "Scopri se possiamo applicarlo anche alla tua realtà"
   },
   "Metadata": {
     "home": {
-      "title": "Studio Galilei: gestionali su misura e agenti AI, Treviso",
-      "description": "Gestionali vivi su misura: leggono le richieste, preparano preventivi e promemoria, e il tuo team approva. Software house di Treviso, con l'AI dentro il gestionale e il codice che resta tuo."
+      "title": "Software su misura e agenti AI per le aziende",
+      "description": "Tutta la tua azienda in un posto solo: gestionali, automazioni e agenti AI su misura che tolgono il lavoro ripetitivo. Software house di Treviso, e il codice resta tuo."
     },
     "about": {
-      "title": "Chi siamo: Studio Galilei Srl, software house di Treviso",
-      "description": "Studio Galilei Srl è una software house della provincia di Treviso, nata nel 2024: gestionali su misura, automazioni e agenti AI per le PMI. Sede, partita IVA, chi la guida."
+      "title": "Chi siamo",
+      "description": "«Misura ciò che è misurabile, e rendi misurabile ciò che non lo è.» Il metodo di lavoro di Studio Galilei."
     },
     "services": {
-      "title": "Servizi: gestionali su misura, automazioni, agenti AI",
-      "description": "Cosa costruisce Studio Galilei: gestionali su misura, workspace e portali, automazioni, agenti AI e integrazioni, da 3.000 a 80.000 €, più la ricerca di bandi."
+      "title": "Servizi",
+      "description": "Gestionali su misura, workspace e portali, automazioni, agenti AI e integrazioni: cosa costruisce Studio Galilei, più la finanza agevolata."
     },
     "marketing": {
       "title": "Marketing",
-      "description": "Costruiamo e gestiamo campagne Google e Meta calibrate sui tuoi obiettivi: struttura, tracciamento e ottimizzazione continua dal primo giorno."
+      "description": "Costruiamo e gestiamo campagne Google e Meta calibrate sui tuoi obiettivi. Struttura, tracciamento e ottimizzazione continua — dal primo giorno."
     },
     "intelligenza-artificiale": {
       "title": "Intelligenza artificiale per le aziende",
-      "description": "Agenti AI e automazioni per le PMI: troviamo dove si perde tempo e costruiamo sistemi che tolgono lavoro ripetitivo, da 3.000 a 40.000 €."
+      "description": "Identifichiamo dove si perde tempo, informazione o valore e costruiamo automazioni che lavorano per te. Senza partire dallo strumento."
     },
     "sviluppo-software": {
       "title": "Sviluppo software su misura",
-      "description": "Gestionali, portali e integrazioni che mettono in ordine i passaggi e preparano il lavoro al posto tuo. Sviluppo modulare, permessi per ruolo e rilascio progressivo."
+      "description": "Gestionali, portali e integrazioni costruiti sui tuoi processi reali. Sviluppo modulare, permessi per ruolo e rilascio progressivo."
     },
     "googleAds": {
       "title": "Google Ads",
       "description": "Studio Galilei usa le API ufficiali di Google Ads per gestire le campagne dei partner. Direttamente sui loro account, in piena trasparenza."
     },
     "caseStudies": {
-      "title": "Casi studio: software su misura in uso ogni giorno",
-      "description": "I software che Studio Galilei ha costruito e che i clienti usano ogni giorno: il caso dei tour operator BeaVita Tours e FunDallas Tours, con le schermate vere."
+      "title": "Casi studio",
+      "description": "Dietro le quinte: i casi studio di Studio Galilei."
     },
     "caseTourOperator": {
       "title": "Caso studio: tour operator",
@@ -57,8 +56,8 @@
       "description": "Perché lavorare in Studio Galilei: metodo, autonomia e risultati misurati e attribuiti a chi li produce."
     },
     "contact": {
-      "title": "Contatti e chiamata conoscitiva",
-      "description": "Contatta Studio Galilei, software house di Treviso: prenota una chiamata conoscitiva di 45 minuti, scrivici o passa in sede per un caffè."
+      "title": "Contatti",
+      "description": "Siamo qui per ascoltarti. Un caffè o una chiamata di confronto ci fa sempre piacere!"
     },
     "privacy": {
       "title": "Privacy policy",
@@ -95,33 +94,18 @@
     "skipToContent": "Vai al contenuto"
   },
   "Footer": {
-    "backToHome": "Studio Galilei, torna alla home",
+    "backToHome": "StudioGalilei, torna alla home",
     "writeToUs": "Scrivici adesso",
     "allRightsReserved": "Tutti i diritti riservati.",
     "vatAndTaxCode": "P.IVA e C.F."
   },
   "Home": {
     "hero": {
-      "title": "<partner>Gestionali vivi,</partner><br></br>su misura per la tua azienda",
-      "intro": "Un gestionale vivo legge le richieste, compila i preventivi, aggiorna le commesse e manda i promemoria a chi deve riceverli. Il tuo team controlla e approva, e il resto del lavoro lo prepara il sistema.",
-      "method": "Prima mettiamo in ordine i passaggi della tua azienda, poi li facciamo andare avanti da soli.",
+      "title": "<partner>Tutta la tua azienda,</partner><br></br>in un posto solo",
+      "intro": "Costruiamo gestionali, automazioni e agenti AI su misura, che tolgono il lavoro ripetitivo e ti lasciano più tempo per i tuoi clienti.",
       "download": "Scarica la presentazione",
       "bookCall": "Prenota una chiamata conoscitiva",
-      "exploreServices": "Scopri i servizi",
-      "facts": [
-        {
-          "value": "da 5.000 €",
-          "label": "un software su misura"
-        },
-        {
-          "value": "8-10 settimane",
-          "label": "un progetto medio"
-        },
-        {
-          "value": "Tuo",
-          "label": "il codice, i dati e gli account"
-        }
-      ]
+      "exploreServices": "Scopri i servizi"
     },
     "clients": {
       "label": "Aziende che hanno lavorato con Studio Galilei",
@@ -130,21 +114,12 @@
     "services": {
       "kicker": "Cosa facciamo",
       "title": "Cosa costruiamo",
-      "software": {
-        "name": "Gestionali e software su misura",
-        "short": "Gestionali, workspace e portali che preparano il lavoro e lo tengono in un posto solo, e il codice resta tuo."
-      },
-      "automation": {
-        "name": "Automazioni",
-        "short": "Il lavoro ripetitivo lo fa il sistema: dati, solleciti, report e passaggi tra programmi."
-      },
-      "agents": {
-        "name": "Agenti AI",
-        "short": "Leggono richieste e documenti, preparano risposte e azioni. Una persona resta al controllo."
-      },
+      "software": {"name": "Gestionali e software su misura", "short": "Gestionali, workspace e portali costruiti sui tuoi processi: tutto in un posto solo, e resta tuo."},
+      "automation": {"name": "Automazioni", "short": "Il lavoro ripetitivo lo fa il sistema: dati, solleciti, report e passaggi tra programmi."},
+      "agents": {"name": "Agenti AI", "short": "Leggono richieste e documenti, preparano risposte e azioni. Una persona resta al controllo."},
       "marketing": {
         "name": "Marketing",
-        "short": "Campagne Google e Meta che portano clienti, non click, misurabili dal primo giorno."
+        "short": "Campagne Google e Meta che portano clienti, non click. Misurabili dal primo giorno."
       },
       "intelligenza-artificiale": {
         "name": "Intelligenza Artificiale",
@@ -212,9 +187,7 @@
     "portal": {
       "label": "Anteprima del portale partner con dati di esempio",
       "tasks": "Attività",
-      "caption": "Anteprima portale, dati di esempio",
-      "progress": "Avanzamento",
-      "modules": "Moduli in uso"
+      "caption": "Anteprima portale, dati di esempio"
     },
     "cases": {
       "kicker": "Casi studio",
@@ -224,8 +197,7 @@
       "onlySolutions": "687.000,00 € in 45 giorni<br></br>ecosistema di Google Ads e Meta Ads",
       "tourOperator": "Tutta la giornata di un tour operator<br></br>in un'unica app",
       "readCase": "Leggi il caso",
-      "all": "Tutti i casi studio",
-      "text": "Per due tour operator, BeaVita Tours in Italia e FunDallas Tours in Texas, abbiamo costruito l'app che tiene insieme prenotazioni, partenze, autisti, guide e messaggi ai clienti."
+      "all": "Tutti i casi studio"
     },
     "googleAds": {
       "kicker": "Tecnologia & trasparenza",
@@ -259,7 +231,7 @@
           "desc": "Il partner mantiene il pieno controllo e può revocare l'autorizzazione in qualsiasi momento dalle impostazioni del proprio Account Google."
         },
         {
-          "title": "Google API, Limited Use",
+          "title": "Google API · Limited Use",
           "desc": "Usiamo i dati ai quali accediamo solo per erogare e migliorare i servizi di gestione delle campagne richiesti dal partner, nel rispetto della <policy>Google API Services User Data Policy</policy>, inclusi i requisiti di Uso Limitato."
         }
       ],
@@ -267,10 +239,10 @@
     }
   },
   "ContactForm": {
-    "sentTitle": "Messaggio inviato",
+    "sentTitle": "Messaggio inviato!",
     "sentText": "Ti risponderemo il prima possibile.",
     "mailSubject": "Nuovo contatto dal sito Studio Galilei",
-    "sendFailed": "L'invio non è riuscito, ma puoi mandarci lo stesso messaggio via email con il pulsante qui sotto.",
+    "sendFailed": "Invio non riuscito. Puoi mandarci lo stesso messaggio via email con il pulsante qui sotto.",
     "name": "Nome",
     "namePlaceholder": "Il tuo nome",
     "emailPlaceholder": "la-tua@email.com",
@@ -295,7 +267,7 @@
   "Booking": {
     "kicker": "Chiamata conoscitiva",
     "title": "Prenota una chiamata conoscitiva",
-    "intro": "Una videochiamata di 45 minuti, senza impegno: scegli giorno e orario tra le disponibilità aggiornate in tempo reale e ricevi subito la conferma con il link. Se preferisci un caffè in sede a Treviso, scrivici dalla pagina Contatti.",
+    "intro": "Scegli giorno e orario tra le disponibilità aggiornate in tempo reale. Ricevi subito la conferma con il link per la videochiamata.",
     "openCalendar": "Apri il calendario in una nuova scheda",
     "loading": "Carico gli orari liberi",
     "error": "Non riesco a caricare gli orari in questo momento.",
@@ -314,57 +286,30 @@
     "taken": "Quell'orario è appena stato preso: scegline un altro.",
     "failed": "La prenotazione non è andata a buon fine. Riprova tra poco o scrivici.",
     "doneTitle": "Chiamata prenotata",
-    "doneText": "Ti abbiamo mandato una mail con l'invito e il link di Google Meet, a presto.",
+    "doneText": "Ti abbiamo mandato una mail con l'invito e il link di Google Meet. A presto.",
     "another": "Scrivici",
     "chosen": "La tua chiamata"
   },
   "About": {
-    "kicker": "Chi siamo",
-    "title": "Studio Galilei Srl, software house di Treviso",
-    "intro": "Studio Galilei è una software house italiana della provincia di Treviso, nata nel 2024. Costruisce gestionali e software su misura, automazioni e agenti AI per le piccole e medie imprese, e cerca i bandi che possono coprire parte dell'investimento.",
-    "facts": {
-      "legalName": "Ragione sociale",
-      "office": "Sede",
-      "province": "Treviso",
-      "founded": "Anno di fondazione",
-      "ledBy": "Chi la guida",
-      "ledByValue": "Dramane Yigo, co-founder",
-      "does": "Cosa fa",
-      "doesValue": "Gestionali e software su misura, workspace e portali, automazioni, agenti AI, integrazioni, ricerca di bandi",
-      "forWhom": "Per chi",
-      "forWhomValue": "Piccole e medie imprese, e le agenzie e i consulenti che portano software e AI ai loro clienti",
-      "where": "Dove lavora",
-      "whereValue": "In Veneto di persona, in tutta Italia e all'estero a distanza: due software sono in uso in Italia e in Texas",
-      "prices": "Quanto costa",
-      "pricesValue": "Software su misura da 5.000 a 80.000 €, AI e automazioni da 3.000 a 40.000 €, progetto medio in 8-10 settimane"
-    },
-    "book": "Prenota una chiamata",
-    "namesakes": "In Italia esistono altre realtà con un nome simile. Questa è la pagina di Studio Galilei Srl, partita IVA 05642810260, che si occupa di software e intelligenza artificiale.",
-    "responsibilityTitle": "Mettiamo ordine, poi automatizziamo",
-    "responsibilityText": "In molte aziende il lavoro dipende da poche persone, da programmi che non si parlano e da fogli che solo qualcuno sa leggere. Noi costruiamo il sistema che tiene tutto in un posto solo, e sopra ci mettiamo l'intelligenza artificiale dove toglie lavoro ripetitivo.",
-    "story": "Siamo uno studio piccolo: chi lavora al tuo progetto lo conosce per intero e ti risponde direttamente. Entriamo nel problema prima di proporre lo strumento, e se un progetto non ha senso lo diciamo, anche quando saremmo noi a farlo.",
-    "linkMethod": "Il metodo Galilei",
-    "linkCases": "I casi studio",
-    "linkServices": "Cosa costruiamo",
+    "quote": "«Misura ciò che è misurabile, e rendi misurabile ciò che non lo è.»",
+    "responsibilityTitle": "Ci assumiamo la responsabilità",
+    "responsibilityText": "In molte aziende la crescita dipende da poche persone, da strumenti che non si parlano e da numeri che nessuno legge. Il nostro lavoro è renderla osservabile: capire quali leve producono risultati, decidere dove intervenire e trasformare ciò che funziona in un sistema che l'azienda governa anche senza di noi.",
+    "talkToUs": "Parla con noi",
     "method": "Metodo Galilei",
     "principles": [
       {
         "title": "Osservabile",
-        "desc": "Ogni lavoro è legato a un numero che conta per l'azienda, come le ore risparmiate o gli errori evitati, così vedi cosa funziona e non solo cosa abbiamo fatto."
+        "desc": "Ogni azione è legata a un numero che conta per l'azienda, come vendite, contatti od ore risparmiate, non a click e impressioni. Vedi cosa funziona, non solo cosa abbiamo fatto."
       },
       {
         "title": "Governabile",
-        "desc": "A ogni ciclo ricevi una sintesi scritta: cosa abbiamo visto, cosa proponiamo e quanto ne siamo sicuri, e la decisione resta tua."
+        "desc": "A ogni ciclo ricevi una sintesi scritta: cosa abbiamo visto, cosa proponiamo e quanto ne siamo sicuri. La decisione resta tua."
       },
       {
         "title": "Replicabile",
-        "desc": "Ciò che funziona diventa processo, automazione o software, documentato e intestato a te, non legato a una persona o a un fornitore."
+        "desc": "Ciò che funziona diventa processo, automazione o software. Documentato e intestato a te, non legato a una persona o a un fornitore."
       }
     ],
-    "quote": "«Misura ciò che è misurabile, e rendi misurabile ciò che non lo è.»",
-    "quoteNote": "È la frase attribuita a Galileo Galilei da cui prendiamo il nome e la regola di lavoro: prima si misura, poi si promette.",
-    "ctaTitle": "Parliamone guardando il tuo caso",
-    "ctaText": "Una chiamata conoscitiva di 45 minuti, oppure un caffè in sede. Guardiamo il problema insieme, e se non siamo le persone giuste te lo diciamo.",
     "vatAndTaxCode": "P.IVA e C.F."
   },
   "Services": {
@@ -374,7 +319,7 @@
       {
         "title": "Gestionali e software su misura",
         "items": [
-          "Gestionali che mettono in ordine il lavoro",
+          "Gestionali costruiti sui tuoi processi",
           "CRM, preventivi, ordini, magazzino, consegne",
           "Applicazioni web e per il telefono"
         ]
@@ -413,18 +358,9 @@
       },
       {
         "title": "Finanza",
-        "items": [
-          "Cerchiamo bandi e contributi che possono coprire parte dell'investimento in software e AI",
-          "Ti diciamo se il tuo progetto può rientrarci, prima di partire",
-          "Finanza agevolata per la digitalizzazione delle imprese"
-        ]
+        "items": ["Cerchiamo bandi e contributi che possono coprire parte dell'investimento in software e AI", "Ti diciamo se il tuo progetto può rientrarci, prima di partire", "Finanza agevolata per la digitalizzazione delle imprese"]
       }
-    ],
-    "intro": "Software su misura da 5.000 a 80.000 €, AI e automazioni da 3.000 a 40.000 €, un progetto medio in 8-10 settimane. Si parte dallo studio della tua azienda, verifichiamo i bandi prima di partire e il sistema resta tuo.",
-    "book": "Prenota una chiamata",
-    "more": "Come funziona e quanto costa",
-    "ctaTitle": "Non sai da quale partire?",
-    "ctaText": "In 45 minuti guardiamo come lavori oggi e ti diciamo da dove conviene cominciare, o se non conviene affatto."
+    ]
   },
   "Service": {
     "services": "Servizi",
@@ -432,12 +368,12 @@
     "offer": "OFFERTA",
     "googleAdsLink": "La nostra integrazione con Google Ads",
     "ctaTitle": "Hai un obiettivo, ma non sai ancora quale leva serve?",
-    "ctaText": "Entriamo nel problema prima di proporre lo strumento: lo guardiamo insieme e scegliamo la leva giusta.",
+    "ctaText": "Entriamo nel problema prima di proporre la soluzione. Guardiamo il problema insieme e scegliamo la leva giusta.",
     "contactUs": "Contattaci",
     "marketing": {
       "name": "Marketing",
       "tagline": "Campagne che portano clienti, non click.",
-      "description": "Costruiamo e gestiamo campagne Google e Meta calibrate sui tuoi obiettivi: struttura, tracciamento e ottimizzazione continua dal primo giorno.",
+      "description": "Costruiamo e gestiamo campagne Google e Meta calibrate sui tuoi obiettivi. Struttura, tracciamento e ottimizzazione continua — dal primo giorno.",
       "features": [
         {
           "title": "Campagne Google Ads",
@@ -468,11 +404,11 @@
     "intelligenza-artificiale": {
       "name": "Intelligenza Artificiale",
       "tagline": "AI applicata ai processi che contano.",
-      "description": "Identifichiamo dove si perde tempo, informazione o valore e costruiamo automazioni che lavorano per te, senza partire dallo strumento.",
+      "description": "Identifichiamo dove si perde tempo, informazione o valore e costruiamo automazioni che lavorano per te. Senza partire dallo strumento.",
       "features": [
         {
           "title": "Mappatura dei processi",
-          "desc": "Partiamo da ciò che già esiste e cerchiamo i colli di bottiglia prima di costruire qualsiasi cosa."
+          "desc": "Partiamo da ciò che già esiste. Cerchiamo i colli di bottiglia prima di costruire qualsiasi soluzione."
         },
         {
           "title": "Automazioni operative",
@@ -492,14 +428,14 @@
         },
         {
           "title": "Prototipo prima del lancio",
-          "desc": "Ogni progetto parte da un prototipo controllato, e misuriamo prima di ampliare."
+          "desc": "Ogni soluzione parte da un prototipo controllato. Misuriamo prima di scalare."
         }
       ]
     },
     "sviluppo-software": {
       "name": "Sviluppo Software",
       "tagline": "Strumenti su misura che restano tuoi.",
-      "description": "Gestionali, portali e integrazioni che mettono in ordine i passaggi e preparano il lavoro al posto tuo. Sviluppo modulare, permessi per ruolo e rilascio progressivo.",
+      "description": "Gestionali, portali e integrazioni costruiti sui tuoi processi reali. Sviluppo modulare, permessi per ruolo e rilascio progressivo.",
       "features": [
         {
           "title": "Dashboard operative",
@@ -515,11 +451,11 @@
         },
         {
           "title": "Permessi per ruolo",
-          "desc": "Ogni utente vede solo ciò che gli serve, per sicurezza e per chiarezza nel lavoro."
+          "desc": "Ogni utente vede solo ciò che gli serve. Sicurezza e chiarezza operativa."
         },
         {
           "title": "Rilascio progressivo",
-          "desc": "Prima le funzionalità prioritarie, poi l'espansione, senza cambiare tutto in un giorno."
+          "desc": "Prima le funzionalità prioritarie, poi l'espansione. Niente big bang."
         },
         {
           "title": "Proprietà del codice",
@@ -562,7 +498,7 @@
     ]
   },
   "CaseStudies": {
-    "heroTitle": "<muted>Casi studio</muted><br></br>software in uso ogni giorno",
+    "heroTitle": "<muted>Dietro le quinte</muted><br></br>i nostri casi studio",
     "danInkLine": "Lead Generation per il Franchising di Tatuaggi N1 in Italia <flag></flag>",
     "italy": "Italia",
     "onlySolutionsLine": "687.000,00 € in 45 giorni<br></br>ecosistema di Google Ads e Meta Ads",
@@ -640,7 +576,7 @@
   },
   "CaseTourOperator": {
     "intro": "Abbiamo sviluppato progetti per partner con diverse esigenze, in diversi settori e in diversi continenti.",
-    "below": "<highlight>Qui sotto</highlight> vediamo come un gestionale su misura porta efficienza e un risparmio di tempo concreto, area per area. Alcune di queste funzioni sono già operative presso nostri clienti.",
+    "below": "<highlight>Qui sotto</highlight> vediamo come un gestionale su misura porta efficienza e un risparmio di tempo concreto, area per area. Alcune di queste soluzioni sono già operative presso nostri partner.",
     "title": "Tutta la giornata di un tour operator<br></br>in un'unica app",
     "app": {
       "title": "Le cinque aree dell'app",
@@ -668,7 +604,7 @@
           "screen": "resources",
           "tag": "Risorse",
           "title": "Assegnazioni di guide e autisti",
-          "desc": "Assegnazioni per data e prodotto, con viste separate per esigenze di mezzi, idoneità e contatti scelti, al posto degli appunti sparsi."
+          "desc": "Assegnazioni per data e prodotto, con viste separate per esigenze di mezzi, idoneità e contatti scelti. Niente più appunti sparsi."
         },
         {
           "screen": "messages",
@@ -678,7 +614,7 @@
         }
       ]
     },
-    "digitalise": "Digitalizza l'azienda<br></br>e recupera parte dell'investimento",
+    "digitalise": "Digitalizza l'azienda.<br></br>Recupera parte dell'investimento.",
     "taxCredits": "Software e automazioni su misura, con il supporto per accedere ai crediti d'imposta.",
     "recoverCta": "Scopri quanto puoi recuperare",
     "results": {
@@ -936,27 +872,26 @@
     "showPage": "Scopri come si lavora in Studio Galilei"
   },
   "Contact": {
-    "title": "Prenota una chiamata o scrivici",
-    "intro": "Un caffè nella nostra sede di Treviso o una videochiamata: guardiamo insieme il tuo caso, e se non siamo le persone giuste te lo diciamo.",
+    "title": "Caffè o videochiamata?",
+    "intro": "Siamo qui per ascoltarti. Un caffè o una chiamata di confronto ci fa sempre piacere!",
     "chooseChannel": "Scegli come preferisci contattarci",
     "phone": "Telefono",
     "orWriteHere": "oppure scrivici qui",
-    "vatAndTaxCode": "P.IVA e C.F.",
-    "book": "Prenota una chiamata di 45 minuti"
+    "vatAndTaxCode": "P.IVA e C.F."
   },
   "Privacy": {
     "hero": {
       "kicker": "Informativa",
       "title": "Privacy Policy.",
-      "meta": "Ultimo aggiornamento 25 giugno 2026, versione 1.0",
+      "meta": "Ultimo aggiornamento 25 giugno 2026 · Versione 1.0",
       "intro": "La presente informativa descrive come i liberi professionisti che operano con il marchio «Studio Galilei» raccolgono, utilizzano, conservano e proteggono i dati personali, inclusi i dati a cui accediamo tramite le API di Google quando gestiamo gli account pubblicitari dei nostri partner.",
-      "footer": "Privacy Policy, v1.0, studiogalilei.com"
+      "footer": "Privacy Policy · v1.0 · studiogalilei.com"
     },
     "sections": {
       "titolari": "Titolari del trattamento",
       "dati": "Dati trattati",
       "finalita": "Finalità e basi giuridiche",
-      "uso-limitato": "Google API, Uso Limitato",
+      "uso-limitato": "Google API · Uso Limitato",
       "conservazione": "Modalità e conservazione",
       "destinatari": "Destinatari",
       "extra-ue": "Trasferimenti extra-UE",
@@ -1044,18 +979,18 @@
     "tabDashboard": "Dashboard",
     "tabPlanning": "Calendario",
     "tabMessages": "Messaggi",
-    "caption1": "<b>Partenze del giorno</b>: autisti, mezzi e capienza a colpo d'occhio",
-    "caption2": "<b>Stato dell'operatività</b>: messaggi, liste e sync prenotazioni",
-    "caption3": "<b>Pianificazione mensile</b>: ogni città nel suo spazio",
-    "caption4": "<b>WhatsApp + SMS di riserva</b>: nessun cliente resta senza avviso",
+    "caption1": "<b>Partenze del giorno</b> · autisti, mezzi e capienza a colpo d'occhio",
+    "caption2": "<b>Stato dell'operatività</b> · messaggi, liste e sync prenotazioni",
+    "caption3": "<b>Pianificazione mensile</b> · ogni città nel suo spazio",
+    "caption4": "<b>WhatsApp + SMS di riserva</b> · nessun cliente resta senza avviso",
     "toast0Title": "Nuova prenotazione",
-    "toast0Text": "FareHarbor, 2 ospiti, 9:30",
+    "toast0Text": "FareHarbor · 2 ospiti · 9:30",
     "toast1Title": "Autista ha confermato",
-    "toast1Text": "Morgan, tour del mattino",
+    "toast1Text": "Morgan · tour del mattino",
     "toast2Title": "Promemoria consegnati",
-    "toast2Text": "WhatsApp, 18 clienti su 18",
+    "toast2Text": "WhatsApp · 18 clienti su 18",
     "toast3Title": "Lista passeggeri inviata",
-    "toast3Text": "PDF v3, link sicuro 24h",
+    "toast3Text": "PDF v3 · link sicuro 24h",
     "painTitle1": "Prenotazioni e capienza",
     "painTitle2": "Liste passeggeri",
     "painTitle3": "Autisti, guide e mezzi",
@@ -1112,7 +1047,7 @@
     "statoDeiReportPerDataEProdotto": "Stato dei report per data e prodotto: inviato, programmato, fallito, fermato e ripreso. I PDF generati si aprono o si condividono con link brevi e sicuri.",
     "risorse": "Risorse",
     "assegnazioniDiGuideEAutisti": "Assegnazioni di guide e autisti",
-    "assegnazioniPerDataEProdottoCon": "Assegnazioni per data e prodotto, con viste separate per esigenze di mezzi, idoneità e contatti scelti, al posto degli appunti sparsi.",
+    "assegnazioniPerDataEProdottoCon": "Assegnazioni per data e prodotto, con viste separate per esigenze di mezzi, idoneità e contatti scelti. Niente più appunti sparsi.",
     "whatsappSmsDiRiservaEAvvisi": "WhatsApp, SMS di riserva e avvisi manuali",
     "comunicazioneAiClientiPerDataDi": "Comunicazione ai clienti per data di servizio: inviati, falliti, di riserva e in attesa. Gli admin possono mandare avvisi SMS manuali quando serve un aggiornamento urgente.",
     "perOsservareUnaGiornataServiva": "Per osservare una giornata serviva aprire prenotazioni, chat e fogli di calcolo, uno per uno.",
@@ -1140,10 +1075,10 @@
     "cosaECambiatoInPratica": "Cosa è cambiato, in pratica",
     "dueProgettiUnMetodo": "Due progetti, un metodo",
     "dueTourOperatorDueMercatiLa": "Due tour operator, due mercati, la stessa base",
-    "texasDispatchAutisti": "Texas, dispatch autisti",
-    "italiaDashboardOperativa": "Italia, dashboard operativa",
+    "texasDispatchAutisti": "Texas · dispatch autisti",
+    "italiaDashboardOperativa": "Italia · dashboard operativa",
     "softwareSuMisuraPerTourOperator": "Software su misura per tour operator",
-    "prenotazioniPartenzeAutistiGuide": "Prenotazioni, partenze, autisti, guide, liste passeggeri e messaggi ai clienti. Un gestionale privato che mette in ordine la giornata e si collega alla tua piattaforma di booking.",
+    "prenotazioniPartenzeAutistiGuide": "Prenotazioni, partenze, autisti, guide, liste passeggeri e messaggi ai clienti. Un gestionale privato costruito sui flussi che usi già e collegato alla tua piattaforma di booking.",
     "scriviciSuWhatsapp": "Scrivici su WhatsApp",
     "scriviciUnaEmail": "Scrivici una email",
     "primaConversazioneSenzaImpegno": "Prima conversazione senza impegno: guardiamo insieme come lavori oggi.",
@@ -1166,10 +1101,10 @@
     "suWhatsappESmsCheDipendonoDaChi": "su WhatsApp e SMS che dipendono da chi se ne ricorda.",
     "cheNessunoVedeFincheNonDiventano": "che nessuno vede finché non diventano un problema.",
     "alloraQuestaPaginaEPerTe": "Allora questa pagina è per te.",
-    "sonoEsattamenteIPuntiCheAbbiamo": "Sono esattamente i punti che abbiamo risolto: mandaceli così come sono.",
+    "sonoEsattamenteIPuntiCheAbbiamo": "Sono esattamente i punti che abbiamo risolto. Mandaceli così come sono.",
     "invialiSuWhatsapp": "Inviali su WhatsApp",
     "vuoiLaStessaVisibilitaSullaTua": "Vuoi la stessa visibilità sulla tua giornata?",
-    "raccontaciComeLavoriOggiTi": "Raccontaci come lavori oggi, e ti diciamo con franchezza cosa si può mettere a sistema e cosa no.",
+    "raccontaciComeLavoriOggiTi": "Raccontaci come lavori oggi. Ti diciamo con franchezza cosa si può mettere a sistema e cosa no.",
     "attivoPer": "Attivo per",
     "dashboardOperativa": "Dashboard operativa",
     "statoDiPrenotazioniListeE": "Stato di prenotazioni, liste e messaggi, avvisi urgenti e attività recenti.",
@@ -1195,8 +1130,8 @@
     "comeGestisciOggiPrenotazioni": "Come gestisci oggi prenotazioni, liste passeggeri, guide, autisti e messaggi ai clienti.",
     "troviamoIPuntiCritici": "Troviamo i punti critici",
     "iPassaggiManualiCheCreanoPiu": "I passaggi manuali che creano più rischio operativo o fanno perdere più tempo.",
-    "costruiamoIlPrimoModulo": "Costruiamo il sistema, a tappe",
-    "ilPrimoSistemaUtileAttornoAi": "Il primo sistema utile, partendo dai passaggi che si ripetono ogni giorno.",
+    "costruiamoIlPrimoModulo": "Costruiamo il primo modulo",
+    "ilPrimoSistemaUtileAttornoAi": "Il primo sistema utile, attorno ai flussi che girano già ogni giorno.",
     "aggiungiamoSoloCioCheServe": "Aggiungiamo solo ciò che serve",
     "automazioniEReportSoloDoveFanno": "Automazioni e report solo dove fanno risparmiare tempo vero o evitano errori veri.",
     "comePartiamo": "Come partiamo",
@@ -1207,11 +1142,11 @@
     "eUnSoftwareProntoOCostruitoSu": "È un software pronto o costruito su misura?",
     "suMisuraSuUnaBaseGiaCollaudataIn": "Su misura, su una base già collaudata in due tour operator. Non ti adatti tu al software: adattiamo i moduli ai tuoi prodotti, mezzi e canali.",
     "autistiEGuidePossonoUsarloDal": "Autisti e guide possono usarlo dal telefono?",
-    "siNelCasoFundallasGliAutisti": "Sì, nel caso FunDallas gli autisti vedono i tour assegnati, i passeggeri e i PDF, e confermano l'assegnazione dal telefono.",
+    "siNelCasoFundallasGliAutisti": "Sì. Nel caso FunDallas gli autisti vedono i tour assegnati, i passeggeri e i PDF, e confermano l'assegnazione dal telefono.",
     "quantoCosta": "Quanto costa?",
-    "dipendeDaiModuliCheServono": "Dipende da quante persone lo usano e da cosa deve fare. Dopo la prima conversazione e lo studio di come lavorate ricevi un preventivo scritto con le tappe, prima di qualsiasi impegno, e verifichiamo se il progetto rientra in un bando.",
+    "dipendeDaiModuliCheServono": "Dipende dai moduli che servono davvero. Dopo la prima conversazione e la mappatura ricevi un preventivo scritto con i moduli e le fasi, prima di qualsiasi impegno.",
     "lavorateAncheFuoriDallItalia": "Lavorate anche fuori dall'Italia?",
-    "siLavoriamoInItaliaENegliStati": "Sì, lavoriamo in Italia e negli Stati Uniti, in italiano e in inglese: FunDallas Tours opera tra Dallas e San Antonio, in Texas.",
+    "siLavoriamoInItaliaENegliStati": "Sì. Lavoriamo in Italia e negli Stati Uniti, in italiano e in inglese: FunDallas Tours opera tra Dallas e San Antonio, in Texas.",
     "domandeFrequenti": "Domande frequenti",
     "primaDiScriverci": "Prima di scriverci",
     "ilPassoSuccessivo": "Il passo successivo",

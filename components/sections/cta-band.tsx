@@ -47,15 +47,13 @@ export function CtaBand({
 }
 
 /** "Caffè o videochiamata?" band, closing most pages. */
-export function CoffeeCta({ className, book }: { className?: string; book?: boolean }) {
+export function CoffeeCta({ className }: { className?: string }) {
   const t = useTranslations("Common");
   return (
     <CtaBand
       title={t("caffeOVideochiamata")}
       text={t("siamoQuiPerAscoltartiUnCaffeOUna")}
-      // `book`: straight to the calendar on the home page instead of the contact page
-      href={book ? "/#sg-prenota" : undefined}
-      label={book ? t("prenotaUnaChiamata") : t("scriviciAdesso")}
+      label={t("scriviciAdesso")}
       className={className}
     />
   );

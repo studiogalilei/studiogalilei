@@ -7,30 +7,16 @@
  * cases already public on the site), the number before the adjective, the limit said first.
  */
 
-import { answers, grants } from "./answers";
-import { compares } from "./compare";
-import { SECTOR_OBJECTIONS } from "./sector-objections";
-import { COMMON_DOUBTS, SECTOR_DOUBTS } from "./doubts";
 import { SECTOR_SHOTS, sectors, type Sector } from "./sectors";
 
 export type LandingFaq = { q: string; a: string };
-export type LandingSection = {
-  title: string;
-  /** Shown before the bullets. */
-  intro?: string;
-  body?: string[];
-  bullets?: string[];
-  /** On a guided page: the anchor and the short name of the stop in the side guide. */
-  id?: string;
-  step?: string;
-};
+export type LandingSection = { title: string; body?: string[]; bullets?: string[] };
 export type LandingStep = { title: string; text: string };
-export type LandingFact = { value: string; label: string };
 export type LandingPrice = { label: string; value: string; note: string };
 
 export type Landing = {
   path: string;
-  kind: "service" | "guide" | "local" | "sector" | "method" | "compare";
+  kind: "service" | "guide" | "local" | "sector" | "method";
   kicker: string;
   title: string;
   metaTitle: string;
@@ -38,17 +24,9 @@ export type Landing = {
   /** The direct answer, first thing on the page: what an AI assistant would quote. */
   answer: string;
   sections: LandingSection[];
-  steps?: { title: string; intro?: string; items: LandingStep[] };
+  steps?: { title: string; items: LandingStep[] };
   prices?: { title: string; intro: string; rows: LandingPrice[]; note: string };
   caseStudy?: boolean;
-  /** The numbers a buyer looks for first (price, time), shown large next to the answer. */
-  facts?: LandingFact[];
-  /** A side-by-side comparison, shown right under the answer. */
-  table?: { title: string; columns: string[]; rows: { label: string; cells: string[] }[] };
-  /** Objections proper to this page's subject, shown before the general questions. */
-  objections?: { title: string; items: LandingFaq[] };
-  /** Further questions by theme (the page of all the answers). */
-  groups?: { id: string; title: string; intro?: string; items: LandingFaq[] }[];
   /** An example screen of the software, shown under the answer. */
   image?: { src: string; alt: string };
   /** Figures from published studies, each with its source: shown large under the answer. */
@@ -56,65 +34,43 @@ export type Landing = {
   /** The studies quoted on the page, linked. */
   sources?: { label: string; url: string }[];
   faqs: LandingFaq[];
-  /** Title of the questions block: "Domande frequenti" when not set. */
-  faqTitle?: string;
   related: string[];
-  /**
-   * A guided page: a side guide with the stops of the page and the call button always in view,
-   * and an invitation to book halfway down, after the reader has seen what we build.
-   */
-  guide?: { midCta: { title: string; text: string } };
 };
 
 /** Shown on every page and in the structured data: bump it when the texts or prices change. */
-export const LANDING_UPDATED = "2026-11-26";
+export const LANDING_UPDATED = "2026-11-25";
 export const LANDING_AUTHOR = { name: "Dramane Yigo", role: "co-founder di Studio Galilei" };
 
 const SOFTWARE_RANGE = "da 5.000 a 80.000 €";
 const AI_RANGE = "da 3.000 a 40.000 €";
 
-const FACTS_SOFTWARE: LandingFact[] = [
-  { value: "da 5.000 €", label: "un software su misura, fino a 80.000 € secondo persone e reparti" },
-  { value: "8-10 settimane", label: "un progetto di media complessità" },
-  { value: "A tappe", label: "la prima parte in uso dopo poche settimane, si paga una tappa alla volta" },
-];
-const FACTS_AI: LandingFact[] = [
-  { value: "da 3.000 €", label: "un agente AI o un'automazione, fino a 40.000 €" },
-  { value: "1 compito", label: "per cominciare, provato sui tuoi casi veri" },
-  { value: "1 persona", label: "che approva sempre i passaggi delicati" },
-];
-
 const STEPS_SOFTWARE: LandingStep[] = [
   {
-    title: "Studiamo la tua azienda",
-    text: "Se lavori da solo guardiamo la tua giornata: cosa fai ogni giorno, cosa ripeti, cosa copi da un programma all'altro. Se avete più reparti studiamo ogni area e i passaggi da una all'altra, perché è lì che il lavoro si perde. Ne esce la mappa del tempo che oggi potete riprendervi.",
+    title: "Mappiamo i processi",
+    text: "Guardiamo come lavori oggi: chi fa cosa, con quali fogli, email e programmi. Cerchiamo dove si perde tempo prima di disegnare qualsiasi schermata.",
   },
   {
-    title: "Mettiamo in ordine i passaggi e l'AI nei punti giusti",
-    text: "Togliamo i passaggi che non servono e segniamo quelli che il sistema può fare da solo, come leggere le richieste, compilare i documenti e mandare promemoria e avvisi. Le decisioni che contano restano a una persona, che controlla e approva.",
+    title: "Prototipo",
+    text: "Costruiamo una prima versione navigabile del modulo più importante. La provi con dati veri e ci dici cosa non torna, quando correggere costa poco.",
   },
   {
-    title: "Verifichiamo i bandi",
-    text: "Prima di partire controlliamo se il progetto può rientrare nella finanza agevolata, come la Nuova Sabatini o i bandi delle Camere di Commercio per la digitalizzazione. Spesso così l'investimento costa meno di quanto si pensa.",
+    title: "Primo modulo in uso",
+    text: "Rilasciamo la parte che ti serve di più e la usi nel lavoro di tutti i giorni. Niente cambio totale in un giorno solo.",
   },
   {
-    title: "Costruiamo un sistema unico, a tappe",
-    text: "Un solo sistema che collega persone e reparti, al posto di fogli, email e programmi che non si parlano. La prima parte la vedi funzionare dopo poche settimane con i tuoi dati veri, il resto arriva a tappe, senza fermare il lavoro. Il sistema resta dell'azienda e ne aumenta il valore.",
+    title: "Espansione",
+    text: "Aggiungiamo gli altri moduli e le integrazioni uno alla volta, nell'ordine che decidi tu in base a quello che rende di più.",
   },
   {
-    title: "Restiamo con te",
-    text: "Dopo il rilascio seguiamo noi il sistema, con correzioni, piccole modifiche e aggiornamenti, e quando l'azienda cresce lo facciamo crescere insieme a lei. Chi ti risponde è chi l'ha costruito.",
+    title: "Assistenza",
+    text: "Dopo il rilascio restiamo noi a seguire il software: correzioni, piccole modifiche, aggiornamenti. Chi ti risponde è chi l'ha costruito.",
   },
 ];
-
-/** Why the path is worth it to the owner: said once, before the steps of a software project. */
-const STEPS_SOFTWARE_INTRO =
-  "Vale per chi lavora da solo e per chi ha cento dipendenti. Alla fine hai un sistema unico che resta della tua azienda e ne aumenta il valore, il team lavora senza ricopiare niente e tu ti riprendi il tempo per le cose che contano davvero.";
 
 const STEPS_AI: LandingStep[] = [
   {
-    title: "Studiamo come lavorate",
-    text: "Guardiamo la giornata di chi lavora da solo, o i reparti di un'azienda più grande, e segniamo i punti in cui il lavoro si ripete. È lì che l'AI fa risparmiare più tempo, e se in un punto non serve te lo diciamo.",
+    title: "Scegliamo un compito solo",
+    text: "Partiamo dal lavoro ripetitivo che ti costa più ore, non dallo strumento. Se l'AI lì non serve, te lo diciamo.",
   },
   {
     title: "Prototipo su casi veri",
@@ -137,14 +93,13 @@ const STEPS_AI: LandingStep[] = [
 export const landings: Landing[] = [
   {
     path: "/gestionale-su-misura",
-    facts: FACTS_SOFTWARE,
     kind: "service",
     kicker: "Sviluppo software",
     title: "Gestionale su misura per la tua azienda",
     metaTitle: "Gestionale su misura: sviluppo, costi e tempi",
     description:
-      "Gestionali su misura per PMI: studiamo come lavori, mettiamo in ordine i passaggi e l'AI nei punti giusti, il team approva. Da 5.000 a 80.000 €, con i bandi verificati prima.",
-    answer: `Un gestionale su misura è un software fatto per la tua azienda, invece di adattare l'azienda a un programma già fatto. Prima mettiamo in ordine i passaggi, cioè chi fa cosa e quando, poi il software li porta avanti da solo e il tuo team controlla e approva. Si parte da uno studio di come lavori, da solo o con i tuoi reparti, e l'AI entra nei punti in cui il lavoro si ripete. I nostri progetti vanno ${SOFTWARE_RANGE}, secondo quante persone e quanti reparti coinvolgono, e il sistema resta tuo.`,
+      "Sviluppiamo gestionali su misura per le PMI: costruiti sui tuoi processi, rilasciati un modulo alla volta, con l'AI dove serve. Progetti da 5.000 a 80.000 €, codice di tua proprietà.",
+    answer: `Un gestionale su misura è un software costruito sui processi della tua azienda, invece di adattare l'azienda a un programma già fatto. Lo sviluppiamo a moduli, prima la parte che oggi ti fa perdere più tempo e poi il resto. I nostri progetti vanno ${SOFTWARE_RANGE}, secondo quanti moduli e quante integrazioni servono, e il codice resta tuo.`,
     sections: [
       {
         title: "Quando conviene un gestionale su misura",
@@ -176,16 +131,16 @@ export const landings: Landing[] = [
         ],
       },
     ],
-    steps: { title: "Come lavoriamo", intro: STEPS_SOFTWARE_INTRO, items: STEPS_SOFTWARE },
+    steps: { title: "Come lavoriamo", items: STEPS_SOFTWARE },
     prices: {
       title: "Quanto costa",
       intro:
-        "Le cifre qui sotto sono le fasce dei nostri progetti, IVA esclusa. Il preventivo preciso arriva dopo lo studio dell'azienda, quando sappiamo cosa serve davvero.",
+        "Le cifre qui sotto sono le fasce dei nostri progetti, IVA esclusa. Il preventivo preciso arriva dopo la mappatura dei processi, quando sappiamo cosa serve davvero.",
       rows: [
         {
           label: "Gestionali e software su misura",
           value: SOFTWARE_RANGE,
-          note: "Secondo quante persone e quanti reparti coinvolge e quanti programmi collega.",
+          note: "Secondo il numero di moduli, di integrazioni e di ruoli.",
         },
         {
           label: "AI e automazioni",
@@ -199,11 +154,11 @@ export const landings: Landing[] = [
     faqs: [
       {
         q: "Quanto costa un gestionale su misura?",
-        a: `I nostri progetti vanno ${SOFTWARE_RANGE}, IVA esclusa. Il prezzo dipende da quante persone e quanti reparti coinvolge, da quanti programmi va collegato e da quanto lavoro copre. Si paga a tappe, e prima di partire verifichiamo se il progetto rientra in un bando.`,
+        a: `I nostri progetti vanno ${SOFTWARE_RANGE}, IVA esclusa. Il prezzo dipende da quanti moduli servono, da quante integrazioni con altri programmi e da quante persone con ruoli diversi lo useranno. Si può partire da un modulo solo e ampliare dopo.`,
       },
       {
         q: "Quanto tempo serve per svilupparlo?",
-        a: "Un progetto di media complessità richiede 8-10 settimane. Lavoriamo a tappe: la prima parte entra in uso prima della fine del progetto, il resto segue.",
+        a: "Un progetto di media complessità richiede 8-10 settimane. Lavoriamo a rilasci: il primo modulo entra in uso prima della fine del progetto, gli altri seguono.",
       },
       {
         q: "Il codice resta mio?",
@@ -232,14 +187,13 @@ export const landings: Landing[] = [
     ],
     related: [
       "/guide/quanto-costa-un-gestionale-su-misura",
-      "/confronti/gestionale-su-misura-o-gia-pronto",
       "/agenti-ai-per-aziende",
+      "/automazione-processi-aziendali",
       "/metodo",
     ],
   },
   {
     path: "/agenti-ai-per-aziende",
-    facts: FACTS_AI,
     kind: "service",
     kicker: "Intelligenza artificiale",
     title: "Agenti AI per aziende: cosa fanno e come li costruiamo",
@@ -330,20 +284,19 @@ export const landings: Landing[] = [
     ],
     related: [
       "/guide/quanto-costa-un-agente-ai",
-      "/confronti/agente-ai-o-automazione",
       "/automazione-processi-aziendali",
+      "/gestionale-su-misura",
       "/metodo",
     ],
   },
   {
     path: "/automazione-processi-aziendali",
-    facts: FACTS_AI,
     kind: "service",
     kicker: "Intelligenza artificiale",
     title: "Automazione dei processi aziendali con l'AI",
     metaTitle: "Automazione dei processi aziendali con l'AI per PMI",
     description:
-      "Automatizziamo il lavoro ripetitivo delle PMI: dati ricopiati a mano, solleciti, report, passaggi tra programmi, con l'AI dove serve e una persona al controllo, da 3.000 a 40.000 €.",
+      "Automatizziamo il lavoro ripetitivo delle PMI: dati ricopiati a mano, solleciti, report, passaggi tra programmi, con l'AI dove serve e una persona al controllo. Da 3.000 a 40.000 €.",
     answer: `Automatizzare un processo vuol dire far fare al software il lavoro ripetitivo che oggi fanno le persone: ricopiare dati, mandare solleciti, preparare report, passare informazioni da un programma all'altro. Con l'AI si automatizzano anche i passaggi dove c'è da leggere e capire un testo. I nostri progetti vanno ${AI_RANGE}.`,
     sections: [
       {
@@ -366,7 +319,7 @@ export const landings: Landing[] = [
         title: "Automazione semplice o agente AI",
         body: [
           "Un'automazione semplice segue regole fisse: quando succede questo, fai quello. Costa meno ed è la scelta giusta quando i casi sono sempre uguali.",
-          "Un agente AI serve quando c'è da leggere e interpretare: un'email scritta a mano libera, un documento sempre diverso, una richiesta ambigua. Spesso il risultato migliore arriva mettendo insieme le due cose.",
+          "Un agente AI serve quando c'è da leggere e interpretare: un'email scritta a mano libera, un documento sempre diverso, una richiesta ambigua. Spesso la soluzione migliore mette insieme le due cose.",
         ],
       },
     ],
@@ -381,7 +334,7 @@ export const landings: Landing[] = [
           note: "Secondo quanti processi, quanti programmi da collegare e quanta AI serve.",
         },
       ],
-      note: "Se l'automazione usa un modello di AI c'è anche il suo consumo, a utilizzo, che stimiamo sul prototipo.",
+      note: "Se l'automazione usa un modello di AI c'è anche il suo consumo, a utilizzo. Lo stimiamo sul prototipo.",
     },
     faqs: [
       {
@@ -407,14 +360,13 @@ export const landings: Landing[] = [
     ],
     related: [
       "/agenti-ai-per-aziende",
-      "/confronti/agente-ai-o-automazione",
-      "/guide/quanto-costa-un-agente-ai",
       "/gestionale-su-misura",
+      "/guide/quanto-costa-un-agente-ai",
+      "/software-house-treviso",
     ],
   },
   {
     path: "/software-house-treviso",
-    facts: FACTS_SOFTWARE,
     kind: "local",
     kicker: "Treviso, Veneto",
     title: "Software house a Treviso: software su misura e agenti AI",
@@ -462,7 +414,7 @@ export const landings: Landing[] = [
         {
           label: "Gestionali e software su misura",
           value: SOFTWARE_RANGE,
-          note: "Secondo persone, reparti e programmi da collegare.",
+          note: "Secondo moduli, integrazioni e ruoli.",
         },
         {
           label: "AI e automazioni",
@@ -488,7 +440,7 @@ export const landings: Landing[] = [
       },
       {
         q: "Quanto costa un progetto?",
-        a: `I gestionali e i software su misura vanno ${SOFTWARE_RANGE}, i progetti di AI e automazione ${AI_RANGE}, IVA esclusa. Prima di partire verifichiamo se il progetto rientra in un bando.`,
+        a: `I gestionali e i software su misura vanno ${SOFTWARE_RANGE}, i progetti di AI e automazione ${AI_RANGE}, IVA esclusa. Si può partire da un modulo solo.`,
       },
       {
         q: "Posso passare in sede?",
@@ -498,25 +450,24 @@ export const landings: Landing[] = [
     related: [
       "/gestionale-su-misura",
       "/agenti-ai-per-aziende",
-      "/confronti/software-house-freelance-o-team-interno",
-      "/domande",
+      "/automazione-processi-aziendali",
+      "/guide/quanto-costa-un-gestionale-su-misura",
     ],
   },
   {
     path: "/guide/quanto-costa-un-gestionale-su-misura",
-    facts: FACTS_SOFTWARE,
     kind: "guide",
     kicker: "Guida",
     title: "Quanto costa un gestionale su misura",
     metaTitle: "Quanto costa un gestionale su misura: fasce di prezzo 2026",
     description:
-      "Un gestionale su misura costa da 5.000 a 80.000 € nei nostri progetti. Cosa fa salire il prezzo, quali costi ci sono dopo il rilascio e come spendere meno, bandi compresi.",
-    answer: `Nei nostri progetti un gestionale su misura costa ${SOFTWARE_RANGE}, IVA esclusa. La differenza la fanno quante persone e quanti reparti coinvolge, quanto lavoro copre e quanti programmi va collegato. Dopo il rilascio ci sono l'hosting e un canone di assistenza. Si paga a tappe, e una parte può rientrare nella finanza agevolata.`,
+      "Un gestionale su misura costa da 5.000 a 80.000 € nei nostri progetti. Cosa fa salire il prezzo, quali costi ci sono dopo il rilascio e come spendere meno partendo da un modulo.",
+    answer: `Nei nostri progetti un gestionale su misura costa ${SOFTWARE_RANGE}, IVA esclusa. La differenza la fanno il numero di moduli, le integrazioni con altri programmi e quante persone con ruoli diversi lo usano. Dopo il rilascio ci sono l'hosting e un canone di assistenza. Si può partire da un modulo solo e ampliare dopo.`,
     sections: [
       {
         title: "Cosa fa salire o scendere il prezzo",
         bullets: [
-          "Quanto lavoro copre: preventivi, ordini, magazzino, noleggi, consegne, fatture. Ogni parte in più è lavoro in più.",
+          "I moduli: preventivi, ordini, magazzino, noleggi, consegne, fatture. Ogni modulo in più è lavoro in più.",
           "Le integrazioni: collegare contabilità, fatturazione elettronica, e-commerce o macchinari richiede tempo, e dipende da quanto quei programmi sono aperti.",
           "I ruoli: un software usato da tre persone con gli stessi permessi costa meno di uno con uffici, magazzino, agenti e clienti che vedono cose diverse.",
           "I dati da portare dentro: anni di storico su Excel vanno puliti e importati.",
@@ -545,7 +496,7 @@ export const landings: Landing[] = [
       {
         title: "Come spendere meno",
         bullets: [
-          "Fallo entrare in uso a tappe: paghi una tappa alla volta e vedi i risultati prima di andare avanti.",
+          "Parti da un modulo solo, quello che oggi ti costa più ore.",
           "Chiedi un prototipo prima dello sviluppo: correggere un'idea su un prototipo costa una frazione di quanto costa dopo.",
           "Tieni i programmi che funzionano e collegali, invece di rifare tutto.",
           "Verifica i bandi: una parte dell'investimento in software può rientrare nella finanza agevolata. Lo controlliamo insieme nella prima chiamata.",
@@ -554,12 +505,12 @@ export const landings: Landing[] = [
     ],
     prices: {
       title: "Le nostre fasce",
-      intro: "Le fasce dei nostri progetti, IVA esclusa.",
+      intro: "Prezzi IVA esclusa, aggiornati alla data in fondo alla pagina.",
       rows: [
         {
           label: "Gestionali e software su misura",
           value: SOFTWARE_RANGE,
-          note: "Secondo persone, reparti e programmi da collegare.",
+          note: "Secondo moduli, integrazioni e ruoli.",
         },
         {
           label: "AI e automazioni",
@@ -572,11 +523,11 @@ export const landings: Landing[] = [
     faqs: [
       {
         q: "Qual è il prezzo minimo di un gestionale su misura?",
-        a: "I nostri progetti partono da 5.000 €, IVA esclusa, per un sistema piccolo e chiaro, come quello di chi lavora da solo o con pochi collaboratori.",
+        a: "I nostri progetti partono da 5.000 €, IVA esclusa, per un software con un perimetro piccolo e chiaro: un modulo, poche integrazioni, pochi ruoli.",
       },
       {
         q: "Perché due preventivi per lo stesso gestionale sono così diversi?",
-        a: "Di solito perché descrivono cose diverse. Uno conta tutte le parti, le integrazioni e l'assistenza, l'altro solo la prima versione. Per confrontarli chiedi a tutti e due l'elenco di cosa copre, delle integrazioni e dei costi dopo il rilascio.",
+        a: "Di solito perché descrivono cose diverse. Uno conta tutti i moduli, le integrazioni e l'assistenza, l'altro solo la prima versione. Per confrontarli chiedi a tutti e due l'elenco dei moduli, delle integrazioni e dei costi dopo il rilascio.",
       },
       {
         q: "Si paga tutto all'inizio?",
@@ -593,14 +544,13 @@ export const landings: Landing[] = [
     ],
     related: [
       "/gestionale-su-misura",
-      "/confronti/gestionale-su-misura-o-gia-pronto",
-      "/guide/bandi-software-ai",
       "/guide/quanto-costa-un-agente-ai",
+      "/agenti-ai-per-aziende",
+      "/software-house-treviso",
     ],
   },
   {
     path: "/guide/quanto-costa-un-agente-ai",
-    facts: FACTS_AI,
     kind: "guide",
     kicker: "Guida",
     title: "Quanto costa un agente AI per un'azienda",
@@ -612,7 +562,7 @@ export const landings: Landing[] = [
       {
         title: "Le due voci di costo",
         body: [
-          "La prima è lo sviluppo: capire il compito, costruire l'agente, collegarlo ai tuoi sistemi, provarlo su casi veri, e si paga una volta.",
+          "La prima è lo sviluppo: capire il compito, costruire l'agente, collegarlo ai tuoi sistemi, provarlo su casi veri. Si paga una volta.",
           "La seconda è il consumo: ogni volta che l'agente lavora usa un modello di AI, che il fornitore fa pagare a utilizzo. Con pochi casi al giorno è una cifra piccola, con migliaia va stimata bene. La calcoliamo sul prototipo, prima di partire.",
         ],
       },
@@ -629,7 +579,7 @@ export const landings: Landing[] = [
       {
         title: "Come capire se rende",
         body: [
-          "Si contano le ore: se un compito porta via dieci ore a settimana e l'agente ne toglie la maggior parte, il conto si fa in fretta. Se ne porta via una, quasi mai conviene. Questo conto lo facciamo insieme prima del preventivo, e se non torna ci fermiamo.",
+          "Si contano le ore. Se un compito porta via dieci ore a settimana e l'agente ne toglie la maggior parte, il conto si fa in fretta. Se ne porta via una, quasi mai conviene. Questo conto lo facciamo insieme prima del preventivo, e se non torna ci fermiamo.",
         ],
       },
       {
@@ -643,7 +593,7 @@ export const landings: Landing[] = [
     ],
     prices: {
       title: "Le nostre fasce",
-      intro: "Le fasce dei nostri progetti, IVA esclusa.",
+      intro: "Prezzi IVA esclusa, aggiornati alla data in fondo alla pagina.",
       rows: [
         {
           label: "Agenti AI e automazioni",
@@ -678,9 +628,9 @@ export const landings: Landing[] = [
     ],
     related: [
       "/agenti-ai-per-aziende",
-      "/confronti/agente-ai-o-automazione",
-      "/guide/bandi-software-ai",
+      "/automazione-processi-aziendali",
       "/guide/quanto-costa-un-gestionale-su-misura",
+      "/software-house-treviso",
     ],
   },
   {
@@ -732,7 +682,7 @@ export const landings: Landing[] = [
       {
         title: "Come lavoriamo sul progetto",
         body: [
-          "Con lo stesso metodo che usiamo sempre: prima il sistema, poi l'AI. Studio dell'azienda, passaggi in ordine con l'AI nei punti giusti, verifica dei bandi, sistema unico costruito a tappe. Un progetto di media complessità richiede 8-10 settimane, e il codice resta del cliente finale.",
+          "Con lo stesso metodo che usiamo sempre: prima il sistema, poi l'AI. Mappatura dei processi, prototipo, primo modulo in uso, espansione. Un progetto di media complessità richiede 8-10 settimane, e il codice resta del cliente finale.",
           "Se un progetto non ha senso lo diciamo, a te prima che al cliente. Preferiamo perdere un lavoro che farti fare brutta figura.",
         ],
       },
@@ -931,7 +881,6 @@ const sectorLanding = (s: Sector, i: number): Landing => {
   const done = s.done !== false;
   return {
     path: `/settori/${s.slug}`,
-    facts: FACTS_SOFTWARE,
     kind: "sector",
     kicker: s.name,
     title: `${s.product} ${s.per}`,
@@ -948,22 +897,13 @@ const sectorLanding = (s: Sector, i: number): Landing => {
     description: s.description,
     answer: s.answer,
     sections: [
+      { title: `I problemi che si ripetono ${s.nel}`, bullets: s.problems },
       {
-        id: "problema",
-        step: "Il problema",
-        title: `I problemi che si ripetono ${s.nel}`,
-        bullets: s.problems,
-      },
-      {
-        id: "cosa-costruiamo",
-        step: "Cosa costruiamo",
         title: done ? `Cosa abbiamo sviluppato ${s.per}` : `Cosa sviluppiamo ${s.per}`,
-        intro: s.built,
-        bullets: s.modules,
+        body: [s.built],
       },
+      { title: "Cosa può includere il software", bullets: s.modules },
       {
-        id: "ai",
-        step: "Dove entra l'AI",
         title: `Dove serve l'intelligenza artificiale ${s.nel}`,
         bullets: s.ai,
         body: [
@@ -971,37 +911,26 @@ const sectorLanding = (s: Sector, i: number): Landing => {
         ],
       },
     ],
-    guide: {
-      midCta: {
-        title: "Vuoi vedere quanto tempo potreste riprendervi?",
-        text: `In 45 minuti guardiamo insieme come lavorate oggi, dove l'AI vi farebbe risparmiare più ore e se il progetto può rientrare in un bando. Ti diciamo anche quanto costerebbe e in quanto tempo. Senza impegno, e se non siamo le persone giuste te lo diciamo.`,
-      },
-    },
-    objections: {
-      title: "I dubbi prima di decidere",
-      items: [...(SECTOR_DOUBTS[s.slug] ?? []), ...(SECTOR_OBJECTIONS[s.slug] ?? [])],
-    },
-    steps: { title: "Come si parte", intro: STEPS_SOFTWARE_INTRO, items: STEPS_SOFTWARE },
+    steps: { title: "Come lavoriamo", items: STEPS_SOFTWARE },
     prices: {
       title: "Quanto costa",
       intro:
-        "Le fasce dei nostri progetti, IVA esclusa. Il preventivo preciso arriva dopo lo studio dell'azienda.",
+        "Le fasce dei nostri progetti, IVA esclusa. Il preventivo preciso arriva dopo la mappatura dei processi.",
       rows: [
         {
           label: "Gestionali e software su misura",
           value: SOFTWARE_RANGE,
-          note: "Secondo persone, reparti e programmi da collegare.",
+          note: "Secondo moduli, integrazioni e ruoli.",
         },
         { label: "AI e automazioni", value: AI_RANGE, note: "Da sole o dentro il gestionale." },
       ],
-      note: "Un progetto di media complessità richiede 8-10 settimane e si paga a tappe. Prima di partire verifichiamo se può rientrare nella finanza agevolata.",
+      note: "Un progetto di media complessità richiede 8-10 settimane. Si può partire da un modulo solo.",
     },
     faqs: [
       ...s.faqs,
-      ...COMMON_DOUBTS,
       {
         q: `Quanto costa un software su misura ${s.per}?`,
-        a: `I nostri progetti di software su misura vanno ${SOFTWARE_RANGE}, IVA esclusa, secondo quante persone e quanti reparti coinvolgono e quanti programmi vanno collegati. I progetti di AI e automazione vanno ${AI_RANGE}.`,
+        a: `I nostri progetti di software su misura vanno ${SOFTWARE_RANGE}, IVA esclusa, secondo il numero di moduli e di integrazioni. I progetti di AI e automazione vanno ${AI_RANGE}.`,
       },
     ],
     related: [...neighbours(i), "/gestionale-su-misura"],
@@ -1010,9 +939,6 @@ const sectorLanding = (s: Sector, i: number): Landing => {
 
 export const sectorLandings = sectors.map(sectorLanding);
 
-/** The pages added by the other data files: comparisons, all the answers, grants. */
-export const extraLandings: Landing[] = [answers, grants, ...compares];
-
-const all = [...landings, ...extraLandings, ...sectorLandings];
+const all = [...landings, ...sectorLandings];
 
 export const landingByPath = (path: string) => all.find((l) => l.path === path)!;

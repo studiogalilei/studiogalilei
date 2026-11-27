@@ -12,21 +12,17 @@ const solutions = [
   { label: "Agenti AI per aziende", href: "/agenti-ai-per-aziende" },
   { label: "Automazione dei processi", href: "/automazione-processi-aziendali" },
   { label: "Software per settore", href: "/settori" },
+  { label: "Software per tour operator", href: "/tour-operator" },
   { label: "Software house a Treviso", href: "/software-house-treviso" },
   { label: "Partner", href: "/agenzie-partner" },
   { label: "Quanto costa un gestionale", href: "/guide/quanto-costa-un-gestionale-su-misura" },
   { label: "Quanto costa un agente AI", href: "/guide/quanto-costa-un-agente-ai" },
-  { label: "Bandi per software e AI", href: "/guide/bandi-software-ai" },
-  { label: "Confronti", href: "/confronti" },
-  { label: "Domande e risposte", href: "/domande" },
 ] as const;
 
 const links = [
   { key: "home", href: "/" },
   { key: "about", href: "/chi-siamo" },
-  { key: "services", href: "/servizi" },
   { key: "caseStudies", href: "/casi-studio" },
-  { key: "tourOperator", href: "/tour-operator" },
   { key: "careers", href: "/lavora-con-noi" },
 ] as const;
 
@@ -54,7 +50,7 @@ function FooterContent({ year }: { year: number }) {
             className="inline-flex flex-col items-center gap-5 text-[#CBD0DA] transition-colors hover:text-[#BCC2CF]"
           >
             <LogoTree className="h-[120px] w-auto md:h-[140px]" />
-            <LogoWordmark className="h-auto w-[200px] md:w-[230px]" title="Studio Galilei" />
+            <LogoWordmark className="h-auto w-[200px] md:w-[230px]" title="StudioGalilei" />
           </Link>
         </div>
         <nav aria-label="Studio Galilei">
@@ -70,8 +66,8 @@ function FooterContent({ year }: { year: number }) {
           </ul>
         </nav>
         {italian && (
-          <nav aria-label="Cosa facciamo">
-            <p className="mb-4 text-14 font-semibold text-sg">Cosa facciamo</p>
+          <nav aria-label="Soluzioni">
+            <p className="mb-4 text-14 font-semibold text-sg">Soluzioni</p>
             <ul className="space-y-2.5">
               {solutions.map(({ label, href }) => (
                 <li key={href}>

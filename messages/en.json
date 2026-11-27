@@ -2,23 +2,22 @@
   "Common": {
     "percorso": "Breadcrumb",
     "caffeOVideochiamata": "Coffee or video call?",
-    "siamoQuiPerAscoltartiUnCaffeOUna": "A coffee at our office in Treviso or a video call: we look at your case together, and if we are not the right people we tell you.",
+    "siamoQuiPerAscoltartiUnCaffeOUna": "We are here to listen. A coffee or a call to compare notes is always a pleasure!",
     "scriviciAdesso": "Write to us",
-    "scopriSePossiamoApplicarloAnche": "Find out if we can apply it to your business too",
-    "prenotaUnaChiamata": "Book a call"
+    "scopriSePossiamoApplicarloAnche": "Find out if we can apply it to your business too"
   },
   "Metadata": {
     "home": {
-      "title": "Studio Galilei: custom software and AI agents, Italy",
-      "description": "Living management software, made to measure: it reads requests, prepares quotes and reminders, and your team approves. Software house in Treviso, Italy, with AI inside the system and code that stays yours."
+      "title": "Custom software and AI agents for businesses",
+      "description": "Your whole company in one place: custom management software, automation and AI agents that take away the repetitive work. Software house in Treviso, Italy, and the code stays yours."
     },
     "about": {
-      "title": "About Studio Galilei Srl, software house in Treviso",
-      "description": "Studio Galilei Srl is a software house in the province of Treviso, Italy, founded in 2024: custom management software, automation and AI agents for SMEs."
+      "title": "About us",
+      "description": "“Measure what is measurable, and make measurable what is not.” The Studio Galilei way of working."
     },
     "services": {
-      "title": "Services: custom software, automation, AI agents",
-      "description": "What Studio Galilei builds: custom management software, workspaces and portals, automation, AI agents and integrations, from €3,000 to €80,000."
+      "title": "Services",
+      "description": "Custom management software, workspaces and portals, automation, AI agents and integrations: what Studio Galilei builds, plus subsidised finance."
     },
     "marketing": {
       "title": "Marketing",
@@ -26,19 +25,19 @@
     },
     "intelligenza-artificiale": {
       "title": "Artificial intelligence for businesses",
-      "description": "AI agents and automations for small and mid-sized companies: we find where time is lost and build systems that remove repetitive work, from €3,000 to €40,000."
+      "description": "We find where time, information or value is being lost and build automations that work for you. Without starting from the tool."
     },
     "sviluppo-software": {
       "title": "Custom software development",
-      "description": "Management systems, portals and integrations that put the steps in order and prepare the work for you. Modular development, role-based permissions and progressive release."
+      "description": "Management systems, portals and integrations built around your real processes. Modular development, role-based permissions and progressive release."
     },
     "googleAds": {
       "title": "Google Ads",
       "description": "Studio Galilei uses the official Google Ads API to manage partners' campaigns. Directly on their accounts, with full transparency."
     },
     "caseStudies": {
-      "title": "Case studies: custom software in daily use",
-      "description": "The software Studio Galilei has built and clients use every day: the tour operator case, BeaVita Tours and FunDallas Tours, with the real screens."
+      "title": "Case studies",
+      "description": "Behind the scenes: Studio Galilei case studies."
     },
     "caseTourOperator": {
       "title": "Case study: tour operator",
@@ -57,8 +56,8 @@
       "description": "Why work at Studio Galilei: method, autonomy and results measured and credited to whoever produces them."
     },
     "contact": {
-      "title": "Contact and intro call",
-      "description": "Contact Studio Galilei, a software house in Treviso, Italy: book a 45-minute intro call, write to us or come by for a coffee."
+      "title": "Contact",
+      "description": "We are here to listen. A coffee or a call to compare notes is always a pleasure!"
     },
     "privacy": {
       "title": "Privacy policy",
@@ -95,33 +94,18 @@
     "skipToContent": "Skip to content"
   },
   "Footer": {
-    "backToHome": "Studio Galilei, back to home",
+    "backToHome": "StudioGalilei, back to home",
     "writeToUs": "Write to us",
     "allRightsReserved": "All rights reserved.",
     "vatAndTaxCode": "VAT and tax code"
   },
   "Home": {
     "hero": {
-      "title": "<partner>Living software,</partner><br></br>made for your company",
-      "intro": "Living management software reads requests, fills in quotes, updates job orders and sends reminders to the people who need them. Your team checks and approves, and the system prepares the rest of the work.",
-      "method": "First we put your company's steps in order, then we keep them moving on their own.",
+      "title": "<partner>Your whole company,</partner><br></br>in one place",
+      "intro": "We build custom management software, automation and AI agents that take away the repetitive work and leave you more time for your customers.",
       "download": "Download the presentation",
       "bookCall": "Book an intro call",
-      "exploreServices": "Explore our services",
-      "facts": [
-        {
-          "value": "from €5,000",
-          "label": "a custom software project"
-        },
-        {
-          "value": "8-10 weeks",
-          "label": "an average project"
-        },
-        {
-          "value": "Yours",
-          "label": "code, data and accounts"
-        }
-      ]
+      "exploreServices": "Explore our services"
     },
     "clients": {
       "label": "Companies that have worked with Studio Galilei",
@@ -130,21 +114,12 @@
     "services": {
       "kicker": "What we do",
       "title": "What we build",
-      "software": {
-        "name": "Custom management software",
-        "short": "Management systems, workspaces and portals that prepare the work and keep it in one place, and the code is yours."
-      },
-      "automation": {
-        "name": "Automation",
-        "short": "The system does the repetitive work: data, reminders, reports and hand-offs between tools."
-      },
-      "agents": {
-        "name": "AI agents",
-        "short": "They read requests and documents and prepare replies and actions. A person stays in control."
-      },
+      "software": {"name": "Custom management software", "short": "Management systems, workspaces and portals built around your processes: everything in one place, and yours to keep."},
+      "automation": {"name": "Automation", "short": "The system does the repetitive work: data, reminders, reports and hand-offs between tools."},
+      "agents": {"name": "AI agents", "short": "They read requests and documents and prepare replies and actions. A person stays in control."},
       "marketing": {
         "name": "Marketing",
-        "short": "Google and Meta campaigns that bring customers, not clicks, measurable from day one."
+        "short": "Google and Meta campaigns that bring customers, not clicks. Measurable from day one."
       },
       "intelligenza-artificiale": {
         "name": "Artificial Intelligence",
@@ -212,9 +187,7 @@
     "portal": {
       "label": "Preview of the partner portal with sample data",
       "tasks": "Tasks",
-      "caption": "Portal preview, sample data",
-      "progress": "Progress",
-      "modules": "Modules in use"
+      "caption": "Portal preview, sample data"
     },
     "cases": {
       "kicker": "Case studies",
@@ -224,8 +197,7 @@
       "onlySolutions": "€687,000.00 in 45 days<br></br>a Google Ads and Meta Ads ecosystem",
       "tourOperator": "A tour operator's whole day<br></br>in a single app",
       "readCase": "Read the case",
-      "all": "All case studies",
-      "text": "For two tour operators, BeaVita Tours in Italy and FunDallas Tours in Texas, we built the app that holds bookings, departures, drivers, guides and customer messages together."
+      "all": "All case studies"
     },
     "googleAds": {
       "kicker": "Technology & transparency",
@@ -259,7 +231,7 @@
           "desc": "The partner keeps full control and can revoke the authorisation at any time from their Google Account settings."
         },
         {
-          "title": "Google API, Limited Use",
+          "title": "Google API · Limited Use",
           "desc": "We use the data we access only to provide and improve the campaign management services requested by the partner, in compliance with the <policy>Google API Services User Data Policy</policy>, including the Limited Use requirements."
         }
       ],
@@ -267,10 +239,10 @@
     }
   },
   "ContactForm": {
-    "sentTitle": "Message sent",
+    "sentTitle": "Message sent!",
     "sentText": "We will get back to you as soon as possible.",
     "mailSubject": "New contact from the Studio Galilei website",
-    "sendFailed": "The message could not be sent, but you can send it to us by email with the button below.",
+    "sendFailed": "Could not send. You can send us the same message by email with the button below.",
     "name": "Name",
     "namePlaceholder": "Your name",
     "emailPlaceholder": "your@email.com",
@@ -295,7 +267,7 @@
   "Booking": {
     "kicker": "Intro call",
     "title": "Book an intro call",
-    "intro": "A 45-minute video call, no commitment: pick a day and time from our live availability and get the confirmation with the link right away. If you prefer a coffee at our office in Treviso, write to us from the Contact page.",
+    "intro": "Pick a day and time from our live availability. You'll get a confirmation with the video call link right away.",
     "openCalendar": "Open the calendar in a new tab",
     "loading": "Loading available times",
     "error": "We can't load the available times right now.",
@@ -314,57 +286,30 @@
     "taken": "That time was just taken: please pick another one.",
     "failed": "The booking didn't go through. Try again shortly or write to us.",
     "doneTitle": "Call booked",
-    "doneText": "We've sent you an email with the invite and the Google Meet link, talk soon.",
+    "doneText": "We've sent you an email with the invite and the Google Meet link. Talk soon.",
     "another": "Write to us",
     "chosen": "Your call"
   },
   "About": {
-    "kicker": "About us",
-    "title": "Studio Galilei Srl, a software house in Treviso, Italy",
-    "intro": "Studio Galilei is an Italian software house based in the province of Treviso, founded in 2024. It builds custom management software, automation and AI agents for small and mid-sized companies, and looks for the public grants that can cover part of the investment.",
-    "facts": {
-      "legalName": "Legal name",
-      "office": "Registered office",
-      "province": "Treviso, Italy",
-      "founded": "Founded",
-      "ledBy": "Led by",
-      "ledByValue": "Dramane Yigo, co-founder",
-      "does": "What it does",
-      "doesValue": "Custom management software, workspaces and portals, automation, AI agents, integrations, grant research",
-      "forWhom": "For whom",
-      "forWhomValue": "Small and mid-sized companies, and the agencies and consultants who bring software and AI to their own clients",
-      "where": "Where it works",
-      "whereValue": "In person across Veneto, remotely in the rest of Italy and abroad: two of its products run every day in Italy and in Texas",
-      "prices": "What it costs",
-      "pricesValue": "Custom software from €5,000 to €80,000, AI and automation from €3,000 to €40,000, an average project in 8-10 weeks"
-    },
-    "book": "Book a call",
-    "namesakes": "Other organisations in Italy have a similar name. This is the page of Studio Galilei Srl, VAT number IT05642810260, which works on software and artificial intelligence.",
-    "responsibilityTitle": "We bring order first, then we automate",
-    "responsibilityText": "In many companies the work depends on a few people, on programs that do not talk to each other and on spreadsheets only someone can read. We build the system that keeps everything in one place, and on top of it we add artificial intelligence where it removes repetitive work.",
-    "story": "We are a small studio: whoever works on your project knows all of it and answers you directly. We get into the problem before proposing a tool, and if a project makes no sense we say so, even when we would be the ones building it.",
-    "linkMethod": "The Galilei method",
-    "linkCases": "Case studies",
-    "linkServices": "What we build",
-    "method": "Galilei method",
+    "quote": "“Measure what is measurable, and make measurable what is not.”",
+    "responsibilityTitle": "We take responsibility",
+    "responsibilityText": "In many companies, growth depends on a few people, on tools that don't talk to each other and on numbers nobody reads. Our job is to make it observable: understand which levers produce results, decide where to act and turn what works into a system the company can run even without us.",
+    "talkToUs": "Talk to us",
+    "method": "The Galilei Method",
     "principles": [
       {
         "title": "Observable",
-        "desc": "Every piece of work is tied to a number that matters to the company, such as hours saved or errors avoided, so you see what works and not only what we did."
+        "desc": "Every action is tied to a number that matters to the business, such as sales, leads or hours saved, not clicks and impressions. You see what works, not just what we did."
       },
       {
         "title": "Governable",
-        "desc": "At every cycle you receive a written summary: what we saw, what we propose and how confident we are, and the decision stays yours."
+        "desc": "At every cycle you receive a written summary: what we saw, what we propose and how confident we are. The decision stays yours."
       },
       {
-        "title": "Repeatable",
-        "desc": "What works becomes a process, an automation or software, documented and in your name, not tied to a person or a supplier."
+        "title": "Replicable",
+        "desc": "What works becomes a process, an automation or software. Documented and owned by you, not tied to a person or a supplier."
       }
     ],
-    "quote": "“Measure what is measurable, and make measurable what is not.”",
-    "quoteNote": "It is the sentence attributed to Galileo Galilei from which we take our name and our working rule: first we measure, then we promise.",
-    "ctaTitle": "Let's talk about your case",
-    "ctaText": "A 45-minute intro call, or a coffee at our office. We look at the problem together, and if we are not the right people we tell you.",
     "vatAndTaxCode": "VAT and tax code"
   },
   "Services": {
@@ -374,7 +319,7 @@
       {
         "title": "Custom management software",
         "items": [
-          "Systems that put your work in order",
+          "Systems built around your processes",
           "CRM, quotes, orders, warehouse, deliveries",
           "Web and mobile applications"
         ]
@@ -413,18 +358,9 @@
       },
       {
         "title": "Finance",
-        "items": [
-          "We look for grants and incentives that can cover part of the investment in software and AI",
-          "We tell you whether your project can qualify, before you start",
-          "Subsidised finance for business digitalisation"
-        ]
+        "items": ["We look for grants and incentives that can cover part of the investment in software and AI", "We tell you whether your project can qualify, before you start", "Subsidised finance for business digitalisation"]
       }
-    ],
-    "intro": "Custom software from €5,000 to €80,000, AI and automation from €3,000 to €40,000, an average project in 8-10 weeks. We start by studying your company, check grants before we begin, and the system stays yours.",
-    "book": "Book a call",
-    "more": "How it works and what it costs",
-    "ctaTitle": "Not sure where to start?",
-    "ctaText": "In 45 minutes we look at how you work today and tell you where it makes sense to begin, or whether it makes sense at all."
+    ]
   },
   "Service": {
     "services": "Services",
@@ -432,7 +368,7 @@
     "offer": "OFFER",
     "googleAdsLink": "Our integration with Google Ads",
     "ctaTitle": "You have a goal, but don't know yet which lever you need?",
-    "ctaText": "We get into the problem before proposing a tool: we look at it together and choose the right lever.",
+    "ctaText": "We get into the problem before proposing a solution. We look at it together and choose the right lever.",
     "contactUs": "Contact us",
     "marketing": {
       "name": "Marketing",
@@ -468,11 +404,11 @@
     "intelligenza-artificiale": {
       "name": "Artificial Intelligence",
       "tagline": "AI applied to the processes that matter.",
-      "description": "We find where time, information or value is being lost and build automations that work for you, without starting from the tool.",
+      "description": "We find where time, information or value is being lost and build automations that work for you. Without starting from the tool.",
       "features": [
         {
           "title": "Process mapping",
-          "desc": "We start from what already exists and look for bottlenecks before building anything."
+          "desc": "We start from what already exists and look for bottlenecks before building any solution."
         },
         {
           "title": "Operational automations",
@@ -492,14 +428,14 @@
         },
         {
           "title": "Prototype before launch",
-          "desc": "Every project starts from a controlled prototype, and we measure before we expand."
+          "desc": "Every solution starts from a controlled prototype. We measure before we scale."
         }
       ]
     },
     "sviluppo-software": {
       "name": "Software Development",
       "tagline": "Custom tools that stay yours.",
-      "description": "Management systems, portals and integrations that put the steps in order and prepare the work for you. Modular development, role-based permissions and progressive release.",
+      "description": "Management systems, portals and integrations built around your real processes. Modular development, role-based permissions and progressive release.",
       "features": [
         {
           "title": "Operational dashboards",
@@ -515,11 +451,11 @@
         },
         {
           "title": "Role-based permissions",
-          "desc": "Every user sees only what they need, for security and for clarity at work."
+          "desc": "Every user sees only what they need. Security and operational clarity."
         },
         {
           "title": "Progressive release",
-          "desc": "Priority features first, then expansion, without changing everything in one day."
+          "desc": "Priority features first, then expansion. No big bang."
         },
         {
           "title": "Code ownership",
@@ -562,7 +498,7 @@
     ]
   },
   "CaseStudies": {
-    "heroTitle": "<muted>Case studies</muted><br></br>software in daily use",
+    "heroTitle": "<muted>Behind the scenes</muted><br></br>our case studies",
     "danInkLine": "Lead generation for the No. 1 tattoo franchise in Italy <flag></flag>",
     "italy": "Italy",
     "onlySolutionsLine": "€687,000.00 in 45 days<br></br>a Google Ads and Meta Ads ecosystem",
@@ -640,7 +576,7 @@
   },
   "CaseTourOperator": {
     "intro": "We have developed projects for partners with different needs, across different industries and continents.",
-    "below": "<highlight>Below</highlight> you can see how a custom management system brings efficiency and real time savings, area by area. Some of these features are already running at our clients.",
+    "below": "<highlight>Below</highlight> you can see how a custom management system brings efficiency and real time savings, area by area. Some of these solutions are already running at our partners.",
     "title": "A tour operator's whole day<br></br>in a single app",
     "app": {
       "title": "The five areas of the app",
@@ -668,7 +604,7 @@
           "screen": "resources",
           "tag": "Resources",
           "title": "Guide and driver assignments",
-          "desc": "Assignments by date and product, with separate views for vehicle needs, eligibility and chosen contacts, instead of scattered notes."
+          "desc": "Assignments by date and product, with separate views for vehicle needs, eligibility and chosen contacts. No more scattered notes."
         },
         {
           "screen": "messages",
@@ -678,7 +614,7 @@
         }
       ]
     },
-    "digitalise": "Digitalise your business<br></br>and recover part of the investment",
+    "digitalise": "Digitalise your business.<br></br>Recover part of the investment.",
     "taxCredits": "Custom software and automations, with support to access tax credits.",
     "recoverCta": "Find out how much you can recover",
     "results": {
@@ -920,7 +856,7 @@
     },
     "workIsSeen": {
       "title": "Here your work is seen",
-      "text": "Every result is measured and credited to whoever produced it. Whoever moves the numbers wins: your decisions, your merit."
+      "text": "Every result is measured and credited to whoever produced it. Whoever moves the numbers wins. Your decisions, your merit."
     },
     "growth": {
       "title": "Growth and autonomy",
@@ -936,27 +872,26 @@
     "showPage": "Discover how we work at Studio Galilei"
   },
   "Contact": {
-    "title": "Book a call or write to us",
-    "intro": "A coffee at our office in Treviso or a video call: we look at your case together, and if we are not the right people we tell you.",
+    "title": "Coffee or video call?",
+    "intro": "We are here to listen. A coffee or a call to compare notes is always a pleasure!",
     "chooseChannel": "Choose how you'd like to reach us",
     "phone": "Phone",
     "orWriteHere": "or write to us here",
-    "vatAndTaxCode": "VAT and tax code",
-    "book": "Book a 45-minute call"
+    "vatAndTaxCode": "VAT and tax code"
   },
   "Privacy": {
     "hero": {
       "kicker": "Notice",
       "title": "Privacy Policy.",
-      "meta": "Last updated 25 June 2026, version 1.0",
+      "meta": "Last updated 25 June 2026 · Version 1.0",
       "intro": "This notice describes how the independent professionals operating under the «Studio Galilei» brand collect, use, store and protect personal data, including the data we access through Google APIs when we manage our partners' advertising accounts.",
-      "footer": "Privacy Policy, v1.0, studiogalilei.com"
+      "footer": "Privacy Policy · v1.0 · studiogalilei.com"
     },
     "sections": {
       "titolari": "Data controllers",
       "dati": "Data processed",
       "finalita": "Purposes and legal bases",
-      "uso-limitato": "Google API, Limited Use",
+      "uso-limitato": "Google API · Limited Use",
       "conservazione": "Methods and retention",
       "destinatari": "Recipients",
       "extra-ue": "Transfers outside the EU",
@@ -1044,18 +979,18 @@
     "tabDashboard": "Dashboard",
     "tabPlanning": "Planning",
     "tabMessages": "Messages",
-    "caption1": "<b>Today's departures</b>: drivers, vehicles and capacity at a glance",
-    "caption2": "<b>Operations status</b>: messages, lists and booking sync",
-    "caption3": "<b>Monthly planning</b>: each city in its own workspace",
-    "caption4": "<b>WhatsApp + backup SMS</b>: no customer left uninformed",
+    "caption1": "<b>Today's departures</b> · drivers, vehicles and capacity at a glance",
+    "caption2": "<b>Operations status</b> · messages, lists and booking sync",
+    "caption3": "<b>Monthly planning</b> · each city in its own workspace",
+    "caption4": "<b>WhatsApp + backup SMS</b> · no customer left uninformed",
     "toast0Title": "New booking synced",
-    "toast0Text": "FareHarbor, 2 guests, 9:30 AM",
+    "toast0Text": "FareHarbor · 2 guests · 9:30 AM",
     "toast1Title": "Driver confirmed",
-    "toast1Text": "Morgan, Dallas morning tour",
+    "toast1Text": "Morgan · Dallas morning tour",
     "toast2Title": "Reminders delivered",
-    "toast2Text": "WhatsApp, 18 of 18 customers",
+    "toast2Text": "WhatsApp · 18 of 18 customers",
     "toast3Title": "Passenger list sent",
-    "toast3Text": "PDF v3, secure 24h link",
+    "toast3Text": "PDF v3 · secure 24h link",
     "painTitle1": "Bookings and capacity",
     "painTitle2": "Passenger lists",
     "painTitle3": "Drivers, guides and vehicles",
@@ -1112,7 +1047,7 @@
     "statoDeiReportPerDataEProdotto": "Report status by date and product: sent, scheduled, failed, stopped and resumed. Generated PDFs open or are shared through short, secure links.",
     "risorse": "Resources",
     "assegnazioniDiGuideEAutisti": "Guide and driver assignments",
-    "assegnazioniPerDataEProdottoCon": "Assignments by date and product, with separate views for vehicle needs, eligibility and chosen contacts, instead of scattered notes.",
+    "assegnazioniPerDataEProdottoCon": "Assignments by date and product, with separate views for vehicle needs, eligibility and chosen contacts. No more scattered notes.",
     "whatsappSmsDiRiservaEAvvisi": "WhatsApp, fallback SMS and manual alerts",
     "comunicazioneAiClientiPerDataDi": "Customer communication by service date: sent, failed, fallback and pending. Admins can send manual SMS alerts when an urgent update is needed.",
     "perOsservareUnaGiornataServiva": "To get a view of the day, the team had to open bookings, chats and spreadsheets, one by one.",
@@ -1140,10 +1075,10 @@
     "cosaECambiatoInPratica": "What changed, in practice",
     "dueProgettiUnMetodo": "Two projects, one method",
     "dueTourOperatorDueMercatiLa": "Two tour operators, two markets, the same foundation",
-    "texasDispatchAutisti": "Texas, driver dispatch",
-    "italiaDashboardOperativa": "Italy, operations dashboard",
+    "texasDispatchAutisti": "Texas · driver dispatch",
+    "italiaDashboardOperativa": "Italy · operations dashboard",
     "softwareSuMisuraPerTourOperator": "Custom software for tour operators",
-    "prenotazioniPartenzeAutistiGuide": "Bookings, departures, drivers, guides, passenger lists and customer messages. A private system that puts the day in order and connects to your booking platform.",
+    "prenotazioniPartenzeAutistiGuide": "Bookings, departures, drivers, guides, passenger lists and customer messages. A private system built around the workflows you already run, connected to your booking platform.",
     "scriviciSuWhatsapp": "Message us on WhatsApp",
     "scriviciUnaEmail": "Send us an email",
     "primaConversazioneSenzaImpegno": "First conversation, no strings attached: we look at how you work today.",
@@ -1166,10 +1101,10 @@
     "suWhatsappESmsCheDipendonoDaChi": "on WhatsApp and SMS that depend on someone remembering.",
     "cheNessunoVedeFincheNonDiventano": "nobody sees until they become a problem.",
     "alloraQuestaPaginaEPerTe": "Then this page is for you.",
-    "sonoEsattamenteIPuntiCheAbbiamo": "These are exactly the points we've solved: send them to us as they are.",
+    "sonoEsattamenteIPuntiCheAbbiamo": "These are exactly the points we've solved. Send them to us as they are.",
     "invialiSuWhatsapp": "Send on WhatsApp",
     "vuoiLaStessaVisibilitaSullaTua": "Want the same visibility over your day?",
-    "raccontaciComeLavoriOggiTi": "Tell us how you work today, and we'll tell you honestly what can be systemised and what can't.",
+    "raccontaciComeLavoriOggiTi": "Tell us how you work today. We'll tell you honestly what can be systemised and what can't.",
     "attivoPer": "Live at",
     "dashboardOperativa": "Operations dashboard",
     "statoDiPrenotazioniListeE": "Status of bookings, lists and messages, urgent alerts and recent activity.",
@@ -1195,8 +1130,8 @@
     "comeGestisciOggiPrenotazioni": "How you handle bookings, passenger lists, guides, drivers and customer messages today.",
     "troviamoIPuntiCritici": "We find the weak spots",
     "iPassaggiManualiCheCreanoPiu": "The manual steps that create the most operational risk or waste the most time.",
-    "costruiamoIlPrimoModulo": "We build the system, in stages",
-    "ilPrimoSistemaUtileAttornoAi": "The first useful system, starting from the steps that repeat every day.",
+    "costruiamoIlPrimoModulo": "We build the first module",
+    "ilPrimoSistemaUtileAttornoAi": "The first useful system, built around the workflows you already run every day.",
     "aggiungiamoSoloCioCheServe": "We add only what's needed",
     "automazioniEReportSoloDoveFanno": "Automation and reports only where they save real time or prevent real mistakes.",
     "comePartiamo": "How we start",
@@ -1207,11 +1142,11 @@
     "eUnSoftwareProntoOCostruitoSu": "Is it off-the-shelf or custom-built?",
     "suMisuraSuUnaBaseGiaCollaudataIn": "Custom, on a foundation already proven at two tour operators. You don't adapt to the software: we adapt the modules to your products, vehicles and channels.",
     "autistiEGuidePossonoUsarloDal": "Can drivers and guides use it on their phone?",
-    "siNelCasoFundallasGliAutisti": "Yes, at FunDallas drivers see assigned tours, passengers and PDFs, and confirm the assignment from their phone.",
+    "siNelCasoFundallasGliAutisti": "Yes. At FunDallas, drivers see assigned tours, passengers and PDFs, and confirm the assignment from their phone.",
     "quantoCosta": "How much does it cost?",
-    "dipendeDaiModuliCheServono": "It depends on how many people use it and what it has to do. After the first conversation and the study of how you work you get a written quote with the stages, before any commitment.",
+    "dipendeDaiModuliCheServono": "It depends on the modules you actually need. After the first conversation and the mapping you get a written quote with modules and phases, before any commitment.",
     "lavorateAncheFuoriDallItalia": "Do you work outside Italy?",
-    "siLavoriamoInItaliaENegliStati": "Yes, we work in Italy and the United States, in Italian and English: FunDallas Tours operates between Dallas and San Antonio, Texas.",
+    "siLavoriamoInItaliaENegliStati": "Yes. We work in Italy and the United States, in Italian and English: FunDallas Tours operates between Dallas and San Antonio, Texas.",
     "domandeFrequenti": "FAQ",
     "primaDiScriverci": "Before you get in touch",
     "ilPassoSuccessivo": "Next step",
