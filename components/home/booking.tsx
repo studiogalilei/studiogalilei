@@ -1,3 +1,4 @@
+import Image from "next/image";
 import { useLocale, useTranslations } from "next-intl";
 import { Container } from "@/components/ui/container";
 import { SectionHeading } from "@/components/ui/section";
@@ -39,7 +40,18 @@ export function Booking() {
       className="bg-white pt-4 pb-20 md:pb-28"
     >
       <Container>
-        <SectionHeading kicker={t("kicker")} title={t("title")} intro={t("intro")} />
+        <div className="flex flex-col-reverse gap-8 lg:flex-row lg:items-center lg:gap-12">
+          <SectionHeading kicker={t("kicker")} title={t("title")} intro={t("intro")} />
+          {/* hand-drawn scene (Open Peeps, CC0): consultant and owner in front of the flow */}
+          <Image
+            src="/images/disegni/prima-ora.svg"
+            alt=""
+            width={1200}
+            height={700}
+            unoptimized
+            className="w-full max-w-[22rem] lg:max-w-[26rem] lg:flex-1"
+          />
+        </div>
         <div className="mt-10 max-w-[52rem]">
           <BookingPicker locale={locale} labels={labels} />
         </div>
