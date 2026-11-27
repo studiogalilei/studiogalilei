@@ -318,10 +318,11 @@
   }
 }
 
-/* Navy veil over the Venice night photo, used by heroes and dark bands. */
+/* Navy veil over the Venice night photo, used by heroes and dark bands. 27/11/2026, Dre: «riadatta il blu
+   nel sito»: il velo prende il blu del logo Software & AI (#061773) con il suo riflesso chiaro in alto a destra. */
 @utility bg-field-navy {
   background-color: var(--color-sg-deep);
-  background-image: linear-gradient(#040f4daf, #040f4daf), url("/images/venezia-notte.jpg");
+  background-image: radial-gradient(ellipse at 70% 15%, #2f3e8b80, transparent 55%), linear-gradient(#061773e6, #061773e6), url("/images/venezia-notte.jpg");
   background-position: 50%;
   background-repeat: no-repeat;
   background-size: cover;

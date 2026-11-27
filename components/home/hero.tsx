@@ -21,7 +21,7 @@ export function Hero() {
       />
       <div
         aria-hidden="true"
-        className="absolute inset-0 -z-10 bg-gradient-to-b from-sg-deep/90 via-sg-deep/80 to-sg-deep/60"
+        className="absolute inset-0 -z-10 bg-[radial-gradient(ellipse_at_70%_15%,#2f3e8b80,transparent_55%),linear-gradient(to_bottom,#061773f2,#061773e6_55%,#061773d9)]"
       />
       <Container className="grid items-center gap-14 md:grid-cols-[minmax(0,1fr)_minmax(0,1fr)] md:gap-6">
         <div className="max-w-[36rem]">

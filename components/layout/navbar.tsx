@@ -19,7 +19,6 @@ import {
   X,
 } from "@/components/icons";
 import { LanguageSwitcher } from "@/components/layout/language-switcher";
-import { LogoTree, LogoWordmark } from "@/components/logo";
 import { Container } from "@/components/ui/container";
 import { Link, usePathname } from "@/i18n/navigation";
 import { company } from "@/lib/company";
@@ -166,8 +165,9 @@ export function Navbar() {
             sky ? "text-white/80 hover:text-white" : "text-ink/80 hover:text-sg",
           )}
         >
-          <LogoTree className="block h-10 w-auto md:h-11" />
-          <LogoWordmark className="hidden h-[15px] w-auto min-[340px]:block md:h-[17px] lg:hidden" />
+          {/* 27/11/2026, Dre: «per il logo metti questo sul sito». Il marchio Software & AI al posto di
+              albero e scritta separati. */}
+          <img src="/logo-software-ai.svg" alt="Studio Galilei Software & AI" width={48} height={46} className="block h-11 w-auto md:h-12" />
         </Link>
         <nav
           ref={nav}
