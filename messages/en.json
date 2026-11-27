@@ -101,7 +101,7 @@
       "title": "<partner>One partner.</partner><br></br>All you need<br></br>to grow",
       "intro": "We bring Marketing, AI and Software under one roof to cut lead times, simplify management and build systems that stay yours.",
       "download": "Download the presentation",
-      "bookCall": "Book an intro call",
+      "bookCall": "Book your first hour of analysis",
       "exploreServices": "Explore our services"
     },
     "clients": {
@@ -259,9 +259,9 @@
     "italy": "All of Italy"
   },
   "Booking": {
-    "kicker": "Intro call",
-    "title": "Book an intro call",
-    "intro": "Pick a day and time from our live availability. You'll get a confirmation with the video call link right away.",
+    "kicker": "Operational analysis",
+    "title": "The first hour is on Studio Galilei",
+    "intro": "We start from how you work today, your own day if you work alone, your departments if there are more of you. We look at where data gets copied by hand, where approvals stall and which steps depend on a single person. By the end of the hour you have a first idea of where it pays to act and where AI would save you the most time. If it is worth going deeper, we propose a full analysis with a dedicated quote.",
     "openCalendar": "Open the calendar in a new tab",
     "loading": "Loading available times",
     "error": "We can't load the available times right now.",
@@ -275,14 +275,14 @@
     "website": "Company website",
     "optional": "optional",
     "back": "Change time",
-    "confirm": "Book the call",
+    "confirm": "Book the first hour",
     "sending": "Booking",
     "taken": "That time was just taken: please pick another one.",
     "failed": "The booking didn't go through. Try again shortly or write to us.",
-    "doneTitle": "Call booked",
+    "doneTitle": "First hour booked",
     "doneText": "We've sent you an email with the invite and the Google Meet link. Talk soon.",
     "another": "Write to us",
-    "chosen": "Your call"
+    "chosen": "Your first hour of analysis"
   },
   "About": {
     "quote": "“Measure what is measurable, and make measurable what is not.”",

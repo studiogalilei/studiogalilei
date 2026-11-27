@@ -101,7 +101,7 @@
       "title": "<partner>Un partner.</partner><br></br>Tutto il necessario<br></br>per crescere",
       "intro": "Integriamo Marketing, AI e Software sotto lo stesso tetto per ridurre tempi, semplificare la gestione e costruire sistemi che restano tuoi.",
       "download": "Scarica la presentazione",
-      "bookCall": "Prenota una chiamata conoscitiva",
+      "bookCall": "Prenota la prima ora di analisi",
       "exploreServices": "Scopri i servizi"
     },
     "clients": {
@@ -259,9 +259,9 @@
     "italy": "Tutta Italia"
   },
   "Booking": {
-    "kicker": "Chiamata conoscitiva",
-    "title": "Prenota una chiamata conoscitiva",
-    "intro": "Scegli giorno e orario tra le disponibilità aggiornate in tempo reale. Ricevi subito la conferma con il link per la videochiamata.",
+    "kicker": "Analisi operativa",
+    "title": "La prima ora la offre Studio Galilei",
+    "intro": "Partiamo da come lavorate oggi, la tua giornata se lavori da solo, i reparti se siete in più. Vediamo dove si ricopiano i dati, dove si fermano le approvazioni e quali passaggi dipendono da una persona sola. Alla fine dell'ora hai una prima indicazione su dove conviene intervenire e dove l'AI vi farebbe risparmiare più tempo. Se serve approfondire, ti proponiamo l'analisi completa con un preventivo dedicato.",
     "openCalendar": "Apri il calendario in una nuova scheda",
     "loading": "Carico gli orari liberi",
     "error": "Non riesco a caricare gli orari in questo momento.",
@@ -275,14 +275,14 @@
     "website": "Sito dell'azienda",
     "optional": "facoltativo",
     "back": "Cambia orario",
-    "confirm": "Prenota la chiamata",
+    "confirm": "Prenota la prima ora",
     "sending": "Prenoto",
     "taken": "Quell'orario è appena stato preso: scegline un altro.",
     "failed": "La prenotazione non è andata a buon fine. Riprova tra poco o scrivici.",
-    "doneTitle": "Chiamata prenotata",
+    "doneTitle": "Prima ora prenotata",
     "doneText": "Ti abbiamo mandato una mail con l'invito e il link di Google Meet. A presto.",
     "another": "Scrivici",
-    "chosen": "La tua chiamata"
+    "chosen": "La tua prima ora di analisi"
   },
   "About": {
     "quote": "«Misura ciò che è misurabile, e rendi misurabile ciò che non lo è.»",
