@@ -167,7 +167,7 @@ export function Navbar() {
         >
           {/* 27/11/2026, Dre: «per il logo metti questo sul sito». Il marchio Software & AI al posto di
               albero e scritta separati. */}
-          <img src="/logo-software-ai.svg" alt="Studio Galilei Software & AI" width={48} height={46} className="block h-11 w-auto md:h-12" />
+          <img src="/logo-software-ai.svg" alt="Studio Galilei Software & AI" width={48} height={46} className="block h-12 w-auto md:h-16" />
         </Link>
         <nav
           ref={nav}
