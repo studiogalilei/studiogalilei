@@ -43,9 +43,7 @@ export function SectionHeading({
   return (
     <div className={cn("max-w-[44rem]", className)}>
       {kicker && (
-        <p className={cn("mb-4 text-14 font-medium", light ? "text-cream" : "text-sand-ink")}>
-          {kicker}
-        </p>
+        <p className={cn("mb-4 text-14 font-medium", light ? "text-cream" : "text-ai")}>{kicker}</p>
       )}
       <Heading
         className={cn(

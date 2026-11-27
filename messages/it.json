@@ -8,8 +8,8 @@
   },
   "Metadata": {
     "home": {
-      "title": "Software su misura e agenti AI per le aziende",
-      "description": "Tutta la tua azienda in un posto solo: gestionali, automazioni e agenti AI su misura che tolgono il lavoro ripetitivo. Software house di Treviso, e il codice resta tuo."
+      "title": "Marketing, AI e software",
+      "description": "Integriamo Marketing, AI e Software sotto lo stesso tetto per ridurre tempi, semplificare la gestione e costruire sistemi che restano tuoi."
     },
     "about": {
       "title": "Chi siamo",
@@ -17,18 +17,18 @@
     },
     "services": {
       "title": "Servizi",
-      "description": "Gestionali su misura, workspace e portali, automazioni, agenti AI e integrazioni: cosa costruisce Studio Galilei, più la finanza agevolata."
+      "description": "Advertising digitale, social media, produzione contenuti, web, software e automazioni, sicurezza e finanza agevolata: i servizi di Studio Galilei."
     },
     "marketing": {
       "title": "Marketing",
       "description": "Costruiamo e gestiamo campagne Google e Meta calibrate sui tuoi obiettivi. Struttura, tracciamento e ottimizzazione continua — dal primo giorno."
     },
     "intelligenza-artificiale": {
-      "title": "Intelligenza artificiale per le aziende",
+      "title": "Intelligenza artificiale",
       "description": "Identifichiamo dove si perde tempo, informazione o valore e costruiamo automazioni che lavorano per te. Senza partire dallo strumento."
     },
     "sviluppo-software": {
-      "title": "Sviluppo software su misura",
+      "title": "Sviluppo software",
       "description": "Gestionali, portali e integrazioni costruiti sui tuoi processi reali. Sviluppo modulare, permessi per ruolo e rilascio progressivo."
     },
     "googleAds": {
@@ -81,9 +81,6 @@
     "services": "Servizi",
     "caseStudies": "Casi studio",
     "tourOperator": "Tour operator",
-    "sectors": "Settori",
-    "method": "Metodo",
-    "agencies": "Partner",
     "careers": "Lavora con noi",
     "privateArea": "Area Privata",
     "contactUs": "Contattaci",
@@ -101,8 +98,8 @@
   },
   "Home": {
     "hero": {
-      "title": "<partner>Tutta la tua azienda,</partner><br></br>in un posto solo",
-      "intro": "Costruiamo gestionali, automazioni e agenti AI su misura, che tolgono il lavoro ripetitivo e ti lasciano più tempo per i tuoi clienti.",
+      "title": "<partner>Un partner.</partner><br></br>Tutto il necessario<br></br>per crescere",
+      "intro": "Integriamo Marketing, AI e Software sotto lo stesso tetto per ridurre tempi, semplificare la gestione e costruire sistemi che restano tuoi.",
       "download": "Scarica la presentazione",
       "bookCall": "Prenota una chiamata conoscitiva",
       "exploreServices": "Scopri i servizi"
@@ -113,10 +110,7 @@
     },
     "services": {
       "kicker": "Cosa facciamo",
-      "title": "Cosa costruiamo",
-      "software": {"name": "Gestionali e software su misura", "short": "Gestionali, workspace e portali costruiti sui tuoi processi: tutto in un posto solo, e resta tuo."},
-      "automation": {"name": "Automazioni", "short": "Il lavoro ripetitivo lo fa il sistema: dati, solleciti, report e passaggi tra programmi."},
-      "agents": {"name": "Agenti AI", "short": "Leggono richieste e documenti, preparano risposte e azioni. Una persona resta al controllo."},
+      "title": "Tre competenze, un solo partner",
       "marketing": {
         "name": "Marketing",
         "short": "Campagne Google e Meta che portano clienti, non click. Misurabili dal primo giorno."
@@ -132,7 +126,7 @@
     },
     "partners": {
       "title": "Cosa ricevi quando lavori con noi",
-      "text": "Ogni cliente ha un portale riservato, un team raggiungibile e un piano condiviso.",
+      "text": "Ogni partner ha un portale riservato, un team raggiungibile e un piano condiviso.",
       "groups": [
         {
           "kicker": "Nel portale",
@@ -173,11 +167,11 @@
           "items": [
             {
               "title": "Titolarità di dati e strumenti",
-              "desc": "Dati, codice, account e automazioni sono intestati alla tua azienda."
+              "desc": "Account pubblicitari, dati, codice e automazioni sono intestati alla tua azienda."
             },
             {
               "title": "Finanza agevolata",
-              "desc": "Un investimento in software pesa meno se una parte la copre un bando. Cerchiamo noi i contributi e le agevolazioni adatti al tuo progetto e ti diciamo se puoi rientrarci."
+              "desc": "Verifichiamo se bandi e contributi possono coprire parte degli investimenti con Studio Galilei."
             }
           ]
         }
@@ -191,7 +185,7 @@
     },
     "cases": {
       "kicker": "Casi studio",
-      "title": "Un software nostro, in uso ogni giorno",
+      "title": "Dietro le quinte dei nostri risultati",
       "danInk": "Lead Generation per il Franchising di Tatuaggi N1 in Italia <flag></flag>",
       "flag": "Italia",
       "onlySolutions": "687.000,00 € in 45 giorni<br></br>ecosistema di Google Ads e Meta Ads",
@@ -317,48 +311,56 @@
     "globeLabel": "Mappamondo con i luoghi in cui lavora Studio Galilei",
     "catalog": [
       {
-        "title": "Gestionali e software su misura",
+        "title": "Advertising digitale e media",
         "items": [
-          "Gestionali costruiti sui tuoi processi",
-          "CRM, preventivi, ordini, magazzino, consegne",
-          "Applicazioni web e per il telefono"
+          "Google Ads",
+          "Meta Ads",
+          "LinkedIn Ads",
+          "TikTok Ads",
+          "Gestione pubblicitaria televisiva",
+          "Sistemi di email marketing e outbound"
         ]
       },
       {
-        "title": "Workspace e portali",
+        "title": "Social media",
         "items": [
-          "Uno spazio unico per il team",
-          "Aree riservate per clienti e fornitori",
-          "Documenti, attività e permessi per ruolo"
+          "Gestione social: Meta (Facebook e Instagram), LinkedIn, TikTok, YouTube",
+          "Gestione community"
         ]
       },
       {
-        "title": "Automazioni",
+        "title": "Produzione contenuti",
         "items": [
-          "Dati da email e documenti",
-          "Solleciti, promemoria e report",
-          "Passaggi tra programmi"
+          "Shooting fotografico",
+          "Foto e video AI, motion graphics",
+          "Video corporate / cinema d’azienda",
+          "Spot pubblicitari",
+          "Spot televisivi",
+          "Editing video",
+          "Post produzione foto e video",
+          "Grafiche per social, web e stampa"
         ]
       },
       {
-        "title": "Agenti AI",
+        "title": "Web",
+        "items": ["Siti web", "E-commerce", "Landing page"]
+      },
+      {
+        "title": "Software e automazioni",
         "items": [
-          "Risposte a clienti e richieste interne",
-          "Lettura di documenti",
-          "Bozze di preventivi e riepiloghi"
+          "Automazioni di processo",
+          "Software su misura",
+          "CRM e gestionali",
+          "Applicazioni"
         ]
       },
       {
-        "title": "Integrazioni",
-        "items": [
-          "Contabilità e fatturazione elettronica",
-          "E-commerce e marketplace",
-          "Macchine e sensori"
-        ]
+        "title": "Sicurezza",
+        "items": ["Cybersecurity"]
       },
       {
         "title": "Finanza",
-        "items": ["Cerchiamo bandi e contributi che possono coprire parte dell'investimento in software e AI", "Ti diciamo se il tuo progetto può rientrarci, prima di partire", "Finanza agevolata per la digitalizzazione delle imprese"]
+        "items": ["Finanza agevolata"]
       }
     ]
   },
@@ -848,7 +850,7 @@
     "title": "Lavorare in Studio Galilei",
     "mission": {
       "title": "La nostra missione",
-      "text": "Rendere visibile e governabile ciò che muove la crescita delle imprese, costruendo il team più talentuoso d'Italia nel software e nell'AI."
+      "text": "Rendere visibile e governabile ciò che muove la crescita delle imprese, costruendo il team più talentuoso d'Italia nel marketing, nel software e nell'AI."
     },
     "startingPoint": {
       "title": "Il punto di partenza",

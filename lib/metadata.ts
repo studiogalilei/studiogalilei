@@ -1,6 +1,5 @@
 import type { Metadata } from "next";
 import { getLocale, getTranslations } from "next-intl/server";
-import { localized } from "./site";
 
 /*
  * Page titles, the same everywhere: "<page name> | Studio Galilei". The name comes from the
@@ -12,49 +11,19 @@ export const SITE_NAME = "Studio Galilei";
 export const TITLE_TEMPLATE = `%s | ${SITE_NAME}`;
 export const fullTitle = (name: string) => TITLE_TEMPLATE.replace("%s", name);
 
-/** Where each "Metadata" key lives: gives every page its canonical address and its twin in the other language. */
-const PATHS: Record<string, string> = {
-  home: "/",
-  about: "/chi-siamo",
-  services: "/servizi",
-  marketing: "/servizi/marketing",
-  "intelligenza-artificiale": "/servizi/intelligenza-artificiale",
-  "sviluppo-software": "/servizi/sviluppo-software",
-  googleAds: "/servizi/google-ads",
-  caseStudies: "/casi-studio",
-  caseTourOperator: "/casi-studio/tour-operator",
-  caseDanInk: "/casi-studio/dan-ink",
-  caseOnlySolutions: "/casi-studio/onlysolutions",
-  careers: "/lavora-con-noi",
-  contact: "/contatti",
-  privacy: "/privacy",
-  tourOperator: "/tour-operator",
-};
-
-/** Canonical address plus the Italian/English pair, for a page that exists in both languages. */
-export function alternates(path: string, locale: string): Metadata["alternates"] {
-  return {
-    canonical: localized(path, locale),
-    languages: { it: path, en: localized(path, "en"), "x-default": path },
-  };
-}
-
 /** Per-page title and description from the "Metadata" messages, as `<key>.title` / `<key>.description`. */
 export async function pageMetadata(key: string): Promise<Metadata> {
   const t = await getTranslations("Metadata");
   const locale = await getLocale();
   const name = t(`${key}.title`);
   const description = t(`${key}.description`);
-  const path = PATHS[key];
   return {
     title: name,
     description,
-    ...(path ? { alternates: alternates(path, locale) } : {}),
     // the shared preview (link cards) carries the page's own title, not the home page's
     openGraph: {
       type: "website",
       siteName: SITE_NAME,
-      ...(path ? { url: localized(path, locale) } : {}),
       title: fullTitle(name),
       description,
       locale: locale === "en" ? "en_US" : "it_IT",

@@ -8,8 +8,8 @@
   },
   "Metadata": {
     "home": {
-      "title": "Custom software and AI agents for businesses",
-      "description": "Your whole company in one place: custom management software, automation and AI agents that take away the repetitive work. Software house in Treviso, Italy, and the code stays yours."
+      "title": "Marketing, AI and software",
+      "description": "We bring Marketing, AI and Software under one roof to cut lead times, simplify management and build systems that stay yours."
     },
     "about": {
       "title": "About us",
@@ -17,18 +17,18 @@
     },
     "services": {
       "title": "Services",
-      "description": "Custom management software, workspaces and portals, automation, AI agents and integrations: what Studio Galilei builds, plus subsidised finance."
+      "description": "Digital advertising, social media, content production, web, software and automation, security and subsidised finance: the services of Studio Galilei."
     },
     "marketing": {
       "title": "Marketing",
       "description": "We build and manage Google and Meta campaigns tailored to your goals. Structure, tracking and continuous optimisation, from day one."
     },
     "intelligenza-artificiale": {
-      "title": "Artificial intelligence for businesses",
+      "title": "Artificial intelligence",
       "description": "We find where time, information or value is being lost and build automations that work for you. Without starting from the tool."
     },
     "sviluppo-software": {
-      "title": "Custom software development",
+      "title": "Software development",
       "description": "Management systems, portals and integrations built around your real processes. Modular development, role-based permissions and progressive release."
     },
     "googleAds": {
@@ -81,9 +81,6 @@
     "services": "Services",
     "caseStudies": "Case studies",
     "tourOperator": "Tour operator",
-    "sectors": "Industries",
-    "method": "Method",
-    "agencies": "Partners",
     "careers": "Work with us",
     "privateArea": "Private Area",
     "contactUs": "Contact us",
@@ -101,8 +98,8 @@
   },
   "Home": {
     "hero": {
-      "title": "<partner>Your whole company,</partner><br></br>in one place",
-      "intro": "We build custom management software, automation and AI agents that take away the repetitive work and leave you more time for your customers.",
+      "title": "<partner>One partner.</partner><br></br>All you need<br></br>to grow",
+      "intro": "We bring Marketing, AI and Software under one roof to cut lead times, simplify management and build systems that stay yours.",
       "download": "Download the presentation",
       "bookCall": "Book an intro call",
       "exploreServices": "Explore our services"
@@ -113,10 +110,7 @@
     },
     "services": {
       "kicker": "What we do",
-      "title": "What we build",
-      "software": {"name": "Custom management software", "short": "Management systems, workspaces and portals built around your processes: everything in one place, and yours to keep."},
-      "automation": {"name": "Automation", "short": "The system does the repetitive work: data, reminders, reports and hand-offs between tools."},
-      "agents": {"name": "AI agents", "short": "They read requests and documents and prepare replies and actions. A person stays in control."},
+      "title": "Three skills, one partner",
       "marketing": {
         "name": "Marketing",
         "short": "Google and Meta campaigns that bring customers, not clicks. Measurable from day one."
@@ -132,7 +126,7 @@
     },
     "partners": {
       "title": "What you get when you work with us",
-      "text": "Every client has a private portal, a team within reach and a shared plan.",
+      "text": "Every partner has a private portal, a reachable team and a shared plan.",
       "groups": [
         {
           "kicker": "In the portal",
@@ -173,11 +167,11 @@
           "items": [
             {
               "title": "Ownership of data and tools",
-              "desc": "Data, code, accounts and automations are in your company's name."
+              "desc": "Ad accounts, data, code and automations are registered to your company."
             },
             {
               "title": "Subsidised finance",
-              "desc": "An investment in software weighs less when a grant covers part of it. We look for the incentives that fit your project and tell you whether you can qualify."
+              "desc": "We check whether grants and incentives can cover part of your investment with Studio Galilei."
             }
           ]
         }
@@ -191,7 +185,7 @@
     },
     "cases": {
       "kicker": "Case studies",
-      "title": "Software of ours, in use every day",
+      "title": "Behind the scenes of our results",
       "danInk": "Lead generation for the No. 1 tattoo franchise in Italy <flag></flag>",
       "flag": "Italy",
       "onlySolutions": "€687,000.00 in 45 days<br></br>a Google Ads and Meta Ads ecosystem",
@@ -317,48 +311,56 @@
     "globeLabel": "Globe showing where Studio Galilei works",
     "catalog": [
       {
-        "title": "Custom management software",
+        "title": "Digital advertising and media",
         "items": [
-          "Systems built around your processes",
-          "CRM, quotes, orders, warehouse, deliveries",
-          "Web and mobile applications"
+          "Google Ads",
+          "Meta Ads",
+          "LinkedIn Ads",
+          "TikTok Ads",
+          "TV advertising management",
+          "Email marketing and outbound systems"
         ]
       },
       {
-        "title": "Workspaces and portals",
+        "title": "Social media",
         "items": [
-          "One space for the whole team",
-          "Private areas for customers and suppliers",
-          "Documents, tasks and role-based permissions"
+          "Social media management: Meta (Facebook and Instagram), LinkedIn, TikTok, YouTube",
+          "Community management"
         ]
       },
       {
-        "title": "Automation",
+        "title": "Content production",
         "items": [
-          "Data from emails and documents",
-          "Reminders, follow-ups and reports",
-          "Hand-offs between tools"
+          "Photo shoots",
+          "AI photo and video, motion graphics",
+          "Corporate video / brand films",
+          "Commercials",
+          "TV commercials",
+          "Video editing",
+          "Photo and video post-production",
+          "Graphics for social, web and print"
         ]
       },
       {
-        "title": "AI agents",
+        "title": "Web",
+        "items": ["Websites", "E-commerce", "Landing pages"]
+      },
+      {
+        "title": "Software and automation",
         "items": [
-          "Replies to customers and internal requests",
-          "Document reading",
-          "Draft quotes and summaries"
+          "Process automation",
+          "Custom software",
+          "CRM and management systems",
+          "Applications"
         ]
       },
       {
-        "title": "Integrations",
-        "items": [
-          "Accounting and e-invoicing",
-          "E-commerce and marketplaces",
-          "Machines and sensors"
-        ]
+        "title": "Security",
+        "items": ["Cybersecurity"]
       },
       {
         "title": "Finance",
-        "items": ["We look for grants and incentives that can cover part of the investment in software and AI", "We tell you whether your project can qualify, before you start", "Subsidised finance for business digitalisation"]
+        "items": ["Subsidised finance"]
       }
     ]
   },

@@ -12,10 +12,8 @@ import {
   Mail,
   Menu,
   MessageSquare,
-  Network,
   Phone,
-  Target,
-  Telescope,
+  Plane,
   UserPlus,
   Users,
   X,
@@ -28,21 +26,18 @@ import { company } from "@/lib/company";
 import { cn } from "@/lib/cn";
 
 const desktopNav = [
+  { key: "about", href: "/chi-siamo" },
   { key: "services", href: "/servizi" },
-  { key: "sectors", href: "/settori" },
-  { key: "method", href: "/metodo" },
   { key: "caseStudies", href: "/casi-studio" },
-  { key: "agencies", href: "/agenzie-partner" },
+  { key: "tourOperator", href: "/tour-operator" },
 ] as const;
 
 const mobileNav = [
   { key: "home", href: "/", icon: House },
-  { key: "services", href: "/servizi", icon: LayoutGrid },
-  { key: "sectors", href: "/settori", icon: Network },
-  { key: "method", href: "/metodo", icon: Telescope },
-  { key: "caseStudies", href: "/casi-studio", icon: Briefcase },
-  { key: "agencies", href: "/agenzie-partner", icon: Target },
   { key: "about", href: "/chi-siamo", icon: Users },
+  { key: "services", href: "/servizi", icon: LayoutGrid },
+  { key: "caseStudies", href: "/casi-studio", icon: Briefcase },
+  { key: "tourOperator", href: "/tour-operator", icon: Plane },
   { key: "careers", href: "/lavora-con-noi", icon: UserPlus },
   { key: "privateArea", href: "/area-partner", icon: Lock },
 ] as const;
@@ -288,7 +283,9 @@ export function Navbar() {
               <ul className="m-0 grid list-none gap-0.5 p-0">
                 {mobileNav.map(({ key, href, icon: Icon }) => {
                   const active =
-                    href !== "/area-partner" && (href === "/" ? pathname === "/" : isActive(href));
+                    href !== "/area-partner" &&
+                    href !== "/tour-operator" &&
+                    (href === "/" ? pathname === "/" : isActive(href));
                   return (
                     <li key={key}>
                       <Link

@@ -1,5 +1,10 @@
 import { useTranslations } from "next-intl";
-import { CompassBackdrop } from "@/components/case-studies/backdrops";
+import {
+  AdsBackdrop,
+  CompassBackdrop,
+  ItalianFlag,
+  ItalyBackdrop,
+} from "@/components/case-studies/backdrops";
 import { CaseScreen } from "@/components/case-studies/case-screen";
 import { CoffeeCta } from "@/components/sections/cta-band";
 import { ButtonLink } from "@/components/ui/button";
@@ -33,6 +38,18 @@ function CaseVisual({
     >
       {children}
     </Link>
+  );
+}
+
+function CaseImage({ src }: { src: string }) {
+  return (
+    // eslint-disable-next-line @next/next/no-img-element -- same markup as the legacy site
+    <img
+      src={src}
+      alt=""
+      className="block h-auto w-full transition-transform duration-500 group-hover:scale-[1.015]"
+      loading="lazy"
+    />
   );
 }
 
@@ -138,6 +155,35 @@ export default function CaseStudiesPage() {
       </section>
       <section className="overflow-x-clip bg-white py-20 md:py-28">
         <Container className="space-y-16 md:space-y-24">
+          <CaseStudy
+            href="/casi-studio/dan-ink"
+            visual={
+              <CaseVisual href="/casi-studio/dan-ink">
+                <CaseImage src="/images/casi-studio/dan-ink.webp" />
+              </CaseVisual>
+            }
+            backdrop={<ItalyBackdrop />}
+            logos={[{ src: "/images/logos/dan-ink-esteso.webp", alt: "Dän Ink", height: 76 }]}
+            line={t.rich("danInkLine", { flag: () => <ItalianFlag label={t("italy")} /> })}
+          />
+          <CaseStudy
+            href="/casi-studio/onlysolutions"
+            wide
+            visual={
+              <CaseVisual href="/casi-studio/onlysolutions" center>
+                <CaseImage src="/images/casi-studio/onlysolutions.webp" />
+              </CaseVisual>
+            }
+            backdrop={<AdsBackdrop />}
+            logos={[
+              {
+                src: "/images/logos/only-solutions-esteso.webp",
+                alt: "Only Solutions",
+                height: 92,
+              },
+            ]}
+            line={t.rich("onlySolutionsLine", { br })}
+          />
           <CaseStudy
             href="/casi-studio/tour-operator"
             wide

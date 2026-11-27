@@ -44,7 +44,7 @@ scripts/                    visual regression tests
 
 ## Languages
 
-Italian lives at the plain address (`/servizi`), English under `/en` (`/en/servizi`): one address per language, so search engines index both (canonical and hreflang come from `lib/metadata.ts`, the sitemap from `app/sitemap.ts`). The proxy (`proxy.ts`, next-intl) sends a first visit to the language of the `sg-lang` cookie, otherwise of the browser's `Accept-Language`. `?lang=it|en` forces a language and remembers it. The EN/ITA switcher sets the cookie and moves to the page's twin. Texts live in `messages/it.json` and `messages/en.json`. The Member Club form, the Platform and the answer pages (`lib/landing/pages.ts`: services, guides, Treviso) are Italian only.
+The language is never in the URL. The proxy (`proxy.ts`, next-intl) picks it from the `sg-lang` cookie, otherwise from the browser's `Accept-Language`, falling back to Italian, and serves the matching prerendered page. `?lang=it|en` forces a language and remembers it. The EN/ITA switcher sets the cookie. Texts live in `messages/it.json` and `messages/en.json`. The Member Club form and the Platform are Italian only.
 
 ## Styling
 

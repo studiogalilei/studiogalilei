@@ -20,7 +20,7 @@ export function CtaBand({
   className?: string;
 }) {
   return (
-    <section className={cn("py-14 md:py-20", className)}>
+    <section className={cn("pt-4 pb-24 md:pb-32", className)}>
       <Container>
         <div className="relative isolate grid gap-8 overflow-hidden rounded-22 bg-field-navy px-8 py-12 shadow-surface-dark md:grid-cols-[1fr_auto] md:items-center md:px-14 md:py-16">
           <div className="max-w-[40rem]">

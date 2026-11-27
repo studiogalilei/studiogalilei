@@ -3,9 +3,8 @@ import { defineRouting } from "next-intl/routing";
 export const routing = defineRouting({
   locales: ["it", "en"],
   defaultLocale: "it",
-  // Italian lives at the plain address, English under /en: one address per language, so
-  // search engines can index both. The cookie and Accept-Language only pick where "/" lands.
-  localePrefix: "as-needed",
+  // The locale is never part of the URL: it comes from the cookie, then Accept-Language.
+  localePrefix: "never",
   localeCookie: { name: "sg-lang", maxAge: 60 * 60 * 24 * 365 },
 });
 

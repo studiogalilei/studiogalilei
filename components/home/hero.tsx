@@ -3,7 +3,7 @@ import { Download } from "@/components/icons";
 import { ButtonLink, DownloadLink } from "@/components/ui/button";
 import { Container } from "@/components/ui/container";
 import { presentationPdf } from "@/lib/company";
-import { HeroCard } from "./hero-card";
+import { HeroTiles } from "./hero-tiles";
 import { ScrollToBooking } from "./scroll-to-booking";
 
 export function Hero() {
@@ -40,18 +40,14 @@ export function Hero() {
               {t("download")}
             </DownloadLink>
             <ScrollToBooking>
-              <ButtonLink
-                href="/contatti"
-                variant="ghost-light"
-                className="border-cream/80 text-cream hover:border-cream hover:bg-cream/10 max-sm:w-full"
-              >
+              <ButtonLink href="/contatti" variant="ghost-light" className="max-sm:w-full">
                 {t("bookCall")}
               </ButtonLink>
             </ScrollToBooking>
           </div>
         </div>
-        <div className="mx-auto w-full md:pl-10">
-          <HeroCard />
+        <div className="mx-auto w-full max-w-[520px] md:max-w-none md:pl-10">
+          <HeroTiles />
         </div>
       </Container>
     </section>
