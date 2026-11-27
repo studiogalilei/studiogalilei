@@ -6,6 +6,11 @@ const nextConfig: NextConfig = {
   partialPrefetching: true,
   async headers() {
     return [
+      // the team Desk (LinkedIn Desk and the rest) lives on the domain but stays out of search engines
+      ...["/desk", "/clara/:path*"].map((source) => ({
+        source,
+        headers: [{ key: "X-Robots-Tag", value: "noindex, nofollow" }],
+      })),
       {
         source: "/area-partner",
         headers: [
@@ -17,6 +22,15 @@ const nextConfig: NextConfig = {
         ],
       },
     ];
+  },
+  // The Desk is the same app published on GitHub Pages: served here so the link is studiogalilei.com/desk
+  async rewrites() {
+    return {
+      beforeFiles: [
+        { source: "/desk", destination: "https://studiogalilei.github.io/clara/" },
+        { source: "/clara/:path*", destination: "https://studiogalilei.github.io/clara/:path*" },
+      ],
+    };
   },
   async redirects() {
     return [
